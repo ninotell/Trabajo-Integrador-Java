@@ -3,6 +3,7 @@ package data;
 import java.sql.*;
 import entities.*;
 
+
 public class DataCategoria {
 	
 	public Categoria getById(Categoria catToSearch) {
