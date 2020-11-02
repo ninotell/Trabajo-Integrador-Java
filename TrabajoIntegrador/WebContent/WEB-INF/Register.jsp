@@ -30,7 +30,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input id="inputName" name="nombre" type="text" class="form-control" placeholder="Nombre *" value=""/>
+                                        <input id="inputName" name="nombre" type="text" class="form-control" placeholder="Nombre *" autofocus="" value=""/>
                                     </div>
                                      <div class="form-group">
                                         <input id="inputApellido" name="apellido" type="text" class="form-control" placeholder="Apellido *" value=""/>
@@ -42,10 +42,10 @@
        										 <option>CUIT/CUIL</option>
        									 </select>
    									</div>
-   									 <div class="form-group">
-                                        <input id="inputDoc" name="doc" type="text" class="form-control" placeholder="Teléfono *" value=""/>
+   									<div class="form-group">
+                                        <input id="inputDoc" name="doc" type="text" class="form-control" placeholder="Nro. de Documento *" value=""/>
                                     </div>
-                                </div>
+   								</div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <input id="inputTel" name="telefono" type="text" class="form-control" placeholder="Teléfono *" value=""/>
@@ -54,7 +54,7 @@
                                         <input id="inputDireccion" name="direccion" type="text" class="form-control" placeholder="Direccion *" value=""/>
                                     </div>
                                     <div class="form-group">
-                                        <input id="inputCorreo" name="correo" type="text" class="form-control" placeholder="Correo electrónico *" required="" autofocus="" type="email"/>
+                                        <input id="inputCorreo" name="correo" type="text" class="form-control" placeholder="Correo electrónico *" required="" type="email"/>
                                     </div>
                                     <div class="form-group">
                                         <input id="inputPassword" name="password" type="text" class="form-control" placeholder="Contraseña *" required="" type="password"/>
