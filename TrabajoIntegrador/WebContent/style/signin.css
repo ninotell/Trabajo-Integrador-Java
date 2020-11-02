@@ -5,12 +5,22 @@ body {
 
 body {
   display: -ms-flexbox;
-  display: flex;
+  display: block;
   -ms-flex-align: center;
   align-items: center;
   padding-top: 40px;
   padding-bottom: 40px;
   background-color: white;
+
+}
+
+.form-register {
+  width: 100%;
+  max-width: 330px;
+  padding: auto;
+  margin: auto;
+  align-items: center;
+
 }
 
 .form-signin {
