@@ -16,10 +16,15 @@
         <!-- Custom styles for this template -->
         <link href="style/register.css" rel="stylesheet">
         
-      
-      </head>
+        <link rel="stylesheet" href="http://jqueryvalidation.org/files/demo/site-demos.css">
+
+        
+        </head>
+
 
 <body>
+
+<form name="f1" class="form-register" action="confirmaRegistro" method="post">
     <div class="container register-form">
                     <div class="form">
        					 <div class="note">
@@ -30,45 +35,49 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input id="inputName" name="nombre" type="text" class="form-control" placeholder="Nombre *" autofocus="" value=""/>
+                                        <input id="inputName" name="nombre" type="text" class="form-control" placeholder="Nombre *" autofocus="" required="" value=""/>
                                     </div>
                                      <div class="form-group">
-                                        <input id="inputApellido" name="apellido" type="text" class="form-control" placeholder="Apellido *" value=""/>
+                                        <input id="inputApellido" name="apellido" type="text" class="form-control" placeholder="Apellido *" required="" value=""/>
                                     </div>
                                     <div class="form-group">
    										 <label for="tipoDoc">Tipo de documento</label>
-   										 <select class="form-control" id="tipoDoc">
+   										 <select class="form-control" id="tipoDoc" name="tipodoc">
     						  			     <option>DNI</option>
        										 <option>CUIT/CUIL</option>
        									 </select>
    									</div>
    									<div class="form-group">
-                                        <input id="inputDoc" name="doc" type="text" class="form-control" placeholder="Nro. de Documento *" value=""/>
+                                        <input id="inputDoc" name="nrodoc" type="text" class="form-control" placeholder="Nro. de Documento *" required="" value=""/>
                                     </div>
    								</div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input id="inputTel" name="telefono" type="text" class="form-control" placeholder="Teléfono *" value=""/>
+                                        <input id="inputTel" name="telefono" type="text" class="form-control" placeholder="Teléfono *" required="" value=""/>
                                     </div>
                                     <div class="form-group">
-                                        <input id="inputDireccion" name="direccion" type="text" class="form-control" placeholder="Direccion *" value=""/>
+                                        <input id="inputDireccion" name="direccion" type="text" class="form-control" placeholder="Direccion *" required="" value=""/>
                                     </div>
                                     <div class="form-group">
-                                        <input id="inputCorreo" name="correo" type="text" class="form-control" placeholder="Correo electrónico *" required="" type="email"/>
+                                        <input id="inputCorreo" name="correoelectronico" class="form-control" placeholder="Correo electrónico *" required="" type="email"/>
                                     </div>
                                     <div class="form-group">
-                                        <input id="inputPassword" name="password" type="text" class="form-control" placeholder="Contraseña *" required="" type="password"/>
+                                        <input id="password" name="password" class="form-control" placeholder="Contraseña *" min="6" max="10" required="" type="password"/>
                                     </div>
                                     <div class="form-group">
-                                        <input id="inputConfPassword" name="confpassword" type="text" class="form-control" placeholder="Confirmar contraseña *" required="" type="password"/>
+                                        <input id="confpassword" name="confpassword"  class="form-control" placeholder="Confirmar contraseña *" required="" type="password"/>
                                     </div>
+                                   
                                 </div>
                             </div>
-                            <button type="button" class="btnSubmit">Submit</button>
-                        </div>
+                            
+                                 <button type="submit" value="Crear usuario" class="btn btn-lg btn-success btn-block" name="botoncrear" ></button>
+                                
+                           </div>
                     </div>
                 </div>
-
+	</form>
+	
 </body>
 
 </html>
