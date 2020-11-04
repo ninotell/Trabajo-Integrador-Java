@@ -48,12 +48,12 @@
        									 </select>
    									</div>
    									<div class="form-group">
-                                        <input id="inputDoc" name="nrodoc" type="text" class="form-control" placeholder="Nro. de Documento *" required="" value=""/>
+                                        <input id="inputDoc" name="nrodoc" type="number" class="form-control" placeholder="Nro. de Documento *" required="" value=""/>
                                     </div>
    								</div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input id="inputTel" name="telefono" type="text" class="form-control" placeholder="Teléfono *" required="" value=""/>
+                                        <input id="inputTel" name="telefono" type="number" class="form-control" placeholder="Teléfono *" required="" value=""/>
                                     </div>
                                     <div class="form-group">
                                         <input id="inputDireccion" name="direccion" type="text" class="form-control" placeholder="Direccion *" required="" value=""/>
@@ -71,13 +71,13 @@
                                 </div>
                             </div>
                             
-                                 <button type="submit" value="Crear usuario" class="btn btn-lg btn-success btn-block" name="botoncrear" ></button>
-                                
-                           </div>
+                                 <button type="submit" class="btn btn-lg btn-success btn-block" name="botoncrear" >Crear usuario</button>
+                          </div>
                     </div>
                 </div>
 	</form>
 	
 </body>
+
 
 </html>
