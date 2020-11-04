@@ -1,9 +1,11 @@
 package servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.lang.ProcessBuilder.Redirect;
 import java.util.LinkedList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -45,7 +47,7 @@ public class Signin extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Usuario u = new Usuario();
 		Login ctrlLogin = new Login();
-		
+		PrintWriter out = response.getWriter();
 		
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
@@ -61,7 +63,22 @@ public class Signin extends HttpServlet {
 			u.setPassword(password);
 			r.setIdRol(2);
 			r = dr.getById(r);
-			u=ctrlLogin.validate(u);		
+			u=ctrlLogin.validate(u);
+			
+			if (u==null) {
+				response.setContentType("text/html");
+				out.println("<script src=\"https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js\"></script>");
+				out.println("<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js\"></script>");
+	            out.println("<script>");
+	            out.println("$(document).ready(function(){"); 
+	            out.println("swal ( 'Oops!' , 'Usuario y/o contraseña incorrectos' , 'error' )");
+	            out.println("});");
+	            out.println("</script>");
+	            RequestDispatcher rd=request.getRequestDispatcher("index.html");
+	            rd.include(request,response);
+			}
+			else {
+				
 			if (u.hasRol(r)) {
 				request.getSession().setAttribute("usuario", u);
 //				LinkedList<Vehiculo> vehiculos = ctrlLogin.getByAnio(v);
@@ -75,10 +92,11 @@ public class Signin extends HttpServlet {
 				request.getRequestDispatcher("WEB-INF/MenuEmpleado.jsp").forward(request, response);
 				}
 			}
+			}
 			catch (NullPointerException n2) {
 			n2.printStackTrace();	
 			}
-			
+		
 	}
 }
 
