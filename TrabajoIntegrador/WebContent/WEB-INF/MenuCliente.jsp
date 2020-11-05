@@ -56,7 +56,7 @@
         		<a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
 	        </li>
       		<li class="nav-item">
-        		<a class="nav-link" href="#">Vehiculos</a>
+        		<a class="nav-link" href="javascript:mostrarOcultarTablas('vehicles')">Vehiculos</a>
 	        </li>
 	    </ul>
 	     <span class="dropdown">
@@ -79,7 +79,7 @@
         	<h4>Vehiculos</h4>
             	<div class="col-12 col-sm-12 col-lg-12">
                 	<div class="table-responsive">
-                    	<table class="table">
+                    	<table class="table" id="vehicles">
                     		<thead>
                     			<tr>
                     				<th>ID</th>
@@ -110,7 +110,15 @@
                     		</tbody>	
 	</div>
 	
-	
+	<script>
+       function mostrarOcultarTablas(id){
+		mostrado=0;
+			elem = document.getElementById(id);
+			if(elem.style.display=='block')mostrado=1;
+			elem.style.display='none';
+			if(mostrado!=1)elem.style.display='block';
+	}
+</script>
  	
 </body>
 </html>
