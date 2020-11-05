@@ -16,7 +16,12 @@
     <meta name="author" content="">
     <link rel="icon" href="http://getbootstrap.com/favicon.ico">
 	
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+	
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+ 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+	
 	<!-- Bootstrap core CSS -->
     <link href="style/bootstrap.css" rel="stylesheet">
 
@@ -47,69 +52,65 @@
 
  	 <div class="collapse navbar-collapse" id="navbarSupportedContent">
     	<ul class="navbar-nav mr-auto">
-      		<li class="nav-item active">
+      		<li class="nav-item active ">
         		<a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
 	        </li>
       		<li class="nav-item">
-        		<a class="nav-link" href="WEB-INF/ListaVehiculos.jsp">Vehiculos</a>
-	        </li>
-	        <li class="nav-item dropdown">
-      			  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" 
-           			data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          			<%=u.getNombre()%> <%=u.getApellido()%>
-       			 </a>
-    		    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          			<a class="dropdown-item" href="#">Action</a>
-          			<a class="dropdown-item" href="#">Another action</a>
-          			<div class="dropdown-divider"></div>
-          			<a class="dropdown-item" href="#">Something else here</a>
-			     </div>
-	        </li>
-	        <li>
-	        
+        		<a class="nav-link" href="#">Vehiculos</a>
 	        </li>
 	    </ul>
+	     <span class="dropdown">
+      			  <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
+          			<%=u.getNombre()%> <%=u.getApellido()%>
+       			  </a>
+    		     <div class="dropdown-menu">
+          			<a class="dropdown-item" href="#">Cambiar contraseña</a>
+          			<a class="dropdown-item" href="index.html">Cerrar sesión</a>
+			     </div>
+	       </span>
      </div>
   </nav>
  </div>
  
  
 	
-<!--  	<div class="container"> -->
-<!-- 		<div class="row"> -->
-<!--         	<h4>Vehiculos</h4> -->
-<!--             	<div class="col-12 col-sm-12 col-lg-12"> -->
-<!--                 	<div class="table-responsive"> -->
-<!--                     	<table class="table"> -->
-<!--                     		<thead> -->
-<!--                     			<tr> -->
-<!--                     				<th>ID</th> -->
-<!--                     				<th>Patente</th> -->
-<!--                     		    	<th>Marca</th> -->
-<!--                         			<th>Modelo</th> -->
-<!--                         			<th>Transmision</th> -->
-<!--                         			<th>KM</th> -->
-<!--                         			<th>Año</th> -->
-<!--                         			<th></th> -->
-<!--                         			<th></th> -->
-<!--                       			</tr> -->
-<!--                       		</thead> -->
-<!--                     		<tbody> -->
-<%--                     		<% for (Vehiculo v : lv) { %> --%>
-<!--                     			<tr> -->
-<%--                     				<td><%=v.getIdVehiculo()%></td> --%>
-<%--                     				<td><%=v.getPatente()%></td> --%>
-<%--                     				<td><%=v.getMarca()%></td> --%>
-<%--                     				<td><%=v.getTransmision()%></td> --%>
-<%--                     				<td><%=v.getModelo()%></td> --%>
-<%--                     				<td><%=v.getKm()%></td> --%>
-<%--                     				<td><%=v.getAnio()%></td> --%>
-<!--                     				<td></td>editar -->
-<!--                     				<td></td>borrar -->
-<!--                     			</tr> -->
-<%--                     		<% } %> --%>
-<!--                     		</tbody>	 -->
-<!-- 	</div> /container -->
+ 	<div class="container">
+		<div class="row">
+        	<h4>Vehiculos</h4>
+            	<div class="col-12 col-sm-12 col-lg-12">
+                	<div class="table-responsive">
+                    	<table class="table">
+                    		<thead>
+                    			<tr>
+                    				<th>ID</th>
+                    				<th>Patente</th>
+                    		    	<th>Marca</th>
+                        			<th>Transmisión</th>
+                        			<th>Modelo</th>
+                        			<th>KM</th>
+                        			<th>Año</th>
+                        			<th></th>
+                        			<th></th>
+                      			</tr>
+                      		</thead>
+                    		<tbody>
+                    		<% for (Vehiculo v : lv) { %>
+                    			<tr>
+                    				<td><%=v.getIdVehiculo()%></td>
+                    				<td><%=v.getPatente()%></td>
+                    				<td><%=v.getMarca()%></td>
+                    				<td><%=v.getTransmision()%></td>
+                    				<td><%=v.getModelo()%></td>
+                    				<td><%=v.getKm()%></td>
+                    				<td><%=v.getAnio()%></td>
+                    				<td></td>editar
+                    				<td></td>borrar
+                    			</tr>
+                    		<% } %>
+                    		</tbody>	
+	</div>
+	
+	
  	
 </body>
 </html>
