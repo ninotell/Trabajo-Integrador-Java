@@ -108,7 +108,7 @@
                     			</tr>
                     		<% } %>
                     		</tbody>	
-	</div>
+              	</div>
 	
 	<script>
        function mostrarOcultarTablas(id){
