@@ -184,6 +184,33 @@ public class DataVehiculo {
 		
 	}
 	
+	public void edit(Vehiculo v) {
+		PreparedStatement stmt = null;
+		ResultSet keyResultSet=null;
+		try {
+			stmt=DbConnector.getInstancia().getConn().
+					prepareStatement(
+							"update vehiculo set km=? where idVehiculo=?",
+							PreparedStatement.RETURN_GENERATED_KEYS
+							);
+			stmt.setDouble(1, v.getKm());
+			stmt.setInt(2, v.getIdVehiculo());
+			stmt.executeUpdate();
+						
+		} catch (SQLException e) {
+            e.printStackTrace();
+		} finally {
+            try {
+                if(keyResultSet!=null)keyResultSet.close();
+                if(stmt!=null)stmt.close();
+                DbConnector.getInstancia().releaseConn();
+            } catch (SQLException e) {
+            	e.printStackTrace();
+            }
+		}
+		
+	}
+	
 			
 	
 	

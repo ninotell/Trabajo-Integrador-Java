@@ -24,7 +24,7 @@
 
 <body>
 
-<form name="f1" class="form-register" action="confirmaRegistro" method="post">
+<form name="f1" class="form-agregavehiculo" action="confirmaRegistro" method="post">
     <div class="container register-form">
                     <div class="form">
        					 <div class="note">

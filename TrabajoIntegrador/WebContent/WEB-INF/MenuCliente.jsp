@@ -40,6 +40,9 @@
 </head>
 
 <body>
+
+
+
 <div class="container">	
   <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
   		<a class="navbar-brand" href="#">
@@ -72,8 +75,16 @@
   </nav>
  </div>
  
- 
+ 	<hr>
+ 	<hr>
+ 	<hr>
+ 	<hr>
+ 	<hr>
 	
+	<form name="f1" class="form-register" action="agregavehiculo" method="get">
+	<button type="submit" class="btn btn-primary">Agregar vehiculo</button>
+	</form>
+
  	<div class="container">
 		<div class="row">
         	<h4>Vehiculos</h4>
@@ -103,14 +114,14 @@
                     				<td><%=v.getModelo()%></td>
                     				<td><%=v.getKm()%></td>
                     				<td><%=v.getAnio()%></td>
-                    				<td></td>editar
-                    				<td></td>borrar
+                    				<td><button type="button" class="btn btn-primary">Editar</button></td>
+                    				<td><button type="button" class="btn btn-danger">Eliminar</button></td>
                     			</tr>
                     		<% } %>
                     		</tbody>	
-              	</div>
+       	</div>
 	
-	<script>
+<script>
        function mostrarOcultarTablas(id){
 		mostrado=0;
 			elem = document.getElementById(id);
