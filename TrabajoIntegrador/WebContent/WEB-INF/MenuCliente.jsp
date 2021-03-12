@@ -115,7 +115,7 @@
                     				<td><%=v.getKm()%></td>
                     				<td><%=v.getAnio()%></td>
                     				<td><button type="button" class="btn btn-primary">Editar</button></td>
-                    				<td><button type="button" class="btn btn-danger">Eliminar</button></td>
+                    				<td><button type="button" class="btn btn-danger" onclick="refresh">Eliminar</button></td>
                     			</tr>
                     		<% } %>
                     		</tbody>	
