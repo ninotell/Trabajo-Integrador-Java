@@ -112,13 +112,19 @@
                     				<td><%=v.getMarca()%></td>
                     				<td><%=v.getTransmision()%></td>
                     				<td><%=v.getModelo()%></td>
-                    				<td><%=v.getKm()%></td>
+                    				<form name="f2" class="form-register" action="editavehiculo" method="post">
+                    				<td><input type="number" class="form-control" placeholder="<%=v.getKm()%>" name="kms"  /></td>
                     				<td><%=v.getAnio()%></td>
-                    				<td><button type="button" class="btn btn-primary">Editar</button></td>
-                    					<form name="f2" class="form-register" action="eliminavehiculo" method="post">
-                    					<td><button type="submit" class="btn btn-danger" id="<%=v.getIdVehiculo()%>">Eliminar</button>
+                    				
+                    					<td><button type="submit" class="btn btn-primary">Actualizar km</button></td>
+                    						 
+                    					<input type="hidden" name="idvehiculo" value="<%=v.getIdVehiculo()%>" />
+                    				</form>
+                    				
+                    					<form name="f3" class="form-register" action="eliminavehiculo" method="post">
+                    						<td><button type="submit" class="btn btn-danger" >Eliminar</button>
                     						 <input type="hidden" name="idvehiculo" value="<%=v.getIdVehiculo()%>" />
-                    					</td>
+                    					    </td>
                     					</form>
                     			</tr>
                     		<% } %>
