@@ -59,9 +59,9 @@ public class Login {
 	}
 	
 	public void deleteVehiculo(Vehiculo v) {
-		dv.deleteVehiculo(v); 
 		dc.deleteCategoriaVehiculo(v);
-		
+		dv.deleteVehiculo(v); 
+				
 	}
 	public void deleteUsuario(Usuario u) {
 		dr.deleteRol(u);

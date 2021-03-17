@@ -115,7 +115,11 @@
                     				<td><%=v.getKm()%></td>
                     				<td><%=v.getAnio()%></td>
                     				<td><button type="button" class="btn btn-primary">Editar</button></td>
-                    				<td><button type="button" class="btn btn-danger" id="<%=v.getIdVehiculo()%>" onclick="javascript:funcionEliminar('id')">Eliminar</button></td>
+                    					<form name="f2" class="form-register" action="eliminavehiculo" method="post">
+                    					<td><button type="submit" class="btn btn-danger" id="<%=v.getIdVehiculo()%>">Eliminar</button>
+                    						 <input type="hidden" name="idvehiculo" value="<%=v.getIdVehiculo()%>" />
+                    					</td>
+                    					</form>
                     			</tr>
                     		<% } %>
                     		</tbody>	
@@ -128,15 +132,8 @@
 			if(elem.style.display=='block')mostrado=1;
 			elem.style.display='none';
 			if(mostrado!=1)elem.style.display='block';
-	};
-       
-     
-     function funcionEliminar(id) {
-    	 var idvehiculo = this.id;
-    	 <%System.out.println(idvehiculo);%>;
+	}
 		    	 
-    	 
-     }
        
 </script>
  	
