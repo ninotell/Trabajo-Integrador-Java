@@ -51,8 +51,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 	Login ctrlLogin = new Login();
 	Vehiculo ve = new Vehiculo();
 	int idv = Integer.parseInt(request.getParameter("idvehiculo"));
-	
-		
+			
 	ve.setIdVehiculo(idv);
 	ctrlLogin.deleteVehiculo(ve);
 	
