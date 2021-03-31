@@ -67,6 +67,10 @@ public class Login {
 		dr.deleteRol(u);
 		du.deleteUsuario(u);
 	}
+	
+	public void updateRol(Usuario u, Rol r) {
+
+	}
 	public void updatePsw(Usuario u) {
 		du.updatePsw(u);	
 	}

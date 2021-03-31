@@ -65,7 +65,7 @@ public class Agregavehiculo extends HttpServlet {
 		
 		ctrlLogin.newVehiculo(v, c);
 		
-		request.getRequestDispatcher("WEB-INF/MenuCliente.jsp").forward(request, response);
+		request.getRequestDispatcher("WEB-INF/MenuEmpleado.jsp").forward(request, response);
 		
 	
 

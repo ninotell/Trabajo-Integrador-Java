@@ -64,7 +64,7 @@ public class Signin extends HttpServlet {
 			r.setIdRol(2);
 			r = dr.getById(r);
 			u=ctrlLogin.validate(u);
-			
+						
 			if (u==null) {
 				response.setContentType("text/html");
 				out.println("<script src=\"https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js\"></script>");

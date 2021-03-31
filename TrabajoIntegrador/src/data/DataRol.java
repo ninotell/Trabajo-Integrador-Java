@@ -10,13 +10,10 @@ public class DataRol {
 		ResultSet rs=null;
 		try {
 			stmt=DbConnector.getInstancia().getConn().prepareStatement(
-					  "select rol.* "
-					+ "from rol "
-					+ "inner join usuario_rol "
-					+ "on rol.idRol=usuario_rol.id_rol "
-					+ "where id_usuario=?"
+					"select r.idRol, r.descripcion from rol r inner join usuario_rol ur on r.idRol = ur.id_rol where ur.fecha_cambio = (select max(fecha_cambio) from usuario_rol where id_usuario=? group by id_rol and id_usuario) and id_usuario=?"
 					);
 			stmt.setInt(1, u.getIdUsuario());
+			stmt.setInt(2, u.getIdUsuario());
 			rs= stmt.executeQuery();
 			if(rs!=null) {
 				while(rs.next()) {

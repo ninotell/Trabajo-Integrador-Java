@@ -1,5 +1,7 @@
 <%@page import="entities.Usuario"%>
 <%@page import="entities.Vehiculo"%>
+<%@page import="entities.Rol"%>
+<%@page import="data.DataRol"%>
 <%@page import="logic.Login"%>
 <%@page import="java.util.LinkedList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -26,13 +28,16 @@
     <link href="style/bootstrap.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="style/MenuEmpleado.css" rel="stylesheet">
+    <link href="style/MenuCliente.css" rel="stylesheet">
 	
 	<%
-		Vehiculo ve = new Vehiculo();
+		Usuario us = new Usuario();
+    	DataRol dr = new DataRol();
+    	Rol rr = new Rol();
+		rr.setIdRol(2);
+		rr = dr.getById(rr);
     	Login ctrlLogin = new Login();	
-		ve.setAnio(2000);
-    	LinkedList<Vehiculo> lv = ctrlLogin.getByAnio(ve);	
+		LinkedList<Usuario> lu = ctrlLogin.listaUsuarios();	
 		Usuario u = (Usuario)session.getAttribute("usuario");
 	%>
 	<title><%=u.getNombre()%> <%=u.getApellido()%></title>
@@ -62,10 +67,7 @@
         		<a class="nav-link" href="">Vehiculos</a>
 	        </li>
 	        <li class="nav-item">
-	        	<form name="f3" class="form-register" action="editarolusuario" method="get">
-<!--         		<a class="nav-link" type="submit">Asignar rol</a> -->
-        		<button type="submit" class="btn btn-primary">Asignar rol</button>
-        		</form>
+        		<a class="nav-link" href="">Asignar rol</a>
 	        </li>
 	    </ul>
 	     <span class="dropdown">
@@ -87,51 +89,45 @@
  	<hr>
  	<hr>
 	
-	<form name="f1" class="form-register" action="agregavehiculo" method="get">
-	<button type="submit" class="btn btn-primary">Agregar vehiculo</button>
-	</form>
-
  	<div class="container">
 		<div class="row">
-        	<h4>Vehiculos</h4>
+        	<h4>Usuarios</h4>
             	<div class="col-12 col-sm-12 col-lg-12">
                 	<div class="table-responsive">
-                    	<table class="table" id="vehicles">
+                    	<table class="table" id="usuarios">
                     		<thead>
                     			<tr>
                     				<th onclick="sortTable(0, 'int')">ID</th>
-                    				<th onclick="sortTable(1, 'str')">Patente</th>
-                    		    	<th onclick="sortTable(2, 'str')">Marca</th>
-                        			<th onclick="sortTable(3, 'str')">Transmisión</th>
-                        			<th onclick="sortTable(4, 'str')">Modelo</th>
-                        			<th onclick="sortTable(5, 'int')">KM</th>
-                        			<th onclick="sortTable(6, 'int')">Año</th>
+                    				<th onclick="sortTable(1, 'str')">Apellido</th>
+                    		    	<th onclick="sortTable(2, 'str')">Nombre</th>
+                    		    	<th onclick="sortTable(3, 'str')">Documento</th>
+                        			<th onclick="sortTable(4, 'int')">Rol(1-Empleado/2-Cliente)</th>
                         			<th></th>
                         			<th></th>
                       			</tr>
                       		</thead>
                     		<tbody>
-                    		<% for (Vehiculo v : lv) { %>
+                    		<% for (Usuario uss : lu) { %>
                     			<tr>
-                    				<td><%=v.getIdVehiculo()%></td>
-                    				<td><%=v.getPatente()%></td>
-                    				<td><%=v.getMarca()%></td>
-                    				<td><%=v.getTransmision()%></td>
-                    				<td><%=v.getModelo()%></td>
-                    				<form name="f2" class="form-register" action="editavehiculo" method="post">
-                    				<td><input type="number" class="form-control" placeholder="<%=v.getKm()%>" value="<%=v.getKm()%>" name="kms"  /></td>
-                    				<td><%=v.getAnio()%></td>
+                    				<td><%=uss.getIdUsuario()%></td>
+                    				<td><%=uss.getApellido()%></td>
+                    				<td><%=uss.getNombre()%></td> 
+                    				<td><%=uss.getDocumento().getNro()%></td> 
+                    				<form name="f2" class="form-register" action="editarolusuario" method="post">
                     				
-                    					<td><button type="submit" class="btn btn-primary">Actualizar km</button></td>
-                    						 
-                    					<input type="hidden" name="idvehiculo" value="<%=v.getIdVehiculo()%>" />
+                    				<td><select class="form-control" placeholder="kjjkn" value="bjhbj" id="inputRol" name="Rol">
+    						  			     <option>Cliente</option>
+       										 <option>Empleado</option>
+       									 </select></td>
+                    				<td><button type="submit" class="btn btn-primary">Actualizar Rol</button></td>
+                    					<input type="hidden" name="idusuario" value="<%=us.getIdUsuario()%>" />
                     				</form>
                     				
-                    					<form name="f3" class="form-register" action="eliminavehiculo" method="post">
+                    				<form name="f3" class="form-register" action="eliminausuario" method="post">
                     						<td><button type="submit" class="btn btn-danger" >Eliminar</button>
-                    						 <input type="hidden" name="idvehiculo" value="<%=v.getIdVehiculo()%>" />
+                    						 <input type="hidden" name="idusuario" value="<%=uss.getIdUsuario()%>" />
                     					    </td>
-                    					</form>
+                    				</form>
                     			</tr>
                     		<% } %>
                     		</tbody>	
@@ -149,7 +145,7 @@
        function sortTable(n,type) {
     	   var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
     	  
-    	   table = document.getElementById("vehicles");
+    	   table = document.getElementById("usuarios");
     	   switching = true;
     	   //Set the sorting direction to ascending:
     	   dir = "asc";

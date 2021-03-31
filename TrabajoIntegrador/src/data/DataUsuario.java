@@ -228,7 +228,38 @@ public class DataUsuario {
 	
 	
 }
-				
+	
+	public void updateRol(Usuario u) {
+		PreparedStatement stmt = null;
+		ResultSet keyResultSet=null;
+		try {
+			stmt=DbConnector.getInstancia().getConn().
+					prepareStatement(
+							"update usuario set contraseña=? where idUsuario=?");
+			stmt.setString(1, u.getPassword());
+			stmt.setInt(2, u.getIdUsuario());
+			stmt.executeUpdate();
+			
+			
+			
+		} catch (SQLException e) {
+            e.printStackTrace();
+		} finally {
+            try {
+                if(keyResultSet!=null)keyResultSet.close();
+                if(stmt!=null)stmt.close();
+                DbConnector.getInstancia().releaseConn();
+            } catch (SQLException e) {
+            	e.printStackTrace();
+            }
+		}
+
+	
+	
+}
+		
+	
+	
 	}
 	
 	
