@@ -51,26 +51,23 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 	PrintWriter out = response.getWriter();
 	Login ctrlLogin = new Login();
 	Usuario us = new Usuario();
-	Rol nr = new Rol();
+	Rol r = new Rol();
+	Rol rr = new Rol();
+	r.setIdRol(1);
+	rr.setIdRol(2);
 	int idu = Integer.parseInt(request.getParameter("idusuario"));
 	us.setIdUsuario(idu);
-//	ve.setKm(kms);
+	if (us.hasRol(r)) {
+		ctrlLogin.updateRol(us, rr);
+	}
+	else { if (us.hasRol(rr)) {
+		ctrlLogin.updateRol(us, r);}}
 //	
-//	ctrlLogin.updateKm(ve);
+//	ctrlLogin.updateRol(ve);
 	
-	request.getRequestDispatcher("WEB-INF/MenuCliente.jsp").forward(request, response);
+	request.getRequestDispatcher("WEB-INF/MenuEmpleado.jsp").forward(request, response);
 	
-//	String marca = request.getParameter("marca");
-//	String transmision = request.getParameter("transmision");
-//	String modelo = request.getParameter("modelo");
-//	String km = request.getParameter("km");
-//	String anio = request.getParameter("anio");
-	
-	
-			
-	
-	
-	
+
 
 
 }

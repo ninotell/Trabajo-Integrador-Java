@@ -69,6 +69,7 @@ public class Login {
 	}
 	
 	public void updateRol(Usuario u, Rol r) {
+		dr.addRol(r, u);
 
 	}
 	public void updatePsw(Usuario u) {

@@ -34,7 +34,7 @@
 		Usuario us = new Usuario();
     	DataRol dr = new DataRol();
     	Rol rr = new Rol();
-		rr.setIdRol(2);
+		rr.setIdRol(1);
 		rr = dr.getById(rr);
     	Login ctrlLogin = new Login();	
 		LinkedList<Usuario> lu = ctrlLogin.listaUsuarios();	
@@ -91,7 +91,7 @@
 	
  	<div class="container">
 		<div class="row">
-        	<h4>Usuarios</h4>
+        	<h4>Clientes</h4>
             	<div class="col-12 col-sm-12 col-lg-12">
                 	<div class="table-responsive">
                     	<table class="table" id="usuarios">
@@ -101,26 +101,22 @@
                     				<th onclick="sortTable(1, 'str')">Apellido</th>
                     		    	<th onclick="sortTable(2, 'str')">Nombre</th>
                     		    	<th onclick="sortTable(3, 'str')">Documento</th>
-                        			<th onclick="sortTable(4, 'int')">Rol(1-Empleado/2-Cliente)</th>
+                        			<th onclick="sortTable(4, 'int')">Rol</th>
                         			<th></th>
                         			<th></th>
                       			</tr>
                       		</thead>
                     		<tbody>
-                    		<% for (Usuario uss : lu) { %>
+                    		<% for (Usuario uss : lu) { if (uss.hasRol(rr)) {%>
                     			<tr>
                     				<td><%=uss.getIdUsuario()%></td>
                     				<td><%=uss.getApellido()%></td>
                     				<td><%=uss.getNombre()%></td> 
                     				<td><%=uss.getDocumento().getNro()%></td> 
+                    				<td>Empleado</td>
                     				<form name="f2" class="form-register" action="editarolusuario" method="post">
-                    				
-                    				<td><select class="form-control" placeholder="kjjkn" value="bjhbj" id="inputRol" name="Rol">
-    						  			     <option>Cliente</option>
-       										 <option>Empleado</option>
-       									 </select></td>
                     				<td><button type="submit" class="btn btn-primary">Actualizar Rol</button></td>
-                    					<input type="hidden" name="idusuario" value="<%=us.getIdUsuario()%>" />
+                    					<input type="hidden" name="idusuario" value="<%=uss.getIdUsuario()%>" />
                     				</form>
                     				
                     				<form name="f3" class="form-register" action="eliminausuario" method="post">
@@ -129,7 +125,47 @@
                     					    </td>
                     				</form>
                     			</tr>
-                    		<% } %>
+                    		<% }} %>
+                    		</tbody>	
+       	</div>
+       	
+       	<div class="container">
+		<div class="row">
+        	<h4>Empleados</h4>
+            	<div class="col-12 col-sm-12 col-lg-12">
+                	<div class="table-responsive">
+                    	<table class="table" id="usuarios">
+                    		<thead>
+                    			<tr>
+                    				<th onclick="sortTable(0, 'int')">ID</th>
+                    				<th onclick="sortTable(1, 'str')">Apellido</th>
+                    		    	<th onclick="sortTable(2, 'str')">Nombre</th>
+                    		    	<th onclick="sortTable(3, 'str')">Documento</th>
+                        			<th onclick="sortTable(4, 'int')">Rol</th>
+                        			<th></th>
+                        			<th></th>
+                      			</tr>
+                      		</thead>
+                    		<tbody>
+                    		<% for (Usuario uss : lu) { if (uss.hasRol(rr)) {} else {%>
+                    			<tr>
+                    				<td><%=uss.getIdUsuario()%></td>
+                    				<td><%=uss.getApellido()%></td>
+                    				<td><%=uss.getNombre()%></td> 
+                    				<td><%=uss.getDocumento().getNro()%></td>
+									<td>Cliente</td>
+									<form name="f4" class="form-register" action="editarolusuario" method="post">
+                    				<td><button type="submit" class="btn btn-primary" action="eliminausuario">Actualizar Rol</button></td>
+                    					<input type="hidden" name="idusuario" value="<%=uss.getIdUsuario()%>" />
+                    				</form>
+                    				
+                    				<form name="f5" class="form-register" action="eliminausuario" method="post">
+                    						<td><button type="submit" class="btn btn-danger" >Eliminar</button>
+                    						 <input type="hidden" name="idusuario" value="<%=uss.getIdUsuario()%>" />
+                    					    </td>
+                    				</form>
+                    			</tr>
+                    		<% }} %>
                     		</tbody>	
        	</div>
 	
