@@ -57,6 +57,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 	rr.setIdRol(2);
 	int idu = Integer.parseInt(request.getParameter("idusuario"));
 	us.setIdUsuario(idu);
+	us = ctrlLogin.getUserById(us);
 	if (us.hasRol(r)) {
 		ctrlLogin.updateRol(us, rr);
 	}

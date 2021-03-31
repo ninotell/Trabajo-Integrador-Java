@@ -41,6 +41,10 @@ public class Login {
 		return dv.getById(v);		
 		
 	}
+	public Usuario getUserById(Usuario u) {
+		return du.getById(u);		
+		
+	}
 	
 	public void newUsuario(Usuario u) throws SQLException {
 	
