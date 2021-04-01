@@ -28,7 +28,7 @@
     <link href="style/bootstrap.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="style/MenuCliente.css" rel="stylesheet">
+    <link href="style/asignarol.css" rel="stylesheet">
 	
 	<%
 		Usuario us = new Usuario();
@@ -39,6 +39,7 @@
     	Login ctrlLogin = new Login();	
 		LinkedList<Usuario> lu = ctrlLogin.listaUsuarios();	
 		Usuario u = (Usuario)session.getAttribute("usuario");
+// 		Integer idLogueado = u.getIdUsuario;
 	%>
 	<title><%=u.getNombre()%> <%=u.getApellido()%></title>
 	
@@ -60,19 +61,19 @@
 
  	 <div class="collapse navbar-collapse" id="navbarSupportedContent">
     	<ul class="navbar-nav mr-auto">
-      		<li class="nav-item active ">
+      		<li class="nav-item ">
         		<a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
 	        </li>
       		<li class="nav-item">
-        		<a class="nav-link" href="">Vehiculos</a>
+        		<a class="nav-link" href="listavehiculos">Vehiculos</a>
 	        </li>
-	        <li class="nav-item">
-        		<a class="nav-link" href="">Asignar rol</a>
+	        <li class="nav-item active">
+        		<a class="nav-link" href="" onclick="location.reload(true)">Asignar rol</a>
 	        </li>
 	    </ul>
 	     <span class="dropdown">
       			  <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
-          			<%=u.getNombre()%> <%=u.getApellido()%>
+          			ID: <%=u.getIdUsuario()%> - <%=u.getNombre()%> <%=u.getApellido()%>
        			  </a>
     		     <div class="dropdown-menu">
           			<a class="dropdown-item" href="#">Cambiar contraseña</a>
@@ -91,28 +92,32 @@
 	
  	<div class="container">
 		<div class="row">
-        	<h4>Clientes</h4>
+        	<caption><h5>Empleados</h5></caption>
             	<div class="col-12 col-sm-12 col-lg-12">
                 	<div class="table-responsive">
-                    	<table class="table" id="usuarios">
+                    	<table class="table table-success" id="usuarios">
                     		<thead>
                     			<tr>
                     				<th onclick="sortTable(0, 'int')">ID</th>
                     				<th onclick="sortTable(1, 'str')">Apellido</th>
                     		    	<th onclick="sortTable(2, 'str')">Nombre</th>
                     		    	<th onclick="sortTable(3, 'str')">Documento</th>
-                        			<th onclick="sortTable(4, 'int')">Rol</th>
-                        			<th></th>
-                        			<th></th>
+                    		    	<th onclick="sortTable(4, 'int')">Dirección de correo</th>
+                        			<th onclick="sortTable(5, 'int')">Contraseña</th>
+                        			<th onclick="sortTable(6, 'int')">Rol</th>
+                        			<th>Actualizar</th>
+                        			<th>Eliminar</th>
                       			</tr>
                       		</thead>
                     		<tbody>
-                    		<% for (Usuario uss : lu) { if (uss.hasRol(rr)) {%>
+                    		<% for (Usuario uss : lu) { if (u.getIdUsuario() == uss.getIdUsuario()) {} else {if (uss.hasRol(rr)) {%>
                     			<tr>
                     				<td><%=uss.getIdUsuario()%></td>
                     				<td><%=uss.getApellido()%></td>
-                    				<td><%=uss.getNombre()%></td> 
+                    				<td><%=uss.getNombre()%></td>
                     				<td><%=uss.getDocumento().getNro()%></td> 
+                    				<td><%=uss.getEmail()%></td> 
+                    				<td><%=uss.getPassword()%></td> 
                     				<td>Empleado</td>
                     				<form name="f2" class="form-register" action="editarolusuario" method="post">
                     				<td><button type="submit" class="btn btn-primary">Actualizar Rol</button></td>
@@ -125,25 +130,29 @@
                     					    </td>
                     				</form>
                     			</tr>
-                    		<% }} %>
+                    		<% }}} %>
                     		</tbody>	
        	</div>
        	
+       	
+
        	<div class="container">
 		<div class="row">
-        	<h4>Empleados</h4>
+        	<caption><h5>Clientes</h5></caption>
             	<div class="col-12 col-sm-12 col-lg-12">
                 	<div class="table-responsive">
-                    	<table class="table" id="usuarios">
+                    	<table class="table table-secondary table-hover" id="usuarios">
                     		<thead>
                     			<tr>
                     				<th onclick="sortTable(0, 'int')">ID</th>
                     				<th onclick="sortTable(1, 'str')">Apellido</th>
                     		    	<th onclick="sortTable(2, 'str')">Nombre</th>
                     		    	<th onclick="sortTable(3, 'str')">Documento</th>
-                        			<th onclick="sortTable(4, 'int')">Rol</th>
-                        			<th></th>
-                        			<th></th>
+                    		    	<th onclick="sortTable(4, 'int')">Dirección de correo</th>
+                        			<th onclick="sortTable(5, 'int')">Contraseña</th>
+                        			<th onclick="sortTable(6, 'int')">Rol</th>
+                        			<th>Actualizar</th>
+                        			<th>Eliminar</th>
                       			</tr>
                       		</thead>
                     		<tbody>
@@ -151,14 +160,16 @@
                     			<tr>
                     				<td><%=uss.getIdUsuario()%></td>
                     				<td><%=uss.getApellido()%></td>
-                    				<td><%=uss.getNombre()%></td> 
-                    				<td><%=uss.getDocumento().getNro()%></td>
-									<td>Cliente</td>
+                    				<td><%=uss.getNombre()%></td>
+                    				<td><%=uss.getDocumento().getNro()%></td> 
+                    				<td><%=uss.getEmail()%></td> 
+                    				<td><%=uss.getPassword()%></td> 
+                    				<td>Cliente</td>
 									<form name="f4" class="form-register" action="editarolusuario" method="post">
                     				<td><button type="submit" class="btn btn-primary" action="eliminausuario">Actualizar Rol</button></td>
                     					<input type="hidden" name="idusuario" value="<%=uss.getIdUsuario()%>" />
                     				</form>
-                    				
+                    				                   				
                     				<form name="f5" class="form-register" action="eliminausuario" method="post">
                     						<td><button type="submit" class="btn btn-danger" >Eliminar</button>
                     						 <input type="hidden" name="idusuario" value="<%=uss.getIdUsuario()%>" />

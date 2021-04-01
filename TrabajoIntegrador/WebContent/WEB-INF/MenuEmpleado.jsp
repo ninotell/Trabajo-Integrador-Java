@@ -56,21 +56,21 @@
  	 <div class="collapse navbar-collapse" id="navbarSupportedContent">
     	<ul class="navbar-nav mr-auto">
       		<li class="nav-item active ">
-        		<a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+        		<a class="nav-link" href="Signin">Home<span class="sr-only">(current)</span></a>
 	        </li>
       		<li class="nav-item">
-        		<a class="nav-link" href="">Vehiculos</a>
+        		<a class="nav-link" href="listavehiculos">Vehiculos</a>
 	        </li>
 	        <li class="nav-item">
-	        	<form name="f3" class="form-register" action="editarolusuario" method="get">
-<!--         		<a class="nav-link" type="submit">Asignar rol</a> -->
-        		<button type="submit" class="btn btn-primary">Asignar rol</button>
-        		</form>
+				<a class="nav-link" href="editarolusuario"  method="get">Asignar rol</a>
+<!-- 	        	<form name="f3" class="form-register" action="editarolusuario" method="get"> -->
+<!--         		<button type="submit" class="nav-link">Asignar rol</button> -->
+<!--         		</form> -->
 	        </li>
 	    </ul>
 	     <span class="dropdown">
       			  <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
-          			<%=u.getNombre()%> <%=u.getApellido()%>
+          			ID: <%=u.getIdUsuario()%> - <%=u.getNombre()%> <%=u.getApellido()%>
        			  </a>
     		     <div class="dropdown-menu">
           			<a class="dropdown-item" href="#">Cambiar contraseña</a>
@@ -87,117 +87,8 @@
  	<hr>
  	<hr>
 	
-	<form name="f1" class="form-register" action="agregavehiculo" method="get">
-	<button type="submit" class="btn btn-primary">Agregar vehiculo</button>
-	</form>
 
- 	<div class="container">
-		<div class="row">
-        	<h4>Vehiculos</h4>
-            	<div class="col-12 col-sm-12 col-lg-12">
-                	<div class="table-responsive">
-                    	<table class="table" id="vehicles">
-                    		<thead>
-                    			<tr>
-                    				<th onclick="sortTable(0, 'int')">ID</th>
-                    				<th onclick="sortTable(1, 'str')">Patente</th>
-                    		    	<th onclick="sortTable(2, 'str')">Marca</th>
-                        			<th onclick="sortTable(3, 'str')">Transmisión</th>
-                        			<th onclick="sortTable(4, 'str')">Modelo</th>
-                        			<th onclick="sortTable(5, 'int')">KM</th>
-                        			<th onclick="sortTable(6, 'int')">Año</th>
-                        			<th></th>
-                        			<th></th>
-                      			</tr>
-                      		</thead>
-                    		<tbody>
-                    		<% for (Vehiculo v : lv) { %>
-                    			<tr>
-                    				<td><%=v.getIdVehiculo()%></td>
-                    				<td><%=v.getPatente()%></td>
-                    				<td><%=v.getMarca()%></td>
-                    				<td><%=v.getTransmision()%></td>
-                    				<td><%=v.getModelo()%></td>
-                    				<form name="f2" class="form-register" action="editavehiculo" method="post">
-                    				<td><input type="number" class="form-control" placeholder="<%=v.getKm()%>" value="<%=v.getKm()%>" name="kms"  /></td>
-                    				<td><%=v.getAnio()%></td>
-                    				
-                    					<td><button type="submit" class="btn btn-primary">Actualizar km</button></td>
-                    						 
-                    					<input type="hidden" name="idvehiculo" value="<%=v.getIdVehiculo()%>" />
-                    				</form>
-                    				
-                    					<form name="f3" class="form-register" action="eliminavehiculo" method="post">
-                    						<td><button type="submit" class="btn btn-danger" >Eliminar</button>
-                    						 <input type="hidden" name="idvehiculo" value="<%=v.getIdVehiculo()%>" />
-                    					    </td>
-                    					</form>
-                    			</tr>
-                    		<% } %>
-                    		</tbody>	
-       	</div>
-	
-<script>
-//        function mostrarOcultarTablas(id){
-// 		mostrado=0;
-// 			elem = document.getElementById(id);
-// 			if(elem.style.display=='block')mostrado=1;
-// 			elem.style.display='none';
-// 			if(mostrado!=1)elem.style.display='block';
-// 	}
+	<button type="submit" href="agregavehiculo" method="get" class="btn btn-primary">Agregar vehiculo</button>
 
-       function sortTable(n,type) {
-    	   var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-    	  
-    	   table = document.getElementById("vehicles");
-    	   switching = true;
-    	   //Set the sorting direction to ascending:
-    	   dir = "asc";
-    	  
-    	   /*Make a loop that will continue until no switching has been done:*/
-    	   while (switching) {
-    	     //start by saying: no switching is done:
-    	     switching = false;
-    	     rows = table.rows;
-    	     /*Loop through all table rows (except the first, which contains table headers):*/
-    	     for (i = 1; i < (rows.length - 1); i++) {
-    	       //start by saying there should be no switching:
-    	       shouldSwitch = false;
-    	       /*Get the two elements you want to compare, one from current row and one from the next:*/
-    	       x = rows[i].getElementsByTagName("TD")[n];
-    	       y = rows[i + 1].getElementsByTagName("TD")[n];
-    	       /*check if the two rows should switch place, based on the direction, asc or desc:*/
-    	       if (dir == "asc") {
-    	         if ((type=="str" && x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) || (type=="int" && parseFloat(x.innerHTML) > parseFloat(y.innerHTML))) {
-    	           //if so, mark as a switch and break the loop:
-    	           shouldSwitch= true;
-    	           break;
-    	         }
-    	       } else if (dir == "desc") {
-    	         if ((type=="str" && x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) || (type=="int" && parseFloat(x.innerHTML) < parseFloat(y.innerHTML))) {
-    	           //if so, mark as a switch and break the loop:
-    	           shouldSwitch = true;
-    	           break;
-    	         }
-    	       }
-    	     }
-    	     if (shouldSwitch) {
-    	       /*If a switch has been marked, make the switch and mark that a switch has been done:*/
-    	       rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-    	       switching = true;
-    	       //Each time a switch is done, increase this count by 1:
-    	       switchcount ++;
-    	     } else {
-    	       /*If no switching has been done AND the direction is "asc", set the direction to "desc" and run the while loop again.*/
-    	       if (switchcount == 0 && dir == "asc") {
-    	         dir = "desc";
-    	         switching = true;
-    	       }
-    	     }
-    	   }
-    	 }
-       
-</script>
- 	
-</body>
+
 </html>

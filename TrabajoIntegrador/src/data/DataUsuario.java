@@ -100,7 +100,7 @@ public class DataUsuario {
 		Usuario u=null;
 		try {
 			stmt= DbConnector.getInstancia().getConn().createStatement();
-			rs= stmt.executeQuery("select idUsuario,mail,tipoDocumento,nroDocumento,nombre,apellido,telefono,direccion from usuario"
+			rs= stmt.executeQuery("select idUsuario,mail,tipoDocumento,nroDocumento,nombre,apellido,telefono,direccion,contraseña from usuario"
 					);
 			if(rs!=null) {
 				while(rs.next()) {
@@ -113,6 +113,7 @@ public class DataUsuario {
 					u.setNombre(rs.getString("nombre"));
 					u.setApellido(rs.getString("apellido"));		
 					u.setDireccion(rs.getString("direccion"));
+					u.setPassword(rs.getString("contraseña"));
 					u.setTel(rs.getString("telefono"));		
 					dr.setRoles(u);
 					
