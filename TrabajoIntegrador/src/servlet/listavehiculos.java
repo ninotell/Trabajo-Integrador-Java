@@ -41,7 +41,7 @@ public class listavehiculos extends HttpServlet {
 		Rol r = new Rol();
 		r.setIdRol(1);
 		if (us.hasRol(r)) {
-			request.getRequestDispatcher("WEB-INF/ListaVehiculos.jsp").forward(request, response);
+			request.getRequestDispatcher("WEB-INF/MenuEmpleado/ListaVehiculos.jsp").forward(request, response);
 		}
 		else {
 			response.setContentType("text/html");
@@ -52,7 +52,7 @@ public class listavehiculos extends HttpServlet {
             out.println("swal ( 'Oops!' , 'No tienes acceso a esta página' , 'error' )");
             out.println("});");
             out.println("</script>");
-            RequestDispatcher rd=request.getRequestDispatcher("WEB-INF/MenuCliente.jsp");
+            RequestDispatcher rd=request.getRequestDispatcher("WEB-INF/MenuCliente/MenuCliente.jsp");
             rd.include(request,response);}
 		
 	}

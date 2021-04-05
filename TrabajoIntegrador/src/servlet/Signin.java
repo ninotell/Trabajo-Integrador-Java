@@ -83,13 +83,13 @@ public class Signin extends HttpServlet {
 				request.getSession().setAttribute("usuario", u);
 //				LinkedList<Vehiculo> vehiculos = ctrlLogin.getByAnio(v);
 //				request.setAttribute("listaVehiculos", vehiculos);
-				request.getRequestDispatcher("WEB-INF/MenuCliente.jsp").forward(request, response);
+				request.getRequestDispatcher("WEB-INF/MenuCliente/MenuCliente.jsp").forward(request, response);
 				
 				
 				
 			} else { 
 				request.getSession().setAttribute("usuario", u);	
-				request.getRequestDispatcher("WEB-INF/MenuEmpleado.jsp").forward(request, response);
+				request.getRequestDispatcher("WEB-INF/MenuEmpleado/MenuEmpleado.jsp").forward(request, response);
 				}
 			}
 			}

@@ -56,7 +56,7 @@
  	 <div class="collapse navbar-collapse" id="navbarSupportedContent">
     	<ul class="navbar-nav mr-auto">
       		<li class="nav-item active ">
-        		<a class="nav-link" href="Signin">Home<span class="sr-only">(current)</span></a>
+        		<a class="nav-link" href="#home">Home<span class="sr-only">(current)</span></a>
 	        </li>
       		<li class="nav-item">
         		<a class="nav-link" href="listavehiculos">Vehiculos</a>
@@ -85,7 +85,8 @@
  	<hr>
 	
 
-	<button type="submit" href="agregavehiculo" method="get" class="btn btn-primary">Agregar vehiculo</button>
-
+		<a href="agregavehiculo" method="get">
+			<button  class="btn btn-primary">Agregar vehiculo</button>
+		</a>
 
 </html>

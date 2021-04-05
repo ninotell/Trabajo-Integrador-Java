@@ -34,7 +34,7 @@ public class Agregavehiculo extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getRequestDispatcher("WEB-INF/Editar.jsp").forward(request, response);
+		request.getRequestDispatcher("WEB-INF/MenuEmpleado/NewVehiculo.jsp").forward(request, response);
 	}
 
 	/**
@@ -65,7 +65,7 @@ public class Agregavehiculo extends HttpServlet {
 		
 		ctrlLogin.newVehiculo(v, c);
 		
-		request.getRequestDispatcher("WEB-INF/MenuEmpleado.jsp").forward(request, response);
+		request.getRequestDispatcher("WEB-INF/MenuEmpleado/MenuEmpleado.jsp").forward(request, response);
 		
 	
 

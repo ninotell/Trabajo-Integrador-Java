@@ -45,7 +45,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 	Rol r = new Rol();
 	r.setIdRol(1);
 	if (us.hasRol(r)) {
-		request.getRequestDispatcher("WEB-INF/AsignarRol.jsp").forward(request, response);
+		request.getRequestDispatcher("WEB-INF/MenuEmpleado/AsignarRol.jsp").forward(request, response);
 	}
 	else {
 		response.setContentType("text/html");
@@ -56,7 +56,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
         out.println("swal ( 'Oops!' , 'No tienes acceso a esta página' , 'error' )");
         out.println("});");
         out.println("</script>");
-        RequestDispatcher rd=request.getRequestDispatcher("WEB-INF/MenuCliente.jsp");
+        RequestDispatcher rd=request.getRequestDispatcher("WEB-INF/MenuEmpleado/MenuCliente.jsp");
         rd.include(request,response);}
 	
 }
