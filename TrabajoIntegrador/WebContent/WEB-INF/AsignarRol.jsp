@@ -39,10 +39,8 @@
     	Login ctrlLogin = new Login();	
 		LinkedList<Usuario> lu = ctrlLogin.listaUsuarios();	
 		Usuario u = (Usuario)session.getAttribute("usuario");
-// 		Integer idLogueado = u.getIdUsuario;
 	%>
 	<title><%=u.getNombre()%> <%=u.getApellido()%></title>
-	
 </head>
 
 <body>
@@ -66,7 +64,7 @@
 	        </li>
       		<li class="nav-item">
         		<a class="nav-link" href="listavehiculos">Vehiculos</a>
-        		<input type="hidden" name="idusuario" value="<%=u.getIdUsuario()%>" />
+
 	        </li>
 	        <li class="nav-item active">
         		<a class="nav-link" href="" onclick="location.reload(true)">Asignar rol</a>
