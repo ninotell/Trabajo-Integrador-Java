@@ -74,7 +74,7 @@ public class DataRol {
 		try {
 			stmt=DbConnector.getInstancia().getConn().
 					prepareStatement(
-							"insert into usuario_rol(id_usuario, id_rol) values(?,?)",
+							"insert into usuario_rol(id_usuario, id_rol,fecha_cambio) values(?,?,current_timestamp())",
 							PreparedStatement.RETURN_GENERATED_KEYS
 							);
 			stmt.setInt(1, u.getIdUsuario());

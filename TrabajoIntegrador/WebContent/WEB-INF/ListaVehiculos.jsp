@@ -63,9 +63,6 @@
 	        </li>
 	        <li class="nav-item">
 				<a class="nav-link" href="editarolusuario"  method="get">Asignar rol</a>
-<!-- 	        	<form name="f3" class="form-register" action="editarolusuario" method="get"> -->
-<!--         		<button type="submit" class="nav-link">Asignar rol</button> -->
-<!--         		</form> -->
 	        </li>
 	    </ul>
 	     <span class="dropdown">
