@@ -10,6 +10,8 @@
   height: 100%;
   color: #e1ffff;
 }
+
+
 .nav-side-menu .brand {
   background-color: #23282e;
   line-height: 50px;
@@ -142,4 +144,11 @@
 body {
   margin: 0px;
   padding: 0px;
+}
+
+.container-botones{
+  width: 100%;
+  max-width: 330px;
+  padding: auto;
+  margin: auto;
 }

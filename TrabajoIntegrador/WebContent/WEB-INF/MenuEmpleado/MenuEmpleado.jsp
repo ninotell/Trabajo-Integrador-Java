@@ -15,7 +15,6 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="http://getbootstrap.com/favicon.ico">
-	<title>BlanTell Rental Cars</title>
 	
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -78,15 +77,31 @@
   </nav>
  </div>
  
- 	<hr>
- 	<hr>
- 	<hr>
- 	<hr>
- 	<hr>
-	
 
-		<a href="agregavehiculo" method="get">
-			<button  class="btn btn-primary">Agregar vehiculo</button>
-		</a>
+ 	<br>
+ 	<br>
+
+	<div class="container-botones">
+		<div class="m-0 col justify-content-center">
+			<div class="col-auto p-5  text-center">
+				<a href="agregavehiculo" method="get">
+					<button  class="btn btn-primary btn-block">Agregar vehiculo</button>
+				</a>
+				<br>
+				<a href="#" method="get">
+					<button  class="btn btn-primary btn-block">Retiro de auto</button>
+				</a>
+				<br>
+				<a href="#" method="get">
+					<button  class="btn btn-primary btn-block">Devoluci&oacute;n de auto</button>
+				</a>
+				<br>
+				<a href="#" method="get">
+					<button  class="btn btn-warning btn-block">Cambiar contraseña</button>
+				</a>
+			</div>		
+		</div>
+	</div>
+</body>
 
 </html>
