@@ -55,7 +55,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 	ve.setIdVehiculo(idv);
 	ctrlLogin.deleteVehiculo(ve);
 	
-	request.getRequestDispatcher("WEB-INF/MenuCliente.jsp").forward(request, response);
+	request.getRequestDispatcher("WEB-INF/MenuEmpleado/MenuEmpleado.jsp").forward(request, response);
 	
 	
 

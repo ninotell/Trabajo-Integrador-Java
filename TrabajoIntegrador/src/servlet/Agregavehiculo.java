@@ -59,9 +59,7 @@ public class Agregavehiculo extends HttpServlet {
 		v.setAnio(Integer.parseInt(año));
 		v.setTransmision(transmision);
 		v.setKm(Double.parseDouble(km));
-		c.setIdCategoria(Integer.parseInt(idCat));
-		System.out.println(v.toString());
-		
+		c.setIdCategoria(Integer.parseInt(idCat));		
 		
 		ctrlLogin.newVehiculo(v, c);
 		

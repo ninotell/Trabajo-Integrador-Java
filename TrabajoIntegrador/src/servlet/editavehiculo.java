@@ -29,9 +29,6 @@ public editavehiculo() {
 }
 
 /**
- * @param idv 
- * @param idvv 
- * @param id 
  * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
  */
 protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -64,7 +61,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 	
 	ctrlLogin.updateKm(ve);
 	
-	request.getRequestDispatcher("WEB-INF/MenuEmpleado.jsp").forward(request, response);
+	request.getRequestDispatcher("WEB-INF/MenuEmpleado/MenuEmpleado.jsp").forward(request, response);
 	
 //	String marca = request.getParameter("marca");
 //	String transmision = request.getParameter("transmision");

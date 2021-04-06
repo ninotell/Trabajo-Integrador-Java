@@ -85,7 +85,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 //	
 //	ctrlLogin.updateRol(ve);
 	
-	request.getRequestDispatcher("WEB-INF/MenuEmpleado.jsp").forward(request, response);
+	request.getRequestDispatcher("WEB-INF/MenuEmpleado/MenuEmpleado.jsp").forward(request, response);
 	
 
 
