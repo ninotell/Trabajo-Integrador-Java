@@ -15,7 +15,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="http://getbootstrap.com/favicon.ico">
-	<title>BlanTell Rental Cars</title>
+	<title>Rent Smart</title>
 	
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -84,11 +84,14 @@
  	<hr>
  	<hr>
 	
-<!-- 	<form name="f1" class="form-register" action="agregavehiculo" method="get"> -->
-	<a href="agregavehiculo" method="get">
-		<button  class="btn btn-primary">Agregar vehiculo</button>
-	</a>
-<!-- 	</form> -->
+
+			<div class="text-center">
+				<a href="agregavehiculo">
+					<button  class="btn btn-primary btn-block">Agregar vehiculo</button>
+				</a>
+				<br>
+			</div>		
+
 
  	<div class="container">
 		<div class="row">
@@ -98,13 +101,13 @@
                     	<table class="table table-striped table-hover" id="vehicles">
                     		<thead>
                     			<tr>
-                    				<th onclick="sortTable(0, 'int')">ID</th>
-                    				<th onclick="sortTable(1, 'str')">Patente</th>
-                    		    	<th onclick="sortTable(2, 'str')">Marca</th>
-                        			<th onclick="sortTable(3, 'str')">Transmisión</th>
-                        			<th onclick="sortTable(4, 'str')">Modelo</th>
+                    			    <th><a href="#" onclick="sortTable(0, 'int')">ID</a></th>
+                    				<th><a href="#" onclick="sortTable(1, 'str')">Patente</a></th>
+                    		    	<th><a href="#" onclick="sortTable(2, 'str')">Marca</a></th>
+                        			<th><a href="#" onclick="sortTable(3, 'str')">Modelo</a></th>
+                        			<th><a href="#" onclick="sortTable(4, 'str')">Transmisión</a></th>
                         			<th onclick="sortTable(5, 'int')">KM</th>
-                        			<th onclick="sortTable(6, 'int')">Año</th>
+                        			<th><a href="#" onclick="sortTable(6, 'int')">Año</a></th>
                         			<th></th>
                         			<th></th>
                       			</tr>
@@ -115,35 +118,25 @@
                     				<td><%=v.getIdVehiculo()%></td>
                     				<td><%=v.getPatente()%></td>
                     				<td><%=v.getMarca()%></td>
-                    				<td><%=v.getTransmision()%></td>
                     				<td><%=v.getModelo()%></td>
+                    				<td><%=v.getTransmision()%></td>
                     				<form name="f2" class="form-register" action="editavehiculo" method="post">
-                    				<td><input type="number" class="form-control" placeholder="<%=v.getKm()%>" value="<%=v.getKm()%>" name="kms"  /></td>
-                    				<td><%=v.getAnio()%></td>
-                    				
-                    					<td><button type="submit" class="btn btn-primary">Actualizar km</button></td>
-                    						 
+                    					<td><input type="number" class="form-control" placeholder="<%=v.getKm()%>" value="<%=v.getKm()%>" name="kms"  /></td>
+                    					<td><%=v.getAnio()%></td>
+                    				    <td><button type="submit" class="btn btn-primary">Actualizar km</button></td>
                     					<input type="hidden" name="idvehiculo" value="<%=v.getIdVehiculo()%>" />
                     				</form>
-                    				
-                    					<form name="f3" class="form-register" action="eliminavehiculo" method="post">
-                    						<td><button type="submit" class="btn btn-danger" >Eliminar</button>
-                    						 <input type="hidden" name="idvehiculo" value="<%=v.getIdVehiculo()%>" />
-                    					    </td>
-                    					</form>
+                    				<form name="f3" class="form-register" action="eliminavehiculo" method="post">
+                    					<td><button type="submit" class="btn btn-danger" >Eliminar</button>
+                    						<input type="hidden" name="idvehiculo" value="<%=v.getIdVehiculo()%>" />
+                    					</td>
+                    				</form>
                     			</tr>
                     		<% } %>
                     		</tbody>	
        	</div>
 	
 <script>
-//        function mostrarOcultarTablas(id){
-// 		mostrado=0;
-// 			elem = document.getElementById(id);
-// 			if(elem.style.display=='block')mostrado=1;
-// 			elem.style.display='none';
-// 			if(mostrado!=1)elem.style.display='block';
-// 	}
 
        function sortTable(n,type) {
     	   var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;

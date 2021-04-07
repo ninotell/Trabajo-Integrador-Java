@@ -15,6 +15,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="http://getbootstrap.com/favicon.ico">
+    <title>Rent Smart</title>
 	
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -28,10 +29,6 @@
     <link href="style/MenuEmpleado.css" rel="stylesheet">
 	
 	<%
-		Vehiculo ve = new Vehiculo();
-    	Login ctrlLogin = new Login();	
-		ve.setAnio(2000);
-    	LinkedList<Vehiculo> lv = ctrlLogin.getByAnio(ve);	
 		Usuario u = (Usuario)session.getAttribute("usuario");
 	%>
 	<title><%=u.getNombre()%> <%=u.getApellido()%></title>

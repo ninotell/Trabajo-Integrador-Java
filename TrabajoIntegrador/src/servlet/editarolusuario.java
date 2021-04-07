@@ -40,14 +40,16 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 	// TODO Auto-generated method stub
 	response.getWriter().append("Served at: ").append(request.getContextPath());
 	PrintWriter out = response.getWriter();
-	Login ctrlLogin = new Login();
+
 	Usuario us = (Usuario)request.getSession().getAttribute("usuario");
 	Rol r = new Rol();
+	Rol rr = new Rol();
 	r.setIdRol(1);
+	rr.setIdRol(2);
 	if (us.hasRol(r)) {
 		request.getRequestDispatcher("WEB-INF/MenuEmpleado/AsignarRol.jsp").forward(request, response);
 	}
-	else {
+	else { if (us.hasRol(rr)) {
 		response.setContentType("text/html");
 		out.println("<script src=\"https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js\"></script>");
 		out.println("<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js\"></script>");
@@ -56,8 +58,8 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
         out.println("swal ( 'Oops!' , 'No tienes acceso a esta página' , 'error' )");
         out.println("});");
         out.println("</script>");
-        RequestDispatcher rd=request.getRequestDispatcher("WEB-INF/MenuEmpleado/MenuCliente.jsp");
-        rd.include(request,response);}
+        RequestDispatcher rd=request.getRequestDispatcher("WEB-INF/MenuCliente/MenuCliente.jsp");
+        rd.include(request,response);}}
 	
 }
 
