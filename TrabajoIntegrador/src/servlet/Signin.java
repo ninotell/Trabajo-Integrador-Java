@@ -66,9 +66,12 @@ public class Signin extends HttpServlet {
 			u=ctrlLogin.validate(u);
 						
 			if (u==null) {
-				RequestDispatcher rd = request.getRequestDispatcher("index.html");
-				request.setAttribute("errormsg", "true");
-				rd.forward(request, response);
+				response.setContentType("text/html");
+				out.println("<script>");
+				out.println("alert(\" Usuario y/o contraseña incorrectos\")");
+				out.println("</script>");
+	            RequestDispatcher rd=request.getRequestDispatcher("index.html");
+	            rd.include(request,response);
 			}
 			else {
 				
