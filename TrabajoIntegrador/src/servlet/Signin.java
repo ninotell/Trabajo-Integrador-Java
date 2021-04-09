@@ -66,16 +66,9 @@ public class Signin extends HttpServlet {
 			u=ctrlLogin.validate(u);
 						
 			if (u==null) {
-				response.setContentType("text/html");
-				out.println("<script src=\"https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js\"></script>");
-				out.println("<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js\"></script>");
-	            out.println("<script>");
-	            out.println("$(document).ready(function(){"); 
-	            out.println("swal ( 'Oops!' , 'Usuario y/o contraseña incorrectos' , 'error' )");
-	            out.println("});");
-	            out.println("</script>");
-	            RequestDispatcher rd=request.getRequestDispatcher("index.html");
-	            rd.include(request,response);
+				RequestDispatcher rd = request.getRequestDispatcher("index.html?errormsg=true");
+//				request.setAttribute("errormsg", "true");
+				rd.forward(request, response);
 			}
 			else {
 				

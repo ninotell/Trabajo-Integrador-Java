@@ -27,8 +27,12 @@
 	
 	<%
 		Usuario u = (Usuario)session.getAttribute("usuario");
+
 	%>
-	<title><%=u.getNombre()%> <%=u.getApellido()%></title>
+
+	
+	
+	<title><%=u.getNombre()%> <%=u.getApellido()%>  </title>
 </head>
  	 	
 <body>
@@ -96,4 +100,14 @@
 		</div>
 	</div>
 </body>
+
+<script>
+window.onload= function(){ 
+					
+					if (<%=request.getAttribute("errormsg")%>==true)
+								{alert("No tienes acceso a esta página");}
+							else {}
+						 }
+	
+</script>
 </html>

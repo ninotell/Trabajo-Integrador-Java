@@ -41,20 +41,22 @@ public class listavehiculos extends HttpServlet {
 		Rol rr = new Rol();
 		r.setIdRol(1);
 		rr.setIdRol(2);
-		if (us.hasRol(r)) {
+		request.setAttribute("errormsg", "");
+	try {	if (us.hasRol(r)) {
 			request.getRequestDispatcher("WEB-INF/MenuEmpleado/ListaVehiculos.jsp").forward(request, response);
 		}
 		else { if (us.hasRol(rr)) {
-			response.setContentType("text/html");
-			out.println("<script src=\"https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js\"></script>");
-			out.println("<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js\"></script>");
-            out.println("<script>");
-            out.println("$(document).ready(function(){"); 
-            out.println("swal ( 'Oops!' , 'No tienes acceso a esta página' , 'error' )");
-            out.println("});");
-            out.println("</script>");
-            RequestDispatcher rd=request.getRequestDispatcher("WEB-INF/MenuCliente/MenuCliente.jsp");
-            rd.include(request,response);}}
+			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/MenuCliente/MenuCliente.jsp");
+			request.setAttribute("errormsg", "true");
+			rd.forward(request, response);		
+			  }
+	}
+	
+		} catch (java.lang.NullPointerException e) {
+		RequestDispatcher rd = request.getRequestDispatcher("index.html");
+		rd.forward(request, response);
+
+	}		
 	}
 	
 
