@@ -66,8 +66,8 @@ public class Signin extends HttpServlet {
 			u=ctrlLogin.validate(u);
 						
 			if (u==null) {
-				RequestDispatcher rd = request.getRequestDispatcher("index.html?errormsg=true");
-//				request.setAttribute("errormsg", "true");
+				RequestDispatcher rd = request.getRequestDispatcher("index.html");
+				request.setAttribute("errormsg", "true");
 				rd.forward(request, response);
 			}
 			else {
