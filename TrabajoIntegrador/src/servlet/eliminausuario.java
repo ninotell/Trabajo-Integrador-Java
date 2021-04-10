@@ -49,7 +49,7 @@ public class eliminausuario extends HttpServlet {
 		us.setIdUsuario(idu);
 		ctrlLogin.deleteUsuario(us);
 		
-		request.getRequestDispatcher("WEB-INF/MenuEmpleado.jsp").forward(request, response);
+		request.getRequestDispatcher("WEB-INF/MenuEmpleado/MenuEmpleado.jsp").forward(request, response);
 	}
 
 }

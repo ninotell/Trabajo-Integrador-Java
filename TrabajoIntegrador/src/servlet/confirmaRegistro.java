@@ -55,11 +55,10 @@ public class confirmaRegistro extends HttpServlet {
 		String apellido = request.getParameter("apellido");
 		String tipodoc = request.getParameter("tipodoc");
 		String nrodoc = request.getParameter("nrodoc");
-		String telefono = request.getParameter("direccion");
+		String telefono = request.getParameter("telefono");
 		String direccion = request.getParameter("direccion");
 		String email = request.getParameter("correoelectronico");
 		String password = request.getParameter("password");
-		String confpassword = request.getParameter("confpassword");
 		
 		u.setNombre(nombre);
 		u.setApellido(apellido);
@@ -81,47 +80,26 @@ public class confirmaRegistro extends HttpServlet {
 		
 	try {
 		
-		if(password.equals(confpassword)) {
 			u.addRol(r);
 			ctrlLogin.newUsuario(u);
 			dr.addRol(r, u);
 			response.setContentType("text/html");
-			out.println("<script src=\"https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js\"></script>");
-			out.println("<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js\"></script>");
-            out.println("<script>");
-            out.println("$(document).ready(function(){"); 
-            out.println("swal ( 'Excelente!' , 'Bienvenido a nuestro sistema, ingrese' , 'success' )");
-            out.println("});");
-            out.println("</script>");
+			out.println("<script>");
+			out.println("alert(\" Bienvenido a nuestro sistema!\")");
+			out.println("</script>");
             RequestDispatcher rd=request.getRequestDispatcher("index.html");
             rd.include(request,response);
-			
-		}
-		else {
-			response.setContentType("text/html");
-			out.println("<script src=\"https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js\"></script>");
-			out.println("<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js\"></script>");
-            out.println("<script>");
-            out.println("$(document).ready(function(){"); 
-            out.println("swal ( 'Error!' , 'Las contraseñas no coinciden' , 'error' )");
-            out.println("});");
-            out.println("</script>");
-            RequestDispatcher rd=request.getRequestDispatcher("WEB-INF/Register.jsp");
-            rd.include(request,response);
-		}
+	
+		
 	} catch( SQLException s) {
 			if (s instanceof SQLIntegrityConstraintViolationException)
 			{
 
 				response.setContentType("text/html");
-				out.println("<script src=\"https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js\"></script>");
-				out.println("<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js\"></script>");
-                out.println("<script>");
-                out.println("$(document).ready(function(){"); 
-                out.println("swal ( 'Error!' , 'Usuario ya registrado' , 'error' )");
-                out.println("});");
-                out.println("</script>");
-                RequestDispatcher rd=request.getRequestDispatcher("WEB-INF/Register.jsp");
+				out.println("<script>");
+				out.println("alert(\" Error! Usuario ya registrado\")");
+				out.println("</script>");
+                RequestDispatcher rd=request.getRequestDispatcher("register.html");
                 rd.include(request,response);
 			
 			}

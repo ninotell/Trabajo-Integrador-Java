@@ -22,7 +22,6 @@
 
 
 <body>
-
 <form name="f1" class="form-agregavehiculo" action="confirmaRegistro" method="post">
     <div class="container register-form">
                     <div class="form">
@@ -47,12 +46,12 @@
        									 </select>
    									</div>
    									<div class="form-group">
-                                        <input id="inputDoc" name="nrodoc" type="number" class="form-control" placeholder="Nro. de Documento *" required="" value=""/>
+                                        <input id="inputDoc" name="nrodoc" type="tel" minlength="8" maxlength="8" class="form-control" placeholder="Nro. de Documento *" required="" value=""/>
                                     </div>
    								</div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input id="inputTel" name="telefono" type="number" class="form-control" placeholder="Tel&eacute;fono *" required="" value=""/>
+                                        <input id="inputTel" name="telefono" type="tel" minlength="10" maxlength="10" class="form-control" placeholder="Tel&eacute;fono *" required="" value=""/>
                                     </div>
                                     <div class="form-group">
                                         <input id="inputDireccion" name="direccion" type="text" class="form-control" placeholder="Direcci&oacute;n *" required="" value=""/>
@@ -61,7 +60,7 @@
                                         <input id="inputCorreo" name="correoelectronico" class="form-control" placeholder="Correo electr&oacute;nico *" required="" type="email"/>
                                     </div>
                                     <div class="form-group">
-                                        <input id="password" name="password" class="form-control" placeholder="Contrase&ntilde;a *" min="6" max="10" required="" type="password"/>
+                                        <input id="password" name="password" class="form-control" placeholder="Contrase&ntilde;a *" minlength="6" maxlength="10" required="" type="password"/>
                                     </div>
                                     <div class="form-group">
                                         <input id="confpassword" name="confpassword"  class="form-control" placeholder="Confirmar contrase&ntilde;a *" required="" type="password"/>
@@ -77,4 +76,20 @@
 	</form>
 	
 </body>
+
+<script>
+var password = document.getElementById("password")
+, confirm_password = document.getElementById("confpassword");
+
+function validatePassword(){
+if(password.value != confpassword.value) {
+  confirm_password.setCustomValidity("Las contraseñas no coinciden");
+} else {
+  confirm_password.setCustomValidity('');
+}
+}
+password.onchange = validatePassword;
+confpassword.onkeyup = validatePassword;
+
+</script>
 </html>
