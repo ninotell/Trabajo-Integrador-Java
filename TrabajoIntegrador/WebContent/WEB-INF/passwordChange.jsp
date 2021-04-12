@@ -41,14 +41,18 @@
 </body>
 
 <script>
-var password = document.getElementById("newPassword"),
+var old_password = document.getElementById("oldPassword"),
+	password = document.getElementById("newPassword"),
 	confirm_password = document.getElementById("confirmPassword"),
 	update_button = document.getElementById("updateButton");
 
 function validateOldPassword(){
-	if (<%=request.getAttribute("errormsg")%>==true)
-	{alert("La contraseña anterior no es correcta");}
-	else {}
+	if(password.value == old_password.value) {
+		password.setCustomValidity("La contraseña no puede ser igual a la anterior");
+	} else {
+		password.setCustomValidity('');
+	}
+	
 }
 
 function validateConfirmPassword(){
@@ -58,9 +62,17 @@ function validateConfirmPassword(){
 		confirm_password.setCustomValidity('');
 	}
 }
+
+old_password.onchange = validateOldPassword;
+password.onkeyup = validateOldPassword;
 password.onchange = validateConfirmPassword;
 confirm_password.onkeyup = validateConfirmPassword;
-window.onload = validateOldPassword;
+
+window.onload= function(){ 
+	if (<%=request.getAttribute("errormsg")%>==true)
+		{alert("Contraseña anterior incorrecta");}
+	else {}	
+}
 
 </script>
 </html>
