@@ -70,8 +70,8 @@
           			ID: <%=u.getIdUsuario()%> - <%=u.getNombre()%> <%=u.getApellido()%>
        			  </a>
     		     <div class="dropdown-menu">
-          			<a class="dropdown-item" href="#">Cambiar contraseña</a>
-          			<a class="dropdown-item" href="index.html">Cerrar sesión</a>
+          			<a class="dropdown-item" href="changePassword">Cambiar contraseña</a>
+          			<a class="dropdown-item" href="Logout">Cerrar sesión</a>
 			     </div>
 	       </span>
      </div>

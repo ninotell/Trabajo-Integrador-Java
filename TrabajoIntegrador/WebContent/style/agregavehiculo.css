@@ -6,6 +6,10 @@
     display: block;
 }
 
+.form-newvehiculo{
+	width: 100%;
+	padding: 0px;
+}
 
 .note {
     text-align: center;

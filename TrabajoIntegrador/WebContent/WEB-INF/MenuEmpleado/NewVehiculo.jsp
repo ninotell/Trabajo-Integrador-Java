@@ -14,22 +14,20 @@
         <link href="style/bootstrap.css" rel="stylesheet">
 
         <!-- Custom styles for this template -->
-        <link href="style/register.css" rel="stylesheet">
+        <link href="style/agregavehiculo.css" rel="stylesheet">
         
-        <link rel="stylesheet" href="http://jqueryvalidation.org/files/demo/site-demos.css">
 
         
         </head>
 <body>
 
-<form name="f1" class="form-register" action="agregavehiculo" method="post">
-    <div class="container register-form">
-                    <div class="form">
-       					 <div class="note">
-                    		 <h1>Agregar nuevo vehiculo</h1>
-        				  </div>
-
-                        <div class="form-content">
+<form name="f1" class="form-new" action="agregavehiculo" method="post">
+    <div class="container">
+       <div class="note">
+              <h1>Agregar nuevo vehiculo</h1>
+        </div>
+        <div class="form-newvehiculo">
+                     <div class="form-content">
                             <div class="row">
                                 <div class="col">
                                   <div class="form-group">
