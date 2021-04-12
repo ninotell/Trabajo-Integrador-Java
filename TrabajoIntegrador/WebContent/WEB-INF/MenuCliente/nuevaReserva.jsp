@@ -42,6 +42,7 @@
        <div class="note">
               <h1>Haga su reserva</h1>
         </div>
+        <form class="form-reserva" action="nuevaReserva" method="post">
         <div class="form-newvehiculo">
                      <div class="form-content">
                             <div class="row">
@@ -81,12 +82,12 @@
 
 </body>
 <script type="text/javascript">
-var fechahasta = document.getElementById("fecha-hasta");
+var	fechadesde = document.getElementById("fecha-desde"),
+	fechahasta = document.getElementById("fecha-hasta");
 
 function validarFecha() {
 	
-	var	
-		fechadesde = document.getElementById("fecha-desde"),
+	var	fechadesde = document.getElementById("fecha-desde"),
 		fechahasta = document.getElementById("fecha-hasta"),
 		dt1 = new Date(document.getElementById("fecha-desde").value),
 		dt2 = new Date(document.getElementById("fecha-hasta").value);
@@ -94,21 +95,20 @@ function validarFecha() {
 	
 	var dias = Math.floor((Date.UTC(dt2.getFullYear(), dt2.getMonth(), dt2.getDate()) - Date.UTC(dt1.getFullYear(), dt1.getMonth(), dt1.getDate())) /(1000 * 60 * 60 * 24));
 	if (dt1 < (new Date())){
-		alert("Las reservas requieren 1 día de anticipación")
+		fechadesde.setCustomValidity("Las reservas requieren 1 día de anticipación")
 	}
 	else {		
 	if (dias < 3)
 	{	
-		alert("Las reserva debe ser mayor a 2 días")
+		fechahasta.setCustomValidity("Las reserva debe ser mayor a 2 días");
 	}
 	else { }
 	
 	}
 }
 
-
-
-// fechahasta.onchange = validarDias;
+fechadesde.onchange = validarFecha;
+fechahasta.onchange = validarFecha;
 
 </script>
 
