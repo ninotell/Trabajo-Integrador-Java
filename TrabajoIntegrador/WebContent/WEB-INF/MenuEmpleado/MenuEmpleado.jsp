@@ -66,7 +66,7 @@
           			ID: <%=u.getIdUsuario()%> - <%=u.getNombre()%> <%=u.getApellido()%>
        			  </a>
     		     <div class="dropdown-menu">
-          			<a class="dropdown-item" href="#">Cambiar contraseña</a>
+          			<a class="dropdown-item" href="changePassword">Cambiar contraseña</a>
           			<a class="dropdown-item" href="index.html">Cerrar sesión</a>
 			     </div>
 	       </span>
@@ -93,12 +93,21 @@
 					<button  class="btn btn-primary btn-block">Devoluci&oacute;n de auto</button>
 				</a>
 				<br>
-				<a href="#" method="get">
+				<a href="changePassword" method="get">
 					<button  class="btn btn-warning btn-block">Cambiar contraseña</button>
 				</a>
 			</div>		
 		</div>
 	</div>
 </body>
+
+<script>
+window.onload= function(){ 
+	if (<%=request.getAttribute("pswchange")%>==true)
+		{alert("Contraseña actualizada con éxito");}
+	else {}	
+}
+
+</script>
 
 </html>
