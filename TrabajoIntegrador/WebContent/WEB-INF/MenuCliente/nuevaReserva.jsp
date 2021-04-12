@@ -47,71 +47,68 @@
                             <div class="row">
                                 <div class="col">
                                   <div class="form-group">
-   										 <label for="categoria">Cateoría     1) Chico - 2) Mediano - 3) Grande</label>
+   										 <label for="categoria">Categoría     1) Chico - 2) Mediano - 3) Grande</label>
    										 <select class="form-control" id="inputCategoria" name="categoria">
-    						  			     <option>1</option>
-       										 <option>2</option>
-       										 <option>3</option>
+    						  			     <option label="Chico">1</option>
+       										 <option label="Mediano">2</option>
+       										 <option label="Grande">3</option>
        									 </select>
    								</div>
                                 <div class="row">
                           			  <div class="col-md-6">
                           			  	<label for="fecha-desde">Fecha desde</label>
-                                		<div class="form-group"> <input id="fecha-desde" class="form-control" type="date" required> </div>
+                                		<div class="form-group"> <input id="fecha-desde" class="form-control" type="date" > </div>
 		                              </div>
           			                  <div class="col-md-6">
           			                  	<label for="fecha-hasta">Fecha hasta</label>
-                    		            <div class="form-group"> <input id="fecha-hasta" class="form-control" type="date" required data-date-end-date="0d"> </div>
+                    		            <div class="form-group"> <input id="fecha-hasta" class="form-control" type="date" > </div>
                             		  </div>
                         		</div>  
                                 <div class="form-group">
-   										 <label for="transmision">Transmision</label>
+   										 <label for="transmision">Transmisi&oacute;n</label>
    										 <select class="form-control" id="Transmision" name="transmision">
-    						  			     <option>Automático</option>
+    						  			     <option>Autom&aacute;tico</option>
        										 <option>Manual</option>
        									 </select>
    								    </div>
                                
                      		     </div>
-                          <button type="submit" class="btn btn-lg btn-success btn-block" id="botonMostrar" >Mostrar vehiculos disponibles</button>
+                          <button type="submit" onclick="validarFecha()" class="btn btn-lg btn-success btn-block" id="botonMostrar" >Mostrar vehiculos disponibles</button>
                           </div>
                     </div>
                 </div>
 	</form>
-	<button onclick="alerta()" class="btn-success btn-block" id="botonnn" >Mostrar</button>
-
 
 </body>
 <script type="text/javascript">
-var fechadesde = new Date($('#fecha-desde').val()),
-	fechahasta = document.getElementById("fecha-hasta").value,
-	boton = document.getElementById("botonnn"),
-    validarFecha = function(date1, date2) {
-		dt1 = new Date(date1);
-		dt2 = new Date(date2);
-		return Math.floor((Date.UTC(dt2.getFullYear(), dt2.getMonth(), dt2.getDate()) - Date.UTC(dt1.getFullYear(), dt1.getMonth(), dt1.getDate()) ) /(1000 * 60 * 60 * 24));
-	}
-	
+var fechahasta = document.getElementById("fecha-hasta");
 
-console.log(validarFecha('04/02/2014', '11/04/2014'));
-console.log(boton);
-function alerta(){
-	alert((new Date()).toLocaleString());
+function validarFecha() {
+	
+	var	
+		fechadesde = document.getElementById("fecha-desde"),
+		fechahasta = document.getElementById("fecha-hasta"),
+		dt1 = new Date(document.getElementById("fecha-desde").value),
+		dt2 = new Date(document.getElementById("fecha-hasta").value);
+	
+	
+	var dias = Math.floor((Date.UTC(dt2.getFullYear(), dt2.getMonth(), dt2.getDate()) - Date.UTC(dt1.getFullYear(), dt1.getMonth(), dt1.getDate())) /(1000 * 60 * 60 * 24));
+	if (dt1 < (new Date())){
+		alert("Las reservas requieren 1 día de anticipación")
+	}
+	else {		
+	if (dias < 3)
+	{	
+		alert("Las reserva debe ser mayor a 2 días")
+	}
+	else { }
+	
+	}
 }
 
 
 
-
-// function validarFecha(){
-// 	if (dateDiffInDays(fechadesde,fechahasta) < 3)
-// 	{	
-// 		fechahasta.setCustomValidity("Las reserva debe ser mayor a 2 días")
-// 	}
-// 	else { 
-// 			fechahasta.setCustomValidity("");
-// 	}
-// }
-
+// fechahasta.onchange = validarDias;
 
 </script>
 
