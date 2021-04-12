@@ -81,16 +81,16 @@
 	<div class="container-botones">
 		<div class="m-0 col justify-content-center">
 			<div class="col-auto p-5  text-center">
-				<a href="#" method="get">
+				<a href="nuevaReserva" method="get">
 					<button  class="btn btn-success btn-block">Realizar reserva</button>
 				</a>
 				<br>
 				<a href="#" method="get">
-					<button  class="btn btn-primary btn-block">Ver mis reservas</button>
+					<button  class="btn btn-primary btn-block">Devoluci&oacute;n de veh&iacute;culo</button>
 				</a>
 				<br>
 				<a href="#" method="get">
-					<button  class="btn btn-primary btn-block">Devoluci&oacute;n de auto</button>
+					<button  class="btn btn-danger btn-block">Cancelar reserva</button>
 				</a>
 				<br>
 				<a href="changePassword" method="get">
