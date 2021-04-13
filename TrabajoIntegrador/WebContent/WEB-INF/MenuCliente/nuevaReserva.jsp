@@ -84,8 +84,6 @@
 
 </body>
 <script type="text/javascript">
-var fechadesde = document.getElementById("fechadesde");
-	
 
 $(function () {
 	
