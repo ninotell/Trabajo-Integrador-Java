@@ -64,7 +64,7 @@
                           			  	<div class="form-group"> <input name="fechadesde" id="fechadesde" class="form-control" type="text" placeholder="Fecha desde" > </div>
 		                              </div>
           			                  <div class="col-md-6">
-          			                  	<div class="form-group"> <input id="fechahasta" class="form-control" type="text" placeholder="Fecha hasta"> </div>
+          			                  	<div class="form-group"> <input name="fechahasta" id="fechahasta" class="form-control" type="text" placeholder="Fecha hasta"> </div>
                             		  </div>
                         		</div>  
                                 <div class="form-group">
@@ -98,7 +98,7 @@ $(function () {
 	
 	$("#fechahasta").datepicker({
 		 dateFormat: 'dd/mm/yy', 
-		 minDate: new Date(),
+		 minDate: '+2d',
 		 onSelect: function(selected) {
 	           $("#fechadesde").datepicker("option","maxDate", selected)
 	        }

@@ -30,7 +30,6 @@ public class confirmaRegistro extends HttpServlet {
      */
     public confirmaRegistro() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**

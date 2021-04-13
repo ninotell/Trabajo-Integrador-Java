@@ -53,41 +53,37 @@ public class DataReserva {
 //	}
 	
 	
-	public LinkedList<Vehiculo> VehiculosDisponibles(Categoria c, Reserva r) {
+	public LinkedList<Vehiculo> VehiculosDisponibles(Categoria c, Reserva r,Vehiculo v) {
 		PreparedStatement stmt=null;
 		ResultSet rs=null;
 		LinkedList<Vehiculo> vehiculos= new LinkedList<>();
-		Vehiculo v=null;
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd"); 
 		
 		try {
 			stmt= DbConnector.getInstancia().getConn().prepareStatement(
 					
-			"SELECT vehiculo.idVehiculo,vehiculo.marca,vehiculo.modelo,vehiculo.año,vehiculo.transmision,vehiculo.patente,vehiculo.km "
-			+ "FROM reserva_usuario_vehiculo"
-			+ "	inner join reserva on reserva_usuario_vehiculo.id_reserva=reserva.idReserva"
-			+ " right join vehiculo on reserva_usuario_vehiculo.id_vehiculo=vehiculo.idVehiculo "
-			+ "where reserva.idReserva is null OR ((reserva.fechaDevolucion<? or reserva.fechaRetiro>?) and reserva.estado=?) "
-			+ "group by vehiculo.idVehiculo"
+			"select v.idVehiculo, v.marca, v.modelo, v.año from vehiculo v\r\n" + 
+			"inner join vehiculos_categorias vc on v.idVehiculo = vc.id_vehiculo\r\n" + 
+			"where vc.id_categoria = ? and v.transmision = ? \r\n" + 
+			"and v.idVehiculo not in (SELECT id_vehiculo\r\n" + 
+			"from reserva_usuario_vehiculo ruv\r\n" + 
+			"inner join reserva r on ruv.id_reserva = r.idReserva\r\n" + 
+			"where r.fechaDevolucion>? and r.fechaRetiro<? and r.estado != ?)"
 					
 					);
-			stmt.setString(1, formatter.format(r.getFechaRetiro()));
-			stmt.setString(2, formatter.format(r.getFechaDevolucion()));
-//			stmt.setString(1, "2020/09/28");
-//			stmt.setString(2, "2020/10/02");
-			stmt.setString(3, "NF");
+			stmt.setInt(1, c.getIdCategoria());
+			stmt.setString(2, v.getTransmision());
+			stmt.setString(3, formatter.format(r.getFechaRetiro()));
+			stmt.setString(4, formatter.format(r.getFechaDevolucion()));
+			stmt.setString(5, "cancelada");
 			rs=stmt.executeQuery();			
 			if(rs!=null) {
 				while(rs.next()) {
 					v=new Vehiculo();
-					v.setIdVehiculo(rs.getInt("vehiculo.idVehiculo"));
-					v.setPatente(rs.getString("vehiculo.patente"));
-					v.setMarca(rs.getString("vehiculo.marca"));
-					v.setModelo(rs.getString("vehiculo.modelo"));
-					v.setAnio(rs.getInt("vehiculo.año"));
-					v.setTransmision(rs.getString("vehiculo.transmision"));
-					v.setKm(rs.getDouble("vehiculo.km"));
-					
+					v.setIdVehiculo(rs.getInt("v.idVehiculo"));
+					v.setMarca(rs.getString("v.marca"));
+					v.setModelo(rs.getString("v.modelo"));
+					v.setAnio(rs.getInt("v.año"));
 					vehiculos.add(v);
 				}
 			}

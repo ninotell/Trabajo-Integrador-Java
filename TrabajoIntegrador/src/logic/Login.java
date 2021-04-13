@@ -80,8 +80,8 @@ public class Login {
 		du.updatePsw(u);	
 	}
 	
-	public LinkedList<Vehiculo> VehiculosDisponibles(Categoria c, Reserva r){
-		return dre.VehiculosDisponibles(c,r);
+	public LinkedList<Vehiculo> VehiculosDisponibles(Categoria c, Reserva r, Vehiculo v){
+		return dre.VehiculosDisponibles(c,r,v);
 	}
 	
 	public void newReserva(Reserva r, Vehiculo vr, Usuario ur) {

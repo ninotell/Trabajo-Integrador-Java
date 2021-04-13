@@ -1,7 +1,10 @@
 package servlet;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.LinkedList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import entities.Categoria;
+import entities.Reserva;
 import entities.Rol;
 import entities.Usuario;
 import entities.Vehiculo;
@@ -45,27 +49,30 @@ public class nuevaReserva extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Vehiculo v = new Vehiculo();
 		Categoria c = new Categoria();
+		Reserva r = new Reserva();
 		Login ctrlLogin = new Login ();
-		String fechadesde = request.getParameter("fechadesde");
-		String idCat = request.getParameter("categoria");
-		System.out.println(idCat);		
-//		String patente = request.getParameter("patente");
-//		String marca = request.getParameter("marca");
-//		String modelo = request.getParameter("modelo");
-//		String transmision = request.getParameter("transmision");
-//		String km = request.getParameter("km");
-//		String año = request.getParameter("año");
-//		String idCat = request.getParameter("categoria");
-//		
-//		v.setPatente(patente);
-//		v.setMarca(marca);
-//		v.setModelo(modelo);
-//		v.setAnio(Integer.parseInt(año));
-//		v.setTransmision(transmision);
-//		v.setKm(Double.parseDouble(km));
-//		c.setIdCategoria(Integer.parseInt(idCat));		
-				
-		request.getRequestDispatcher("WEB-INF/MenuEmpleado/MenuEmpleado.jsp").forward(request, response);
+		int idCat = Integer.parseInt(request.getParameter("categoria"));
+		request.getSession().setAttribute("fechadesde", request.getParameter("fechadesde"));
+		request.getSession().setAttribute("fechahasta", request.getParameter("fechahasta"));
+		Date fechadesde = new Date();
+		Date fechahasta = new Date();
+		try {
+			fechadesde = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("fechadesde"));
+			fechahasta=new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("fechahasta"));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		} 
+		String transmision = request.getParameter("transmision");
+		r.setFechaRetiro(fechadesde);
+		r.setFechaDevolucion(fechahasta);
+		c.setIdCategoria(idCat);
+		v.setTransmision(transmision);
+		LinkedList<Vehiculo> vDisponibles = new LinkedList<>();
+		vDisponibles = ctrlLogin.VehiculosDisponibles(c, r, v);
+		System.out.println(vDisponibles.toString());
+		request.getSession().setAttribute("vDisponibles", vDisponibles);
+		
+		request.getRequestDispatcher("WEB-INF/MenuCliente/VehiculosDisponibles.jsp").forward(request, response);
 	}
 
 }
