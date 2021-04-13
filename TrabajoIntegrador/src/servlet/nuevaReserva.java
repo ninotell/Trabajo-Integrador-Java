@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -45,6 +46,9 @@ public class nuevaReserva extends HttpServlet {
 		Vehiculo v = new Vehiculo();
 		Categoria c = new Categoria();
 		Login ctrlLogin = new Login ();
+		String fechadesde = request.getParameter("fechadesde");
+		String idCat = request.getParameter("categoria");
+		System.out.println(idCat);		
 //		String patente = request.getParameter("patente");
 //		String marca = request.getParameter("marca");
 //		String modelo = request.getParameter("modelo");

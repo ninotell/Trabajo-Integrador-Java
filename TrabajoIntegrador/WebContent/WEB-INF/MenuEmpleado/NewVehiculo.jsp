@@ -31,11 +31,11 @@
                             <div class="row">
                                 <div class="col">
                                   <div class="form-group">
-   										 <label for="categoria">Cateoría     1)Chico - 2)Mediano - 3) Grande</label>
+   										 <label for="categoria">Cateor&iacute;a</label>
    										 <select class="form-control" id="inputCategoria" name="categoria">
-    						  			     <option>1</option>
-       										 <option>2</option>
-       										 <option>3</option>
+    						  			     <option label="Chico">1</option>
+       										 <option label="Mediano">2</option>
+       										 <option label="Grande">3</option>
        									 </select>
    								</div>
                                   
