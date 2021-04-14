@@ -41,12 +41,12 @@
 <body>
 
  
-<div class="container">
+<div class="container text-center">
 	<div class="note">
 		<h4>Vehiculos disponibles desde el <%=fechadesde%> hasta el <%=fechahasta%></h4>
 	</div>
 		<div class="row">
-        	<div class="col-12 col-sm-12 col-lg-12">
+        	<div class="col-lg-12">
                 	<div class="table-responsive">
                     	<table class="table table-striped table-hover" id="vehicles">
                     		<thead>
@@ -64,7 +64,7 @@
                     				<td><%=v.getMarca()%></td>
                     				<td><%=v.getModelo()%></td>
                     				<td><%=v.getAnio()%></td>
-                    				<form name="f2" class="form-register" action="" method="post">
+                    				<form name="f2" class="form-reserva" action="" method="post">
                     					<input type="hidden" name="idvehiculo" value="<%=v.getIdVehiculo()%>" />
                     					<td><button type="submit" class="btn btn-success">Reservar!</button></td>
                     				</form>

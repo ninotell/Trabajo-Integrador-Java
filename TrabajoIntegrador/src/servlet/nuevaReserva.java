@@ -69,7 +69,6 @@ public class nuevaReserva extends HttpServlet {
 		v.setTransmision(transmision);
 		LinkedList<Vehiculo> vDisponibles = new LinkedList<>();
 		vDisponibles = ctrlLogin.VehiculosDisponibles(c, r, v);
-		System.out.println(vDisponibles.toString());
 		request.getSession().setAttribute("vDisponibles", vDisponibles);
 		
 		request.getRequestDispatcher("WEB-INF/MenuCliente/VehiculosDisponibles.jsp").forward(request, response);

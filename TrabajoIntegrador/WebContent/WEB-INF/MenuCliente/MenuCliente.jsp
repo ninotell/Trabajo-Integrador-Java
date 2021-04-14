@@ -99,7 +99,21 @@
 			</div>		
 		</div>
 	</div>
+	
+
 </body>
+
+
+<footer class="text-center">
+  <br>
+  <h3>Precios actualizados por categoría (por día)</h3>
+  <h4>Chico</h4>
+  <h4>Mediano</h4>
+  <h4>Grande</h4>
+
+</footer>
+
+
 
 <script>
 window.onload= function(){ 
