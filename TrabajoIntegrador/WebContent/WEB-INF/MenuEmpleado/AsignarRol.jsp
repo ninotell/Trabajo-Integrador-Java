@@ -60,7 +60,7 @@
  	 <div class="collapse navbar-collapse" id="navbarSupportedContent">
     	<ul class="navbar-nav mr-auto">
       		<li class="nav-item ">
-        		<a class="nav-link" href="WEB-INF/MenuEmpleado/MenuEmpleado.jsp">Home<span class="sr-only"></span></a>
+        		<a class="nav-link" href="home">Home<span class="sr-only"></span></a>
 	        </li>
       		<li class="nav-item">
         		<a class="nav-link" href="listavehiculos">Vehiculos</a>
@@ -97,19 +97,33 @@
                     	<table class="table table-success" id="usuarios">
                     		<thead>
                     			<tr>
-                    				<th onclick="sortTable(0, 'int')">ID</th>
-                    				<th onclick="sortTable(1, 'str')">Apellido</th>
-                    		    	<th onclick="sortTable(2, 'str')">Nombre</th>
-                    		    	<th onclick="sortTable(3, 'str')">Documento</th>
-                    		    	<th onclick="sortTable(4, 'int')">Dirección de correo</th>
-                        			<th onclick="sortTable(5, 'int')">Contraseña</th>
-                        			<th onclick="sortTable(6, 'int')">Rol</th>
+                    				<th>ID</th>
+                    				<th>Apellido</th>
+                    		    	<th>Nombre</th>
+                    		    	<th>Documento</th>
+                    		    	<th>Correo</th>
+                        			<th>Contraseña</th>
+                        			<th>Rol</th>
                         			<th>Actualizar</th>
                         			<th>Eliminar</th>
                       			</tr>
                       		</thead>
                     		<tbody>
-                    		<% for (Usuario uss : lu) { if (u.getIdUsuario() == uss.getIdUsuario()) {} else {if (uss.hasRol(rr)) {%>
+                    		<% for (Usuario uss : lu) { if (uss.hasRol(rr)) { if (u.getIdUsuario() == uss.getIdUsuario()) { %>
+                    			  	<tr>
+                    				<td>Tú</td>
+                    				<td>-</td>
+                    				<td>-</td>
+                    				<td>-</td> 
+                    				<td>-</td> 
+                    				<td>-</td> 
+                    				<td>-</td>
+                    				<td>-</td>
+                    				<td></td>
+                    				</form>
+                    			</tr>
+                    			
+                    		<% } else {%>
                     			<tr>
                     				<td><%=uss.getIdUsuario()%></td>
                     				<td><%=uss.getApellido()%></td>
@@ -134,6 +148,7 @@
        	</div>
        	
        	
+     
 
        	<div class="container">
 		<div class="row">
@@ -143,13 +158,13 @@
                     	<table class="table table-secondary table-hover" id="usuarios">
                     		<thead>
                     			<tr>
-                    				<th onclick="sortTable(0, 'int')">ID</th>
-                    				<th onclick="sortTable(1, 'str')">Apellido</th>
-                    		    	<th onclick="sortTable(2, 'str')">Nombre</th>
-                    		    	<th onclick="sortTable(3, 'str')">Documento</th>
-                    		    	<th onclick="sortTable(4, 'int')">Dirección de correo</th>
-                        			<th onclick="sortTable(5, 'int')">Contraseña</th>
-                        			<th onclick="sortTable(6, 'int')">Rol</th>
+                    				<th>ID</th>
+                    				<th>Apellido</th>
+                    		    	<th>Nombre</th>
+                    		    	<th>Documento</th>
+                    		    	<th>Correo</th>
+                        			<th>Contraseña</th>
+                        			<th>Rol</th>
                         			<th>Actualizar</th>
                         			<th>Eliminar</th>
                       			</tr>
@@ -179,59 +194,5 @@
                     		</tbody>	
        	</div>
 	
-<script>
-       function sortTable(n,type) {
-    	   var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-    	  
-    	   table = document.getElementById("usuarios");
-    	   switching = true;
-    	   //Set the sorting direction to ascending:
-    	   dir = "asc";
-    	  
-    	   /*Make a loop that will continue until no switching has been done:*/
-    	   while (switching) {
-    	     //start by saying: no switching is done:
-    	     switching = false;
-    	     rows = table.rows;
-    	     /*Loop through all table rows (except the first, which contains table headers):*/
-    	     for (i = 1; i < (rows.length - 1); i++) {
-    	       //start by saying there should be no switching:
-    	       shouldSwitch = false;
-    	       /*Get the two elements you want to compare, one from current row and one from the next:*/
-    	       x = rows[i].getElementsByTagName("TD")[n];
-    	       y = rows[i + 1].getElementsByTagName("TD")[n];
-    	       /*check if the two rows should switch place, based on the direction, asc or desc:*/
-    	       if (dir == "asc") {
-    	         if ((type=="str" && x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) || (type=="int" && parseFloat(x.innerHTML) > parseFloat(y.innerHTML))) {
-    	           //if so, mark as a switch and break the loop:
-    	           shouldSwitch= true;
-    	           break;
-    	         }
-    	       } else if (dir == "desc") {
-    	         if ((type=="str" && x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) || (type=="int" && parseFloat(x.innerHTML) < parseFloat(y.innerHTML))) {
-    	           //if so, mark as a switch and break the loop:
-    	           shouldSwitch = true;
-    	           break;
-    	         }
-    	       }
-    	     }
-    	     if (shouldSwitch) {
-    	       /*If a switch has been marked, make the switch and mark that a switch has been done:*/
-    	       rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-    	       switching = true;
-    	       //Each time a switch is done, increase this count by 1:
-    	       switchcount ++;
-    	     } else {
-    	       /*If no switching has been done AND the direction is "asc", set the direction to "desc" and run the while loop again.*/
-    	       if (switchcount == 0 && dir == "asc") {
-    	         dir = "desc";
-    	         switching = true;
-    	       }
-    	     }
-    	   }
-    	 }
-       
-</script>
- 	
 </body>
 </html>

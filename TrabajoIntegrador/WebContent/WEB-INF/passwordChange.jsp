@@ -25,17 +25,25 @@
 
 
 <body>
-
+<div class="container">
 <div class="text-center" >
+       <div class="note">
+              <h1 class="h3 mb-3 font-weight-normal">Cambio de contraseña para <%=u.getNombre()%> <%=u.getApellido()%></h1>
+        </div>
+        <br>
 	<div class="col-auto">
-		<h1 class="h3 mb-3 font-weight-normal">Cambio de contraseña para <%=u.getNombre()%> <%=u.getApellido()%></h1>
 		<form class="form-register" action="changePassword" method="post">
 			<input class="form-control" id="oldPassword" name="oldPassword" type="password" placeholder="Contraseña anterior"><br>
 			<input class="form-control" id="newPassword" name="newPassword" type="password" placeholder="Nueva contraseña" minlength="6" maxlength="12" ><br>
 			<input class="form-control" id="confirmPassword" name="confirmPassword" type="password" placeholder="Confirmar contraseña"><br>
 			<button id="updateButton" class="btn btn-success btn-block">Actualizar contraseña</button>
+			<br>
+			<a href="home" class="btn btn-danger btn-block">Cancelar</a>
+			<br>
 		</form>
+		
 	</div>
+</div>
 </div>
 
 </body>

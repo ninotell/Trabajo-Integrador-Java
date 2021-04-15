@@ -65,6 +65,9 @@
                           </div>
                           <button type="submit" class="btn btn-lg btn-success btn-block" name="botoncrear" >Agregar vehiculo</button>
                           </div>
+                          <br>
+                          <a href="home" class="btn btn-lg btn-danger btn-block">Cancelar</a>
+                          
                     </div>
                 </div>
 	</form>

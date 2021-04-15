@@ -38,13 +38,13 @@
 	<title><%=u.getNombre()%> <%=u.getApellido()%>  </title>
 </head>
  	 	
-<body>
+
 
 
 
 <div class="container">	
   <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
-  		<a class="navbar-brand" href="#">
+  		<a class="navbar-brand" href="home">
 		<img class="rounded mx-auto d-block" src="https://i.pinimg.com/originals/cd/ba/7a/cdba7ad02665c51892c4860f6fc201af.png" alt="" width="50" height="50"></a>
   		<button class="navbar-toggler" type="button" data-toggle="collapse" 
           data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
@@ -57,25 +57,33 @@
       		<li class="nav-item active ">
         		<a class="nav-link" href="#home">Home<span class="sr-only">(current)</span></a>
 	        </li>
-      		<li class="nav-item">
-        		<a class="nav-link" href="#">Boton 1</a>
-	        </li>
-	        <li class="nav-item">
-				<a class="nav-link" href="#"  method="get">Boton 2</a>
-	        </li>
-	    </ul>
+      		<li class="nav-item dropdown">
+        		<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          			Mis reservas
+       			</a>
+        		<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        			<a class="dropdown-item" href="#">Activas</a>
+        			<div class="dropdown-divider"></div>
+         			<a class="dropdown-item" href="#">Finalizadas</a>
+          			<div class="dropdown-divider"></div>
+          			<a class="dropdown-item" href="#">Canceladas</a>
+        		</div>
+     		 </li>
+		</ul>
 	     <span class="dropdown">
       			  <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
           			ID: <%=u.getIdUsuario()%> - <%=u.getNombre()%> <%=u.getApellido()%>
        			  </a>
     		     <div class="dropdown-menu">
           			<a class="dropdown-item" href="changePassword">Cambiar contraseña</a>
-          			<a class="dropdown-item" href="Logout">Cerrar sesión</a>
+          			<a class="dropdown-item" href="Logout">Cerrar sesi&oacute;n</a>
 			     </div>
 	       </span>
      </div>
   </nav>
  </div>
+ 
+ <body class="body">
  
 
  	<br>
@@ -104,7 +112,7 @@
 	</div>
 	
 
-</body>
+
 
 
 <section class="pricing py-5">
@@ -157,7 +165,7 @@
             <ul class="fa-ul">
               <li><span class="fa-li"><i class="fas fa-check"></i></span>5/7 Asientos | Camioneta</li>
               <li><span class="fa-li"><i class="fas fa-check"></i></span>4 Puertas</li>
-              <li><span class="fa-li"><i class="fas fa-check"></i></span>2 Bolsos Grandes y 1 Bolso Chico</li>
+              <li><span class="fa-li"><i class="fas fa-check"></i></span>2 Bolsos grandes y 1 bolso chico</li>
               <li class="text-muted"><span class="fa-li"><i class="fas fa-check"></i></span>Recomendado para viajes largos</li>
 
             </ul>
@@ -168,7 +176,11 @@
   </div>
 </section>
 
+</body>
 
+<div class="footer">
+  <p>Recuerde que reservas mayores a 20 d&iacute;as tienen un descuento de 15%</p>
+</div>
 
 <script>
 window.onload= function(){ 

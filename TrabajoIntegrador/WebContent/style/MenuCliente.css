@@ -1,3 +1,7 @@
+.body {
+  background: #ffffff;
+  background: linear-gradient(to right, #00ffff, #ffffff);
+}
 .nav-side-menu {
   overflow: auto;
   font-family: verdana;
@@ -11,17 +15,18 @@
   color: #e1ffff;
 }
 
-
-.nav-side-menu .brand {
-  background-color: #23282e;
-  line-height: 50px;
-  display: block;
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: green;
+  color: white;
   text-align: center;
-  font-size: 14px;
 }
-.nav-side-menu .toggle-btn {
-  display: none;
-}
+
+
+
 .nav-side-menu ul,
 .nav-side-menu li {
   list-style: none;
@@ -152,16 +157,12 @@ body {
   padding: auto;
   margin: auto;
 }
-section.pricing {
-  background: #007bff;
-  background: linear-gradient(to right, #0062E6, #33AEFF);
-}
 
 .pricing .card {
   border: none;
   border-radius: 1rem;
   transition: all 0.2s;
-  box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.5rem 2rem 0 rgba(0, 0, 0, 0.1);
 }
 
 .pricing hr {
@@ -192,17 +193,8 @@ section.pricing {
   opacity: 0.7;
 }
 
-.pricing .btn {
-  font-size: 80%;
-  border-radius: 5rem;
-  letter-spacing: .1rem;
-  font-weight: bold;
-  padding: 1rem;
-  opacity: 0.7;
-  transition: all 0.2s;
-}
 
-/* Hover Effects on Card */
+/* Efecto hover */
 
 @media (min-width: 992px) {
   .pricing .card:hover {

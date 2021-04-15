@@ -37,7 +37,6 @@ public class confirmaReserva extends HttpServlet {
 		v.setIdVehiculo(idv);
 		v = ctrlLogin.getVehiculoById(v);
 		c = ctrlLogin.getCategoriaVehiculo(v);
-		System.out.println(v.toString());
 		request.getSession().setAttribute("categoria", c);
 		request.getSession().setAttribute("vehiculo", v);
 		request.getRequestDispatcher("WEB-INF/MenuCliente/confirmaReserva.jsp").forward(request, response);

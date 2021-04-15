@@ -71,29 +71,29 @@
                     <thead>
                         <tr>
                             <th>Vehiculo</th>
-                            <th>Días</th>
+                            <th class="text-left">Días</th>
                             <th class="text-center">Precio/dia</th>
-                            <th class="text-center">Total</th>
+                            <th class="text-right">Total</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td class="col-md-9"><em><%=v.getMarca()%> <%=v.getModelo()%> <%=v.getAnio()%></em></h4></td>
-                            <td class="col-md-1" style="text-align: center"> <%=dias %> </td>
+                            <td class="col-md-1 text-left"> <%=dias %> </td>
                             <td class="col-md-1 text-center">$<%=Math.round(precioxdia)%></td>
-                            <td class="col-md-1 text-center">$<%=Math.round(precioxdia*dias)%></td>
+                            <td class="col-md-1 text-right">$<%=Math.round(precioxdia*dias)%></td>
                         </tr>
                         <tr>
                             <td>   </td>
                             <td>   </td>
-                            <td class="text-right">
+                            <td class="text-left">
                             <p>
                                 <strong>Subtotal: </strong>
                             </p>
                             <p>
                                 <strong>Descuento:</strong>
                             </p></td>
-                            <td class="text-center">
+                            <td class="text-right">
                             <p>
                                 <strong>$<%=Math.round(precioxdia*dias)%></strong>
                             </p>
@@ -105,17 +105,24 @@
                         <tr>
                             <td>   </td>
                             <td>   </td>
-                            <td class="text-right"><h4><strong>Total: </strong></h4></td>
-							<td class="text-center text-danger"><h4><strong>$<%=Math.round((precioxdia*dias)*d)%></strong></h4></td>
+                            <td class="text-left"><h4><strong>Total: </strong></h4></td>
+							<td class="text-right text-danger"><h4><strong>$<%=Math.round((precioxdia*dias)*d)%></strong></h4></td>
 
                            
                         </tr>
                     </tbody>
                 </table>
                <button  class="btn btn-success btn-block">Reservar ahora</button>
+               <br>
+               <a href="home" class="btn btn-danger btn-block">Cancelar</a>
 	</form>
 	<br>
-	<button  class="btn btn-danger btn-block">Cancelar</button>
+	<a href="home" class="btn btn-danger btn-block">Cancelar</a>
+	
 </body>
+
+<div class="footer">
+  <p>Recuerde que reservas mayores a 20 d&iacute;as tienen un descuento de 15%</p>
+</div>
 
 </html>

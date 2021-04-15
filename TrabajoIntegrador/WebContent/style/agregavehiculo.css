@@ -28,13 +28,4 @@
 .form-control{
     border-radius:1.5rem;
 }
-.btnSubmit
-{
-    border:none;
-    border-radius:1.5rem;
-    padding: 1%;
-    width: 20%;
-    cursor: pointer;
-    background: green;
-    color: #fff;
-}
+
