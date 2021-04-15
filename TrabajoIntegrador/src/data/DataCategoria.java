@@ -136,5 +136,39 @@ public LinkedList<Categoria> listaCategoria(){
 		return categorias;
 	}
 
+public Categoria getCategoria(Vehiculo v) {
+	Categoria c=null;
+	PreparedStatement stmt=null;
+	ResultSet rs=null;
+	try {
+		stmt=DbConnector.getInstancia().getConn().prepareStatement(
+				"select c.idCategoria, c.descripcion, c.precioXdia\r\n" + 
+				"from  categoria c inner join vehiculos_categorias vc on vc.id_categoria = c.idCategoria\r\n" + 
+				"inner join vehiculo v on v.idVehiculo = vc.id_vehiculo\r\n" + 
+				"where idVehiculo=?"
+				);
+		stmt.setInt(1, v.getIdVehiculo());
+		rs=stmt.executeQuery();
+		if(rs!=null && rs.next()) {
+			c=new Categoria();
+			c.setIdCategoria(rs.getInt("idCategoria"));
+			c.setDescripcion(rs.getString("descripcion"));
+			c.setPrecioxDia(rs.getDouble("precioXdia"));
+		}
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}finally {
+		try {
+			if(rs!=null) {rs.close();}
+			if(stmt!=null) {stmt.close();}
+			DbConnector.getInstancia().releaseConn();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 	
+	return c;
+}
+	
+
 }

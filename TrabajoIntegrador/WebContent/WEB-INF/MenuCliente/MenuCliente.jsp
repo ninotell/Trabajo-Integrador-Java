@@ -116,7 +116,7 @@
           <div class="card-body">
             <h5 class="card-title text-muted text-uppercase text-center">Chico</h5>
             <% Categoria c1 = listaCategorias.get(0);%>
-            <h6 class="card-price text-center">$<%=c1.getPrecioxDia()%><span class="period">/d&iacute;a</span></h6>
+            <h6 class="card-price text-center">$<%=Math.round(c1.getPrecioxDia())%><span class="period">/d&iacute;a</span></h6>
             <hr>
             <ul class="fa-ul">
 
@@ -135,7 +135,7 @@
           <div class="card-body">
             <h5 class="card-title text-muted text-uppercase text-center">Mediano</h5>
             <% Categoria c2 = listaCategorias.get(1);%>
-            <h6 class="card-price text-center">$<%=c2.getPrecioxDia()%><span class="period">/d&iacute;a</span></h6>
+            <h6 class="card-price text-center">$<%=Math.round(c2.getPrecioxDia())%><span class="period">/d&iacute;a</span></h6>
             <hr>
             <ul class="fa-ul">
               <li><span class="fa-li"><i class="fas fa-check"></i></span>5 Asientos</li>
@@ -152,7 +152,7 @@
           <div class="card-body">
             <h5 class="card-title text-muted text-uppercase text-center">Grande</h5>
             <% Categoria c3 = listaCategorias.get(2);%>
-            <h6 class="card-price text-center">$<%=c3.getPrecioxDia()%><span class="period">/d&iacute;a</span></h6>
+            <h6 class="card-price text-center">$<%=Math.round(c3.getPrecioxDia())%><span class="period">/d&iacute;a</span></h6>
             <hr>
             <ul class="fa-ul">
               <li><span class="fa-li"><i class="fas fa-check"></i></span>5/7 Asientos | Camioneta</li>

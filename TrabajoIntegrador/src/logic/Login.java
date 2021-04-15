@@ -41,6 +41,11 @@ public class Login {
 		return dv.getById(v);		
 		
 	}
+	public Categoria getCategoriaVehiculo(Vehiculo v) {
+		return dc.getCategoria(v);		
+		
+	}
+	
 	public Usuario getUserById(Usuario u) {
 		return du.getById(u);		
 		
