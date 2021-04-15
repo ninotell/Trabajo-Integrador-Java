@@ -1,6 +1,8 @@
 package data;
 
 import java.sql.*;
+import java.util.LinkedList;
+
 import entities.*;
 
 
@@ -92,6 +94,46 @@ public class DataCategoria {
 		}
 	
 	
+	}
+public LinkedList<Categoria> listaCategoria(){
+		
+		PreparedStatement stmt=null;
+		ResultSet rs=null;
+		LinkedList<Categoria> categorias= new LinkedList<>();
+		Categoria c=null;
+		
+		try {
+			stmt= DbConnector.getInstancia().getConn().prepareStatement(
+					"select * from categoria"
+					);
+			rs=stmt.executeQuery();			
+			if(rs!=null) {
+				while(rs.next()) {
+					c=new Categoria();
+					c.setIdCategoria(rs.getInt("idCategoria"));
+					c.setDescripcion(rs.getString("descripcion"));
+					c.setPrecioxDia(rs.getDouble("precioXdia"));
+					
+					
+					categorias.add(c);
+				}
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}	
+		 	finally {
+			try {
+				if(rs!=null) {rs.close();}
+				if(stmt!=null) {stmt.close();}
+				DbConnector.getInstancia().releaseConn();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
+		return categorias;
 	}
 
 	

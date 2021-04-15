@@ -1,4 +1,6 @@
 <%@page import="entities.Usuario"%>
+<%@page import="entities.Categoria"%>
+<%@page import="java.util.LinkedList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -27,6 +29,7 @@
 	
 	<%
 		Usuario u = (Usuario)session.getAttribute("usuario");
+    	LinkedList<Categoria> listaCategorias = (LinkedList<Categoria>)session.getAttribute("listaCategorias");
 
 	%>
 
@@ -104,14 +107,66 @@
 </body>
 
 
-<footer class="text-center">
-  <br>
-  <h3>Precios actualizados por categoría (por día)</h3>
-  <h4>Chico</h4>
-  <h4>Mediano</h4>
-  <h4>Grande</h4>
+<section class="pricing py-5">
+  <div class="container">
+    <div class="row">
+      <!-- Free Tier -->
+      <div class="col-lg-4">
+        <div class="card mb-5 mb-lg-0">
+          <div class="card-body">
+            <h5 class="card-title text-muted text-uppercase text-center">Chico</h5>
+            <% Categoria c1 = listaCategorias.get(0);%>
+            <h6 class="card-price text-center">$<%=c1.getPrecioxDia()%><span class="period">/d&iacute;a</span></h6>
+            <hr>
+            <ul class="fa-ul">
 
-</footer>
+              <li><span class="fa-li"><i class="fas fa-check"></i></span>4 Asientos</li>
+              <li><span class="fa-li"><i class="fas fa-check"></i></span>5 Puertas</li>
+              <li><span class="fa-li"><i class="fas fa-check"></i></span>2 Bolsos Pequeños</li>
+
+              <li class="text-muted"><span class="fa-li"><i class="fas fa-times"></i></span>Recomendado para uso en la ciudad</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- Plus Tier -->
+      <div class="col-lg-4">
+        <div class="card mb-5 mb-lg-0">
+          <div class="card-body">
+            <h5 class="card-title text-muted text-uppercase text-center">Mediano</h5>
+            <% Categoria c2 = listaCategorias.get(1);%>
+            <h6 class="card-price text-center">$<%=c2.getPrecioxDia()%><span class="period">/d&iacute;a</span></h6>
+            <hr>
+            <ul class="fa-ul">
+              <li><span class="fa-li"><i class="fas fa-check"></i></span>5 Asientos</li>
+              <li><span class="fa-li"><i class="fas fa-check"></i></span>4/5 Puertas</li>
+              <li><span class="fa-li"><i class="fas fa-check"></i></span>2 Bolsos Grandes</li>
+              <li class="text-muted"><span class="fa-li"><i class="fas fa-times"></i></span>Recomendado para uso empresarial</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- Pro Tier -->
+      <div class="col-lg-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title text-muted text-uppercase text-center">Grande</h5>
+            <% Categoria c3 = listaCategorias.get(2);%>
+            <h6 class="card-price text-center">$<%=c3.getPrecioxDia()%><span class="period">/d&iacute;a</span></h6>
+            <hr>
+            <ul class="fa-ul">
+              <li><span class="fa-li"><i class="fas fa-check"></i></span>5/7 Asientos | Camioneta</li>
+              <li><span class="fa-li"><i class="fas fa-check"></i></span>4 Puertas</li>
+              <li><span class="fa-li"><i class="fas fa-check"></i></span>2 Bolsos Grandes y 1 Bolso Chico</li>
+              <li class="text-muted"><span class="fa-li"><i class="fas fa-check"></i></span>Recomendado para viajes largos</li>
+
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 
 

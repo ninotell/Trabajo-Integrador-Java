@@ -3,6 +3,7 @@ package servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.lang.ProcessBuilder.Redirect;
+import java.util.Iterator;
 import java.util.LinkedList;
 
 import javax.servlet.RequestDispatcher;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import data.DataRol;
+import entities.Categoria;
 import entities.Rol;
 import entities.Usuario;
 import entities.Vehiculo;
@@ -46,15 +48,12 @@ public class Signin extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Usuario u = new Usuario();
+		LinkedList<Categoria> categorias= new LinkedList<>();
 		Login ctrlLogin = new Login();
-		PrintWriter out = response.getWriter();
-		
+		PrintWriter out = response.getWriter();		
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		
-		//validar email y password
-		
-		
+		categorias = ctrlLogin.listaCategorias();
 	
 		try {
 			DataRol dr = new DataRol();
@@ -77,8 +76,7 @@ public class Signin extends HttpServlet {
 				
 			if (u.hasRol(r)) {
 				request.getSession().setAttribute("usuario", u);
-//				LinkedList<Vehiculo> vehiculos = ctrlLogin.getByAnio(v);
-//				request.setAttribute("listaVehiculos", vehiculos);
+				request.getSession().setAttribute("listaCategorias", categorias);
 				request.getRequestDispatcher("WEB-INF/MenuCliente/MenuCliente.jsp").forward(request, response);
 				
 				
@@ -93,6 +91,7 @@ public class Signin extends HttpServlet {
 			n2.printStackTrace();	
 			}
 		
+			
 	}
 }
 

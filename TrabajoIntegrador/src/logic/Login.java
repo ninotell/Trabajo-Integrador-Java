@@ -89,6 +89,9 @@ public class Login {
 		dre.agregaDatosReserva(vr, ur);
 	}
 	
+	public LinkedList<Categoria> listaCategorias(){
+		return dc.listaCategoria();
+	}
 	
 	
 	
