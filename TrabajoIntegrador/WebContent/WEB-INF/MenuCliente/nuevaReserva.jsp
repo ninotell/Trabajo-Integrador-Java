@@ -77,6 +77,7 @@
                                
                      		     </div>
                           <button type="submit" class="btn btn-lg btn-success btn-block" id="botonMostrar" >Mostrar vehiculos disponibles</button>
+                          <a href="home" class="btn-lg btn-danger btn-block text-center">Volver al men&uacute; principal</a>
                           </div>
                     </div>
                 </div>

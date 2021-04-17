@@ -3,6 +3,7 @@ package data;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.LinkedList;
 
@@ -17,29 +18,86 @@ public class DataReserva {
 	
 	
 	
-//	public Reserva getReserva(Reserva rToSearch) {
+	public LinkedList<Reserva> getReserva(Reserva rToSearch, Usuario u) {
+		Reserva r=null;
+		PreparedStatement stmt=null;
+		ResultSet rs=null;
+		LinkedList<Reserva> reservas= new LinkedList<>();
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd"); 
+		try {
+			stmt=DbConnector.getInstancia().getConn().prepareStatement(
+					"select idReserva,fechaReserva,fechaRetiro,fechaDevolucion,fechaCancelacion,estado\r\n" + 
+					"from reserva r\r\n" + 
+					"inner join reserva_usuario_vehiculo ruv on r.idReserva = ruv.id_reserva\r\n" + 
+					"where id_usuario = ? and r.estado = ?"
+					);
+			stmt.setInt(1, u.getIdUsuario());
+			stmt.setString(2, rToSearch.getEstado());
+			rs=stmt.executeQuery();
+			if(rs!=null && rs.next()) {
+				System.out.println(rs.getTimestamp("fechaReserva"));
+				r=new Reserva();
+				r.setIdReserva(rs.getInt("idReserva"));
+				r.setFechaReserva(rs.getTimestamp("fechaReserva"));
+				r.setFechaRetiro(rs.getDate("fechaRetiro"));
+				r.setFechaDevolucion(rs.getDate("fechaDevolucion"));
+				r.setFechaCancelacion(rs.getDate("fechaCancelacion"));
+				r.setEstado(rs.getString("estado"));
+
+				reservas.add(r);
+				
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}	finally {
+			try {
+				if(rs!=null) {rs.close();}
+				if(stmt!=null) {stmt.close();}
+				DbConnector.getInstancia().releaseConn();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return reservas;
+	}
+	
+//	public LinkedList<Reserva> updateReserva(Reserva rToSearch, Usuario u) {
 //		Reserva r=null;
 //		PreparedStatement stmt=null;
 //		ResultSet rs=null;
+//		LinkedList<Reserva> reservas= new LinkedList<>();
+//		SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd"); 
 //		try {
 //			stmt=DbConnector.getInstancia().getConn().prepareStatement(
-//					"select idReserva,fechaReserva,fechaRetiro,fechaDevolucion,fechaCancelacion,estado from reserva where idVehiculo=?"
+//					"select idReserva,fechaReserva,fechaRetiro,fechaDevolucion,fechaCancelacion,estado\r\n" + 
+//					"from reserva r\r\n" + 
+//					"inner join reserva_usuario_vehiculo ruv on r.idReserva = ruv.id_reserva\r\n" + 
+//					"where id_usuario = ? and r.estado = ?"
 //					);
-//			stmt.setInt(1, rToSearch.get());
+//			stmt.setInt(1, u.getIdUsuario());
+//			stmt.setString(2, rToSearch.getEstado());
 //			rs=stmt.executeQuery();
 //			if(rs!=null && rs.next()) {
+//				System.out.println(rs.getString("fechaReserva"));
 //				r=new Reserva();
 //				r.setIdReserva(rs.getInt("idReserva"));
-//				r.setFechaReserva(rs.getString("fechaReserva"));
-//				r.setFechaRetiro((rs.getString("fechaRetiro"));
-//				v.setModelo(rs.getString("fechaDevolucion"));
-//				v.setAnio(rs.getInt("fechaCancelacion"));
-//				v.setTransmision(rs.getString("estado"));
+//				r.setFechaReserva(formatter.parse(rs.getString("fechaReserva")));
+//				r.setFechaRetiro(formatter.parse(rs.getString("fechaRetiro")));
+//				r.setFechaDevolucion(formatter.parse(rs.getString("fechaDevolucion")));
+//				r.setFechaCancelacion(formatter.parse(rs.getString("fechaCancelacion")));
+//				r.setEstado(rs.getString("estado"));
+//
+//				reservas.add(r);
+//				
 //
 //			}
 //		} catch (SQLException e) {
 //			e.printStackTrace();
-//		}finally {
+//		} catch (ParseException e) {
+//			e.printStackTrace();
+//		} finally {
 //			try {
 //				if(rs!=null) {rs.close();}
 //				if(stmt!=null) {stmt.close();}
@@ -49,9 +107,8 @@ public class DataReserva {
 //			}
 //		}
 //		
-//		return r;
+//		return reservas;
 //	}
-	
 	
 	public LinkedList<Vehiculo> VehiculosDisponibles(Categoria c, Reserva r,Vehiculo v) {
 		PreparedStatement stmt=null;

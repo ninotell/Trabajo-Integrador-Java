@@ -1,0 +1,25 @@
+.header {
+    color: #36A0FF;
+    font-size: 27px;
+    padding: 10px;
+}
+
+.bigicon {
+    font-size: 35px;
+    color: #36A0FF;
+}
+
+.note {
+    text-align: center;
+    height: 80px;
+    background: #0062cc;
+    color: #fff;
+    font-weight: bold;
+    line-height: 80px;
+}
+
+.form-contacto {
+	padding: 5%;
+    border: 1px solid #ced4da;
+    margin-bottom: 2%;
+}

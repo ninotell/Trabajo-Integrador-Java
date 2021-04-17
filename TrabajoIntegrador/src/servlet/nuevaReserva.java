@@ -58,7 +58,7 @@ public class nuevaReserva extends HttpServlet {
 		Date fechahasta = new Date();
 		try {
 			fechadesde = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("fechadesde"));
-			fechahasta=new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("fechahasta"));
+			fechahasta = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("fechahasta"));
 		} catch (ParseException e) {
 			e.printStackTrace();
 		} 

@@ -1,14 +1,16 @@
 package entities;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class Reserva {
 
 	private int idReserva;
-	private Date fechaReserva;
+	private Timestamp fechaReserva;
 	private Date fechaRetiro;
 	private Date fechaDevolucion;
 	private Date fechaCancelacion;
+	private String estado;
 	
 	public int getIdReserva() {
 		return idReserva;
@@ -19,7 +21,7 @@ public class Reserva {
 	public Date getFechaReserva() {
 		return fechaReserva;
 	}
-	public void setFechaReserva(Date fechaReserva) {
+	public void setFechaReserva(Timestamp fechaReserva) {
 		this.fechaReserva = fechaReserva;
 	}
 	public Date getFechaRetiro() {
@@ -40,6 +42,13 @@ public class Reserva {
 	public void setFechaCancelacion(Date fechaCancelacion) {
 		this.fechaCancelacion = fechaCancelacion;
 	}
+	public String getEstado() {
+		return estado;
+	}
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+	
 	
 	@Override
 	public String toString() {

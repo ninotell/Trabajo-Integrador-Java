@@ -122,7 +122,7 @@
 </body>
 
 <div class="footer">
-  <p>Recuerde que reservas mayores a 20 d&iacute;as tienen un descuento de 15%</p>
+  <p>Nota: recuerde que reservas mayores a 20 d&iacute;as tienen un descuento de 15%</p>
 </div>
 
 </html>

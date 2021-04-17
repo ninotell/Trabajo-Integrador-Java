@@ -55,19 +55,10 @@
  	 <div class="collapse navbar-collapse" id="navbarSupportedContent">
     	<ul class="navbar-nav mr-auto">
       		<li class="nav-item active ">
-        		<a class="nav-link" href="#home">Home<span class="sr-only">(current)</span></a>
+        		<a class="nav-link" href="home">Home<span class="sr-only">(current)</span></a>
 	        </li>
-      		<li class="nav-item dropdown">
-        		<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          			Mis reservas
-       			</a>
-        		<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        			<a class="dropdown-item" href="#">Activas</a>
-        			<div class="dropdown-divider"></div>
-         			<a class="dropdown-item" href="#">Finalizadas</a>
-          			<div class="dropdown-divider"></div>
-          			<a class="dropdown-item" href="#">Canceladas</a>
-        		</div>
+      		<li class="nav-item">
+        		<a class="nav-link" href="reservasCliente">Mis reservas<span class="sr-only">(current)</span></a>
      		 </li>
 		</ul>
 	     <span class="dropdown">
@@ -75,7 +66,8 @@
           			ID: <%=u.getIdUsuario()%> - <%=u.getNombre()%> <%=u.getApellido()%>
        			  </a>
     		     <div class="dropdown-menu">
-          			<a class="dropdown-item" href="changePassword">Cambiar contraseña</a>
+          			<a class="dropdown-item" href="contacto">Contacto</a>
+          			<div class="dropdown-divider"></div>
           			<a class="dropdown-item" href="Logout">Cerrar sesi&oacute;n</a>
 			     </div>
 	       </span>
@@ -92,21 +84,15 @@
 	<div class="container-botones">
 		<div class="m-0 col justify-content-center">
 			<div class="col-auto p-5  text-center">
-				<a href="nuevaReserva" method="get">
-					<button  class="btn btn-success btn-block">Realizar reserva</button>
-				</a>
+				<a href="nuevaReserva" class="btn btn-success btn-block">Realizar reserva</a>
 				<br>
-				<a href="#" method="get">
-					<button  class="btn btn-primary btn-block">Devoluci&oacute;n de veh&iacute;culo</button>
-				</a>
+				<a href="retirarVehiculo" class="btn btn-primary btn-block">Retiro de veh&iacute;culo</a>
 				<br>
-				<a href="#" method="get">
-					<button  class="btn btn-danger btn-block">Cancelar reserva</button>
-				</a>
+				<a href="#" class="btn btn-primary btn-block">Devoluci&oacute;n de veh&iacute;culo</a>
 				<br>
-				<a href="changePassword" method="get">
-					<button  class="btn btn-warning btn-block">Cambiar contraseña</button>
-				</a>
+				<a href="#" class="btn btn-danger btn-block">Cancelar reserva</a>
+				<br>
+				<a href="changePassword" class="btn btn-warning btn-block">Cambiar contraseña</a>
 			</div>		
 		</div>
 	</div>
@@ -179,7 +165,7 @@
 </body>
 
 <div class="footer">
-  <p>Recuerde que reservas mayores a 20 d&iacute;as tienen un descuento de 15%</p>
+  <p>Nota: recuerde que reservas mayores a 20 d&iacute;as tienen un descuento de 15%</p>
 </div>
 
 <script>
