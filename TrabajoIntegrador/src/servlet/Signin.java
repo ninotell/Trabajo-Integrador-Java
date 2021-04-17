@@ -35,17 +35,7 @@ public class Signin extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("get at: ").append(request.getContextPath());
-	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Usuario u = new Usuario();
 		LinkedList<Categoria> categorias= new LinkedList<>();
@@ -54,7 +44,7 @@ public class Signin extends HttpServlet {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		categorias = ctrlLogin.listaCategorias();
-	
+		
 		try {
 			DataRol dr = new DataRol();
 			Rol r = new Rol();

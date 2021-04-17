@@ -55,7 +55,7 @@
         		<a class="nav-link" href="home">Home<span class="sr-only">(current)</span></a>
 	        </li>
       		<li class="nav-subitem">
-        		<a class="nav-link" href="listavehiculos">Vehiculos</a>
+        		<a class="nav-link" href="listavehiculos" method="get">Vehiculos</a>
 	        </li>
 	        <li class="nav-item">
 				<a class="nav-link" href="editarolusuario"  method="get">Asignar rol</a>

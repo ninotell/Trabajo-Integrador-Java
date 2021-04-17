@@ -34,8 +34,6 @@ public class listavehiculos extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		PrintWriter out = response.getWriter();
 		Usuario us = (Usuario)request.getSession().getAttribute("usuario");
 		Rol r = new Rol();
 		Rol rr = new Rol();

@@ -85,10 +85,12 @@
  	<hr>
 	
 
-			<div class="text-center">
-				<a href="agregavehiculo">
-					<button  class="btn btn-primary btn-block">Agregar vehiculo</button>
-				</a>
+			<div align="center">
+				<div class="botonAgregar">
+					<a href="agregavehiculo">
+						<button  class="btn btn-primary">Agregar vehiculo</button>
+					</a>
+				</div>
 				<br>
 			</div>		
 

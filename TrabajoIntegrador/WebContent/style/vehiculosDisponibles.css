@@ -23,3 +23,10 @@ body {
   padding: auto;
   margin: auto;
 }
+
+.botonVolver {
+     font-weight:bold;
+     color:white;
+     padding-top: 10px;
+     width: 20%;
+}

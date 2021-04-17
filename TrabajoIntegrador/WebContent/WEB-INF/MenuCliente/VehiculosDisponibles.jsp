@@ -43,8 +43,13 @@
  
 <div class="container text-center">
 	<div class="note">
-		<h4>Vehiculos disponibles desde el <%=fechadesde%> hasta el <%=fechahasta%></h4>
+		<h4>Veh&iacute;culos disponibles desde el <%=fechadesde%> hasta el <%=fechahasta%></h4>
 	</div>
+		<%if ((vDisponibles.isEmpty())==true) { %>
+		<h8>No hay veh&iacute;culos para mostrar</h8>
+		<button onclick="window.history.back()" class="btn btn-danger">Volver a selecci&oacute;n de fechas</button>
+		<% } else { %>
+		
 		<div class="row">
         	<div class="col-lg-12">
                 	<div class="table-responsive">
@@ -67,12 +72,24 @@
                     				<form name="f2" class="form-reserva" action="confirmaReserva" method="post">
                     					<input type="hidden" name="idvehiculo" value="<%=v.getIdVehiculo()%>" />
                     					<td><button type="submit" class="btn btn-success">Reservar!</button></td>
+                    					
                     				</form>
                     			</tr>
                     		<% } %>
-                    		</tbody>	
+                    		</tbody>
+                    		</table>
+       			</div>
+       		</div>
        	</div>
-	
+</div>
+<div align="center">       
+	<div class="botonVolver">
+		<button onclick="window.history.back()" class="btn btn-danger btn-block text-center">Volver a selecci&oacute;n de fechas</button>
+	</div>
+</div>
+       	<%} %>
+
+</body>
 <script>
 
        function sortTable(n,type) {
@@ -128,5 +145,5 @@
        
 </script>
  	
-</body>
+
 </html>
