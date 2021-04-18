@@ -73,14 +73,16 @@
 							<div class="row">
 								<div class="col-md-6">
 									<div class="form-group">
+										<label for="fechadesde">Fecha desde</label>
 										<input name="fechadesde" id="fechadesde" class="form-control"
-											type="text" placeholder="Fecha desde">
+											type="text" placeholder="Fecha desde" readonly>
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
+										<label for="fechahasta">Fecha hasta</label>
 										<input name="fechahasta" id="fechahasta" class="form-control"
-											type="text" placeholder="Fecha hasta">
+											type="text" placeholder="Fecha hasta" readonly>
 									</div>
 								</div>
 							</div>
@@ -111,9 +113,14 @@
 window.onload= function(){ 
 	if (<%=request.getAttribute("fechaincorrecta")%>==true)
 		{alert("Ingrese una fecha válida");}
-	else {}				
+	else {}		
+	$("#fechahasta").datepicker("option", "disabled", true);
+	$("#botonMostrar").attr('disabled', 'disabled');
 }
-	
+
+var botonMostrar = document.getElementById("botonMostrar"),
+	fechadesde =  document.getElementById("fechadesde"),
+	fechahasta =  document.getElementById("fechadesde");
 	
 	$(function() {
 
@@ -122,7 +129,8 @@ window.onload= function(){
 			minDate : '+1d',
 			numberOfMonths : 1,
 			onSelect : function(selected) {
-				$("#fechahasta").datepicker("option", "minDate", selected)
+				$("#fechahasta").datepicker("option", "minDate", selected),
+				$("#fechahasta").datepicker("option", "disabled", false)
 			}
 		});
 
@@ -130,7 +138,8 @@ window.onload= function(){
 			dateFormat : 'dd/mm/yy',
 			minDate : '+2d',
 			onSelect : function(selected) {
-				$("#fechadesde").datepicker("option", "maxDate", selected)
+				$("#fechadesde").datepicker("option", "maxDate", selected),
+				$("#botonMostrar").removeAttr("disabled");
 			}
 		});
 
