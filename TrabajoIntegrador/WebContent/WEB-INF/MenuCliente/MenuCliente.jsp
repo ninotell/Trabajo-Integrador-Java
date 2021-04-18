@@ -88,7 +88,7 @@
 				<br>
 				<a href="retirarVehiculo" class="btn btn-primary btn-block">Retiro de veh&iacute;culo</a>
 				<br>
-				<a href="#" class="btn btn-primary btn-block">Devoluci&oacute;n de veh&iacute;culo</a>
+				<a href="devolucionVehiculo" class="btn btn-primary btn-block">Devoluci&oacute;n de veh&iacute;culo</a>
 				<br>
 				<a href="#" class="btn btn-danger btn-block">Cancelar reserva</a>
 				<br>

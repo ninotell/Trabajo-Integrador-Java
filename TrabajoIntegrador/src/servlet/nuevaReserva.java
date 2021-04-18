@@ -59,19 +59,21 @@ public class nuevaReserva extends HttpServlet {
 		try {
 			fechadesde = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("fechadesde"));
 			fechahasta = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("fechahasta"));
+			String transmision = request.getParameter("transmision");
+			r.setFechaRetiro(fechadesde);
+			r.setFechaDevolucion(fechahasta);
+			c.setIdCategoria(idCat);
+			v.setTransmision(transmision);
+			LinkedList<Vehiculo> vDisponibles = new LinkedList<>();
+			vDisponibles = ctrlLogin.VehiculosDisponibles(c, r, v);
+			request.getSession().setAttribute("vDisponibles", vDisponibles);
+			
+			request.getRequestDispatcher("WEB-INF/MenuCliente/VehiculosDisponibles.jsp").forward(request, response);
 		} catch (ParseException e) {
-			e.printStackTrace();
+			request.setAttribute("fechaincorrecta", "true");
+			request.getRequestDispatcher("WEB-INF/MenuCliente/nuevaReserva.jsp").forward(request, response);
 		} 
-		String transmision = request.getParameter("transmision");
-		r.setFechaRetiro(fechadesde);
-		r.setFechaDevolucion(fechahasta);
-		c.setIdCategoria(idCat);
-		v.setTransmision(transmision);
-		LinkedList<Vehiculo> vDisponibles = new LinkedList<>();
-		vDisponibles = ctrlLogin.VehiculosDisponibles(c, r, v);
-		request.getSession().setAttribute("vDisponibles", vDisponibles);
-		
-		request.getRequestDispatcher("WEB-INF/MenuCliente/VehiculosDisponibles.jsp").forward(request, response);
+
 	}
 
 }

@@ -44,154 +44,147 @@
 
 
 <div class="container">	
-  <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
-  		<a class="navbar-brand" href="#">
-		<img class="rounded mx-auto d-block" src="https://i.pinimg.com/originals/cd/ba/7a/cdba7ad02665c51892c4860f6fc201af.png" alt="" width="50" height="50"></a>
-  		<button class="navbar-toggler" type="button" data-toggle="collapse" 
-          data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
-          aria-expanded="false" aria-label="Toggle navigation">
-    	 <span class="navbar-toggler-icon"></span>
-	    </button>
-
- 	 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    	<ul class="navbar-nav mr-auto">
-      		<li class="nav-item  ">
-        		<a class="nav-link" href="home">Home<span class="sr-only"></span></a>
-	        </li>
-      		<li class="nav-item active">
-        		<a class="nav-link" href="" onclick="location.reload(true)">Vehiculos</a>
-	        </li>
-	        <li class="nav-item">
-				<a class="nav-link" href="editarolusuario"  method="get">Asignar rol</a>
-	        </li>
-	    </ul>
-	     <span class="dropdown">
-      			  <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
-          			ID: <%=u.getIdUsuario()%> - <%=u.getNombre()%> <%=u.getApellido()%>
-       			  </a>
-    		     <div class="dropdown-menu">
-          			<a class="dropdown-item" href="changePassword">Cambiar contraseña</a>
-          			<a class="dropdown-item" href="Logout">Cerrar sesión</a>
-			     </div>
-	       </span>
-     </div>
-  </nav>
+	<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+  	<a class="navbar-brand" href="#">
+	<img class="rounded mx-auto d-block" src="https://i.pinimg.com/originals/cd/ba/7a/cdba7ad02665c51892c4860f6fc201af.png" alt="" width="50" height="50"></a>
+  	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    	<span class="navbar-toggler-icon"></span>
+	</button>
+ 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+    		<ul class="navbar-nav mr-auto">
+      			<li class="nav-item  ">
+        			<a class="nav-link" href="home">Home<span class="sr-only"></span></a>
+	        	</li>
+      			<li class="nav-item active">
+	        		<a class="nav-link" href="" onclick="location.reload(true)">Vehiculos</a>
+	        	</li>
+	        	<li class="nav-item">
+					<a class="nav-link" href="editarolusuario"  method="get">Asignar rol</a>
+	        	</li>
+	    	</ul>
+		<span class="dropdown">
+	    	<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">ID: <%=u.getIdUsuario()%> - <%=u.getNombre()%> <%=u.getApellido()%></a>
+	    	<div class="dropdown-menu">
+				<a class="dropdown-item" href="changePassword">Cambiar contraseña</a>
+          		<a class="dropdown-item" href="Logout">Cerrar sesión</a>
+			</div>
+		</span>
+    	</div>
+  	</nav>
  </div>
  
- 	<hr>
- 	<hr>
- 	<hr>
- 	<hr>
- 	<hr>
+ 	<br>
+ 	<br>
+ 	<br>
+ 	<br>
 	
 
-			<div align="center">
-				<div class="botonAgregar">
-					<a href="agregavehiculo">
-						<button  class="btn btn-primary">Agregar vehiculo</button>
-					</a>
-				</div>
-				<br>
-			</div>		
+<div class="container">
+	<div class="btn-toolbar justify-content-between" aria-label="Toolbar with button groups">
+  		<div class="btn-group" role="group" aria-label="First group">
+    		<a href="agregavehiculo" class="btn btn-primary">Agregar vehiculo</a>
+  		</div>
+  		<div class="input-group">
+    		<input class="form-control light-table-filter" data-table="order-table" type="text" placeholder="Buscar">
+  		</div>
+	</div>
+</div>
 
+<br>
 
- 	<div class="container">
-		<div class="row">
-        	<h4>Vehiculos</h4>
-            	<div class="col-12 col-sm-12 col-lg-12">
-                	<div class="table-responsive">
-                    	<table class="table table-striped table-hover" id="vehicles">
-                    		<thead>
-                    			<tr>
-                    			    <th><a href="#" onclick="sortTable(0, 'int')">ID</a></th>
-                    				<th><a href="#" onclick="sortTable(1, 'str')">Patente</a></th>
-                    		    	<th><a href="#" onclick="sortTable(2, 'str')">Marca</a></th>
-                        			<th><a href="#" onclick="sortTable(3, 'str')">Modelo</a></th>
-                        			<th><a href="#" onclick="sortTable(4, 'str')">Transmisión</a></th>
-                        			<th onclick="sortTable(5, 'int')">KM</th>
-                        			<th><a href="#" onclick="sortTable(6, 'int')">Año</a></th>
-                        			<th></th>
-                        			<th></th>
-                      			</tr>
-                      		</thead>
-                    		<tbody>
+<div class="container">
+	<div class="row">
+       	<h4 class="text-center">Vehiculos</h4>
+           	<div class="col-12 col-sm-12 col-lg-12">
+               	<div class="table-responsive">
+                   	<table class="table order-table table-striped table-hover" id="vehicles">
+                   		<thead>
+                   			<tr>
+                   			    <th><a href="#" onclick="sortTable(0, 'int')">ID</a></th>
+                   				<th><a href="#" onclick="sortTable(1, 'str')">Patente</a></th>
+                   		    	<th><a href="#" onclick="sortTable(2, 'str')">Marca</a></th>
+                       			<th><a href="#" onclick="sortTable(3, 'str')">Modelo</a></th>
+                       			<th><a href="#" onclick="sortTable(4, 'str')">Transmisión</a></th>
+                       			<th onclick="sortTable(5, 'int')">KM</th>
+                       			<th><a href="#" onclick="sortTable(6, 'int')">Año</a></th>
+                       			<th></th>
+                       			<th></th>
+                   			</tr>
+                   		</thead>
+                   		<tbody>
                     		<% for (Vehiculo v : lv) { %>
-                    			<tr>
-                    				<td><%=v.getIdVehiculo()%></td>
-                    				<td><%=v.getPatente()%></td>
-                    				<td><%=v.getMarca()%></td>
-                    				<td><%=v.getModelo()%></td>
-                    				<td><%=v.getTransmision()%></td>
-                    				<form name="f2" class="form-register" action="editavehiculo" method="post">
-                    					<td><input type="number" class="form-control" placeholder="<%=v.getKm()%>" value="<%=v.getKm()%>" name="kms"  /></td>
-                    					<td><%=v.getAnio()%></td>
-                    				    <td><button type="submit" class="btn btn-primary">Actualizar km</button></td>
-                    					<input type="hidden" name="idvehiculo" value="<%=v.getIdVehiculo()%>" />
-                    				</form>
-                    				<form name="f3" class="form-register" action="eliminavehiculo" method="post">
-                    					<td><button type="submit" class="btn btn-danger" >Eliminar</button>
-                    						<input type="hidden" name="idvehiculo" value="<%=v.getIdVehiculo()%>" />
-                    					</td>
-                    				</form>
-                    			</tr>
+                   			<tr>
+                   				<td class="idvehiculo"><%=v.getIdVehiculo()%></td>
+                   				<td><%=v.getPatente()%></td>
+                   				<td><%=v.getMarca()%></td>
+                   				<td><%=v.getModelo()%></td>
+                   				<td><%=v.getTransmision()%></td>
+                   				<form name="f2" class="form-register" action="editavehiculo" method="post">
+                   					<td><input type="number" class="form-control" placeholder="<%=v.getKm()%>" value="<%=v.getKm()%>" name="kms"  /></td>
+                   					<td><%=v.getAnio()%></td>
+                   				    <td><button type="submit" class="btn btn-primary">Actualizar km</button></td>
+                   					<input type="hidden" name="idvehiculo" value="<%=v.getIdVehiculo()%>" />
+                   				</form>
+                   				<form name="f3" class="form-register" action="eliminavehiculo" method="post">
+                   					<td><button type="submit" class="btn btn-danger" >Eliminar</button>
+                   						<input type="hidden" name="idvehiculo" value="<%=v.getIdVehiculo()%>" />
+                   					</td>
+                   				</form>
+                   			</tr>
                     		<% } %>
-                    		</tbody>	
-       	</div>
+                	</tbody>	
+     			</table>
+     		</div>
+    	</div>
+	</div>	
+</div>
+
 	
+
+</body>
+
 <script>
 
-       function sortTable(n,type) {
-    	   var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-    	  
-    	   table = document.getElementById("vehicles");
-    	   switching = true;
-    	   //Set the sorting direction to ascending:
-    	   dir = "asc";
-    	  
-    	   /*Make a loop that will continue until no switching has been done:*/
-    	   while (switching) {
-    	     //start by saying: no switching is done:
-    	     switching = false;
-    	     rows = table.rows;
-    	     /*Loop through all table rows (except the first, which contains table headers):*/
-    	     for (i = 1; i < (rows.length - 1); i++) {
-    	       //start by saying there should be no switching:
-    	       shouldSwitch = false;
-    	       /*Get the two elements you want to compare, one from current row and one from the next:*/
-    	       x = rows[i].getElementsByTagName("TD")[n];
-    	       y = rows[i + 1].getElementsByTagName("TD")[n];
-    	       /*check if the two rows should switch place, based on the direction, asc or desc:*/
-    	       if (dir == "asc") {
-    	         if ((type=="str" && x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) || (type=="int" && parseFloat(x.innerHTML) > parseFloat(y.innerHTML))) {
-    	           //if so, mark as a switch and break the loop:
-    	           shouldSwitch= true;
-    	           break;
-    	         }
-    	       } else if (dir == "desc") {
-    	         if ((type=="str" && x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) || (type=="int" && parseFloat(x.innerHTML) < parseFloat(y.innerHTML))) {
-    	           //if so, mark as a switch and break the loop:
-    	           shouldSwitch = true;
-    	           break;
-    	         }
-    	       }
-    	     }
-    	     if (shouldSwitch) {
-    	       /*If a switch has been marked, make the switch and mark that a switch has been done:*/
-    	       rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-    	       switching = true;
-    	       //Each time a switch is done, increase this count by 1:
-    	       switchcount ++;
-    	     } else {
-    	       /*If no switching has been done AND the direction is "asc", set the direction to "desc" and run the while loop again.*/
-    	       if (switchcount == 0 && dir == "asc") {
-    	         dir = "desc";
-    	         switching = true;
-    	       }
-    	     }
-    	   }
-    	 }
-       
+    (function(document) {
+      'use strict';
+
+      var LightTableFilter = (function(Arr) {
+
+        var _input;
+
+        function _onInputEvent(e) {
+          _input = e.target;
+          var tables = document.getElementsByClassName(_input.getAttribute('data-table'));
+          Arr.forEach.call(tables, function(table) {
+            Arr.forEach.call(table.tBodies, function(tbody) {
+              Arr.forEach.call(tbody.rows, _filter);
+            });
+          });
+        }
+
+        function _filter(row) {
+          var text = row.textContent.toLowerCase(), val = _input.value.toLowerCase();
+          row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
+        }
+
+        return {
+          init: function() {
+            var inputs = document.getElementsByClassName('light-table-filter');
+            Arr.forEach.call(inputs, function(input) {
+              input.oninput = _onInputEvent;
+            });
+          }
+        };
+      })(Array.prototype);
+
+      document.addEventListener('readystatechange', function() {
+        if (document.readyState === 'complete') {
+          LightTableFilter.init();
+        }
+      });
+
+    })(document);
+ 
 </script>
- 	
-</body>
+
 </html>
