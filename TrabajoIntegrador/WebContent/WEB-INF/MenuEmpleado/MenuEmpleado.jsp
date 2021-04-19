@@ -52,7 +52,7 @@
         			<a class="nav-link" href="home">Home<span class="sr-only"></span></a>
 	        	</li>
       			<li class="nav-item active">
-	        		<a class="nav-link" href="" onclick="location.reload(true)">Vehiculos</a>
+	        		<a class="nav-link" href="listavehiculos">Vehiculos</a>
 	        	</li>
 	        	<li class="nav-item">
 					<a class="nav-link" href="editarolusuario"  method="get">Asignar rol</a>

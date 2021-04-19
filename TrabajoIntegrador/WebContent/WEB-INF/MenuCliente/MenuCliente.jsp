@@ -86,13 +86,13 @@
 			<div class="col-auto p-5  text-center">
 				<a href="nuevaReserva" class="btn btn-success btn-block">Realizar reserva</a>
 				<br>
-				<a href="retirarVehiculo" class="btn btn-primary btn-block">Retiro de veh&iacute;culo</a>
-				<br>
-				<a href="devolucionVehiculo" class="btn btn-primary btn-block">Devoluci&oacute;n de veh&iacute;culo</a>
-				<br>
 				<a href="#" class="btn btn-danger btn-block">Cancelar reserva</a>
 				<br>
-				<a href="changePassword" class="btn btn-warning btn-block">Cambiar contraseña</a>
+<!-- 				<a href="retirarVehiculo" class="btn btn-outline-primary btn-block">Retiro de veh&iacute;culo</a> -->
+<!-- 				<br> -->
+<!-- 				<a href="devolucionVehiculo" class="btn btn-outline-primary btn-block">Devoluci&oacute;n de veh&iacute;culo</a> -->
+<!-- 				<br> -->
+				<a href="changePassword" class="btn btn-outline-primary btn-block">Cambiar contraseña</a>
 			</div>		
 		</div>
 	</div>
