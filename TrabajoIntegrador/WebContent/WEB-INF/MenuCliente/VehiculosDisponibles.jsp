@@ -41,9 +41,9 @@
 
 <%
 	String fechadesde = (String) session.getAttribute("fechadesde");
-String fechahasta = (String) session.getAttribute("fechahasta");
-LinkedList<Vehiculo> vDisponibles = (LinkedList<Vehiculo>) session.getAttribute("vDisponibles");
-Usuario u = (Usuario) session.getAttribute("usuario");
+	String fechahasta = (String) session.getAttribute("fechahasta");
+	LinkedList<Vehiculo> vDisponibles = (LinkedList<Vehiculo>) session.getAttribute("vDisponibles");
+	Usuario u = (Usuario) session.getAttribute("usuario");
 %>
 <title><%=u.getNombre()%> <%=u.getApellido()%></title>
 

@@ -98,8 +98,8 @@ public class Login {
 		return dc.listaCategoria();
 	}
 	
-	public LinkedList<Reserva> listaReservasUsuario(Reserva r, Usuario u){
-		return dre.getReserva(r, u);
+	public LinkedList<Reserva> listaReservasUsuario(Usuario u){
+		return dre.getReservaByUser(u);
 	}
 	
 	
