@@ -78,7 +78,6 @@ public class DataReserva {
 			stmt.setInt(1, u.getIdUsuario());
 			rs=stmt.executeQuery();
 			if(rs!=null && rs.next()) {
-				System.out.println(rs.getString("fechaReserva"));
 				r=new Reserva();
 				r.setIdReserva(rs.getInt("idReserva"));
 				r.setFechaReserva(rs.getTimestamp("fechaReserva"));
@@ -224,4 +223,30 @@ public class DataReserva {
 		
 	}
 	
+	public void actualizaEstadoReserva(Reserva r) {
+		PreparedStatement stmt = null;
+		ResultSet keyResultSet=null;
+		try {
+			stmt=DbConnector.getInstancia().getConn().
+					prepareStatement(
+							"update reserva r set r.estado=?,r.fechaCancelacion=current_timestamp() where r.idReserva=?");
+			stmt.setString(1, r.getEstado());
+			stmt.setInt(2, r.getIdReserva());
+			stmt.executeUpdate();
+			
+			
+			
+		} catch (SQLException e) {
+            e.printStackTrace();
+		} finally {
+            try {
+                if(keyResultSet!=null)keyResultSet.close();
+                if(stmt!=null)stmt.close();
+                DbConnector.getInstancia().releaseConn();
+            } catch (SQLException e) {
+            	e.printStackTrace();
+            }
+		}
+	
+}
 }

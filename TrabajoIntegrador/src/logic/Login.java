@@ -102,6 +102,8 @@ public class Login {
 		return dre.getReservaByUser(u);
 	}
 	
-	
+	public void cancelarReserva(Reserva r) {
+		dre.actualizaEstadoReserva(r);	
+	}
 	
 }
