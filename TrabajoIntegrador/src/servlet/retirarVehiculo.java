@@ -38,9 +38,7 @@ public class retirarVehiculo extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		PrintWriter out = response.getWriter();
+		
 		Usuario us = (Usuario)request.getSession().getAttribute("usuario");
 		Rol r = new Rol();
 		Rol rr = new Rol();
@@ -59,20 +57,27 @@ public class retirarVehiculo extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	
-    	
-    	PrintWriter out = response.getWriter();
+    
     	Login ctrlLogin = new Login();
     	int idr = Integer.parseInt(request.getParameter("idReserva"));
     	Reserva re = new Reserva();
     	Reserva r = new Reserva();
+
     	re.setIdReserva(idr);		
     	r =  ctrlLogin.getReservaById(re);
-    	System.out.println(r.toString());
-    	request.getSession().setAttribute("reserva", r);
-    	request.getRequestDispatcher("WEB-INF/MenuEmpleado/ReservaParaEntregar.jsp").forward(request, response);
-		
+    	if(r==null) { 
+//    	request.getSession().setAttribute("reserva", r);
+//    	request.getRequestDispatcher("WEB-INF/MenuEmpleado/ReservaParaEntregar.jsp").forward(request, response);
+    		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/MenuEmpleado/EntregarVehiculo.jsp");
+			request.setAttribute("errorReserva", "true");
+			rd.forward(request, response);
+    	}else {
+    		request.getSession().setAttribute("reserva", r);
+        	request.getRequestDispatcher("WEB-INF/MenuEmpleado/ReservaParaEntregar.jsp").forward(request, response);
+		    	}
+			
     }
 
 }
