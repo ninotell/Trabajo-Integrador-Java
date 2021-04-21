@@ -91,7 +91,7 @@ public class Login {
 	
 	public void newReserva(Reserva r, Vehiculo vr, Usuario ur) {
 		dre.newReserva(r);
-		dre.agregaDatosReserva(vr, ur);
+		dre.agregaDatosReserva(r, vr, ur);
 	}
 	
 	public LinkedList<Categoria> listaCategorias(){
@@ -105,5 +105,6 @@ public class Login {
 	public void cancelarReserva(Reserva r) {
 		dre.actualizaEstadoReserva(r);	
 	}
+	
 	
 }

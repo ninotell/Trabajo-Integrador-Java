@@ -102,7 +102,7 @@
                    			</tr>
                    		</thead>
                    		<tbody>
-                    		<% for (Reserva r : reservasUsuario) {if (r.getEstado().equals("iniciada") ) { %> 
+                    		<% for (Reserva r : reservasUsuario) {if (r.getEstado().equals("Iniciada") ) { %> 
                    			<tr>
                    				<td class="idvehiculo"><%=r.getIdReserva()%></td>
                    				<td><%=r.getFechaReserva()%></td>

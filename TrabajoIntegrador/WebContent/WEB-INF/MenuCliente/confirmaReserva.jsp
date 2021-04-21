@@ -43,30 +43,30 @@
 
 <%
 	SimpleDateFormat myFormat = new SimpleDateFormat("dd/MM/yyyy");
-String fechadesde = (String) session.getAttribute("fechadesde");
-String fechahasta = (String) session.getAttribute("fechahasta");
-Boolean descuento = false;
-String desc;
-Double d;
-Date date1 = myFormat.parse(fechadesde);
-Date date2 = myFormat.parse(fechahasta);
-long diff = date2.getTime() - date1.getTime();
-int dias = Math.round((diff / (1000 * 60 * 60 * 24)));
-if (dias > 20) {
-	descuento = true;
-	desc = "15%";
-	d = 0.85;
-} else {
-	descuento = false;
-	desc = "0%";
-	d = 1.0;
-}
-;
-Categoria c = (Categoria) session.getAttribute("categoria");
-Double precioxdia = c.getPrecioxDia();
-Vehiculo v = (Vehiculo) session.getAttribute("vehiculo");
-Usuario u = (Usuario) session.getAttribute("usuario");
-LinkedList<Categoria> listaCategorias = (LinkedList<Categoria>) session.getAttribute("listaCategorias");
+	String fechadesde = (String) session.getAttribute("fechadesde");
+	String fechahasta = (String) session.getAttribute("fechahasta");
+	Boolean descuento = false;
+	String desc;
+	Double d;
+	Date date1 = myFormat.parse(fechadesde);
+	Date date2 = myFormat.parse(fechahasta);
+	long diff = date2.getTime() - date1.getTime();
+	int dias = Math.round((diff / (1000 * 60 * 60 * 24)));
+	if (dias > 20) {
+		descuento = true;
+		desc = "15%";
+		d = 0.85;
+	} else {
+		descuento = false;
+		desc = "0%";
+		d = 1.0;
+	}
+	;
+	Categoria c = (Categoria) session.getAttribute("categoria");
+	Double precioxdia = c.getPrecioxDia();
+	Vehiculo v = (Vehiculo) session.getAttribute("vehiculo");
+	Usuario u = (Usuario) session.getAttribute("usuario");
+	LinkedList<Categoria> listaCategorias = (LinkedList<Categoria>) session.getAttribute("listaCategorias");
 %>
 
 
@@ -79,7 +79,7 @@ LinkedList<Categoria> listaCategorias = (LinkedList<Categoria>) session.getAttri
 		<div class="note">
 			<h1>Confirmar reserva</h1>
 		</div>
-		<form class="form-reserva" action="" method="post">
+		<form class="form-reserva" action="confirmaReserva" method="post">
 			<table class="table table-hover">
 				<thead>
 					<tr>
@@ -93,7 +93,8 @@ LinkedList<Categoria> listaCategorias = (LinkedList<Categoria>) session.getAttri
 					<tr>
 						<td class="col-md-9"><em><%=v.getMarca()%> <%=v.getModelo()%>
 								<%=v.getAnio()%></em>
-						</h4></td>
+							<input name="idVehiculoReserva" type="hidden" value="<%=v.getIdVehiculo()%>"></td>
+							
 						<td class="col-md-1 text-left"><%=dias%></td>
 						<td class="col-md-1 text-center">$<%=Math.round(precioxdia)%></td>
 						<td class="col-md-1 text-right">$<%=Math.round(precioxdia * dias)%></td>
@@ -132,6 +133,8 @@ LinkedList<Categoria> listaCategorias = (LinkedList<Categoria>) session.getAttri
 					</tr>
 				</tbody>
 			</table>
+			<input name="fechadesde" type="hidden" value="<%=fechadesde%>"></td>
+			<input name="fechahasta" type="hidden" value="<%=fechahasta%>"></td>
 			<button class="btn btn-success btn-block">Reservar ahora</button>
 		</form>
 		<br> <a href="home" class="btn btn-danger btn-block">Cancelar</a>

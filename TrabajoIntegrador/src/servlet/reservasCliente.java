@@ -36,6 +36,7 @@ public class reservasCliente extends HttpServlet {
 		Login ctrlLogin = new Login();
 		LinkedList<Reserva> reservasUsuario = ctrlLogin.listaReservasUsuario(u);
 		request.getSession().setAttribute("reservasUsuario", reservasUsuario);
+//		System.out.println(reservasUsuario.toString());
 		request.getRequestDispatcher("WEB-INF/MenuCliente/reservasCliente.jsp").forward(request, response);
 	}
 

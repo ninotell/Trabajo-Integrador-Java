@@ -92,7 +92,7 @@
 								<td><%=v.getModelo()%></td>
 								<td><%=v.getAnio()%></td>
 								<form name="f2" class="form-reserva" action="confirmaReserva"
-									method="post">
+									method="get">
 									<input type="hidden" name="idvehiculo"
 										value="<%=v.getIdVehiculo()%>" />
 									<td><button type="submit" class="btn btn-success">Reservar!</button></td>

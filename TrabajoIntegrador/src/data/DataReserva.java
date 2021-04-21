@@ -3,7 +3,6 @@ package data;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.LinkedList;
 
@@ -70,14 +69,12 @@ public class DataReserva {
 		LinkedList<Reserva> reservas= new LinkedList<>();
 		try {
 			stmt=DbConnector.getInstancia().getConn().prepareStatement(
-					"select idReserva,fechaReserva,fechaRetiro,fechaDevolucion,fechaCancelacion,estado\r\n" + 
-					"from reserva r\r\n" + 
-					"inner join reserva_usuario_vehiculo ruv on r.idReserva = ruv.id_reserva\r\n" + 
-					"where id_usuario = ?"
+					"select idReserva,fechaReserva,fechaRetiro,fechaDevolucion,fechaCancelacion,estado from reserva r inner join reserva_usuario_vehiculo ruv on r.idReserva = ruv.id_reserva where id_usuario = ?"
 					);
 			stmt.setInt(1, u.getIdUsuario());
 			rs=stmt.executeQuery();
-			if(rs!=null && rs.next()) {
+			if(rs!=null) {
+				while(rs.next()) {
 				r=new Reserva();
 				r.setIdReserva(rs.getInt("idReserva"));
 				r.setFechaReserva(rs.getTimestamp("fechaReserva"));
@@ -85,10 +82,9 @@ public class DataReserva {
 				r.setFechaDevolucion(rs.getDate("fechaDevolucion"));
 				r.setFechaCancelacion(rs.getDate("fechaCancelacion"));
 				r.setEstado(rs.getString("estado"));
-
 				reservas.add(r);
 				
-
+				}
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -166,14 +162,13 @@ public class DataReserva {
 		try {
 			stmt=DbConnector.getInstancia().getConn().
 					prepareStatement(
-							"insert into reserva (fechaReserva,fechaRetiro,fechaDevolucion,estado)"
-							+ " values(CURDATE(),?,?,?)",
+							"insert into reserva (idReserva,fechaReserva,fechaRetiro,fechaDevolucion,estado)"
+							+ " values(?,current_timestamp(),?,?,\"Iniciada\")",
 							PreparedStatement.RETURN_GENERATED_KEYS
 							);
-//			stmt.setString(1, "CURDATE()");
-			stmt.setString(1, formatter.format(r.getFechaRetiro()));
-			stmt.setString(2,  formatter.format(r.getFechaDevolucion()));
-			stmt.setString(3, "NF");
+			stmt.setInt(1, r.getIdReserva());
+			stmt.setString(2, formatter.format(r.getFechaRetiro()));
+			stmt.setString(3,  formatter.format(r.getFechaDevolucion()));
 			stmt.executeUpdate();
 			
 			keyResultSet=stmt.getGeneratedKeys();
@@ -195,17 +190,18 @@ public class DataReserva {
 		
 	}
 	
-	public void agregaDatosReserva(Vehiculo v, Usuario u) {
+	public void agregaDatosReserva(Reserva r, Vehiculo v, Usuario u) {
 		PreparedStatement stmt= null;
 		ResultSet keyResultSet=null;
 		try {
 			stmt=DbConnector.getInstancia().getConn().
 					prepareStatement(
-							"insert into reserva_usuario_vehiculo(id_vehiculo, id_usuario) values(?,?)",
+							"insert into reserva_usuario_vehiculo(id_reserva, id_vehiculo, id_usuario) values(?,?,?)",
 							PreparedStatement.RETURN_GENERATED_KEYS
 							);
-			stmt.setInt(1, v.getIdVehiculo());
-			stmt.setInt(2, u.getIdUsuario());
+			stmt.setInt(1, r.getIdReserva());
+			stmt.setInt(2, v.getIdVehiculo());
+			stmt.setInt(3, u.getIdUsuario());
 			stmt.executeUpdate();
 			} 
 		
