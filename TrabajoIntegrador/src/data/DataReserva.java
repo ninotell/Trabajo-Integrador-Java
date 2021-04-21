@@ -69,7 +69,10 @@ public class DataReserva {
 		LinkedList<Reserva> reservas= new LinkedList<>();
 		try {
 			stmt=DbConnector.getInstancia().getConn().prepareStatement(
-					"select idReserva,fechaReserva,fechaRetiro,fechaDevolucion,fechaCancelacion,estado from reserva r inner join reserva_usuario_vehiculo ruv on r.idReserva = ruv.id_reserva where id_usuario = ?"
+					"select idReserva,fechaReserva,fechaRetiro,fechaDevolucion,fechaCancelacion,estado"
+					+ " from reserva r"
+					+ " inner join reserva_usuario_vehiculo ruv on r.idReserva = ruv.id_reserva"
+					+ " where id_usuario = ?"
 					);
 			stmt.setInt(1, u.getIdUsuario());
 			rs=stmt.executeQuery();
