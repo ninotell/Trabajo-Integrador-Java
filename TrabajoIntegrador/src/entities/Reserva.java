@@ -2,6 +2,7 @@ package entities;
 
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.HashMap;
 
 public class Reserva {
 

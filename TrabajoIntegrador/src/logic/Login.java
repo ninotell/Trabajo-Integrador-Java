@@ -105,6 +105,11 @@ public class Login {
 	public void cancelarReserva(Reserva r) {
 		dre.actualizaEstadoReserva(r);	
 	}
-	
-	
+	public Reserva getReservaById(Reserva r) {
+		return dre.getReservaById(r);		
+		
+	}
+	public void retirarVehiculo(Reserva r) {
+		dre.retirarVehiculo(r);	
+	}
 }

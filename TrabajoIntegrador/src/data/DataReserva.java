@@ -62,6 +62,41 @@ public class DataReserva {
 //		return reservas;
 //	}
 	
+	public Reserva getReservaById(Reserva vToSearch) {
+		Reserva r=null;
+		PreparedStatement stmt=null;
+		ResultSet rs=null;
+		try {
+			stmt=DbConnector.getInstancia().getConn().prepareStatement(
+					"select idReserva,fechaReserva,fechaRetiro,fechaDevolucion,fechaCancelacion,estado from reserva where idReserva=?"
+					);
+			stmt.setInt(1, vToSearch.getIdReserva());
+			rs=stmt.executeQuery();
+			if(rs!=null && rs.next()) {
+				r=new Reserva();
+				r.setIdReserva(rs.getInt("idReserva"));
+				r.setFechaReserva(rs.getTimestamp("fechaReserva"));
+				r.setFechaRetiro(rs.getDate("fechaRetiro"));
+				r.setFechaDevolucion(rs.getDate("fechaDevolucion"));
+				r.setFechaCancelacion(rs.getDate("fechaCancelacion"));
+				r.setEstado(rs.getString("estado"));
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs!=null) {rs.close();}
+				if(stmt!=null) {stmt.close();}
+				DbConnector.getInstancia().releaseConn();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return r;
+	}
+	
 	public LinkedList<Reserva> getReservaByUser(Usuario u) {
 		Reserva r=null;
 		PreparedStatement stmt=null;
@@ -247,5 +282,31 @@ public class DataReserva {
             }
 		}
 	
-}
+	}
+	public void retirarVehiculo(Reserva r) {
+		PreparedStatement stmt = null;
+		ResultSet keyResultSet=null;
+		try {
+			stmt=DbConnector.getInstancia().getConn().
+					prepareStatement(
+							"update reserva r set r.estado=?,r.fechaCancelacion=current_timestamp() where r.idReserva=?");
+			stmt.setString(1, r.getEstado());
+			stmt.setInt(2, r.getIdReserva());
+			stmt.executeUpdate();
+			
+			
+			
+		} catch (SQLException e) {
+            e.printStackTrace();
+		} finally {
+            try {
+                if(keyResultSet!=null)keyResultSet.close();
+                if(stmt!=null)stmt.close();
+                DbConnector.getInstancia().releaseConn();
+            } catch (SQLException e) {
+            	e.printStackTrace();
+            }
+		}
+	
+	}
 }
