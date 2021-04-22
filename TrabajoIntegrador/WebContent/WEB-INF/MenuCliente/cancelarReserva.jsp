@@ -124,7 +124,11 @@
                 	</tbody>	
      			</table>
      		</div>
+     		<div align="center">
+     		<a href="home" class="btn btn-danger btn">Volver atr&aacute;s</a>
+     		</div>
     	</div>
+    	
 	</div>	
 </div>
 
