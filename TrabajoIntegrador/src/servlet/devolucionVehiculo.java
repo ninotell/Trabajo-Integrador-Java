@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.LinkedList;
 
 import javax.servlet.ServletException;
@@ -28,28 +29,21 @@ public class devolucionVehiculo extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Login ctrlLogin = new Login();
-		Usuario u = (Usuario)request.getSession().getAttribute("usuario");
-		Reserva r = new Reserva();
-		r.setEstado("retirado");
-		LinkedList<Reserva> reservasRetiradas = ctrlLogin.listaReservasUsuario(r, u);
-		request.getSession().setAttribute("reservasRetiradas", reservasRetiradas);
-		System.out.println(u.toString());
-		System.out.println(reservasRetiradas.toString());
-		
-		request.getRequestDispatcher("WEB-INF/MenuCliente/devolucionVehiculo.jsp").forward(request, response);
-	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+    	PrintWriter out = response.getWriter();
+    	Login ctrlLogin = new Login();
+    	Reserva re = new Reserva();
+    	int idr = Integer.parseInt(request.getParameter("idreserva"));
+    			
+    	re.setIdReserva(idr);
+    	re.setEstado("Finalizada");
+    	ctrlLogin.retirarVehiculo(re);
+    	
+    	request.getRequestDispatcher("WEB-INF/MenuEmpleado/MenuEmpleado.jsp").forward(request, response);
 	}
 
 }

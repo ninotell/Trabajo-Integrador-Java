@@ -62,14 +62,10 @@ public class retirarVehiculo extends HttpServlet {
     
     	Login ctrlLogin = new Login();
     	int idr = Integer.parseInt(request.getParameter("idReserva"));
-    	Reserva re = new Reserva();
     	Reserva r = new Reserva();
-
-    	re.setIdReserva(idr);		
-    	r =  ctrlLogin.getReservaById(re);
-    	if(r==null) { 
-//    	request.getSession().setAttribute("reserva", r);
-//    	request.getRequestDispatcher("WEB-INF/MenuEmpleado/ReservaParaEntregar.jsp").forward(request, response);
+    	r.setIdReserva(idr);		
+    	r = ctrlLogin.getReservaById(r);
+    	if (r==null) { 
     		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/MenuEmpleado/EntregarVehiculo.jsp");
 			request.setAttribute("errorReserva", "true");
 			rd.forward(request, response);

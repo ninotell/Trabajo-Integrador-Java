@@ -16,7 +16,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="http://getbootstrap.com/favicon.ico">
+    <link rel="icon" href="https://static.thenounproject.com/png/1516448-200.png">
 	<title>Rent Smart</title>
 	
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
@@ -28,7 +28,7 @@
     <link href="style/bootstrap.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="style/asignarol.css" rel="stylesheet">
+    <link href="style/agregavehiculo.css" rel="stylesheet">
 	
 	<%
 		Usuario us = new Usuario();
@@ -37,55 +37,19 @@
     	Reserva re = (Reserva)session.getAttribute("reserva");
 		Usuario u = (Usuario)session.getAttribute("usuario");
 	%>
-	<title>Reserva a Entregar</title>
+	<title>Retiro/Devoluci&oacute;n</title>
 </head>
 
 <body>
 	
 
 
-<div class="container">	
-  <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
-  		<a class="navbar-brand" href="home">
-		<img class="rounded mx-auto d-block" src="https://i.pinimg.com/originals/cd/ba/7a/cdba7ad02665c51892c4860f6fc201af.png" alt="" width="50" height="50"></a>
-  		<button class="navbar-toggler" type="button" data-toggle="collapse" 
-          data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
-          aria-expanded="false" aria-label="Toggle navigation">
-    	 <span class="navbar-toggler-icon"></span>
-	    </button>
-
- 	 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    	<ul class="navbar-nav mr-auto">
-      		<li class="nav-item active ">
-        		<a class="nav-link" href="home">Home<span class="sr-only">(current)</span></a>
-	        </li>
-<!--       		<li class="nav-item"> -->
-<!--         		<a class="nav-link" href="reservasCliente">Mis reservas<span class="sr-only">(current)</span></a> -->
-<!--      		 </li> -->
-		</ul>
-	     <span class="dropdown">
-      			  <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
-          			ID: <%=u.getIdUsuario()%> - <%=u.getNombre()%> <%=u.getApellido()%>
-       			  </a>
-    		     <div class="dropdown-menu">
-          			<a class="dropdown-item" href="contacto">Contacto</a>
-          			<div class="dropdown-divider"></div>
-          			<a class="dropdown-item" href="Logout">Cerrar sesi&oacute;n</a>
-			     </div>
-	       </span>
-     </div>
-  </nav>
- </div>
- 
- 	<hr>
- 	<hr>
- 	<hr>
- 	<hr>
- 	<hr>
-
-<br>
 
 <div class="container">
+<div class="note">
+              <h1>Retiro</h1>
+        </div>
+        <div class="form-content">
 	<div class="row">
        	<h4 class="text-center">Reservas</h4>
            	<div class="col-12 col-sm-12 col-lg-12">
@@ -99,6 +63,7 @@
                        			<th>Fecha de devoluci&oacute;n</th>
                        			<th>Fecha de cancelaci&oacute;n</th>
                        			<th>Estado</th>
+                       			<th>Acci&oacute;n</th>
                    			</tr>
                    		</thead>
                    		<tbody>
@@ -113,17 +78,33 @@
                    				<td><%=re.getFechaCancelacion()%></td>
                    				<% }%>
                    				<td><%=re.getEstado()%></td>
+                   				<%if (re.getEstado().equals("Iniciada")){ %>
                    				<form name="f3" class="form-register" action="entregarVehiculo" method="post">
-                   					<td><button type="submit" class="btn btn-success" >Entregar Veh&iacute;culo</button>
+                   					<td><button type="submit" class="btn btn-success" >Marcar retiro</button>
                    						<input type="hidden" name="idreserva" value="<%=re.getIdReserva()%>" />
                    					</td>
                    				</form>
+                   				<% } else { if (re.getEstado().equals("Retirada")){ %>
+                   				<form name="f4" class="form-register" action="devolucionVehiculo" method="post">
+                   					<td><button type="submit" class="btn btn-warning" >Marcar devolucion</button>
+                   						<input type="hidden" name="idreserva" value="<%=re.getIdReserva()%>" />
+                   					</td>
+                   				</form>
+                   				<% } else { %>
+                   					<td><button type="submit" class="btn btn-warning" disabled="true">Sin accion</button></td>
+                   					<% }} %>
+                   				
                    			</tr>
                 	</tbody>	
      			</table>
      		</div>
     	</div>
+    	
+	</div>
+	<div align="center">
+		<a href="home" class="btn btn-lg btn-danger">Volver al men&uacute;</a>
 	</div>	
+	</div>
 </div>
 
 	

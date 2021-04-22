@@ -12,7 +12,7 @@
 <link rel="icon"
 	href="https://static.thenounproject.com/png/1516448-200.png">
 
-<title>Rent Smart</title>
+<title>Buscar reserva</title>
 <!-- Bootstrap core CSS -->
 <link href="style/bootstrap.css" rel="stylesheet">
 
@@ -27,7 +27,7 @@
 	<form name="f1" class="form-new" action="retirarVehiculo" method="post">
 		<div class="container">
 			<div class="note">
-				<h1>Entregar Veh&iacute;culo</h1>
+				<h1>B&uacute;squeda de reserva</h1>
 			</div>
 			<div class="form-newvehiculo">
 				<div class="form-content">
@@ -44,14 +44,15 @@
 
 
 					</div>
-				</div>
-				<div class="botones" align="center">
+					<div class="botones" align="center">
 					<a href="home" type="button" class="btn btn-lg btn-danger">Volver
 						al men&uacute; principal</a>
 					<button type="submit" class="btn btn-lg btn-success "
 						id="botonMostrar">Continuar</button>
 
 				</div>
+				</div>
+				
 			</div>
 	</form>
 
@@ -62,7 +63,7 @@
 		<%=request.getAttribute("errorReserva")%>
 		== true) {
 				alert("No hay reserva con ese numero");
-			} else {
-			}
+			} else {}
+		}
 </script>
 </html>
