@@ -340,8 +340,7 @@ public class DataReserva {
 	}
 	
 	public void emailCancela(Reserva r, Usuario u) {
-//		
-			
+		
 		try {
 		
 		Properties props = new Properties();
@@ -363,6 +362,7 @@ public class DataReserva {
 		try {
 			message.setFrom(new InternetAddress(correoRemitente,nombreRemitente));
 		} catch (UnsupportedEncodingException e) {
+			
 			e.printStackTrace();
 		}
 		message.addRecipient(Message.RecipientType.TO, new InternetAddress(correoReceptor));
