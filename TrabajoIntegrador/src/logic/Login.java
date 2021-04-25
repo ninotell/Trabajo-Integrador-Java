@@ -112,4 +112,7 @@ public class Login {
 	public void retirarVehiculo(Reserva r) {
 		dre.retirarVehiculo(r);	
 	}
+	public void emailCancelacion(Reserva r, Usuario u) {
+		dre.emailCancela(r, u);	
+	}
 }

@@ -46,16 +46,14 @@ public class cancelarReserva extends HttpServlet {
 	 */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	
-    	
-    	PrintWriter out = response.getWriter();
+    	Usuario u = (Usuario)request.getSession().getAttribute("usuario");
     	Login ctrlLogin = new Login();
     	Reserva re = new Reserva();
-    	int idr = Integer.parseInt(request.getParameter("idreserva"));
-    			
+    	int idr = Integer.parseInt(request.getParameter("idreserva"));		
     	re.setIdReserva(idr);
     	re.setEstado("Cancelada");
     	ctrlLogin.cancelarReserva(re);
-    	
+    	ctrlLogin.emailCancelacion(re, u);
     	request.getRequestDispatcher("WEB-INF/MenuCliente/MenuCliente.jsp").forward(request, response);
     	
     	
