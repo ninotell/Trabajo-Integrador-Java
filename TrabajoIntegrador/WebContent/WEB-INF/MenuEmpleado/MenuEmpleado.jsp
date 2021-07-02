@@ -48,10 +48,10 @@
 	</button>
  		<div class="collapse navbar-collapse" id="navbarSupportedContent">
     		<ul class="navbar-nav mr-auto">
-      			<li class="nav-item  ">
+      			<li class="nav-item active">
         			<a class="nav-link" href="home">Home<span class="sr-only"></span></a>
 	        	</li>
-      			<li class="nav-item active">
+      			<li class="nav-item">
 	        		<a class="nav-link" href="listavehiculos">Vehiculos</a>
 	        	</li>
 	        	<li class="nav-item">

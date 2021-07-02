@@ -353,7 +353,7 @@ public class DataReserva {
 		
 		String correoRemitente = "rentsmart.alquileautos@gmail.com";
 		String passwordRemitente = "BlancoTell00";
-		String correoReceptor = "sam96.sb73@gmail.com";
+		String correoReceptor = u.getEmail();
 		String asunto = "ESTADO DE LA RESERVA";
 		String mensaje = "Su reserva fue cancelada con exito.";
 		String nombreRemitente ="Rent Smart";
