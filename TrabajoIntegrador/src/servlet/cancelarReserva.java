@@ -19,7 +19,7 @@ import logic.Login;
 /**
  * Servlet implementation class cancelarReserva
  */
-@WebServlet("/cancelarReserva")
+@WebServlet("/cancelaReserva")
 public class cancelarReserva extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -36,16 +36,13 @@ public class cancelarReserva extends HttpServlet {
 	 *      response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Usuario u = (Usuario) request.getSession().getAttribute("usuario");
-		Login ctrlLogin = new Login();
-		try {
+		
+			Usuario u = (Usuario) request.getSession().getAttribute("usuario");
+			Login ctrlLogin = new Login();
 			LinkedList<Reserva> reservasUsuario = ctrlLogin.listaReservasUsuario(u);
 			request.getSession().setAttribute("reservasUsuario", reservasUsuario);
 			request.getRequestDispatcher("WEB-INF/MenuCliente/cancelarReserva.jsp").forward(request, response);
-		} catch (java.lang.NullPointerException e) {
-			e.printStackTrace();
-			request.getRequestDispatcher("index.html").forward(request, response);
-		}
+		
 	}
 
 	/**

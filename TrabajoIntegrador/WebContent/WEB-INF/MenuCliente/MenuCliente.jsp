@@ -98,7 +98,7 @@ LinkedList<Categoria> listaCategorias = (LinkedList<Categoria>) session.getAttri
 			<div class="col-auto p-5  text-center">
 				<a href="nuevaReserva" class="btn btn-success btn-block">Realizar reserva</a>
 				<br>
-				<a href="cancelarReserva" class="btn btn-danger btn-block">Cancelar reserva</a>
+				<a href="cancelaReserva" class="btn btn-danger btn-block">Cancelar reserva</a>
 				<br>
 				<a href="changePassword" class="btn btn-outline-primary btn-block">Cambiar contraseña</a>
 			</div>
