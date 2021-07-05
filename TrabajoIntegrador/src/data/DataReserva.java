@@ -358,9 +358,20 @@ public class DataReserva {
 			String correoRemitente = "rentsmart.alquileautos@gmail.com";
 			String passwordRemitente = "BlancoTell00";
 			String correoReceptor = u.getEmail();
-			String asunto = "CANCELACION RESERVA";
-			String mensaje = ("<h1>Reserva cancelada con éxito</h1> " + "<h2> ID de reserva: " + r.getIdReserva()
-					+ ".</h2>");
+			String asunto = "CONFIRMACION RESERVA";
+			String mensaje = ("<h1>¡Felicitaciones ya tenes tu reserva hecha!</h1>"
+					+ "<div>"
+					+ "<div style=\"border-radius:10px 10px 10px 10px;border:0px solid #000000;margin-top:5p;margin-bottom:5px;padding:10px 10px 5px 10px;font-weight:normal;font-size:12px;color:#ffffff;background-color:#414141\">"
+					+ "<div style=\"font-size:16px;margin-bottom:10px\"> Reserva numero: " + r.getIdReserva() + " por FALTA PRECIO </div>"
+					+ "<p style=\"color:inherit;font-weight:normal\"> Responsable de reseva: " + u.getNombre() + " " + u.getApellido() + ".</p>"
+					+ "<p style=\"color:inherit;font-weight:normal\"> DNI o CUIT: " + u.getDocumento().getNro() + ".</p>"
+					+ "</div>"
+					+ "<div>"
+					+ "<div style=\"border-radius:10px 10px 10px 10px;border:0px solid #000000;margin-top:5p;margin-bottom:5px;padding:10px 10px 5px 10px;font-weight:normal;font-size:12px;color:#ffffff;background-color:#36783c\">"
+					+ "<div style=\"font-size:16px;margin-bottom:10px\"> DETALLES DE RESERVA </div>"
+					+ "<p style=\"color:inherit;font-weight:bold\">" + " " + u.getApellido() + ".</p>"
+					+ "<p style=\"color:inherit;font-weight:normal\"> DNI o CUIT: " + u.getDocumento().getNro() + ".</p>"
+					+ "</div>");
 			String nombreRemitente = "Rent Smart";
 
 			MimeMessage message = new MimeMessage(session);
