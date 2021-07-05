@@ -78,9 +78,7 @@
 		<div class="col-auto p-5  text-center">
 			<a href="agregavehiculo" class="btn btn-primary btn-block">Agregar vehiculo</a>
 			<br>
-			<a href="retirarVehiculo" class="btn btn-primary btn-block">Retiro de auto</a>
-			<br>
-			<a href="#"class="btn btn-primary btn-block">Devoluci&oacute;n de auto</a>
+			<a href="retirarVehiculo" class="btn btn-primary btn-block">Retiro/Devoluci&oacute;n</a>
 			<br>
 			<a href="changePassword" class="btn btn-warning btn-block">Cambiar contraseña</a>
 		</div>		

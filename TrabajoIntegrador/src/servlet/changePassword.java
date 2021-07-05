@@ -34,7 +34,14 @@ public class changePassword extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		Usuario us = (Usuario)request.getSession().getAttribute("usuario");
+		if (us!=null) {
 		request.getRequestDispatcher("WEB-INF/passwordChange.jsp").forward(request, response);
+		} else {
+			RequestDispatcher rd = request.getRequestDispatcher("index.html");
+			rd.forward(request, response);
+		}
+		
 	}
 
 	/**

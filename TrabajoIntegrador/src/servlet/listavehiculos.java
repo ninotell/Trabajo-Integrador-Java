@@ -40,7 +40,8 @@ public class listavehiculos extends HttpServlet {
 		r.setIdRol(1);
 		rr.setIdRol(2);
 		request.setAttribute("errormsg", "");
-	try {	if (us.hasRol(r)) {
+	try {	
+		if (us.hasRol(r)) {
 			request.getRequestDispatcher("WEB-INF/MenuEmpleado/ListaVehiculos.jsp").forward(request, response);
 		}
 		else { if (us.hasRol(rr)) {
