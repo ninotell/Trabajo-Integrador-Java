@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
+import entities.Reserva;
 import entities.Vehiculo;
 
 public class DataVehiculo {
@@ -210,6 +211,46 @@ public class DataVehiculo {
 		}
 		
 	}
+	
+	public Vehiculo getVehiculoByReserva(Reserva rToSearch) {
+		Vehiculo v=null;
+		PreparedStatement stmt=null;
+		ResultSet rs=null;
+		try {
+			stmt=DbConnector.getInstancia().getConn().prepareStatement(
+					"SELECT v.idVehiculo, v.marca, v.patente, v.modelo, v.año, v.transmision\r\n"
+					+ "FROM reserva r\r\n"
+					+ "inner join reserva_usuario_vehiculo ruv on r.idReserva = ruv.id_reserva\r\n"
+					+ "inner join vehiculo v on ruv.id_vehiculo = v.idVehiculo\r\n"
+					+ "where r.idReserva = ?"
+					);
+			stmt.setInt(1, rToSearch.getIdReserva());
+			rs=stmt.executeQuery();
+			if(rs!=null && rs.next()) {
+				v=new Vehiculo();
+				v.setIdVehiculo(rs.getInt("idVehiculo"));
+				v.setPatente(rs.getString("patente"));
+				v.setMarca(rs.getString("marca"));
+				v.setModelo(rs.getString("modelo"));
+				v.setAnio(rs.getInt("año"));
+				v.setTransmision(rs.getString("transmision"));
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs!=null) {rs.close();}
+				if(stmt!=null) {stmt.close();}
+				DbConnector.getInstancia().releaseConn();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return v;
+	}
+	
 	
 			
 	

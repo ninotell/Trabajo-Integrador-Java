@@ -4,7 +4,9 @@ import java.io.UnsupportedEncodingException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.util.LinkedList;
 import java.util.Properties;
 import java.util.logging.Level;
@@ -36,6 +38,7 @@ import entities.Categoria;
 import entities.Reserva;
 import entities.Usuario;
 import entities.Vehiculo;
+import logic.Login;
 
 public class DataReserva {
 
@@ -76,6 +79,8 @@ public class DataReserva {
 
 		return r;
 	}
+	
+	
 
 	public LinkedList<Reserva> getReservaByUser(Usuario u) {
 		Reserva r = null;
@@ -344,9 +349,32 @@ public class DataReserva {
 	}
 	
 	public void emailConfirma(Reserva r, Usuario u) {
-
+		Login ctrlLogin = new Login();
+		Vehiculo v = new Vehiculo();
+		Categoria c = new Categoria();
+		v = ctrlLogin.getVehiculoByReserva(r);
+		c = ctrlLogin.getCategoria(v);
+		SimpleDateFormat myFormat = new SimpleDateFormat("dd/MM/yyyy");
+		String fechadesde = r.getFechaRetiro().toString();
+		String fechahasta = r.getFechaDevolucion().toString();
+		Double precio;
+		Date date1 = new Date();
+		Date date2 = new Date();
 		try {
-
+			date1 = myFormat.parse(fechadesde);
+			date2 = myFormat.parse(fechahasta);
+		} catch (ParseException e1) {
+			e1.printStackTrace();
+		}
+		long diff = date2.getTime() - date1.getTime();
+		int dias = Math.round((diff / (1000 * 60 * 60 * 24)));
+		precio = c.getPrecioxDia() * dias;
+		if (dias > 20) {
+			precio = precio * 0.85;
+		} 
+		
+		try {
+			
 			Properties props = new Properties();
 			props.setProperty("mail.smtp.host", "smtp.gmail.com");
 			props.setProperty("mail.smtp.starttls.enable", "true");
@@ -354,6 +382,7 @@ public class DataReserva {
 			props.setProperty("mail.smtp.auth", "true");
 
 			Session session = Session.getDefaultInstance(props);
+			
 
 			String correoRemitente = "rentsmart.alquileautos@gmail.com";
 			String passwordRemitente = "BlancoTell00";
@@ -362,15 +391,15 @@ public class DataReserva {
 			String mensaje = ("<h1>¡Felicitaciones ya tenes tu reserva hecha!</h1>"
 					+ "<div>"
 					+ "<div style=\"border-radius:10px 10px 10px 10px;border:0px solid #000000;margin-top:5p;margin-bottom:5px;padding:10px 10px 5px 10px;font-weight:normal;font-size:12px;color:#ffffff;background-color:#414141\">"
-					+ "<div style=\"font-size:16px;margin-bottom:10px\"> Reserva numero: " + r.getIdReserva() + " por FALTA PRECIO </div>"
+					+ "<div style=\"font-size:16px;margin-bottom:10px\"> Reserva numero: " + r.getIdReserva() + " por " + precio + "</div>"
 					+ "<p style=\"color:inherit;font-weight:normal\"> Responsable de reseva: " + u.getNombre() + " " + u.getApellido() + ".</p>"
 					+ "<p style=\"color:inherit;font-weight:normal\"> DNI o CUIT: " + u.getDocumento().getNro() + ".</p>"
 					+ "</div>"
 					+ "<div>"
 					+ "<div style=\"border-radius:10px 10px 10px 10px;border:0px solid #000000;margin-top:5p;margin-bottom:5px;padding:10px 10px 5px 10px;font-weight:normal;font-size:12px;color:#ffffff;background-color:#36783c\">"
 					+ "<div style=\"font-size:16px;margin-bottom:10px\"> DETALLES DE RESERVA </div>"
-					+ "<p style=\"color:inherit;font-weight:bold\">" + " " + u.getApellido() + ".</p>"
-					+ "<p style=\"color:inherit;font-weight:normal\"> DNI o CUIT: " + u.getDocumento().getNro() + ".</p>"
+					+ "<p style=\"color:inherit;font-weight:bold\">" + v.getMarca() + " " + v.getModelo() + " modelo "  + v.getAnio() + " patente: " + v.getPatente() + " con "  + v.getKm() + "km</p>"
+					+ "<p style=\"color:inherit;font-weight:normal\">Fecha de retiro: " + r.getFechaRetiro() + "   -    Fecha de devolución: " + r.getFechaDevolucion() + ".</p>"
 					+ "</div>");
 			String nombreRemitente = "Rent Smart";
 

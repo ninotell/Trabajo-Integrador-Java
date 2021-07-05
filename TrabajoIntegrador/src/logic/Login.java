@@ -119,4 +119,10 @@ public class Login {
 	public void emailConfirmacion(Reserva r, Usuario u) {
 		dre.emailConfirma(r, u);	
 	}
+	public Categoria getCategoria(Vehiculo v) {
+		return dc.getCategoria(v);
+	}
+	public Vehiculo getVehiculoByReserva(Reserva r) {
+		return dv.getVehiculoByReserva(r);
+	}
 }
