@@ -13,7 +13,8 @@
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 <meta name="description" content="">
 <meta name="author" content="">
-<link rel="icon" href="https://static.thenounproject.com/png/1516448-200.png">
+<link rel="icon"
+	href="https://static.thenounproject.com/png/1516448-200.png">
 
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
@@ -39,7 +40,7 @@
 <link href="style/MenuCliente.css" rel="stylesheet">
 
 <%
-	Usuario u = (Usuario) session.getAttribute("usuario");
+Usuario u = (Usuario) session.getAttribute("usuario");
 LinkedList<Categoria> listaCategorias = (LinkedList<Categoria>) session.getAttribute("listaCategorias");
 %>
 
@@ -95,15 +96,11 @@ LinkedList<Categoria> listaCategorias = (LinkedList<Categoria>) session.getAttri
 	<div class="container-botones">
 		<div class="m-0 col justify-content-center">
 			<div class="col-auto p-5  text-center">
-				<a href="nuevaReserva" class="btn btn-success btn-block">Realizar
-					reserva</a> <br> <a href="cancelarReserva"
-					class="btn btn-danger btn-block">Cancelar reserva</a> <br>
-				<!-- 				<a href="retirarVehiculo" class="btn btn-outline-primary btn-block">Retiro de veh&iacute;culo</a> -->
-				<!-- 				<br> -->
-				<!-- 				<a href="devolucionVehiculo" class="btn btn-outline-primary btn-block">Devoluci&oacute;n de veh&iacute;culo</a> -->
-				<!-- 				<br> -->
-				<a href="changePassword" class="btn btn-outline-primary btn-block">Cambiar
-					contraseña</a>
+				<a href="nuevaReserva" class="btn btn-success btn-block">Realizar reserva</a>
+				<br>
+				<a href="cancelarReserva" class="btn btn-danger btn-block">Cancelar reserva</a>
+				<br>
+				<a href="changePassword" class="btn btn-outline-primary btn-block">Cambiar contraseña</a>
 			</div>
 		</div>
 	</div>
@@ -121,7 +118,7 @@ LinkedList<Categoria> listaCategorias = (LinkedList<Categoria>) session.getAttri
 					<div class="card-body">
 						<h5 class="card-title text-muted text-uppercase text-center">Chico</h5>
 						<%
-							Categoria c1 = listaCategorias.get(0);
+						Categoria c1 = listaCategorias.get(0);
 						%>
 						<h6 class="card-price text-center">
 							$<%=Math.round(c1.getPrecioxDia())%><span class="period">/d&iacute;a</span>
@@ -148,7 +145,7 @@ LinkedList<Categoria> listaCategorias = (LinkedList<Categoria>) session.getAttri
 					<div class="card-body">
 						<h5 class="card-title text-muted text-uppercase text-center">Mediano</h5>
 						<%
-							Categoria c2 = listaCategorias.get(1);
+						Categoria c2 = listaCategorias.get(1);
 						%>
 						<h6 class="card-price text-center">
 							$<%=Math.round(c2.getPrecioxDia())%><span class="period">/d&iacute;a</span>
@@ -173,7 +170,7 @@ LinkedList<Categoria> listaCategorias = (LinkedList<Categoria>) session.getAttri
 					<div class="card-body">
 						<h5 class="card-title text-muted text-uppercase text-center">Grande</h5>
 						<%
-							Categoria c3 = listaCategorias.get(2);
+						Categoria c3 = listaCategorias.get(2);
 						%>
 						<h6 class="card-price text-center">
 							$<%=Math.round(c3.getPrecioxDia())%><span class="period">/d&iacute;a</span>

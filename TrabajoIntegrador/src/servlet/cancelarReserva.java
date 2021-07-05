@@ -35,15 +35,15 @@ public class cancelarReserva extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-		throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Usuario u = (Usuario) request.getSession().getAttribute("usuario");
 		Login ctrlLogin = new Login();
 		try {
 			LinkedList<Reserva> reservasUsuario = ctrlLogin.listaReservasUsuario(u);
 			request.getSession().setAttribute("reservasUsuario", reservasUsuario);
 			request.getRequestDispatcher("WEB-INF/MenuCliente/cancelarReserva.jsp").forward(request, response);
-		} catch (NullPointerException e) {
+		} catch (java.lang.NullPointerException e) {
+			e.printStackTrace();
 			request.getRequestDispatcher("index.html").forward(request, response);
 		}
 	}
@@ -52,8 +52,7 @@ public class cancelarReserva extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)	throws ServletException, IOException {
 
 		Usuario u = (Usuario) request.getSession().getAttribute("usuario");
 		Login ctrlLogin = new Login();

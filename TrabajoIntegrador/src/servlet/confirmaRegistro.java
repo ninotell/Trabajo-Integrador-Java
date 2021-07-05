@@ -67,7 +67,6 @@ public class confirmaRegistro extends HttpServlet {
 		u.setDireccion(direccion);
 		u.setEmail(email);
 		u.setPassword(password);
-		System.out.println(u.toString());
 		
 		
 		Rol r = new Rol();
