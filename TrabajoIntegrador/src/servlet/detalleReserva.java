@@ -1,6 +1,9 @@
 package servlet;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -35,6 +38,7 @@ public class detalleReserva extends HttpServlet {
 		Vehiculo v = new Vehiculo();
 		Reserva r = new Reserva();
 		Categoria c = new Categoria();
+	try{
 		int idr = Integer.parseInt(request.getParameter("idreserva"));
 		r.setIdReserva(idr);
 		r = ctrlLogin.getReservaById(r);
@@ -44,7 +48,9 @@ public class detalleReserva extends HttpServlet {
 		request.getSession().setAttribute("vehiculo", v);
 		request.getSession().setAttribute("reserva", r);
 		request.getRequestDispatcher("WEB-INF/MenuCliente/detalleReserva.jsp").forward(request, response);
-		
+	} catch (java.lang.NumberFormatException e) {
+		response.sendRedirect(request.getContextPath() + "/home");
+	}
 	}
 
 	/**
