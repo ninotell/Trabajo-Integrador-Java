@@ -354,7 +354,7 @@ public class DataReserva {
 		Vehiculo v = new Vehiculo();
 		Categoria c = new Categoria();
 		v = ctrlLogin.getVehiculoByReserva(r);
-		c = ctrlLogin.getCategoria(v);
+		c = ctrlLogin.getCategoriaVehiculo(v);
 		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");  
 		String fechadesde = dateFormat.format(r.getFechaRetiro()); 
 		String fechahasta = dateFormat.format(r.getFechaDevolucion()); 

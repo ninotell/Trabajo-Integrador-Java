@@ -110,12 +110,13 @@
                        			<th>Fecha de devoluci&oacute;n</th>
                        			<th>Fecha de cancelaci&oacute;n</th>
                        			<th>Estado</th>
+                       			<th></th>
                    			</tr>
                    		</thead>
                    		<tbody>
                     		<% for (Reserva r : reservasUsuario) { %>
                    			<tr>
-                   				<td class="idvehiculo"><%=r.getIdReserva()%></td>
+                   				<td><%=r.getIdReserva()%></td>
                    				<td><%=r.getFechaReserva()%></td>
                    				<td><%=r.getFechaRetiro()%></td>
                    				<td><%=r.getFechaDevolucion()%></td>
@@ -125,6 +126,11 @@
                    				<td><%=r.getFechaCancelacion()%></td>
                    				<% }%>
                    				<td><%=r.getEstado()%></td>
+                   				<form action="detalleReserva" method="post">
+                   					<td><button type="submit" class="btn btn-info btn-sm" >Ver detalle</button>
+                   						<input type="hidden" name="idreserva" value="<%=r.getIdReserva()%>" />
+                   					</td>
+                   				</form>
                    			</tr>
                     		<% } %>
                 	</tbody>	
