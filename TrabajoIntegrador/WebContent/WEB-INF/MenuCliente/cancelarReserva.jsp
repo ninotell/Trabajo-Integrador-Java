@@ -114,7 +114,7 @@
                    				<td><%=r.getFechaCancelacion()%></td>
                    				<% }%>
                    				<td><%=r.getEstado()%></td>
-                   				<form name="f3" class="form-register" action="cancelarReserva" method="post">
+                   				<form name="f3" class="form-register" action="cancelaReserva" method="post">
                    					<td><button type="submit" class="btn btn-danger" >Cancelar</button>
                    						<input type="hidden" name="idreserva" value="<%=r.getIdReserva()%>" />
                    					</td>

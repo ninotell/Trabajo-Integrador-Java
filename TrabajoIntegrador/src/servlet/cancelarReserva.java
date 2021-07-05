@@ -36,13 +36,16 @@ public class cancelarReserva extends HttpServlet {
 	 *      response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		try {
 			Usuario u = (Usuario) request.getSession().getAttribute("usuario");
 			Login ctrlLogin = new Login();
 			LinkedList<Reserva> reservasUsuario = ctrlLogin.listaReservasUsuario(u);
 			request.getSession().setAttribute("reservasUsuario", reservasUsuario);
 			request.getRequestDispatcher("WEB-INF/MenuCliente/cancelarReserva.jsp").forward(request, response);
-		
+		} catch (java.lang.NullPointerException e) {
+            RequestDispatcher rd=request.getRequestDispatcher("index.html");
+            rd.include(request,response);
+		}
 	}
 
 	/**
