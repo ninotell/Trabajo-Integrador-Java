@@ -115,4 +115,8 @@ public class Login {
 	public void emailCancelacion(Reserva r, Usuario u) {
 		dre.emailCancela(r, u);	
 	}
+	
+	public void emailConfirmacion(Reserva r, Usuario u) {
+		dre.emailConfirma(r, u);	
+	}
 }

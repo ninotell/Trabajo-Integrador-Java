@@ -342,4 +342,52 @@ public class DataReserva {
 		}
 
 	}
+	
+	public void emailConfirma(Reserva r, Usuario u) {
+
+		try {
+
+			Properties props = new Properties();
+			props.setProperty("mail.smtp.host", "smtp.gmail.com");
+			props.setProperty("mail.smtp.starttls.enable", "true");
+			props.setProperty("mail.smtp.port", "587");
+			props.setProperty("mail.smtp.auth", "true");
+
+			Session session = Session.getDefaultInstance(props);
+
+			String correoRemitente = "rentsmart.alquileautos@gmail.com";
+			String passwordRemitente = "BlancoTell00";
+			String correoReceptor = u.getEmail();
+			String asunto = "CANCELACION RESERVA";
+			String mensaje = ("<h1>Reserva cancelada con éxito</h1> " + "<h2> ID de reserva: " + r.getIdReserva()
+					+ ".</h2>");
+			String nombreRemitente = "Rent Smart";
+
+			MimeMessage message = new MimeMessage(session);
+			try {
+				message.setFrom(new InternetAddress(correoRemitente, nombreRemitente));
+			} catch (UnsupportedEncodingException e) {
+
+				e.printStackTrace();
+			}
+			message.addRecipient(Message.RecipientType.TO, new InternetAddress(correoReceptor));
+			message.setSubject(asunto);
+			message.setContent(mensaje, "text/html");
+
+			Transport t = session.getTransport("smtp");
+			t.connect(correoRemitente, passwordRemitente);
+			t.sendMessage(message, message.getRecipients(Message.RecipientType.TO));
+			t.close();
+
+		} catch (AddressException e) {
+
+			Logger.getLogger(DataReserva.class.getName()).log(Level.SEVERE, null, e);
+
+		} catch (MessagingException e) {
+
+			Logger.getLogger(DataReserva.class.getName()).log(Level.SEVERE, null, e);
+
+		}
+
+	}
 }

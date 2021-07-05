@@ -44,14 +44,18 @@ public class Agregavehiculo extends HttpServlet {
 		Rol rr = new Rol();
 		r.setIdRol(1);
 		rr.setIdRol(2);
-		if (us.hasRol(r)) {
+		try { if (us.hasRol(r)) {
 			request.getRequestDispatcher("WEB-INF/MenuEmpleado/NewVehiculo.jsp").forward(request, response);
 		}
 		else { if (us.hasRol(rr)) {
 			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/MenuCliente/MenuCliente.jsp");
 			request.setAttribute("errormsg", "true");
-			rd.forward(request, response);}}	
+			rd.forward(request, response);}}} 
 		
+		catch(java.lang.NullPointerException e){
+				RequestDispatcher rd = request.getRequestDispatcher("index.html");
+				rd.forward(request, response);
+			}
 
 	}
 

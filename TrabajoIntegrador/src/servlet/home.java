@@ -40,7 +40,6 @@ public class home extends HttpServlet {
 		
 		
 		Login ctrlLogin = new Login();
-		PrintWriter out = response.getWriter();
 		LinkedList<Categoria> categorias= new LinkedList<>();
 		categorias = ctrlLogin.listaCategorias();
 		try {
@@ -49,17 +48,7 @@ public class home extends HttpServlet {
 			r.setIdRol(2);
 			r = dr.getById(r);
 			Usuario u = (Usuario)request.getSession().getAttribute("usuario");
-						
-			if (u==null) {
-				response.setContentType("text/html");
-				out.println("<script>");
-				out.println("alert(\"Inicie sesión, por favor\")");
-				out.println("</script>");
-	            RequestDispatcher rd=request.getRequestDispatcher("index.html");
-	            rd.include(request,response);
-			}
-			else {
-				
+							
 			if (u.hasRol(r)) {
 				request.getSession().setAttribute("usuario", u);
 				request.getSession().setAttribute("listaCategorias", categorias);
@@ -71,10 +60,11 @@ public class home extends HttpServlet {
 				request.getSession().setAttribute("usuario", u);	
 				request.getRequestDispatcher("WEB-INF/MenuEmpleado/MenuEmpleado.jsp").forward(request, response);
 				}
-			}
+			
 			}
 			catch (NullPointerException n2) {
-			n2.printStackTrace();	
+		        RequestDispatcher rd=request.getRequestDispatcher("index.html");
+	            rd.include(request,response);	
 			}
 	}
 

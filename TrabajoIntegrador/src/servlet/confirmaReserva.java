@@ -72,6 +72,7 @@ public class confirmaReserva extends HttpServlet {
 				res.setFechaRetiro(fechadesde);
 				res.setFechaDevolucion(fechahasta);
 				ctrlLogin.newReserva(res, v, u);
+		    	ctrlLogin.emailConfirmacion(res, u);
 				RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/MenuCliente/MenuCliente.jsp");
 				request.setAttribute("reservaOk", "true");
 				rd.forward(request, response);	

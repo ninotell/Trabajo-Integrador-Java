@@ -3,6 +3,7 @@ package servlet;
 import java.io.IOException;
 import java.util.LinkedList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import entities.Reserva;
+import entities.Rol;
 import entities.Usuario;
 import logic.Login;
 
@@ -34,10 +36,14 @@ public class reservasCliente extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Usuario u = (Usuario)request.getSession().getAttribute("usuario");
 		Login ctrlLogin = new Login();
-		LinkedList<Reserva> reservasUsuario = ctrlLogin.listaReservasUsuario(u);
+		try {LinkedList<Reserva> reservasUsuario = ctrlLogin.listaReservasUsuario(u);
 		request.getSession().setAttribute("reservasUsuario", reservasUsuario);
 //		System.out.println(reservasUsuario.toString());
-		request.getRequestDispatcher("WEB-INF/MenuCliente/reservasCliente.jsp").forward(request, response);
+		request.getRequestDispatcher("WEB-INF/MenuCliente/reservasCliente.jsp").forward(request, response);}
+		catch(java.lang.NullPointerException e){
+			RequestDispatcher rd = request.getRequestDispatcher("index.html");
+			rd.forward(request, response);
+		}
 	}
 
 	/**
