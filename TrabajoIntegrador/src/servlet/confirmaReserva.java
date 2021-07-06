@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedList;
@@ -56,7 +57,7 @@ public class confirmaReserva extends HttpServlet {
 		Vehiculo v = (Vehiculo)request.getSession().getAttribute("vehiculo");
 		Usuario u = (Usuario)request.getSession().getAttribute("usuario");
 		Reserva res = new Reserva();
-		Integer sumres = 0;
+		Integer sumres = 0; //Cantidad de reservas iniciadas (sumres) no puede ser mayor a 1
 		Login ctrlLogin = new Login();
 		LinkedList<Reserva> reservas = ctrlLogin.listaReservasUsuario(u);
 		for (Reserva r : reservas) {
@@ -75,10 +76,12 @@ public class confirmaReserva extends HttpServlet {
 		    	ctrlLogin.emailConfirmacion(res, u);
 				RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/MenuCliente/MenuCliente.jsp");
 				request.setAttribute("reservaOk", "true");
-				rd.forward(request, response);	
-			}catch (Exception e) {
-				e.printStackTrace();
+				rd.forward(request, response);
+			}catch (ParseException p) {
+				//No puede fallar porque la fecha ya viene validada del paso anterior
+				p.printStackTrace();
 			}
+			
 		} else {
 			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/MenuCliente/MenuCliente.jsp");
 			request.setAttribute("errorReserva", "true");

@@ -33,7 +33,7 @@ public class DataCategoria {
 				DbConnector.getInstancia().releaseConn();
 			} catch (SQLException e) {
 				e.printStackTrace();
-			}
+				}
 		}
 		
 		return c;

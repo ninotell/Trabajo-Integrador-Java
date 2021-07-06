@@ -29,14 +29,12 @@ public class Agregavehiculo extends HttpServlet {
      */
     public Agregavehiculo() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		PrintWriter out = response.getWriter();
 		Usuario us = (Usuario)request.getSession().getAttribute("usuario");
@@ -63,7 +61,6 @@ public class Agregavehiculo extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		PrintWriter out = response.getWriter();
 		Vehiculo v = new Vehiculo();
 		Categoria c = new Categoria();
 		Login ctrlLogin = new Login ();
