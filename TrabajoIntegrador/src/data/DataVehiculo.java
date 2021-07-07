@@ -1,9 +1,15 @@
 package data;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
+
+import javax.servlet.http.HttpServletResponse;
 
 import entities.Reserva;
 import entities.Vehiculo;
@@ -61,7 +67,7 @@ public class DataVehiculo {
 		ResultSet rs=null;
 		try {
 			stmt=DbConnector.getInstancia().getConn().prepareStatement(
-					"select idVehiculo,patente,marca,modelo,año,transmision,km from vehiculo where idVehiculo=?"
+					"select idVehiculo,patente,marca,modelo,año,transmision,km,foto from vehiculo where idVehiculo=?"
 					);
 			stmt.setInt(1, vToSearch.getIdVehiculo());
 			rs=stmt.executeQuery();
@@ -74,6 +80,7 @@ public class DataVehiculo {
 				v.setAnio(rs.getInt("año"));
 				v.setTransmision(rs.getString("transmision"));
 				v.setKm(rs.getDouble("km"));
+				v.setFoto(rs.getBinaryStream(3));
 
 			}
 		} catch (SQLException e) {
@@ -90,6 +97,20 @@ public class DataVehiculo {
 		
 		return v;
 	}	
+	
+	public void listaImagen(int id, HttpServletResponse response) {
+		String sql = "select * from Vehiculo where idVehiculo = "+id;
+		InputStream inputStream = null;
+		OutputStream outputStream = null;
+		BufferedInputStream bufferedInputStream = null;
+		BufferedOutputStream bufferedOutputStream = null; 
+		try {
+			DbConnector.getInstancia();
+			
+		} catch (Exception e) {
+
+		}
+	}
 	
 	
 	public void updateKm(Vehiculo v) {
@@ -127,8 +148,8 @@ public class DataVehiculo {
 		try {
 			stmt=DbConnector.getInstancia().getConn().
 					prepareStatement(
-							"insert into vehiculo (idVehiculo,patente,marca,modelo,año,transmision,km)"
-							+ " values(?,?,?,?,?,?,?)",
+							"insert into vehiculo (idVehiculo,patente,marca,modelo,año,transmision,km,foto)"
+							+ " values(?,?,?,?,?,?,?,?)",
 							PreparedStatement.RETURN_GENERATED_KEYS
 							);
 			stmt.setInt(1, v.getIdVehiculo());
@@ -138,6 +159,7 @@ public class DataVehiculo {
 			stmt.setInt(5, v.getAnio());
 			stmt.setString(6, v.getTransmision());
 			stmt.setDouble(7, v.getKm());
+			stmt.setBlob(8, v.getFoto());
 			stmt.executeUpdate();
 			
 			keyResultSet=stmt.getGeneratedKeys();

@@ -1,5 +1,6 @@
 package entities;
 
+import java.io.InputStream;
 import java.util.HashMap;
 
 public class Vehiculo {
@@ -10,6 +11,7 @@ public class Vehiculo {
 	private int anio;
 	private String transmision;
 	private Double km;
+	private InputStream foto;
 	private HashMap<Integer, Categoria> categoria;
 	
 	
@@ -71,6 +73,14 @@ public class Vehiculo {
 		this.km = km;
 	}
 	
+	public InputStream getFoto() {
+		return foto;
+	}
+
+	public void setFoto(InputStream foto) {
+		this.foto = foto;
+	}
+
 	public Vehiculo() {
 		this.categoria=new HashMap<>();
 	}

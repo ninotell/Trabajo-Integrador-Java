@@ -1,14 +1,17 @@
 package servlet;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 import entities.Categoria;
 import entities.Rol;
@@ -21,6 +24,7 @@ import logic.Login;
  * Servlet implementation class Signin
  */
 @WebServlet({ "/agregavehiculo", "/AgregaVehiculo", "/AGREGAVEHICULO"})
+@MultipartConfig
 public class Agregavehiculo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -71,6 +75,8 @@ public class Agregavehiculo extends HttpServlet {
 		String km = request.getParameter("km");
 		String año = request.getParameter("año");
 		String idCat = request.getParameter("categoria");
+		Part part = request.getPart("fotovehiculo");
+		InputStream foto = part.getInputStream();
 		
 		v.setPatente(patente);
 		v.setMarca(marca);
@@ -78,7 +84,8 @@ public class Agregavehiculo extends HttpServlet {
 		v.setAnio(Integer.parseInt(año));
 		v.setTransmision(transmision);
 		v.setKm(Double.parseDouble(km));
-		c.setIdCategoria(Integer.parseInt(idCat));		
+		c.setIdCategoria(Integer.parseInt(idCat));
+		v.setFoto(foto);
 		
 		ctrlLogin.newVehiculo(v, c);
 		
