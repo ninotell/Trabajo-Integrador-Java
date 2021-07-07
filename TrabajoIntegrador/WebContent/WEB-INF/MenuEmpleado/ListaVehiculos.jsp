@@ -105,8 +105,9 @@
                    		    	<th><a href="#" onclick="sortTable(2, 'str')">Marca</a></th>
                        			<th><a href="#" onclick="sortTable(3, 'str')">Modelo</a></th>
                        			<th><a href="#" onclick="sortTable(4, 'str')">Transmisión</a></th>
-                       			<th onclick="sortTable(5, 'int')">KM</th>
-                       			<th><a href="#" onclick="sortTable(6, 'int')">Año</a></th>
+                       			<th><a href="#" onclick="sortTable(5, 'int')">Año</a></th>
+                       			<th><a href="#">Foto</a></th>
+                       			<th onclick="sortTable(6, 'int')">KM</th>
                        			<th></th>
                        			<th></th>
                    			</tr>
@@ -119,9 +120,11 @@
                    				<td><%=v.getMarca()%></td>
                    				<td><%=v.getModelo()%></td>
                    				<td><%=v.getTransmision()%></td>
+                   				<td><%=v.getAnio()%></td>
+                   				<td><img src="ControladorImagenVehiculo?idv=<%=v.getIdVehiculo()%>"></td>
                    				<form name="f2" class="form-register" action="editavehiculo" method="post">
                    					<td><input type="number" class="form-control" placeholder="<%=v.getKm()%>" value="<%=v.getKm()%>" name="kms"  /></td>
-                   					<td><%=v.getAnio()%></td>
+                   					
                    				    <td><button type="submit" class="btn btn-primary">Actualizar km</button></td>
                    					<input type="hidden" name="idvehiculo" value="<%=v.getIdVehiculo()%>" />
                    				</form>

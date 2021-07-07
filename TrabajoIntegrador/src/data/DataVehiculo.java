@@ -99,16 +99,28 @@ public class DataVehiculo {
 	}	
 	
 	public void listaImagen(int id, HttpServletResponse response) {
-		String sql = "select * from Vehiculo where idVehiculo = "+id;
 		InputStream inputStream = null;
 		OutputStream outputStream = null;
 		BufferedInputStream bufferedInputStream = null;
 		BufferedOutputStream bufferedOutputStream = null; 
 		response.setContentType("image/*");
+		PreparedStatement stmt=null;
+		ResultSet rs=null;
 		try {
 			outputStream = response.getOutputStream();
-			DbConnector.getInstancia();
-			
+			stmt=DbConnector.getInstancia().getConn().prepareStatement(
+					"select foto from Vehiculo where idVehiculo = ?");
+			stmt.setInt(1, id);
+			rs=stmt.executeQuery();
+			if(rs!=null && rs.next()) {
+				inputStream = rs.getBinaryStream("foto");
+			}
+			bufferedInputStream = new BufferedInputStream(inputStream);
+			bufferedOutputStream = new BufferedOutputStream(outputStream);
+			int i = 0;
+			while ((i=bufferedInputStream.read())!=-1) {				
+				bufferedOutputStream.write(i);
+			}
 		} catch (Exception e) {
 
 		}
