@@ -37,7 +37,6 @@ public class imagenVehiculo extends HttpServlet {
 	 */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int idv = Integer.parseInt(request.getParameter("idv"));
-		DataVehiculo dv = new DataVehiculo();
 		PreparedStatement stmt=null;
 		ResultSet rs=null;
 		response.setContentType("image/jpeg");

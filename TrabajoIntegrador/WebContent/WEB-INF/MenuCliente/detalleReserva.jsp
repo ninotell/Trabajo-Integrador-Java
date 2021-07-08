@@ -82,6 +82,7 @@
 				<thead>
 					<tr>
 						<th>Vehiculo</th>
+						<th></th>
 						<th class="text-left">Días</th>
 						<th class="text-center">Precio/dia</th>
 						<th class="text-right">Total</th>
@@ -89,17 +90,21 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td class="col-md-9"><em><%=v.getMarca()%> <%=v.getModelo()%>
+						<td class=""><em><%=v.getMarca()%> <%=v.getModelo()%>
 								<%=v.getAnio()%></em>
 							<input name="idVehiculoReserva" type="hidden" value="<%=v.getIdVehiculo()%>"></td>
+							<td><img class="rounded float-left" src="imagenVehiculo?idv=<%=v.getIdVehiculo()%>" width="300"></td>
 							
-						<td class="col-md-1 text-left"><%=dias%></td>
-						<td class="col-md-1 text-center">$<%=Math.round(precioxdia)%></td>
-						<td class="col-md-1 text-right">$<%=Math.round(precioxdia * dias)%></td>
+							
+						<td class=" text-left"><%=dias%></td>
+						<td class=" text-center">$<%=Math.round(precioxdia)%></td>
+						<td class=" text-right">$<%=Math.round(precioxdia * dias)%></td>
 					</tr>
 					<tr>
 						<td> </td>
 						<td> </td>
+						<td> </td>
+						
 						<td class="text-left">
 							<p>
 								<strong>Subtotal: </strong>
@@ -120,6 +125,8 @@
 					<tr>
 						<td> </td>
 						<td> </td>
+						<td> </td>
+						
 						<td class="text-left"><h4>
 								<strong>Total: </strong>
 							</h4></td>

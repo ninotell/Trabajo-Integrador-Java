@@ -79,8 +79,8 @@
 								<th><a href="#" onclick="sortTable(0, 'str')">Marca</a></th>
 								<th><a href="#" onclick="sortTable(1, 'str')">Modelo</a></th>
 								<th><a href="#" onclick="sortTable(2, 'int')">Año</a></th>
-								<th><a href="#" onclick="sortTable(2, 'int')">Transmisi&oacute;n</a></th>
-								<th><a href="#">Foto</a></th>
+								<th><a href="#"></a></th>
+								
 
 							</tr>
 						</thead>
@@ -97,7 +97,7 @@
 									method="get">
 									<input type="hidden" name="idvehiculo"
 										value="<%=v.getIdVehiculo()%>" />
-									<td><button type="submit" class="btn btn-success">Reservar!</button></td>
+									<td><button type="submit" class="btn btn-success">Reservar ahora</button></td>
 
 								</form>
 							</tr>
