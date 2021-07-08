@@ -3,6 +3,8 @@ package entities;
 import java.io.InputStream;
 import java.util.HashMap;
 
+import com.mysql.cj.jdbc.Blob;
+
 public class Vehiculo {
 	private int idVehiculo;
 	private String patente;

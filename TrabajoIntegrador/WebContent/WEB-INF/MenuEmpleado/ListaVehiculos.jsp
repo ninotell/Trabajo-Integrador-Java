@@ -121,7 +121,7 @@
                    				<td><%=v.getModelo()%></td>
                    				<td><%=v.getTransmision()%></td>
                    				<td><%=v.getAnio()%></td>
-                   				<td><img src="ControladorImagenVehiculo?idv=<%=v.getIdVehiculo()%>"></td>
+                   				<td><img src="ControladorImagenVehiculo?idv=<%=v.getIdVehiculo()%>" width="150"></td>
                    				<form name="f2" class="form-register" action="editavehiculo" method="post">
                    					<td><input type="number" class="form-control" placeholder="<%=v.getKm()%>" value="<%=v.getKm()%>" name="kms"  /></td>
                    					

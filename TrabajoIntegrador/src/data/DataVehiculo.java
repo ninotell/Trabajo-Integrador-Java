@@ -4,12 +4,15 @@ import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.sql.Blob;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
 import javax.servlet.http.HttpServletResponse;
+
+
 
 import entities.Reserva;
 import entities.Vehiculo;
@@ -80,7 +83,6 @@ public class DataVehiculo {
 				v.setAnio(rs.getInt("año"));
 				v.setTransmision(rs.getString("transmision"));
 				v.setKm(rs.getDouble("km"));
-				v.setFoto(rs.getBinaryStream(3));
 
 			}
 		} catch (SQLException e) {
@@ -99,31 +101,33 @@ public class DataVehiculo {
 	}	
 	
 	public void listaImagen(int id, HttpServletResponse response) {
-		InputStream inputStream = null;
-		OutputStream outputStream = null;
-		BufferedInputStream bufferedInputStream = null;
-		BufferedOutputStream bufferedOutputStream = null; 
-		response.setContentType("image/*");
 		PreparedStatement stmt=null;
 		ResultSet rs=null;
+		byte[] imgData = null; 
 		try {
-			outputStream = response.getOutputStream();
 			stmt=DbConnector.getInstancia().getConn().prepareStatement(
-					"select foto from Vehiculo where idVehiculo = ?");
-			stmt.setInt(1, id);
-			rs=stmt.executeQuery();
-			if(rs!=null && rs.next()) {
-				inputStream = rs.getBinaryStream("foto");
-			}
-			bufferedInputStream = new BufferedInputStream(inputStream);
-			bufferedOutputStream = new BufferedOutputStream(outputStream);
-			int i = 0;
-			while ((i=bufferedInputStream.read())!=-1) {				
-				bufferedOutputStream.write(i);
-			}
-		} catch (Exception e) {
-
-		}
+					"select * from Vehiculo where idVehiculo=?"
+					);
+	        stmt.setInt(1, id);
+	        rs = stmt.executeQuery();
+	        if (rs.next()) {
+	           try {
+	        	   Blob blob = rs.getBlob("foto");
+	        	   imgData = blob.getBytes(1, (int) blob.length());
+	        	   response.setContentType("image/gif");
+	        	   OutputStream os = response.getOutputStream();
+	        	   os.write(imgData);
+	        	   os.flush();
+	        	   os.close();
+	           }catch (NullPointerException e) {
+	        	   System.out.println(rs.getInt("idVehiculo") + " sin imagen");
+	           }
+	        } 
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        
+	    }
+		
 	}
 	
 	
@@ -181,8 +185,8 @@ public class DataVehiculo {
                 v.setIdVehiculo(keyResultSet.getInt(1));
             }
 			
-		} catch (SQLException e) {
-            e.printStackTrace();
+		} catch (java.sql.SQLException e) {
+            e.printStackTrace(); //FALTA AGREGAR EXCEPCION DE PATENTE DUPLICADA
 		} finally {
             try {
                 if(keyResultSet!=null)keyResultSet.close();
