@@ -74,7 +74,7 @@
 							</div>
 							<div class="form-group">
 								<input id="inputFoto" name="fotovehiculo" type="file"
-									class="form-control" />
+									class="form-control" required=""/>
 							</div>
 
 

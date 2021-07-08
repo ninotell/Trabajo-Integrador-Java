@@ -2,6 +2,7 @@ package data;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
+import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.sql.Blob;
@@ -103,26 +104,27 @@ public class DataVehiculo {
 	public void listaImagen(int id, HttpServletResponse response) {
 		PreparedStatement stmt=null;
 		ResultSet rs=null;
-		byte[] imgData = null; 
+		response.setContentType("image/jpeg");
+		byte[] b = null;
 		try {
 			stmt=DbConnector.getInstancia().getConn().prepareStatement(
-					"select * from Vehiculo where idVehiculo=?"
+					"select foto from Vehiculo where idVehiculo=?"
 					);
 	        stmt.setInt(1, id);
 	        rs = stmt.executeQuery();
-	        if (rs.next()) {
-	           try {
-	        	   Blob blob = rs.getBlob("foto");
-	        	   imgData = blob.getBytes(1, (int) blob.length());
-	        	   response.setContentType("image/gif");
-	        	   OutputStream os = response.getOutputStream();
-	        	   os.write(imgData);
-	        	   os.flush();
-	        	   os.close();
-	           }catch (NullPointerException e) {
-	        	   System.out.println(rs.getInt("idVehiculo") + " sin imagen");
-	           }
-	        } 
+	        while (rs.next()) {
+	              b = rs.getBytes("foto");
+	        }
+	        	   InputStream ist = new ByteArrayInputStream(b);
+	        	   int tamano = ist.available();
+	        	   byte[] imgData = new byte[tamano];
+	        	   ist.read(imgData, 0, tamano);
+	        	   response.getOutputStream().write(imgData);
+	        	   ist.close();
+	        	   stmt.close();
+	        	   rs.close();
+
+	         
 	    } catch (Exception e) {
 	        e.printStackTrace();
 	        

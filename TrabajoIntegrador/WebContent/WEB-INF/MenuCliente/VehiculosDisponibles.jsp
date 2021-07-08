@@ -80,6 +80,7 @@
 								<th><a href="#" onclick="sortTable(1, 'str')">Modelo</a></th>
 								<th><a href="#" onclick="sortTable(2, 'int')">Año</a></th>
 								<th><a href="#" onclick="sortTable(2, 'int')">Transmisi&oacute;n</a></th>
+								<th><a href="#">Foto</a></th>
 
 							</tr>
 						</thead>
@@ -91,6 +92,7 @@
 								<td><%=v.getMarca()%></td>
 								<td><%=v.getModelo()%></td>
 								<td><%=v.getAnio()%></td>
+								<td><img class="rounded" src="imagenVehiculo?idv=<%=v.getIdVehiculo()%>" width="150"></td>
 								<form name="f2" class="form-reserva" action="confirmaReserva"
 									method="get">
 									<input type="hidden" name="idvehiculo"
