@@ -19,7 +19,8 @@
 <!-- Custom styles for this template -->
 <link href="style/agregavehiculo.css" rel="stylesheet">
 
-
+<script	src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js"></script>
+<script>UPLOADCARE_LOCALE = 'es';</script>
 
 </head>
 <body>
@@ -73,8 +74,7 @@
 									placeholder="Km *" required="" value="" />
 							</div>
 							<div class="form-group">
-								<input id="inputFoto" name="fotovehiculo" type="file"
-									class="form-control" required=""/>
+								<input type="hidden" role="uploadcare-uploader" data-public-key="892a2589bdaf7da24521" name="fotovehiculo" />
 							</div>
 
 

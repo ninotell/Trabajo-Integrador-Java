@@ -95,7 +95,7 @@
 						<td class=""><em><%=v.getMarca()%> <%=v.getModelo()%>
 								<%=v.getAnio()%></em>
 							<input name="idVehiculoReserva" type="hidden" value="<%=v.getIdVehiculo()%>"></td>
-							<td><img class="rounded float-left" src="imagenVehiculo?idv=<%=v.getIdVehiculo()%>" width="300"></td>
+							<td><img class="rounded float-left" src="<%=v.getFoto()%>" width="300"></td>
 							
 							
 						<td class=" text-left"><%=dias%></td>

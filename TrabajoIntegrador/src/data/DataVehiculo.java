@@ -29,7 +29,7 @@ public class DataVehiculo {
 		
 		try {
 			stmt= DbConnector.getInstancia().getConn().prepareStatement(
-			"select idVehiculo,patente,marca,modelo,año,transmision,km from vehiculo where año>?"
+			"select idVehiculo,patente,marca,modelo,año,transmision,km,foto from vehiculo where año>?"
 					);
 			stmt.setInt(1, ve.getAnio());
 			rs=stmt.executeQuery();			
@@ -43,6 +43,7 @@ public class DataVehiculo {
 					v.setAnio(rs.getInt("año"));
 					v.setTransmision(rs.getString("transmision"));
 					v.setKm(rs.getDouble("km"));
+					v.setFoto(rs.getString("foto"));
 					
 					vehiculos.add(v);
 				}
@@ -84,6 +85,7 @@ public class DataVehiculo {
 				v.setAnio(rs.getInt("año"));
 				v.setTransmision(rs.getString("transmision"));
 				v.setKm(rs.getDouble("km"));
+				v.setFoto(rs.getString("foto"));
 
 			}
 		} catch (SQLException e) {
@@ -100,37 +102,6 @@ public class DataVehiculo {
 		
 		return v;
 	}	
-	
-	public void listaImagen(int id, HttpServletResponse response) {
-		PreparedStatement stmt=null;
-		ResultSet rs=null;
-		response.setContentType("image/jpeg");
-		byte[] b = null;
-		try {
-			stmt=DbConnector.getInstancia().getConn().prepareStatement(
-					"select foto from Vehiculo where idVehiculo=?"
-					);
-	        stmt.setInt(1, id);
-	        rs = stmt.executeQuery();
-	        while (rs.next()) {
-	              b = rs.getBytes("foto");
-	        }
-	        	   InputStream ist = new ByteArrayInputStream(b);
-	        	   int tamano = ist.available();
-	        	   byte[] imgData = new byte[tamano];
-	        	   ist.read(imgData, 0, tamano);
-	        	   response.getOutputStream().write(imgData);
-	        	   ist.close();
-	        	   stmt.close();
-	        	   rs.close();
-
-	         
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	        
-	    }
-		
-	}
 	
 	
 	public void updateKm(Vehiculo v) {
@@ -179,7 +150,7 @@ public class DataVehiculo {
 			stmt.setInt(5, v.getAnio());
 			stmt.setString(6, v.getTransmision());
 			stmt.setDouble(7, v.getKm());
-			stmt.setBlob(8, v.getFoto());
+			stmt.setString(8, v.getFoto());
 			stmt.executeUpdate();
 			
 			keyResultSet=stmt.getGeneratedKeys();
@@ -260,7 +231,7 @@ public class DataVehiculo {
 		ResultSet rs=null;
 		try {
 			stmt=DbConnector.getInstancia().getConn().prepareStatement(
-					"SELECT v.idVehiculo, v.marca, v.patente, v.modelo, v.año, v.transmision\r\n"
+					"SELECT v.idVehiculo, v.marca, v.patente, v.modelo, v.año, v.transmision,v.foto\r\n"
 					+ "FROM reserva r\r\n"
 					+ "inner join reserva_usuario_vehiculo ruv on r.idReserva = ruv.id_reserva\r\n"
 					+ "inner join vehiculo v on ruv.id_vehiculo = v.idVehiculo\r\n"
@@ -276,6 +247,7 @@ public class DataVehiculo {
 				v.setModelo(rs.getString("modelo"));
 				v.setAnio(rs.getInt("año"));
 				v.setTransmision(rs.getString("transmision"));
+				v.setFoto(rs.getString("foto"));
 
 			}
 		} catch (SQLException e) {

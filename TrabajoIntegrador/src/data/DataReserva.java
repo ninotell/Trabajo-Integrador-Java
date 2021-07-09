@@ -137,7 +137,7 @@ public class DataReserva {
 		try {
 			stmt = DbConnector.getInstancia().getConn().prepareStatement(
 
-					"select v.idVehiculo, v.marca, v.modelo, v.año from vehiculo v\r\n"
+					"select v.idVehiculo, v.marca, v.modelo, v.año, v.foto from vehiculo v\r\n"
 							+ "inner join vehiculos_categorias vc on v.idVehiculo = vc.id_vehiculo\r\n"
 							+ "where vc.id_categoria = ? and v.transmision = ? \r\n"
 							+ "and v.idVehiculo not in (SELECT id_vehiculo\r\n"
@@ -159,6 +159,7 @@ public class DataReserva {
 					v.setMarca(rs.getString("v.marca"));
 					v.setModelo(rs.getString("v.modelo"));
 					v.setAnio(rs.getInt("v.año"));
+					v.setFoto(rs.getString("v.foto"));
 					vehiculos.add(v);
 				}
 			}
@@ -280,7 +281,7 @@ public class DataReserva {
 		ResultSet keyResultSet = null;
 		try {
 			stmt = DbConnector.getInstancia().getConn().prepareStatement(
-					"update reserva r set r.estado=?,r.fechaCancelacion=current_timestamp() where r.idReserva=?");
+					"update reserva r set r.estado=? where r.idReserva=?");
 			stmt.setString(1, r.getEstado());
 			stmt.setInt(2, r.getIdReserva());
 			stmt.executeUpdate();

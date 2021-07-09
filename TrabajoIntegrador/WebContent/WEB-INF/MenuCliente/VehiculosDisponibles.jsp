@@ -14,7 +14,7 @@
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 <meta name="description" content="">
 <meta name="author" content="">
-<link rel="icon" href="http://getbootstrap.com/favicon.ico">
+<link rel="icon" href="https://ucarecdn.com/84d815d4-b4ae-4b0a-9a13-eebc2057380e/logo.png">
 <title>Rent Smart</title>
 
 <script
@@ -92,7 +92,7 @@
 								<td><%=v.getMarca()%></td>
 								<td><%=v.getModelo()%></td>
 								<td><%=v.getAnio()%></td>
-								<td><img class="rounded" src="imagenVehiculo?idv=<%=v.getIdVehiculo()%>" width="150"></td>
+								<td><img class="rounded" src="<%=v.getFoto()%>" width="150"></td>
 								<form name="f2" class="form-reserva" action="confirmaReserva"
 									method="get">
 									<input type="hidden" name="idvehiculo"

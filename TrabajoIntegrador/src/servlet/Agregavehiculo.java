@@ -79,8 +79,7 @@ public class Agregavehiculo extends HttpServlet {
 		String km = request.getParameter("km");
 		String año = request.getParameter("año");
 		String idCat = request.getParameter("categoria");
-		Part part = request.getPart("fotovehiculo");
-		InputStream foto = part.getInputStream();
+		String foto = request.getParameter("fotovehiculo");
 		
 		
 		v.setPatente(patente);

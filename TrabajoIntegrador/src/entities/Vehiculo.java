@@ -13,7 +13,7 @@ public class Vehiculo {
 	private int anio;
 	private String transmision;
 	private Double km;
-	private InputStream foto;
+	private String foto;
 	private HashMap<Integer, Categoria> categoria;
 	
 	
@@ -75,11 +75,11 @@ public class Vehiculo {
 		this.km = km;
 	}
 	
-	public InputStream getFoto() {
+	public String getFoto() {
 		return foto;
 	}
 
-	public void setFoto(InputStream foto) {
+	public void setFoto(String foto) {
 		this.foto = foto;
 	}
 

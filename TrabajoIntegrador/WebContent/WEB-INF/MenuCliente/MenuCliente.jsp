@@ -14,7 +14,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <link rel="icon"
-	href="https://static.thenounproject.com/png/1516448-200.png">
+	href="https://ucarecdn.com/84d815d4-b4ae-4b0a-9a13-eebc2057380e/logo.png">
 
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
