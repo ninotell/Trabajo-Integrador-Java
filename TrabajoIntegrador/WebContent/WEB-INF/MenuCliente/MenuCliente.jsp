@@ -96,11 +96,11 @@ LinkedList<Categoria> listaCategorias = (LinkedList<Categoria>) session.getAttri
 	<div class="container-botones">
 		<div class="m-0 col justify-content-center">
 			<div class="col-auto p-5  text-center">
-				<a href="nuevaReserva" class="btn btn-success btn-block">Realizar reserva</a>
+				<a href="nuevaReserva" class="btn btn-success btn-block shadow ">Realizar reserva</a>
 				<br>
-				<a href="cancelaReserva" class="btn btn-danger btn-block">Cancelar reserva</a>
+				<a href="cancelaReserva" class="btn btn-danger btn-block shadow ">Cancelar reserva</a>
 				<br>
-				<a href="changePassword" class="btn btn-outline-primary btn-block">Cambiar contraseña</a>
+				<a href="changePassword" class="btn btn-outline-primary btn-block shadow ">Cambiar contraseña</a>
 			</div>
 		</div>
 	</div>
@@ -114,9 +114,9 @@ LinkedList<Categoria> listaCategorias = (LinkedList<Categoria>) session.getAttri
 		<div class="row">
 			<!-- Free Tier -->
 			<div class="col-lg-4">
-				<div class="card mb-5 mb-lg-0">
+				<div class="card shadow-lg">
 					<div class="card-body">
-						<h5 class="card-title text-muted text-uppercase text-center">Chico</h5>
+						<h5 class="card-title text-muted text-uppercase text-center shadow-lg">Chico</h5>
 						<%
 						Categoria c1 = listaCategorias.get(0);
 						%>
@@ -141,9 +141,9 @@ LinkedList<Categoria> listaCategorias = (LinkedList<Categoria>) session.getAttri
 			</div>
 			<!-- Plus Tier -->
 			<div class="col-lg-4">
-				<div class="card mb-5 mb-lg-0">
+				<div class="card shadow-lg">
 					<div class="card-body">
-						<h5 class="card-title text-muted text-uppercase text-center">Mediano</h5>
+						<h5 class="card-title text-muted text-uppercase text-center shadow-lg">Mediano</h5>
 						<%
 						Categoria c2 = listaCategorias.get(1);
 						%>
@@ -166,9 +166,9 @@ LinkedList<Categoria> listaCategorias = (LinkedList<Categoria>) session.getAttri
 			</div>
 			<!-- Pro Tier -->
 			<div class="col-lg-4">
-				<div class="card">
+				<div class="card shadow-lg">
 					<div class="card-body">
-						<h5 class="card-title text-muted text-uppercase text-center">Grande</h5>
+						<h5 class="card-title text-muted text-uppercase text-center shadow-lg">Grande</h5>
 						<%
 						Categoria c3 = listaCategorias.get(2);
 						%>
