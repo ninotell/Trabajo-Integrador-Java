@@ -128,12 +128,11 @@
                    				    <td><button type="submit" class="btn btn-primary">Actualizar km</button></td>
                    					<input type="hidden" name="idvehiculo" value="<%=v.getIdVehiculo()%>" />
                    				</form>
-                   				<form name="f3" class="form-register" action="eliminavehiculo" method="post">
-                   					<td><button type="submit" class="btn btn-danger" >Eliminar</button>
-                   						<input type="hidden" name="idvehiculo" value="<%=v.getIdVehiculo()%>" />
+                   				<form name="f3" id="formElimina">
+                   					<td><button onclick="confirmaEliminacion(<%=v.getIdVehiculo()%>)" type="button" class="btn btn-danger" >Eliminar</button>
+                   						<!--  input id="idv" type="hidden" name="idvehiculo" value="<%=v.getIdVehiculo()%>" />-->
                    					</td>
                    				</form>
-                   			</tr>
                     		<% } %>
                 	</tbody>	
      			</table>
@@ -147,7 +146,19 @@
 </body>
 
 <script>
-
+	var	idv = document.getElementById('idv').value;
+	function confirmaEliminacion(id){
+		r = confirm("Desea eliminar vehiculo ID: " + id + "?");
+		if(r==true){
+			var f = document.getElementById('formElimina');
+			f.method="post";
+			f.action='eliminavehiculo?idvehiculo='+id;
+			f.submit();
+		}else{
+			
+		}
+		}
+	
     (function(document) {
       'use strict';
 
@@ -187,6 +198,8 @@
       });
 
     })(document);
+    
+
  
 </script>
 
