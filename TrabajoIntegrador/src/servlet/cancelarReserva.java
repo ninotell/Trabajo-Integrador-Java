@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import entities.Reserva;
+import entities.Rol;
 import entities.Usuario;
 import entities.Vehiculo;
 import logic.Login;
@@ -35,25 +36,40 @@ public class cancelarReserva extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		Usuario us = (Usuario) request.getSession().getAttribute("usuario");
+		Login ctrlLogin = new Login();
+		Rol r = new Rol();
+		r.setIdRol(2);
 		try {
-			Usuario u = (Usuario) request.getSession().getAttribute("usuario");
-			Login ctrlLogin = new Login();
-			LinkedList<Reserva> reservasUsuario = ctrlLogin.listaReservasUsuario(u);
-			request.getSession().setAttribute("reservasUsuario", reservasUsuario);
-			request.getRequestDispatcher("WEB-INF/MenuCliente/cancelarReserva.jsp").forward(request, response);
+			if (us.hasRol(r)) {
+				LinkedList<Reserva> reservasUsuario = ctrlLogin.listaReservasUsuario(us);
+				request.getSession().setAttribute("reservasUsuario", reservasUsuario);
+				request.getRequestDispatcher("WEB-INF/MenuCliente/cancelarReserva.jsp").forward(request, response);
+			} else {
+				r.setIdRol(1);
+				if (us.hasRol(r)) {
+					RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/MenuEmpleado/MenuEmpleado.jsp");
+					request.setAttribute("errormsg", "true");
+					rd.forward(request, response);
+				}
+			}
+
 		} catch (java.lang.NullPointerException e) {
+			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+			request.setAttribute("datosincorrectos", "true");
+			rd.forward(request, response);
+		} catch (Exception e) {
 			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
 			request.setAttribute("errormsg", "true");
 			rd.forward(request, response);
 		}
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)	throws ServletException, IOException {
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
 		Usuario u = (Usuario) request.getSession().getAttribute("usuario");
 		Login ctrlLogin = new Login();

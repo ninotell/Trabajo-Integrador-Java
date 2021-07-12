@@ -23,57 +23,46 @@ import logic.Login;
 @WebServlet("/home")
 public class home extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public home() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		
-		
+	public home() {
+		super();
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		Login ctrlLogin = new Login();
-		LinkedList<Categoria> categorias= new LinkedList<>();
+		LinkedList<Categoria> categorias = new LinkedList<>();
 		categorias = ctrlLogin.listaCategorias();
 		try {
 			DataRol dr = new DataRol();
 			Rol r = new Rol();
 			r.setIdRol(2);
 			r = dr.getById(r);
-			Usuario u = (Usuario)request.getSession().getAttribute("usuario");
-							
+			Usuario u = (Usuario) request.getSession().getAttribute("usuario");
+
 			if (u.hasRol(r)) {
 				request.getSession().setAttribute("usuario", u);
 				request.getSession().setAttribute("listaCategorias", categorias);
 				request.getRequestDispatcher("WEB-INF/MenuCliente/MenuCliente.jsp").forward(request, response);
-				
-				
-				
-			} else { 
-				request.getSession().setAttribute("usuario", u);	
+
+			} else {
+				request.getSession().setAttribute("usuario", u);
 				request.getRequestDispatcher("WEB-INF/MenuEmpleado/MenuEmpleado.jsp").forward(request, response);
-				}
-			
 			}
-			catch (Exception e) {
-				RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-				request.setAttribute("errormsg", "true");
-				rd.forward(request, response);
-			}
+
+		} catch (java.lang.NullPointerException e) {
+			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+			request.setAttribute("datosincorrectos", "true");
+			rd.forward(request, response);
+		} catch (Exception e) {
+			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+			request.setAttribute("errormsg", "true");
+			rd.forward(request, response);
+		}
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doGet(request, response);
 	}
 

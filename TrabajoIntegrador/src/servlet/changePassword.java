@@ -20,56 +20,49 @@ import logic.Login;
 @WebServlet("/changePassword")
 public class changePassword extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public changePassword() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		Usuario us = (Usuario)request.getSession().getAttribute("usuario");
-		if (us!=null) {
-		request.getRequestDispatcher("WEB-INF/passwordChange.jsp").forward(request, response);
-		} else {
-			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-			request.setAttribute("errormsg", "true");
-			rd.forward(request, response);
-		}
-		
+	public changePassword() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		Usuario us = (Usuario) request.getSession().getAttribute("usuario");
+		if (us != null) {
+			request.getRequestDispatcher("WEB-INF/passwordChange.jsp").forward(request, response);
+		} else {
+			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+			request.setAttribute("datosincorrectos", "true");
+			rd.forward(request, response);
+		}
+
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		Login ctrlLogin = new Login();
 		Rol r = new Rol();
 		r.setIdRol(1);
-		Usuario us = (Usuario)request.getSession().getAttribute("usuario");
+		Usuario us = (Usuario) request.getSession().getAttribute("usuario");
 		String password = request.getParameter("oldPassword");
 		String newPassword = request.getParameter("newPassword");
 		us.setPassword(password);
 		us = ctrlLogin.validate(us);
-		if (us==null) {
+		if (us == null) {
 			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/passwordChange.jsp");
 			request.setAttribute("errormsg", "true");
 			rd.forward(request, response);
 		} else {
 			us.setPassword(newPassword);
 			ctrlLogin.updatePsw(us);
-			if(us.hasRol(r)) {
-			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/MenuEmpleado/MenuEmpleado.jsp");
-			request.setAttribute("pswchange", "true");
-			rd.forward(request, response);
-			} else { 
+			if (us.hasRol(r)) {
+				RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/MenuEmpleado/MenuEmpleado.jsp");
+				request.setAttribute("pswchange", "true");
+				rd.forward(request, response);
+			} else {
 				RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/MenuCliente/MenuCliente.jsp");
 				request.setAttribute("pswchange", "true");
 				rd.forward(request, response);
