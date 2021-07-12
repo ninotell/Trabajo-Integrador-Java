@@ -25,60 +25,63 @@ import logic.Login;
 @WebServlet("/retirarVehiculo")
 public class retirarVehiculo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public retirarVehiculo() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		Usuario us = (Usuario)request.getSession().getAttribute("usuario");
+	public retirarVehiculo() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		Usuario us = (Usuario) request.getSession().getAttribute("usuario");
 		Rol r = new Rol();
 		Rol rr = new Rol();
 		r.setIdRol(1);
 		rr.setIdRol(2);
-	try { if (us.hasRol(r)) {
-			request.getRequestDispatcher("WEB-INF/MenuEmpleado/EntregarVehiculo.jsp").forward(request, response);
-		}
-		else { if (us.hasRol(rr)) {
-			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/MenuCliente/MenuCliente.jsp");
+		try {
+			if (us.hasRol(r)) {
+				request.getRequestDispatcher("WEB-INF/MenuEmpleado/EntregarVehiculo.jsp").forward(request, response);
+			} else {
+				if (us.hasRol(rr)) {
+					RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/MenuCliente/MenuCliente.jsp");
+					request.setAttribute("errormsg", "true");
+					rd.forward(request, response);
+				}
+			}
+		} catch (java.lang.NullPointerException e) {
+			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
 			request.setAttribute("errormsg", "true");
-			rd.forward(request, response);}}	
-	}
-	catch (java.lang.NullPointerException e) {
-		RequestDispatcher rd = request.getRequestDispatcher("index.html");
-		rd.forward(request, response);
-	}
-		
+			rd.forward(request, response);
+		}
+
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	
-    
-    	Login ctrlLogin = new Login();
-    	int idr = Integer.parseInt(request.getParameter("idReserva"));
-    	Reserva r = new Reserva();
-    	r.setIdReserva(idr);		
-    	r = ctrlLogin.getReservaById(r);
-    	if (r==null) { 
-    		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/MenuEmpleado/EntregarVehiculo.jsp");
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		Login ctrlLogin = new Login();
+		int idr = Integer.parseInt(request.getParameter("idReserva"));
+		Reserva r = new Reserva();
+		r.setIdReserva(idr);
+		r = ctrlLogin.getReservaById(r);
+		if (r == null) {
+			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/MenuEmpleado/EntregarVehiculo.jsp");
 			request.setAttribute("errorReserva", "true");
 			rd.forward(request, response);
-    	}else {
-    		request.getSession().setAttribute("reserva", r);
-        	request.getRequestDispatcher("WEB-INF/MenuEmpleado/ReservaParaEntregar.jsp").forward(request, response);
-		    	}
-			
-    }
+		} else {
+			request.getSession().setAttribute("reserva", r);
+			request.getRequestDispatcher("WEB-INF/MenuEmpleado/ReservaParaEntregar.jsp").forward(request, response);
+		}
+
+	}
 
 }

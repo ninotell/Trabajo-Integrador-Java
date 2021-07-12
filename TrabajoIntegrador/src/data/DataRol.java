@@ -68,10 +68,10 @@ public class DataRol {
 		return r;
 	}
 	
-	public void addRol(Rol rol, Usuario u) throws SQLIntegrityConstraintViolationException{
+	public void addRol(Rol rol, Usuario u) throws SQLException{
 		PreparedStatement stmt= null;
 		ResultSet keyResultSet=null;
-		try {
+		
 			stmt=DbConnector.getInstancia().getConn().
 					prepareStatement(
 							"insert into usuario_rol(id_usuario, id_rol,fecha_cambio) values(?,?,current_timestamp())",
@@ -80,12 +80,7 @@ public class DataRol {
 			stmt.setInt(1, u.getIdUsuario());
 			stmt.setInt(2, rol.getIdRol());
 			stmt.executeUpdate();
-			} 
-		
-		catch (SQLException e) {
-            e.printStackTrace();
-		} finally {
-            try {
+			try {
                 if(keyResultSet!=null)keyResultSet.close();
                 if(stmt!=null)stmt.close();
                 DbConnector.getInstancia().releaseConn();
@@ -94,7 +89,6 @@ public class DataRol {
             }
 		}
 
-	}
 	
 	public void deleteRol(Usuario u) {
 		PreparedStatement stmt= null;

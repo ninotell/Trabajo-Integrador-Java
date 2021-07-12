@@ -64,17 +64,26 @@
 </body>
 
 <script>
-window.onload = function() {
-	if (<%=request.getAttribute("errormsg")%>
+	window.onload = function() {
+		if (
+<%=request.getAttribute("errormsg")%>
 	== true) {
-		alert("Error inesperado");
-	} else {
+			alert("Error inesperado");
+		} else {
+		}
+		if (
+<%=request.getAttribute("newuser")%>
+	== true) {
+			alert("Bienvenido al sistema, por favor inicie sesión");
+		} else {
+		}
+		if (
+<%=request.getAttribute("datosincorrectos")%>
+	== true) {
+			alert("Usuario y/o contrase\u00F1a incorrecto/s");
+		} else {
+		}
 	}
-	if (<%=request.getAttribute("newuser")%>
-	== true) {
-		alert("Bienvenido al sistema, por favor inicie sesión");
-	} else {
-	}}
 </script>
 
 

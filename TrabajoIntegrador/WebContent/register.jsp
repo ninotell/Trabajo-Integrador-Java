@@ -92,7 +92,7 @@
 						</div>
 					</div>
 					<div align="center">
-						<a href="index.html" class="btn btn-lg btn-danger">Volver
+						<a href="index.jsp" class="btn btn-lg btn-danger">Volver
 							atr&aacute;s</a>
 						<button type="submit" class="btn btn-lg btn-success"
 							name="botoncrear">Crear usuario</button>

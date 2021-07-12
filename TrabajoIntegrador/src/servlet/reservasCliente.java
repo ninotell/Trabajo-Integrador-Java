@@ -21,37 +21,48 @@ import logic.Login;
 @WebServlet("/reservasCliente")
 public class reservasCliente extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public reservasCliente() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
-    /**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	/**
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Usuario u = (Usuario)request.getSession().getAttribute("usuario");
-		Login ctrlLogin = new Login();
-		try {LinkedList<Reserva> reservasUsuario = ctrlLogin.listaReservasUsuario(u);
-		request.getSession().setAttribute("reservasUsuario", reservasUsuario);
-//		System.out.println(reservasUsuario.toString());
-		request.getRequestDispatcher("WEB-INF/MenuCliente/reservasCliente.jsp").forward(request, response);}
-		catch(java.lang.NullPointerException e){
-			RequestDispatcher rd = request.getRequestDispatcher("index.html");
-			rd.forward(request, response);
-		}
+	public reservasCliente() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
-	}
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		Usuario us = (Usuario) request.getSession().getAttribute("usuario");
+		Login ctrlLogin = new Login();
+		Rol r = new Rol();
+		r.setIdRol(2);
+		try {
+			if (us.hasRol(r)) {
+				LinkedList<Reserva> reservasUsuario = ctrlLogin.listaReservasUsuario(us);
+				request.getSession().setAttribute("reservasUsuario", reservasUsuario);
+				request.getRequestDispatcher("WEB-INF/MenuCliente/reservasCliente.jsp").forward(request, response);
+			} else {
+				r.setIdRol(1);
+				if (us.hasRol(r)) {
+					RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/MenuEmpleado/MenuEmpleado.jsp");
+					request.setAttribute("errormsg", "true");
+					rd.forward(request, response);
+				}
+			}
 
+		} catch (java.lang.NullPointerException e) {
+			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+			request.setAttribute("datosincorrectos", "true");
+			rd.forward(request, response);
+		} catch (Exception e) {
+			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+			request.setAttribute("errormsg", "true");
+			rd.forward(request, response);
+		}
+
+	}
 }

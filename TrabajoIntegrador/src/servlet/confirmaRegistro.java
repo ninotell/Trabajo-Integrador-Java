@@ -32,23 +32,8 @@ public class confirmaRegistro extends HttpServlet {
 		super();
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("get at: ").append(request.getContextPath());
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		PrintWriter out = response.getWriter();
 		DataRol dr = new DataRol();
 		Usuario u = new Usuario();
 		Documento d = new Documento();
@@ -87,13 +72,18 @@ public class confirmaRegistro extends HttpServlet {
 			rd.forward(request, response);
 
 		} catch (Exception e) {
+			if (e instanceof java.sql.SQLIntegrityConstraintViolationException) {
 
 			RequestDispatcher rd = request.getRequestDispatcher("register.jsp");
 			request.setAttribute("errorusuario", "true");
 			rd.include(request, response);
-
+			}
+			else {
+				RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+				request.setAttribute("errormsg", "true");
+				rd.include(request, response);
+			}
 		}
 
 	}
 }
-

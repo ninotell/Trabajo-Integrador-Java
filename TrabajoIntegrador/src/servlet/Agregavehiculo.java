@@ -23,54 +23,64 @@ import entities.Usuario;
 import entities.Vehiculo;
 import logic.Login;
 
-
 /**
  * Servlet implementation class Signin
  */
-@WebServlet({ "/agregavehiculo", "/AgregaVehiculo", "/AGREGAVEHICULO"})
+@WebServlet({ "/agregavehiculo", "/AgregaVehiculo", "/AGREGAVEHICULO" })
 @MultipartConfig
 public class Agregavehiculo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public Agregavehiculo() {
-        super();
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Usuario us = (Usuario)request.getSession().getAttribute("usuario");
+	public Agregavehiculo() {
+		super();
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		Usuario us = (Usuario) request.getSession().getAttribute("usuario");
 		Rol r = new Rol();
 		Rol rr = new Rol();
 		r.setIdRol(1);
-		rr.setIdRol(2);
-		try { if (us.hasRol(r)) {
-			request.getRequestDispatcher("WEB-INF/MenuEmpleado/NewVehiculo.jsp").forward(request, response);
-		}
-		else { if (us.hasRol(rr)) {
-			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/MenuCliente/MenuCliente.jsp");
-			request.setAttribute("errormsg", "true");
-			rd.forward(request, response);}}} 
-		
-		catch(java.lang.NullPointerException e){
-				RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-				request.setAttribute("errormsg", "true");
-				rd.forward(request, response);
+		try {
+			if (us.hasRol(r)) {
+				request.getRequestDispatcher("WEB-INF/MenuEmpleado/NewVehiculo.jsp").forward(request, response);
+			} else {
+				r.setIdRol(2);
+				if (us.hasRol(rr)) {
+					RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/MenuCliente/MenuCliente.jsp");
+					request.setAttribute("errormsg", "true");
+					rd.forward(request, response);
+				}
 			}
+		}
+		catch (java.lang.NullPointerException e) {
+			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+			request.setAttribute("datosincorrectos", "true");
+			rd.forward(request, response);
+		} catch (Exception e) {
+			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+			request.setAttribute("errormsg", "true");
+			rd.forward(request, response);
+		}
 
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		Vehiculo v = new Vehiculo();
 		Categoria c = new Categoria();
-		Login ctrlLogin = new Login ();
+		Login ctrlLogin = new Login();
 		String patente = request.getParameter("patente");
 		String marca = request.getParameter("marca");
 		String modelo = request.getParameter("modelo");
@@ -79,8 +89,7 @@ public class Agregavehiculo extends HttpServlet {
 		String año = request.getParameter("año");
 		String idCat = request.getParameter("categoria");
 		String foto = request.getParameter("fotovehiculo");
-		
-		
+
 		v.setPatente(patente);
 		v.setMarca(marca);
 		v.setModelo(modelo);
@@ -89,14 +98,11 @@ public class Agregavehiculo extends HttpServlet {
 		v.setKm(Double.parseDouble(km));
 		c.setIdCategoria(Integer.parseInt(idCat));
 		v.setFoto(foto);
-		
+
 		ctrlLogin.newVehiculo(v, c);
-		
+
 		request.getRequestDispatcher("WEB-INF/MenuEmpleado/MenuEmpleado.jsp").forward(request, response);
-		
-	
 
 	}
 
-  
 }

@@ -73,8 +73,9 @@ public class Login {
 				
 	}
 	public void deleteUsuario(Usuario u) {
-		dr.deleteRol(u);
 		du.deleteUsuario(u);
+		dr.deleteRol(u);
+		
 	}
 	
 	public void updateRol(Usuario u, Rol r) throws SQLException {
