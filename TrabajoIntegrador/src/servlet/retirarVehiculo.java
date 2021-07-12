@@ -58,6 +58,10 @@ public class retirarVehiculo extends HttpServlet {
 			}
 		} catch (java.lang.NullPointerException e) {
 			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+			request.setAttribute("datosincorrectos", "true");
+			rd.forward(request, response);
+		} catch (Exception e) {
+			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
 			request.setAttribute("errormsg", "true");
 			rd.forward(request, response);
 		}

@@ -34,7 +34,6 @@ public class devolucionVehiculo extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	PrintWriter out = response.getWriter();
     	Login ctrlLogin = new Login();
     	Reserva re = new Reserva();
     	int idr = Integer.parseInt(request.getParameter("idreserva"));

@@ -28,11 +28,8 @@ public class contacto extends HttpServlet {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-
+		throws ServletException, IOException {
 		Usuario us = (Usuario) request.getSession().getAttribute("usuario");
-		Login ctrlLogin = new Login();
 		Rol r = new Rol();
 		r.setIdRol(2);
 		try {

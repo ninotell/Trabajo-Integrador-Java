@@ -20,32 +20,42 @@ import entities.Usuario;
 import entities.Vehiculo;
 import logic.Login;
 
-/**
- * Servlet implementation class nuevaReserva
- */
 @WebServlet("/nuevaReserva")
 public class nuevaReserva extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+    
     public nuevaReserva() {
         super();
-        // TODO Auto-generated constructor stub
+      
     }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		Usuario us = (Usuario) request.getSession().getAttribute("usuario");
+		Rol r = new Rol();
+		r.setIdRol(2);
+		try {
+			if (us.hasRol(r)) {
+				request.getRequestDispatcher("WEB-INF/MenuCliente/nuevaReserva.jsp").forward(request, response);
+			} else {
+				r.setIdRol(1);
+				if (us.hasRol(r)) {
+					RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/MenuEmpleado/MenuEmpleado.jsp");
+					request.setAttribute("errormsg", "true");
+					rd.forward(request, response);
+				}
+			}
+		} catch (java.lang.NullPointerException e) {
+			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+			request.setAttribute("datosincorrectos", "true");
+			rd.forward(request, response);
+		} catch (Exception e) {
+			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+			request.setAttribute("errormsg", "true");
+			rd.forward(request, response);
+		}
 		request.getRequestDispatcher("WEB-INF/MenuCliente/nuevaReserva.jsp").forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Vehiculo v = new Vehiculo();
 		Categoria c = new Categoria();

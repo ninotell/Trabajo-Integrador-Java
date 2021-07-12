@@ -14,26 +14,16 @@ import entities.Rol;
 import entities.Usuario;
 import logic.Login;
 
-/**
- * Servlet implementation class listavehiculos
- */
 @WebServlet("/listavehiculos")
 public class listavehiculos extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public listavehiculos() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		Usuario us = (Usuario)request.getSession().getAttribute("usuario");
 		Rol r = new Rol();
 		Rol rr = new Rol();
@@ -59,7 +49,4 @@ public class listavehiculos extends HttpServlet {
 	}		
 	}
 	
-
-
-
 }
