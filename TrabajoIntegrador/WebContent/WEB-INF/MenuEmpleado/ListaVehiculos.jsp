@@ -130,7 +130,6 @@
                    				</form>
                    				<form name="f3" id="formElimina">
                    					<td><button onclick="confirmaEliminacion(<%=v.getIdVehiculo()%>)" type="button" class="btn btn-danger" >Eliminar</button>
-                   						<!--  input id="idv" type="hidden" name="idvehiculo" value="<%=v.getIdVehiculo()%>" />-->
                    					</td>
                    				</form>
                     		<% } %>

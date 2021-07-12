@@ -137,9 +137,8 @@
                     					<input type="hidden" name="idusuario" value="<%=uss.getIdUsuario()%>" />
                     				</form>
                     				
-                    				<form name="f3" class="form-register" action="eliminausuario" method="post">
-                    						<td><button type="submit" class="btn btn-danger" >Eliminar</button>
-                    						 <input type="hidden" name="idusuario" value="<%=uss.getIdUsuario()%>" />
+                    				<form name="f3" id=formEliminaU>
+                    						<td><button onclick="confirmaEliminacion(<%=uss.getIdUsuario()%>)" type="button" class="btn btn-danger" >Eliminar</button>
                     					    </td>
                     				</form>
                     			</tr>
@@ -184,9 +183,8 @@
                     					<input type="hidden" name="idusuario" value="<%=uss.getIdUsuario()%>" />
                     				</form>
                     				                   				
-                    				<form name="f5" class="form-register" action="eliminausuario" method="post">
-                    						<td><button type="submit" class="btn btn-danger" >Eliminar</button>
-                    						 <input type="hidden" name="idusuario" value="<%=uss.getIdUsuario()%>" />
+                    				<form name="f5" id=formEliminaU>
+                    						<td><button onclick="confirmaEliminacion(<%=uss.getIdUsuario()%>)" type="button" class="btn btn-danger" >Eliminar </button>
                     					    </td>
                     				</form>
                     			</tr>
@@ -195,4 +193,20 @@
        	</div>
 	
 </body>
+<script>
+var	idu = document.getElementById('idu').value;
+function confirmaEliminacion(id){
+	r = confirm("Desea eliminar al usuario ID: " + id + "?");
+	if(r==true){
+		var f = document.getElementById('formEliminaU');
+		f.method="post";
+		f.action='eliminausuario?idusuario='+id;
+		f.submit();
+	}else{
+		
+	}
+	}
+
+</script>
+
 </html>
