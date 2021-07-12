@@ -62,9 +62,10 @@ public class home extends HttpServlet {
 				}
 			
 			}
-			catch (NullPointerException n2) {
-		        RequestDispatcher rd=request.getRequestDispatcher("index.html");
-	            rd.include(request,response);	
+			catch (Exception e) {
+				RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+				request.setAttribute("errormsg", "true");
+				rd.forward(request, response);
 			}
 	}
 

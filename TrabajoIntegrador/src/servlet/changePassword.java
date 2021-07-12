@@ -38,7 +38,8 @@ public class changePassword extends HttpServlet {
 		if (us!=null) {
 		request.getRequestDispatcher("WEB-INF/passwordChange.jsp").forward(request, response);
 		} else {
-			RequestDispatcher rd = request.getRequestDispatcher("index.html");
+			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+			request.setAttribute("errormsg", "true");
 			rd.forward(request, response);
 		}
 		

@@ -105,12 +105,19 @@
 </body>
 
 <script>
+window.onload = function() {
+	if (<%=request.getAttribute("errorusuario")%>
+	== true) {
+		alert("Error! Usuario ya registrado.");
+	} else {
+	}}
+	
 	var password = document.getElementById("password"), confirm_password = document
 			.getElementById("confpassword");
 
 	function validatePassword() {
 		if (password.value != confpassword.value) {
-			confirm_password.setCustomValidity("Las contraseÃ±as no coinciden");
+			confirm_password.setCustomValidity("Las contraseñas no coinciden");
 		} else {
 			confirm_password.setCustomValidity('');
 		}

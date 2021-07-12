@@ -77,16 +77,13 @@ public class DataUsuario {
 			
 		} 
 		catch (SQLException e) {
-            e.printStackTrace();
-            throw e;
-		} 	
+ 	} 	
             try {
                 if(keyResultSet!=null)keyResultSet.close();
                 if(stmt!=null)stmt.close();
                 DbConnector.getInstancia().releaseConn();
             } catch (SQLException e) {
             	e.printStackTrace();
-            	throw e;
             }
 	}
 

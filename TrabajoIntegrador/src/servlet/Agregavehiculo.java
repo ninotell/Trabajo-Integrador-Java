@@ -43,8 +43,6 @@ public class Agregavehiculo extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		PrintWriter out = response.getWriter();
 		Usuario us = (Usuario)request.getSession().getAttribute("usuario");
 		Rol r = new Rol();
 		Rol rr = new Rol();
@@ -59,7 +57,8 @@ public class Agregavehiculo extends HttpServlet {
 			rd.forward(request, response);}}} 
 		
 		catch(java.lang.NullPointerException e){
-				RequestDispatcher rd = request.getRequestDispatcher("index.html");
+				RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+				request.setAttribute("errormsg", "true");
 				rd.forward(request, response);
 			}
 
@@ -99,14 +98,5 @@ public class Agregavehiculo extends HttpServlet {
 
 	}
 
-	private static String getSubmittedFileName(Part part) {
-	    for (String cd : part.getHeader("content-disposition").split(";")) {
-	        if (cd.trim().startsWith("filename")) {
-	            String fileName = cd.substring(cd.indexOf('=') + 1).trim().replace("\"", "");
-	            return fileName.substring(fileName.lastIndexOf('/') + 1).substring(fileName.lastIndexOf('\\') + 1); // MSIE fix.
-	        }
-	    }
-	    return null;
-	}
   
 }

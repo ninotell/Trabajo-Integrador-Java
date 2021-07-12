@@ -43,8 +43,9 @@ public class cancelarReserva extends HttpServlet {
 			request.getSession().setAttribute("reservasUsuario", reservasUsuario);
 			request.getRequestDispatcher("WEB-INF/MenuCliente/cancelarReserva.jsp").forward(request, response);
 		} catch (java.lang.NullPointerException e) {
-            RequestDispatcher rd=request.getRequestDispatcher("index.html");
-            rd.include(request,response);
+			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+			request.setAttribute("errormsg", "true");
+			rd.forward(request, response);
 		}
 	}
 

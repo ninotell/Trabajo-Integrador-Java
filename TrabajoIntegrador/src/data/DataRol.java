@@ -68,7 +68,7 @@ public class DataRol {
 		return r;
 	}
 	
-	public void addRol(Rol rol, Usuario u) {
+	public void addRol(Rol rol, Usuario u) throws SQLIntegrityConstraintViolationException{
 		PreparedStatement stmt= null;
 		ResultSet keyResultSet=null;
 		try {
