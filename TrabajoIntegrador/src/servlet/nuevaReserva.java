@@ -45,6 +45,7 @@ public class nuevaReserva extends HttpServlet {
 				}
 			}
 		} catch (java.lang.NullPointerException e) {
+			e.printStackTrace();
 			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
 			request.setAttribute("datosincorrectos", "true");
 			rd.forward(request, response);
@@ -53,7 +54,6 @@ public class nuevaReserva extends HttpServlet {
 			request.setAttribute("errormsg", "true");
 			rd.forward(request, response);
 		}
-		request.getRequestDispatcher("WEB-INF/MenuCliente/nuevaReserva.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
 import java.nio.file.Paths;
+import java.sql.SQLIntegrityConstraintViolationException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -26,7 +27,7 @@ import logic.Login;
 /**
  * Servlet implementation class Signin
  */
-@WebServlet({ "/agregavehiculo", "/AgregaVehiculo", "/AGREGAVEHICULO" })
+@WebServlet({ "/Agregavehiculo", "/agregavehiculo", "/AgregaVehiculo", "/AGREGAVEHICULO" })
 @MultipartConfig
 public class Agregavehiculo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -59,8 +60,7 @@ public class Agregavehiculo extends HttpServlet {
 					rd.forward(request, response);
 				}
 			}
-		}
-		catch (java.lang.NullPointerException e) {
+		} catch (java.lang.NullPointerException e) {
 			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
 			request.setAttribute("datosincorrectos", "true");
 			rd.forward(request, response);
@@ -72,36 +72,42 @@ public class Agregavehiculo extends HttpServlet {
 
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		Vehiculo v = new Vehiculo();
-		Categoria c = new Categoria();
-		Login ctrlLogin = new Login();
-		String patente = request.getParameter("patente");
-		String marca = request.getParameter("marca");
-		String modelo = request.getParameter("modelo");
-		String transmision = request.getParameter("transmision");
-		String km = request.getParameter("km");
-		String año = request.getParameter("año");
-		String idCat = request.getParameter("categoria");
-		String foto = request.getParameter("fotovehiculo");
+		try {
+			Vehiculo v = new Vehiculo();
+			Categoria c = new Categoria();
+			Login ctrlLogin = new Login();
+			String patente = request.getParameter("patente");
+			String marca = request.getParameter("marca");
+			String modelo = request.getParameter("modelo");
+			String transmision = request.getParameter("transmision");
+			String km = request.getParameter("km");
+			String anio = request.getParameter("anio");
+			String idCat = request.getParameter("categoria");
+			String foto = request.getParameter("fotovehiculo");
 
-		v.setPatente(patente);
-		v.setMarca(marca);
-		v.setModelo(modelo);
-		v.setAnio(Integer.parseInt(año));
-		v.setTransmision(transmision);
-		v.setKm(Double.parseDouble(km));
-		c.setIdCategoria(Integer.parseInt(idCat));
-		v.setFoto(foto);
+			v.setPatente(patente);
+			v.setMarca(marca);
+			v.setModelo(modelo);
+			v.setAnio(Integer.parseInt(anio));
+			v.setTransmision(transmision);
+			v.setKm(Double.parseDouble(km));
+			c.setIdCategoria(Integer.parseInt(idCat));
+			v.setFoto(foto);
 
-		ctrlLogin.newVehiculo(v, c);
-
-		request.getRequestDispatcher("WEB-INF/MenuEmpleado/MenuEmpleado.jsp").forward(request, response);
+			ctrlLogin.newVehiculo(v, c);
+			request.getRequestDispatcher("WEB-INF/MenuEmpleado/MenuEmpleado.jsp").forward(request, response);
+		} catch (SQLIntegrityConstraintViolationException e) {
+			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/MenuEmpleado/NewVehiculo.jsp");
+			request.setAttribute("errorpatente", "true");
+			rd.forward(request, response);
+		} catch (Exception e) {
+			e.printStackTrace();
+			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+			request.setAttribute("errormsg", "true");
+			rd.forward(request, response);
+		}
 
 	}
 

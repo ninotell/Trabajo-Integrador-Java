@@ -11,7 +11,8 @@
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 <meta name="description" content="">
 <meta name="author" content="">
-<link rel="icon" href="https://ucarecdn.com/84d815d4-b4ae-4b0a-9a13-eebc2057380e/logo.png">
+<link rel="icon"
+	href="https://ucarecdn.com/84d815d4-b4ae-4b0a-9a13-eebc2057380e/logo.png">
 
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
@@ -43,7 +44,7 @@
 <link href="style/nuevaReserva.css" rel="stylesheet">
 
 <%
-	Usuario u = (Usuario) session.getAttribute("usuario");
+Usuario u = (Usuario) session.getAttribute("usuario");
 %>
 
 <title>Nueva reserva</title>
@@ -54,9 +55,7 @@
 <body>
 
 	<div class="container">
-		<div class="note">
-			<h1>Haga su reserva</h1>
-		</div>
+		<div class="note">Haga su reserva</div>
 		<form class="form-reserva" action="nuevaReserva" method="post">
 			<div class="form-newvehiculo">
 				<div class="form-content">
@@ -73,15 +72,15 @@
 							<div class="row">
 								<div class="col-md-6">
 									<div class="form-group">
-										<label for="fechadesde">Fecha desde</label>
-										<input name="fechadesde" id="fechadesde" class="form-control"
+										<label for="fechadesde">Fecha desde</label> <input
+											name="fechadesde" id="fechadesde" class="form-control"
 											type="text" placeholder="Fecha desde" readonly>
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
-										<label for="fechahasta">Fecha hasta</label>
-										<input name="fechahasta" id="fechahasta" class="form-control"
+										<label for="fechahasta">Fecha hasta</label> <input
+											name="fechahasta" id="fechahasta" class="form-control"
 											type="text" placeholder="Fecha hasta" readonly>
 									</div>
 								</div>
@@ -96,52 +95,60 @@
 
 						</div>
 					</div>
-					<div class="botones" align="center">
-						<a href="home" type="button" class="btn btn-lg btn-danger">Volver
+					<div class="botones">
+						<a href="home" type="button" class="btn btn-block btn-danger">Volver
 							al men&uacute; principal</a>
-						<button type="submit" class="btn btn-lg btn-success "
+						<button type="submit" class="btn btn-block btn-success"
 							id="botonMostrar">Mostrar vehiculos disponibles</button>
 
 					</div>
 				</div>
 			</div>
+	</div>
 
-		</form>
+	</form>
 </body>
 
 <script type="text/javascript">
-window.onload= function(){ 
-	if (<%=request.getAttribute("fechaincorrecta")%>==true)
-		{alert("Ingrese una fecha válida");}
-	else {}		
-	$("#fechahasta").datepicker("option", "disabled", true);
-	$("#botonMostrar").attr('disabled', 'disabled');
-}
+	window.onload = function() {
+		if (
+<%=request.getAttribute("fechaincorrecta")%>
+	== true) {
+			alert("Ingrese una fecha válida");
+		} else {
+		}
+		$("#fechahasta").datepicker("option", "disabled", true);
+		$("#botonMostrar").attr('disabled', 'disabled');
+	}
 
-var botonMostrar = document.getElementById("botonMostrar"),
-	fechadesde =  document.getElementById("fechadesde"),
-	fechahasta =  document.getElementById("fechadesde");
-	
+	var botonMostrar = document.getElementById("botonMostrar"), fechadesde = document
+			.getElementById("fechadesde"), fechahasta = document
+			.getElementById("fechadesde");
+
 	$(function() {
 
-		$("#fechadesde").datepicker({
-			dateFormat : 'dd/mm/yy',
-			minDate : '+1d',
-			numberOfMonths : 1,
-			onSelect : function(selected) {
-				$("#fechahasta").datepicker("option", "minDate", selected),
-				$("#fechahasta").datepicker("option", "disabled", false)
-			}
-		});
+		$("#fechadesde").datepicker(
+				{
+					dateFormat : 'dd/mm/yy',
+					minDate : '+1d',
+					numberOfMonths : 1,
+					onSelect : function(selected) {
+						$("#fechahasta").datepicker("option", "minDate",
+								selected), $("#fechahasta").datepicker(
+								"option", "disabled", false)
+					}
+				});
 
-		$("#fechahasta").datepicker({
-			dateFormat : 'dd/mm/yy',
-			minDate : '+2d',
-			onSelect : function(selected) {
-				$("#fechadesde").datepicker("option", "maxDate", selected),
-				$("#botonMostrar").removeAttr("disabled");
-			}
-		});
+		$("#fechahasta").datepicker(
+				{
+					dateFormat : 'dd/mm/yy',
+					minDate : '+2d',
+					onSelect : function(selected) {
+						$("#fechadesde").datepicker("option", "maxDate",
+								selected), $("#botonMostrar").removeAttr(
+								"disabled");
+					}
+				});
 
 	});
 </script>

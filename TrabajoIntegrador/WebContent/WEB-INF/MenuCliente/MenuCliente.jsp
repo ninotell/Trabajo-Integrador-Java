@@ -89,39 +89,32 @@ LinkedList<Categoria> listaCategorias = (LinkedList<Categoria>) session.getAttri
 
 <body class="body">
 
-
 	<br>
 	<br>
 
 	<div class="container-botones">
 		<div class="m-0 col justify-content-center">
 			<div class="col-auto p-5  text-center">
-				<a href="nuevaReserva" class="btn btn-success btn-block shadow ">Realizar reserva</a>
-				<br>
-				<a href="cancelaReserva" class="btn btn-danger btn-block shadow ">Cancelar reserva</a>
-				<br>
-				<a href="changePassword" class="btn btn-outline-primary btn-block shadow ">Cambiar contraseña</a>
+				<a href="nuevaReserva" class="btn btn-success btn-block shadow ">Realizar
+					reserva</a> <br> <a href="cancelaReserva"
+					class="btn btn-danger btn-block shadow ">Cancelar reserva</a> <br>
+				<a href="changePassword"
+					class="btn btn-outline-primary btn-block shadow ">Cambiar
+					contraseña</a>
 			</div>
 		</div>
 	</div>
 
-
-
-
-
 	<section class="pricing py-5">
-	<div class="container">
-		<div class="row">
-			<!-- Free Tier -->
-			<div class="col-lg-4">
-				<div class="card shadow-lg">
+	<div class="container-cards">
+		<div class="card-columns">
+			<div class="col-12">
+				<div class="card">
 					<div class="card-body">
-						<h5 class="card-title text-muted text-uppercase text-center shadow-lg">Chico</h5>
-						<%
-						Categoria c1 = listaCategorias.get(0);
-						%>
+						<h5 class="card-title text-muted text-uppercase text-center">Chico</h5>
 						<h6 class="card-price text-center">
-							$<%=Math.round(c1.getPrecioxDia())%><span class="period">/d&iacute;a</span>
+							$<%=Math.round(listaCategorias.get(0).getPrecioxDia())%><span
+								class="period">/d&iacute;a</span>
 						</h6>
 						<hr>
 						<ul class="fa-ul">
@@ -139,16 +132,13 @@ LinkedList<Categoria> listaCategorias = (LinkedList<Categoria>) session.getAttri
 					</div>
 				</div>
 			</div>
-			<!-- Plus Tier -->
-			<div class="col-lg-4">
-				<div class="card shadow-lg">
+			<div class="col-12">
+				<div class="card">
 					<div class="card-body">
-						<h5 class="card-title text-muted text-uppercase text-center shadow-lg">Mediano</h5>
-						<%
-						Categoria c2 = listaCategorias.get(1);
-						%>
+						<h5 class="card-title text-muted text-uppercase text-center">Mediano</h5>
 						<h6 class="card-price text-center">
-							$<%=Math.round(c2.getPrecioxDia())%><span class="period">/d&iacute;a</span>
+							$<%=Math.round(listaCategorias.get(1).getPrecioxDia())%><span
+								class="period">/d&iacute;a</span>
 						</h6>
 						<hr>
 						<ul class="fa-ul">
@@ -164,16 +154,13 @@ LinkedList<Categoria> listaCategorias = (LinkedList<Categoria>) session.getAttri
 					</div>
 				</div>
 			</div>
-			<!-- Pro Tier -->
-			<div class="col-lg-4">
-				<div class="card shadow-lg">
+			<div class="col-12">
+				<div class="card">
 					<div class="card-body">
-						<h5 class="card-title text-muted text-uppercase text-center shadow-lg">Grande</h5>
-						<%
-						Categoria c3 = listaCategorias.get(2);
-						%>
+						<h5 class="card-title text-muted text-uppercase text-center">Grande</h5>
 						<h6 class="card-price text-center">
-							$<%=Math.round(c3.getPrecioxDia())%><span class="period">/d&iacute;a</span>
+							$<%=Math.round(listaCategorias.get(2).getPrecioxDia())%><span
+								class="period">/d&iacute;a</span>
 						</h6>
 						<hr>
 						<ul class="fa-ul">
@@ -193,7 +180,6 @@ LinkedList<Categoria> listaCategorias = (LinkedList<Categoria>) session.getAttri
 		</div>
 	</div>
 	</section>
-
 </body>
 
 <div class="footer">

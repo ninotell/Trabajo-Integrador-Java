@@ -62,7 +62,7 @@ public class Login {
 		dv.updateKm(v);
 		
 	}
-	public void newVehiculo(Vehiculo v, Categoria c) {
+	public void newVehiculo(Vehiculo v, Categoria c) throws SQLException {
 		dv.newVehiculo(v);
 		dc.addCategoria(c, v);
 	}

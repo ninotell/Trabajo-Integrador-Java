@@ -19,13 +19,16 @@
 <!-- Custom styles for this template -->
 <link href="style/agregavehiculo.css" rel="stylesheet">
 
-<script	src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js"></script>
-<script>UPLOADCARE_LOCALE = 'es';</script>
+<script
+	src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js"></script>
+<script>
+	UPLOADCARE_LOCALE = 'es';
+</script>
 
 </head>
 <body>
 
-	<form name="f1" class="form-new" action="agregavehiculo" method="post"
+	<form name="f1" class="form-new" action="Agregavehiculo" method="post"
 		enctype="multipart/form-data">
 		<div class="container">
 			<div class="note">
@@ -38,9 +41,9 @@
 							<div class="form-group">
 								<label for="categoria">Cateor&iacute;a</label> <select
 									class="form-control" id="inputCategoria" name="categoria">
-									<option label="Chico">1</option>
-									<option label="Mediano">2</option>
-									<option label="Grande">3</option>
+									<option value="1">Chico</option>
+									<option value="2">Mediano</option>
+									<option value="3">Grande</option>
 								</select>
 							</div>
 
@@ -61,12 +64,12 @@
 							<div class="form-group">
 								<label for="transmision">Transmision</label> <select
 									class="form-control" id="Transmision" name="transmision">
-									<option>Automático</option>
-									<option>Manual</option>
+									<option value="Automatico">Automático</option>
+									<option value="Manual">Manual</option>
 								</select>
 							</div>
 							<div class="form-group">
-								<input id="inputAño" name="año" type="number"
+								<input id="inputAño" name="anio" type="text"
 									class="form-control" placeholder="Año *" required="" value="" />
 							</div>
 							<div class="form-group">
@@ -74,7 +77,8 @@
 									placeholder="Km *" required="" value="" />
 							</div>
 							<div class="form-group">
-								<input type="hidden" role="uploadcare-uploader" data-public-key="892a2589bdaf7da24521" name="fotovehiculo" />
+								<input type="hidden" role="uploadcare-uploader"
+									data-public-key="892a2589bdaf7da24521" name="fotovehiculo" />
 							</div>
 
 
@@ -93,4 +97,14 @@
 	</form>
 
 </body>
+<script>
+	window.onload = function() {
+		if (
+<%=request.getAttribute("errorpatente")%>
+	== true) {
+			alert("Patente duplicada!");
+		} else {
+		}
+	}
+</script>
 </html>

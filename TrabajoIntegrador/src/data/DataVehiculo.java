@@ -1,19 +1,9 @@
 package data;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.sql.Blob;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
-
-import javax.servlet.http.HttpServletResponse;
-
-
 
 import entities.Reserva;
 import entities.Vehiculo;
@@ -133,24 +123,23 @@ public class DataVehiculo {
 		
 	}
 	
-	public void newVehiculo(Vehiculo v)  {
+	public void newVehiculo(Vehiculo v) throws SQLException {
 		PreparedStatement stmt = null;
 		ResultSet keyResultSet=null;
 		try {
 			stmt=DbConnector.getInstancia().getConn().
 					prepareStatement(
-							"insert into vehiculo (idVehiculo,patente,marca,modelo,año,transmision,km,foto)"
-							+ " values(?,?,?,?,?,?,?,?)",
+							"insert into vehiculo (patente,marca,modelo,año,transmision,km,foto)"
+							+ " values(?,?,?,?,?,?,?)",
 							PreparedStatement.RETURN_GENERATED_KEYS
 							);
-			stmt.setInt(1, v.getIdVehiculo());
-			stmt.setString(2, v.getPatente());
-			stmt.setString(3, v.getMarca());
-			stmt.setString(4, v.getModelo());
-			stmt.setInt(5, v.getAnio());
-			stmt.setString(6, v.getTransmision());
-			stmt.setDouble(7, v.getKm());
-			stmt.setString(8, v.getFoto());
+			stmt.setString(1, v.getPatente());
+			stmt.setString(2, v.getMarca());
+			stmt.setString(3, v.getModelo());
+			stmt.setInt(4, v.getAnio());
+			stmt.setString(5, v.getTransmision());
+			stmt.setDouble(6, v.getKm());
+			stmt.setString(7, v.getFoto());
 			stmt.executeUpdate();
 			
 			keyResultSet=stmt.getGeneratedKeys();
@@ -159,7 +148,7 @@ public class DataVehiculo {
             }
 			
 		} catch (java.sql.SQLException e) {
-            e.printStackTrace(); //FALTA AGREGAR EXCEPCION DE PATENTE DUPLICADA
+            throw e;//FALTA AGREGAR EXCEPCION DE PATENTE DUPLICADA
 		} finally {
             try {
                 if(keyResultSet!=null)keyResultSet.close();

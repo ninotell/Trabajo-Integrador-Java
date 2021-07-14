@@ -14,7 +14,8 @@
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 <meta name="description" content="">
 <meta name="author" content="">
-<link rel="icon" href="https://ucarecdn.com/84d815d4-b4ae-4b0a-9a13-eebc2057380e/logo.png">
+<link rel="icon"
+	href="https://ucarecdn.com/84d815d4-b4ae-4b0a-9a13-eebc2057380e/logo.png">
 <title>Rent Smart</title>
 
 <script
@@ -40,10 +41,10 @@
 <link href="style/vehiculosDisponibles.css" rel="stylesheet">
 
 <%
-	String fechadesde = (String) session.getAttribute("fechadesde");
-	String fechahasta = (String) session.getAttribute("fechahasta");
-	LinkedList<Vehiculo> vDisponibles = (LinkedList<Vehiculo>) session.getAttribute("vDisponibles");
-	Usuario u = (Usuario) session.getAttribute("usuario");
+String fechadesde = (String) session.getAttribute("fechadesde");
+String fechahasta = (String) session.getAttribute("fechahasta");
+LinkedList<Vehiculo> vDisponibles = (LinkedList<Vehiculo>) session.getAttribute("vDisponibles");
+Usuario u = (Usuario) session.getAttribute("usuario");
 %>
 <title><%=u.getNombre()%> <%=u.getApellido()%></title>
 
@@ -61,13 +62,13 @@
 				<%=fechahasta%></h4>
 		</div>
 		<%
-			if ((vDisponibles.isEmpty()) == true) {
+		if ((vDisponibles.isEmpty()) == true) {
 		%>
 		<h8>No hay veh&iacute;culos para mostrar</h8>
 		<button onclick="window.history.back()" class="btn btn-danger">Volver
 			a selecci&oacute;n de fechas</button>
 		<%
-			} else {
+		} else {
 		%>
 
 		<div class="row">
@@ -80,13 +81,13 @@
 								<th><a href="#" onclick="sortTable(1, 'str')">Modelo</a></th>
 								<th><a href="#" onclick="sortTable(2, 'int')">Año</a></th>
 								<th><a href="#"></a></th>
-								
+
 
 							</tr>
 						</thead>
 						<tbody>
 							<%
-								for (Vehiculo v : vDisponibles) {
+							for (Vehiculo v : vDisponibles) {
 							%>
 							<tr>
 								<td><%=v.getMarca()%></td>
@@ -97,12 +98,13 @@
 									method="get">
 									<input type="hidden" name="idvehiculo"
 										value="<%=v.getIdVehiculo()%>" />
-									<td><button type="submit" class="btn btn-success">Reservar ahora</button></td>
+									<td><button type="submit" class="btn btn-success">Reservar
+											ahora</button></td>
 
 								</form>
 							</tr>
 							<%
-								}
+							}
 							%>
 						</tbody>
 					</table>
@@ -110,15 +112,14 @@
 			</div>
 		</div>
 	</div>
-	<div align="center">
-		<div class="botonVolver">
-			<button onclick="window.history.back()"
-				class="btn btn-danger btn-block text-center">Volver a
-				selecci&oacute;n de fechas</button>
-		</div>
+	<div class="botonVolver">
+		<button onclick="window.history.back()"
+			class="btn btn-danger btn-block text-center">Volver a
+			selecci&oacute;n de fechas</button>
 	</div>
+
 	<%
-		}
+	}
 	%>
 
 </body>
