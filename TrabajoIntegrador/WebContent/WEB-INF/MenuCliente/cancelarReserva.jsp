@@ -114,11 +114,17 @@
                    				<td><%=r.getFechaCancelacion()%></td>
                    				<% }%>
                    				<td><%=r.getEstado()%></td>
-                   				<form name="f3" class="form-register" action="cancelaReserva" method="post">
-                   					<td><button type="submit" class="btn btn-danger" >Cancelar</button>
-                   						<input type="hidden" name="idreserva" value="<%=r.getIdReserva()%>" />
-                   					</td>
-                   				</form>
+<!--                    				<form name="f3" class="form-register" action="cancelaReserva" method="post"> -->
+<!--                    					<td><button type="submit" class="btn btn-danger" >Cancelar</button> -->
+<%--                    						<input type="hidden" name="idreserva" value="<%=r.getIdReserva()%>" /> --%>
+<!--                    					</td> -->
+<!--                    				</form> -->
+                   					</form>
+								<form name="f3" id="formCancela">
+									<td><button
+											onclick="confirmaCancelacion(<%=r.getIdReserva()%>)"
+											type="button" class="btn btn-danger">Cancelar</button></td>
+								</form>
                    			</tr>
                     		<% } } %>
                 	</tbody>	
@@ -136,6 +142,19 @@
 
 </body>
 
-
+<script> 
+var	idr = document.getElementById('idr').value;
+function confirmaCancelacion(id){
+	r = confirm("Desea cancelar su reserva ID: " + id + "?");
+	if(r==true){
+		var f = document.getElementById('formCancela');
+		f.method="post";
+		f.action='cancelaReserva?idreserva='+id;
+		f.submit();
+	}else{
+		
+	}
+	}
+</script>
 
 </html>
