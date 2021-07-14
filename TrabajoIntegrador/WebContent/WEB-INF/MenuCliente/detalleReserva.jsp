@@ -17,7 +17,8 @@
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 <meta name="description" content="">
 <meta name="author" content="">
-<link rel="icon" href="http://getbootstrap.com/favicon.ico">
+<link rel="icon"
+	href="https://ucarecdn.com/84d815d4-b4ae-4b0a-9a13-eebc2057380e/logo.png">
 
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
@@ -43,29 +44,29 @@
 <link href="style/confirmaReserva.css" rel="stylesheet">
 
 <%
-	Reserva r = (Reserva) session.getAttribute("reserva");
-	Boolean descuento = false;
-	String desc;
-	Double d;
-	Date date1 = r.getFechaRetiro();
-	Date date2 = r.getFechaDevolucion();
-	long diff = date2.getTime() - date1.getTime();
-	int dias = Math.round((diff / (1000 * 60 * 60 * 24)));
-	if (dias > 20) {
-		descuento = true;
-		desc = "15%";
-		d = 0.85;
-	} else {
-		descuento = false;
-		desc = "0%";
-		d = 1.0;
-	}
-	;
-	Categoria c = (Categoria) session.getAttribute("categoria");
-	Double precioxdia = c.getPrecioxDia();
-	Vehiculo v = (Vehiculo) session.getAttribute("vehiculo");
-	Usuario u = (Usuario) session.getAttribute("usuario");
-	LinkedList<Categoria> listaCategorias = (LinkedList<Categoria>) session.getAttribute("listaCategorias");
+Reserva r = (Reserva) session.getAttribute("reserva");
+Boolean descuento = false;
+String desc;
+Double d;
+Date date1 = r.getFechaRetiro();
+Date date2 = r.getFechaDevolucion();
+long diff = date2.getTime() - date1.getTime();
+int dias = Math.round((diff / (1000 * 60 * 60 * 24)));
+if (dias > 20) {
+	descuento = true;
+	desc = "15%";
+	d = 0.85;
+} else {
+	descuento = false;
+	desc = "0%";
+	d = 1.0;
+}
+;
+Categoria c = (Categoria) session.getAttribute("categoria");
+Double precioxdia = c.getPrecioxDia();
+Vehiculo v = (Vehiculo) session.getAttribute("vehiculo");
+Usuario u = (Usuario) session.getAttribute("usuario");
+LinkedList<Categoria> listaCategorias = (LinkedList<Categoria>) session.getAttribute("listaCategorias");
 %>
 
 
@@ -76,71 +77,77 @@
 <body>
 	<div class="container">
 		<div class="note">
-			<h2>Detalles reserva ID: <%=r.getIdReserva()%></h2>
+			<h2>
+				Detalles reserva ID:
+				<%=r.getIdReserva()%></h2>
 		</div>
-			<table class="table table-hover">
-				<thead>
-					<tr>
-						<th>Vehiculo</th>
-						<th></th>
-						<th class="text-left">Días</th>
-						<th class="text-center">Precio/dia</th>
-						<th class="text-right">Total</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td class=""><em><%=v.getMarca()%> <%=v.getModelo()%>
-								<%=v.getAnio()%></em>
-							<input name="idVehiculoReserva" type="hidden" value="<%=v.getIdVehiculo()%>"></td>
-							<td><img class="rounded float-left" src="<%=v.getFoto()%>" width="300"></td>
-							
-							
-						<td class=" text-left"><%=dias%></td>
-						<td class=" text-center">$<%=Math.round(precioxdia)%></td>
-						<td class=" text-right">$<%=Math.round(precioxdia * dias)%></td>
-					</tr>
-					<tr>
-						<td> </td>
-						<td> </td>
-						<td> </td>
-						
-						<td class="text-left">
-							<p>
-								<strong>Subtotal: </strong>
-							</p>
-							<p>
-								<strong>Descuento:</strong>
-							</p>
-						</td>
-						<td class="text-right">
-							<p>
-								<strong>$<%=Math.round(precioxdia * dias)%></strong>
-							</p>
-							<p>
-								<strong><%=desc%></strong>
-							</p>
-						</td>
-					</tr>
-					<tr>
-						<td> </td>
-						<td> </td>
-						<td> </td>
-						
-						<td class="text-left"><h4>
-								<strong>Total: </strong>
-							</h4></td>
-						<td class="text-right text-danger"><h4>
-								<strong>$<%=Math.round((precioxdia * dias) * d)%></strong>
-							</h4></td>
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>Vehiculo</th>
+					<th></th>
+					<th class="text-left">Días</th>
+					<th class="text-center">Precio/dia</th>
+					<th class="text-right">Total</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class=""><em><%=v.getMarca()%> <%=v.getModelo()%> <%=v.getAnio()%></em>
+						<input name="idVehiculoReserva" type="hidden"
+						value="<%=v.getIdVehiculo()%>"></td>
+					<td><img class="rounded float-left" src="<%=v.getFoto()%>"
+						width="300"></td>
 
 
-					</tr>
-				</tbody>
-			</table>
-			
-			<a href="reservasCliente" class="btn btn-success btn-block">Volver a mis reservas</a>
-		<br> <a href="home" class="btn btn-danger btn-block">Volver al men&uacute;</a>
+					<td class=" text-left"><%=dias%></td>
+					<td class=" text-center">$<%=Math.round(precioxdia)%></td>
+					<td class=" text-right">$<%=Math.round(precioxdia * dias)%></td>
+				</tr>
+				<tr>
+					<td> </td>
+					<td> </td>
+					<td> </td>
+
+					<td class="text-left">
+						<p>
+							<strong>Subtotal: </strong>
+						</p>
+						<p>
+							<strong>Descuento:</strong>
+						</p>
+					</td>
+					<td class="text-right">
+						<p>
+							<strong>$<%=Math.round(precioxdia * dias)%></strong>
+						</p>
+						<p>
+							<strong><%=desc%></strong>
+						</p>
+					</td>
+				</tr>
+				<tr>
+					<td> </td>
+					<td> </td>
+					<td> </td>
+
+					<td class="text-left"><h4>
+							<strong>Total: </strong>
+						</h4></td>
+					<td class="text-right text-danger"><h4>
+							<strong>$<%=Math.round((precioxdia * dias) * d)%></strong>
+						</h4></td>
+
+
+				</tr>
+			</tbody>
+		</table>
+
+		<a href="reservasCliente" class="btn btn-success btn-block">Volver
+			a mis reservas</a> <br> <a href="home"
+			class="btn btn-danger btn-block">Volver al men&uacute;</a>
+	</div>
+
 </body>
 
 
