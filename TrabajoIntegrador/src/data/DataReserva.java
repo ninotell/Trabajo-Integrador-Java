@@ -307,7 +307,7 @@ public class DataReserva {
 		try {
 
 			Properties props = new Properties();
-			props.setProperty("mail.smtp.host", "smtp.gmail.com");
+			props.setProperty("mail.smtp.host", "smtp-relay.sendinblue.com");
 			props.setProperty("mail.smtp.starttls.enable", "true");
 			props.setProperty("mail.smtp.port", "587");
 			props.setProperty("mail.smtp.auth", "true");
@@ -315,7 +315,7 @@ public class DataReserva {
 			Session session = Session.getDefaultInstance(props);
 
 			String correoRemitente = "rentsmart.alquileautos@gmail.com";
-			String passwordRemitente = "BlancoTell00";
+			String passwordRemitente = "B0ZHbNkgvtzKdGw9";
 			String correoReceptor = u.getEmail();
 			String asunto = "CANCELACION RESERVA";
 			String mensaje = ("<h1>Reserva cancelada con éxito</h1> " + "<h2> ID de reserva: " + r.getIdReserva()
@@ -368,7 +368,7 @@ public class DataReserva {
 		try {
 			
 			Properties props = new Properties();
-			props.setProperty("mail.smtp.host", "smtp.gmail.com");
+			props.setProperty("mail.smtp.host", "smtp-relay.sendinblue.com");
 			props.setProperty("mail.smtp.starttls.enable", "true");
 			props.setProperty("mail.smtp.port", "587");
 			props.setProperty("mail.smtp.auth", "true");
@@ -377,7 +377,7 @@ public class DataReserva {
 			
 
 			String correoRemitente = "rentsmart.alquileautos@gmail.com";
-			String passwordRemitente = "BlancoTell00";
+			String passwordRemitente = "B0ZHbNkgvtzKdGw9";
 			String correoReceptor = u.getEmail();
 			String asunto = "CONFIRMACION RESERVA";
 			String mensaje = ("<h2>¡Felicitaciones ya tenes tu reserva hecha!</h2>"
