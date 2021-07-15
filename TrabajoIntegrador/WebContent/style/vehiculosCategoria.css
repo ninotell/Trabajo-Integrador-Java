@@ -44,7 +44,6 @@
 	float: right;
 }
 
-
 .nav-side-menu ul :not(collapsed) .arrow:before, .nav-side-menu li :not(collapsed) .arrow:before
 	{
 	font-family: FontAwesome;
@@ -176,7 +175,12 @@ body {
 	border: none;
 	border-radius: 1rem;
 	transition: all 0.2s;
-	padding: auto;
+	box-shadow: 0.5rem 0.5rem 0.5rem 0 rgba(0, 0, 0, 0.3);
+}
+
+.pricing .card-columns {
+	column-count: 1;
+	padding: 2em;
 }
 
 .pricing .card .card-footer {
@@ -222,20 +226,7 @@ body {
 	.pricing .card:hover {
 		box-shadow: 0.5rem 0.5rem 0.5rem 0 rgba(0, 0, 0, 0.3);
 	}
-}
-
-@media ( min-width : 500px) {
-	.card-columns {
-		column-count: 1;
-		padding: 2em;
-	}
-	.pricing .card {
-		box-shadow: 0.5rem 0.5rem 0.5rem 0 rgba(0, 0, 0, 0.3);
-	}
-}
-
-@media ( min-width : 1200px) {
-	.card-columns {
+	.pricing .card-columns {
 		column-count: 4;
 	}
 	.pricing .card {
