@@ -76,79 +76,81 @@ LinkedList<Categoria> listaCategorias = (LinkedList<Categoria>) session.getAttri
 </head>
 
 <body>
-	<div class="container-confirma"></div>
-	<div class="note">Confirmar reserva</div>
-	<form class="form-reserva" action="confirmaReserva" method="post">
-		<table class="table table-hover">
-			<thead>
-				<tr>
-					<th>Vehiculo</th>
-					<th></th>
-					<th class="text-left">Días</th>
-					<th class="text-center">Precio/dia</th>
-					<th class="text-right">Total</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td class=""><em><%=v.getMarca()%> <%=v.getModelo()%> <%=v.getAnio()%></em>
-						<input name="idVehiculoReserva" type="hidden"
-						value="<%=v.getIdVehiculo()%>"></td>
-					<td><img class="rounded float-left" src="<%=v.getFoto()%>"
-						width="300"></td>
+	<div class="container-confirma">
+		<div class="note">Confirmar reserva</div>
+		<form class="form-reserva" action="confirmaReserva" method="post">
+			<div class="table-responsive">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>Vehiculo</th>
+							<th></th>
+							<th class="text-left">Días</th>
+							<th class="text-center">Precio/dia</th>
+							<th class="text-right">Total</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class=""><em><%=v.getMarca()%> <%=v.getModelo()%> <%=v.getAnio()%></em>
+								<input name="idVehiculoReserva" type="hidden"
+								value="<%=v.getIdVehiculo()%>"></td>
+							<td><img class="rounded float-left" src="<%=v.getFoto()%>"
+								width="300"></td>
 
 
-					<td class=" text-left"><%=dias%></td>
-					<td class=" text-center">$<%=Math.round(precioxdia)%></td>
-					<td class=" text-right">$<%=Math.round(precioxdia * dias)%></td>
-				</tr>
-				<tr>
-					<td> </td>
-					<td> </td>
-					<td> </td>
+							<td class=" text-left"><%=dias%></td>
+							<td class=" text-center">$<%=Math.round(precioxdia)%></td>
+							<td class=" text-right">$<%=Math.round(precioxdia * dias)%></td>
+						</tr>
+						<tr>
+							<td> </td>
+							<td> </td>
+							<td> </td>
 
-					<td class="text-left">
-						<p>
-							<strong>Subtotal: </strong>
-						</p>
-						<p>
-							<strong>Descuento:</strong>
-						</p>
-					</td>
-					<td class="text-right">
-						<p>
-							<strong>$<%=Math.round(precioxdia * dias)%></strong>
-						</p>
-						<p>
-							<strong><%=desc%></strong>
-						</p>
-					</td>
-				</tr>
-				<tr>
-					<td> </td>
-					<td> </td>
-					<td> </td>
+							<td class="text-left">
+								<p>
+									<strong>Subtotal: </strong>
+								</p>
+								<p>
+									<strong>Descuento:</strong>
+								</p>
+							</td>
+							<td class="text-right">
+								<p>
+									<strong>$<%=Math.round(precioxdia * dias)%></strong>
+								</p>
+								<p>
+									<strong><%=desc%></strong>
+								</p>
+							</td>
+						</tr>
+						<tr>
+							<td> </td>
+							<td> </td>
+							<td> </td>
 
-					<td class="text-left"><h4>
-							<strong>Total: </strong>
-						</h4></td>
-					<td class="text-right text-danger"><h4>
-							<strong>$<%=Math.round((precioxdia * dias) * d)%></strong>
-						</h4></td>
+							<td class="text-left"><h4>
+									<strong>Total: </strong>
+								</h4></td>
+							<td class="text-right text-danger"><h4>
+									<strong>$<%=Math.round((precioxdia * dias) * d)%></strong>
+								</h4></td>
 
 
-				</tr>
-			</tbody>
-		</table>
-		<input name="fechadesde" type="hidden" value="<%=fechadesde%>">
-		</td> <input name="fechahasta" type="hidden" value="<%=fechahasta%>">
-		</td>
-		<div class="container-botones">
-			<button class="btn btn-success btn-block">Reservar ahora</button>
-			<a href="home" class="btn btn-danger btn-block">Cancelar</a>
-		</div>
-	</form>
-
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<input name="fechadesde" type="hidden" value="<%=fechadesde%>">
+			</td> <input name="fechahasta" type="hidden" value="<%=fechahasta%>">
+			</td>
+			<div class="container-botones">
+				<button class="btn btn-success btn-block">Reservar ahora</button>
+				<a href="home" class="btn btn-danger btn-block">Cancelar</a>
+			</div>
+		</form>
+	</div>
 
 </body>
 

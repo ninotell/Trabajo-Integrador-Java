@@ -6,11 +6,26 @@
 	display: block;
 }
 
+.note {
+	text-align: center;
+	height: 80px;
+	background: #0062cc;
+	color: #fff;
+	font-weight: bold;
+	font-size: 2.2rem;
+	line-height: 80px;
+	font-size: max(2.5vw, 25px);
+}
 
 .container-botones {
-	width: 50%;
-	padding: auto;
+	width: 70%;
+	max-width: 300px;
+	min-width: 150px;
 	margin: auto;
+}
+
+.container-botones .btn {
+	font-size: max(1.2vw, 12px);
 }
 
 .footer {
@@ -23,38 +38,12 @@
 	text-align: center;
 }
 
-.note {
-	text-align: center;
-	height: 80px;
-	background: #0062cc;
-	color: white;
-	font-weight: bold;
-	font-size: 2.2rem;
-	line-height: 80px;
-}
-
 .container-confirma {
-	width: 80%;
-	padding: auto;
+	width: 90%;
+	max-width: 1000px; padding : auto;
 	margin: auto;
-}
-
-.form-content {
-	padding: 5%;
 	border: 1px solid #ced4da;
-	margin-bottom: 2%;
-}
-
-.form-control {
-	border-radius: 1.5rem;
-}
-
-.btnSubmit {
-	border: none;
-	border-radius: 1.5rem;
-	padding: 1%;
-	width: 20%;
-	cursor: pointer;
-	background: green;
-	color: #fff;
+	padding: auto;
+	padding-bottom: 2%;
+	margin-bottom: 5%;
 }

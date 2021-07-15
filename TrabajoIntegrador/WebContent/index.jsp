@@ -26,37 +26,30 @@
 
 
 <body class="text-center">
-	<div class="row">
-		<div class="col-md-4 mx-auto">
-			<img class="rounded shadow-lg mx-auto d-block"
-				src="https://i.pinimg.com/originals/cd/ba/7a/cdba7ad02665c51892c4860f6fc201af.png"
-				alt="" width="150">
-			<div class="card shadow-lg bg-white rounded">
-				<h5 class="card-header">Inicie sesi&oacute;n</h5>
-				<form class="form-signin mt-5" action="signin" method="post">
 
-					<input id="inputEmail" name="email" class="form-control"
-						placeholder="Correo electr&oacute;nico" required="" autofocus=""
-						type="email"> <input id="inputPassword" name="password"
-						class="form-control" placeholder="Contrase&ntilde;a" required=""
-						type="password">
-					<div class="container">
-						<div class="row">
-							<div class="col">
-								<a href="register.jsp" class="btn btn-outline-info">Crear
-									usuario</a>
-							</div>
-							<div class="col">
-								<button class="btn btn-primary" type="submit">Iniciar
-									sesi&oacute;n</button>
 
-							</div>
-						</div>
-					</div>
-				</form>
-				<br>
+	<img class="logo rounded shadow-lg mx-auto d-block"
+		src="https://i.pinimg.com/originals/cd/ba/7a/cdba7ad02665c51892c4860f6fc201af.png">
+	<div class="card shadow-lg rounded">
+		<h5 class="card-header">Inicie sesi&oacute;n</h5>
+		<form class="form-signin mt-5" action="signin" method="post">
+			<input id="inputEmail" name="email" class="form-control"
+				placeholder="Correo electr&oacute;nico" required="" autofocus=""
+				type="email"> <input id="inputPassword" name="password"
+				class="form-control" placeholder="Contrase&ntilde;a" required=""
+				type="password">
+			<div class="container-botones row">
+				<div class="col">
+					<a href="register.jsp" class="btn btn-block btn-outline-info">Crear
+						usuario</a>
+				</div>
+				<div class="col">
+					<button class="btn btn-block btn-primary" type="submit">Iniciar
+						sesi&oacute;n</button>
+				</div>
 			</div>
-		</div>
+		</form>
+		<br>
 	</div>
 
 </body>

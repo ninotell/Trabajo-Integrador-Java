@@ -384,14 +384,17 @@ public class DataReserva {
 					+ "<div>"
 					+ "<div style=\"border-radius:10px 10px 10px 10px;border:0px solid #000000;margin-top:5p;margin-bottom:5px;padding:10px 10px 5px 10px;font-weight:normal;font-size:12px;color:#ffffff;background-color:#414141\">"
 					+ "<div style=\"font-size:16px;margin-bottom:10px\"> Reserva ID: " + r.getIdReserva() + " por $" + precio + "</div>"
-					+ "<p style=\"color:white;font-weight:normal\"> Responsable de reseva: " + u.getNombre() + " " + u.getApellido() + ".</p>"
+					+ "<p style=\"color:white;font-weight:bold\"> Responsable de reseva: " + u.getNombre() + " " + u.getApellido() + ".</p>"
 					+ "<p style=\"color:white;font-weight:normal\"> DNI o CUIT: " + u.getDocumento().getNro() + ".</p>"
-					+ "</div>"
-					+ "<div>"
 					+ "<div style=\"border-radius:10px 10px 10px 10px;border:0px solid #000000;margin-top:5p;margin-bottom:5px;padding:10px 10px 5px 10px;font-weight:normal;font-size:12px;color:#ffffff;background-color:#36783c\">"
 					+ "<div style=\"font-size:16px;margin-bottom:10px\"> DETALLES DE RESERVA </div>"
 					+ "<p style=\"color:white;font-weight:bold\">" + v.getMarca() + " " + v.getModelo() + ", modelo: "  + v.getAnio() + ", patente: " + v.getPatente()+ "</p>"
 					+ "<p style=\"color:white;font-weight:normal\">Fecha de retiro: " + fechadesde + "   -    Fecha de devolución: " + fechahasta + ".</p>"
+					+ "<div style=\"border-radius:10px 10px 10px 10px;border:0px solid #000000;margin-top:5p;margin-bottom:5px;padding:10px 10px 5px 10px;font-weight:normal;font-size:12px;color:#ffffff;background-color:#ff0000\">"
+					+ "<div style=\"font-size:16px;margin-bottom:10px\"> ¡IMPORTANTE! </div>"
+					+ "<p style=\"color:white;font-weight:bold\">La reserva se abona al retirar el vehiculo, presentándose con el celular</p>"
+					+ "<p style=\"color:white;font-weight:normal\">Gracias por confiar en nosotros, esperamos que tenga una experiencia única.</p>"
+					+ "</div>"
 					+ "</div>");
 			String nombreRemitente = "Rent Smart";
 
@@ -404,7 +407,7 @@ public class DataReserva {
 			}
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(correoReceptor));
 			message.setSubject(asunto);
-			message.setContent(mensaje, "text/html");
+			message.setContent(mensaje, "text/html; charset=UTF-8");
 
 			Transport t = session.getTransport("smtp");
 			t.connect(correoRemitente, passwordRemitente);

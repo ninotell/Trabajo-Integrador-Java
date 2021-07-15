@@ -215,5 +215,11 @@ LinkedList<Categoria> listaCategorias = (LinkedList<Categoria>) session.getAttri
 		} else {
 		}
 	}
+	if (
+<%=request.getAttribute("errorvehiculo")%>
+	== true) {
+		alert("No se encuentra vehículo");
+	} else {
+	}
 </script>
 </html>

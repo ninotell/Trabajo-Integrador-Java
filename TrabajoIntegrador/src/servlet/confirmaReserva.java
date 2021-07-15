@@ -38,16 +38,7 @@ public class confirmaReserva extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Vehiculo v = new Vehiculo();
-		Categoria c = new Categoria();
-		Login ctrlLogin = new Login();
-		int idv = Integer.parseInt(request.getParameter("idvehiculo"));
-		v.setIdVehiculo(idv);
-		v = ctrlLogin.getVehiculoById(v);
-		c = ctrlLogin.getCategoriaVehiculo(v);
-		request.getSession().setAttribute("categoria", c);
-		request.getSession().setAttribute("vehiculo", v);
-		request.getRequestDispatcher("WEB-INF/MenuCliente/confirmaReserva.jsp").forward(request, response);
+	
 	}
 
 	/**

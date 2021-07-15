@@ -55,7 +55,7 @@ Usuario u = (Usuario) session.getAttribute("usuario");
 <body>
 
 	<div class="container">
-		<div class="note">Haga su reserva</div>
+		<div class="note">Elija sus preferencias</div>
 		<form class="form-reserva" action="nuevaReserva" method="post">
 			<div class="form-newvehiculo">
 				<div class="form-content">
@@ -64,9 +64,9 @@ Usuario u = (Usuario) session.getAttribute("usuario");
 							<div class="form-group">
 								<label for="categoria">Categor&iacute;a</label> <select
 									class="form-control" id="inputCategoria" name="categoria">
-									<option label="Chico">1</option>
-									<option label="Mediano">2</option>
-									<option label="Grande">3</option>
+									<option value="1">Pequeño</option>
+									<option value="2">Mediano</option>
+									<option value="3">Grande</option>
 								</select>
 							</div>
 							<div class="row">
@@ -95,7 +95,7 @@ Usuario u = (Usuario) session.getAttribute("usuario");
 
 						</div>
 					</div>
-					<div class="botones">
+					<div class="container-botones">
 						<a href="home" type="button" class="btn btn-block btn-danger">Volver
 							al men&uacute; principal</a>
 						<button type="submit" class="btn btn-block btn-success"

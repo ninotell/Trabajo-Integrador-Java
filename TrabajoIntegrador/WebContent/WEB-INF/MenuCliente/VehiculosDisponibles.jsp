@@ -54,66 +54,59 @@ Usuario u = (Usuario) session.getAttribute("usuario");
 
 
 	<div class="container text-center">
-		<div class="note">
-			Veh&iacute;culos disponibles desde el
-			<%=fechadesde%>
-			hasta el
-			<%=fechahasta%></div>
+		<div class="note text-center">Veh&iacute;culos disponibles</div>
 		<%
 		if ((vDisponibles.isEmpty()) == true) {
 		%>
-		<h8>No hay veh&iacute;culos para mostrar</h8>
+		No hay veh&iacute;culos para mostrar
 		<button onclick="window.history.back()" class="btn btn-danger">Volver
 			a selecci&oacute;n de fechas</button>
 		<%
 		} else {
 		%>
 
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="table-responsive">
-					<table class="table order-table table-striped table-hover" id="vehicles">
-						<thead>
-							<tr>
-								<th><a href="#">Marca</a></th>
-								<th><a href="#">Modelo</a></th>
-								<th><a href="#">Año</a></th>
-								<th><a href="#"></a></th>
-							</tr>
-						</thead>
-						<tbody>
-							<%
-							for (Vehiculo v : vDisponibles) {
-							%>
-							<tr>
-								<td><%=v.getMarca()%></td>
-								<td><%=v.getModelo()%></td>
-								<td><%=v.getAnio()%></td>
-								<td><img class="rounded" src="<%=v.getFoto()%>" width="150"></td>
-								<form name="f2" class="form-reserva" action="confirmaReserva"
-									method="get">
-									<input type="hidden" name="idvehiculo"
-										value="<%=v.getIdVehiculo()%>" />
-									<td><button type="submit" class="btn btn-success">Reservar
-											ahora</button></td>
+		<div class="content">
+			<div class="table-responsive">
+				<table class="table order-table table-striped table-hover"
+					id="vehicles">
+					<thead>
+						<tr>
+							<th><a href="#">Marca</a></th>
+							<th><a href="#">Modelo</a></th>
+							<th><a href="#">Año</a></th>
+							<th><a href="#"></a></th>
+						</tr>
+					</thead>
+					<tbody>
+						<%
+						for (Vehiculo v : vDisponibles) {
+						%>
+						<tr>
+							<td><%=v.getMarca()%></td>
+							<td><%=v.getModelo()%></td>
+							<td><%=v.getAnio()%></td>
+							<td><img class="rounded" src="<%=v.getFoto()%>" width="150"></td>
+							<form action="reservaVistaPrevia" method="post">
+								<input type="hidden" name="idvehiculo"
+									value="<%=v.getIdVehiculo()%>">
+								<td><button type="submit" class="btn btn-success">Reservar
+										ahora</button></td>
+							</form>
+						</tr>
+						<%
+						}
+						%>
+					</tbody>
+				</table>
 
-								</form>
-							</tr>
-							<%
-							}
-							%>
-						</tbody>
-					</table>
-				</div>
-
-
-				<div class="botonVolver">
-					<button onclick="window.history.back()"
-						class="btn btn-danger btn-block text-center">Volver a
-						selecci&oacute;n de fechas</button>
-				</div>
+			</div>
+			<div class="container-botones">
+				<button onclick="window.history.back()"
+					class="btn btn-danger btn-block text-center">Volver a
+					selecci&oacute;n de fechas</button>
 			</div>
 		</div>
+
 	</div>
 
 	<%
