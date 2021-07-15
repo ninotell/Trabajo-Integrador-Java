@@ -318,8 +318,11 @@ public class DataReserva {
 			String passwordRemitente = "B0ZHbNkgvtzKdGw9";
 			String correoReceptor = u.getEmail();
 			String asunto = "CANCELACION RESERVA";
-			String mensaje = ("<h1>Reserva cancelada con éxito</h1> " + "<h2> ID de reserva: " + r.getIdReserva()
-					+ ".</h2>");
+			String mensaje = ("<div style=\"max-width: 400px;\">"
+			+ "<div style=\"border-radius:10px 10px 10px 10px;border:0px solid #000000;margin-top:5p;margin-bottom:5px;padding:10px 10px 5px 10px;font-weight:normal;font-size:12px;color:#ffffff;background-color:#ff0000\">"
+			+ "<div style=\"font-size:16px;font-weight:bold;margin-bottom:10px\"> Reserva cancelada con éxito. ID de reserva: "  + r.getIdReserva() + "</div>"
+			+ "</div>"
+			+ "</div>");
 			String nombreRemitente = "Rent Smart";
 
 			MimeMessage message = new MimeMessage(session);
@@ -331,7 +334,7 @@ public class DataReserva {
 			}
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(correoReceptor));
 			message.setSubject(asunto);
-			message.setContent(mensaje, "text/html");
+			message.setContent(mensaje, "text/html; charset=UTF-8");
 
 			Transport t = session.getTransport("smtp");
 			t.connect(correoRemitente, passwordRemitente);

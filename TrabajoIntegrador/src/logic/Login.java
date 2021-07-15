@@ -124,4 +124,8 @@ public class Login {
 	public Vehiculo getVehiculoByReserva(Reserva r) {
 		return dv.getVehiculoByReserva(r);
 	}
+	
+	public LinkedList<Vehiculo> getByCategoria(Categoria c) {
+		return dv.getByCategoria(c);
+	}
 }

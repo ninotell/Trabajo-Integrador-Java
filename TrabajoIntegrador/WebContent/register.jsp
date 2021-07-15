@@ -30,9 +30,7 @@
 		method="post">
 		<div class="container register-form">
 			<div class="form">
-				<div class="note">
-					<h1>Crear nuevo usuario</h1>
-				</div>
+				<div class="note">Crear nuevo usuario</div>
 
 				<div class="form-content">
 					<div class="row">
@@ -91,10 +89,10 @@
 
 						</div>
 					</div>
-					<div align="center">
-						<a href="index.jsp" class="btn btn-lg btn-danger">Volver
+					<div class="container-botones">
+						<a href="index.jsp" class="btn btn-block btn-danger">Volver
 							atr&aacute;s</a>
-						<button type="submit" class="btn btn-lg btn-success"
+						<button type="submit" class="btn btn-block btn-success"
 							name="botoncrear">Crear usuario</button>
 					</div>
 				</div>
@@ -105,13 +103,15 @@
 </body>
 
 <script>
-window.onload = function() {
-	if (<%=request.getAttribute("errorusuario")%>
+	window.onload = function() {
+		if (
+<%=request.getAttribute("errorusuario")%>
 	== true) {
-		alert("Error! Usuario ya registrado.");
-	} else {
-	}}
-	
+			alert("Error! Usuario ya registrado.");
+		} else {
+		}
+	}
+
 	var password = document.getElementById("password"), confirm_password = document
 			.getElementById("confpassword");
 

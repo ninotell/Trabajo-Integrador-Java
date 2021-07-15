@@ -52,9 +52,6 @@ Usuario u = (Usuario) session.getAttribute("usuario");
 </head>
 
 <body>
-
-
-
 	<div class="container">
 		<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
 		<a class="navbar-brand" href="#"> <img
@@ -214,7 +211,6 @@ Usuario u = (Usuario) session.getAttribute("usuario");
 
     })(document);
     
-	var	idv = document.getElementById('idv').value;
 	function confirmaEliminacion(id){
 		r = confirm("Desea eliminar vehiculo ID: " + id + "?");
 		if(r==true){

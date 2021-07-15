@@ -39,6 +39,8 @@
 <!-- Custom styles for this template -->
 <link href="style/MenuCliente.css" rel="stylesheet">
 
+
+
 <%
 Usuario u = (Usuario) session.getAttribute("usuario");
 LinkedList<Categoria> listaCategorias = (LinkedList<Categoria>) session.getAttribute("listaCategorias");
@@ -87,7 +89,7 @@ LinkedList<Categoria> listaCategorias = (LinkedList<Categoria>) session.getAttri
 	</nav>
 </div>
 
-<body class="body">
+<body class="body" >
 
 	<br>
 	<br>
@@ -109,9 +111,10 @@ LinkedList<Categoria> listaCategorias = (LinkedList<Categoria>) session.getAttri
 	<div class="container-cards">
 		<div class="card-columns">
 			<div class="col-12">
-				<div class="card">
+				<div class="card" href="" onclick="vehiculosCategoria(1)">
+					<a href="#"></a>
 					<div class="card-body">
-						<h5 class="card-title text-muted text-uppercase text-center">Chico</h5>
+						<h5 class="card-title text-muted text-uppercase text-center">Pequeño</h5>
 						<h6 class="card-price text-center">
 							$<%=Math.round(listaCategorias.get(0).getPrecioxDia())%><span
 								class="period">/d&iacute;a</span>
@@ -133,7 +136,8 @@ LinkedList<Categoria> listaCategorias = (LinkedList<Categoria>) session.getAttri
 				</div>
 			</div>
 			<div class="col-12">
-				<div class="card">
+				<div class="card" onclick="vehiculosCategoria(2)">
+					<a href="#"></a>
 					<div class="card-body">
 						<h5 class="card-title text-muted text-uppercase text-center">Mediano</h5>
 						<h6 class="card-price text-center">
@@ -155,7 +159,8 @@ LinkedList<Categoria> listaCategorias = (LinkedList<Categoria>) session.getAttri
 				</div>
 			</div>
 			<div class="col-12">
-				<div class="card">
+				<div class="card" onclick="vehiculosCategoria(3)">
+					<a href="#"></a>
 					<div class="card-body">
 						<h5 class="card-title text-muted text-uppercase text-center">Grande</h5>
 						<h6 class="card-price text-center">
@@ -180,6 +185,9 @@ LinkedList<Categoria> listaCategorias = (LinkedList<Categoria>) session.getAttri
 		</div>
 	</div>
 	</section>
+
+	<form id="formCategoria"></form>
+
 </body>
 
 <div class="footer">
@@ -214,12 +222,24 @@ LinkedList<Categoria> listaCategorias = (LinkedList<Categoria>) session.getAttri
 			alert("Felicitaciones, se realizó tu reserva");
 		} else {
 		}
-	}
-	if (
+		if (
 <%=request.getAttribute("errorvehiculo")%>
 	== true) {
-		alert("No se encuentra vehículo");
-	} else {
+			alert("No se encuentra vehículo");
+		} else {
+		}
+		if (
+<%=request.getAttribute("errorvehiculocat")%>
+	== true) {
+			alert("No hay vehiculos disponibles para esa categoría");
+		} else {
+		}
+	}
+	function vehiculosCategoria(idCat) {
+		var f = document.getElementById('formCategoria');
+		f.method = "post";
+		f.action = 'VehiculosCategoria?idcategoria=' + idCat;
+		f.submit();
 	}
 </script>
 </html>
