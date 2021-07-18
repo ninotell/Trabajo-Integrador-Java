@@ -6,6 +6,16 @@
 	display: block;
 }
 
+.body {
+	background: rgb(159, 217, 241);
+	background: linear-gradient(90deg, rgba(159, 217, 241, 0.6617997540813201)
+		48%, rgba(112, 161, 151, 0) 100%,
+		rgba(195, 246, 255, 0.3536765047816002) 100%, rgba(152, 229, 243, 1)
+		100%, rgba(0, 212, 255, 1) 100%);
+	margin: 0px;
+	padding: 0px;
+}
+
 .form-newvehiculo {
 	width: 100%;
 	padding: 0px;
@@ -19,19 +29,18 @@
 	font-weight: bold;
 	font-size: 2.2rem;
 	line-height: 80px;
-	font-size: max(2.5vw, 25px); 
+	font-size: max(2.5vw, 25px);
 }
 
 .form-content {
 	padding: 5%;
-	border: 1px solid #ced4da;
+	border: 1px solid #000000;
 	margin-bottom: 2%;
 }
 
 .form-reserva .form-newvehiculo .form-content .botones {
 	font-size: 10px
 }
-
 
 .container-botones {
 	width: 50%;
@@ -40,7 +49,7 @@
 }
 
 .container-botones .btn {
-	font-size: max(1.2vw, 13px); 
+	font-size: max(1.2vw, 13px);
 }
 
 .ui-datepicker {
@@ -158,4 +167,3 @@
 	background: #D6E4BE;
 	color: #000;
 }
-

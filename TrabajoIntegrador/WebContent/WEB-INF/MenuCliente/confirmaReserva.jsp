@@ -75,81 +75,55 @@ LinkedList<Categoria> listaCategorias = (LinkedList<Categoria>) session.getAttri
 <title>Confirmar reserva</title>
 </head>
 
-<body>
+<body class="body">
 	<div class="container-confirma">
 		<div class="note">Confirmar reserva</div>
-		<form class="form-reserva" action="confirmaReserva" method="post">
-			<div class="table-responsive">
-				<table class="table table-hover">
-					<thead>
-						<tr>
-							<th>Vehiculo</th>
-							<th></th>
-							<th class="text-left">Días</th>
-							<th class="text-center">Precio/dia</th>
-							<th class="text-right">Total</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td class=""><em><%=v.getMarca()%> <%=v.getModelo()%> <%=v.getAnio()%></em>
-								<input name="idVehiculoReserva" type="hidden"
-								value="<%=v.getIdVehiculo()%>"></td>
-							<td><img class="rounded float-left" src="<%=v.getFoto()%>"
-								width="300"></td>
+		<div class="content">
+			<div class="pricing py-5">
+				<form class="form-reserva" action="confirmaReserva" method="post">
 
 
-							<td class=" text-left"><%=dias%></td>
-							<td class=" text-center">$<%=Math.round(precioxdia)%></td>
-							<td class=" text-right">$<%=Math.round(precioxdia * dias)%></td>
-						</tr>
-						<tr>
-							<td> </td>
-							<td> </td>
-							<td> </td>
+					<div class="card">
 
-							<td class="text-left">
-								<p>
-									<strong>Subtotal: </strong>
-								</p>
-								<p>
-									<strong>Descuento:</strong>
-								</p>
-							</td>
-							<td class="text-right">
-								<p>
-									<strong>$<%=Math.round(precioxdia * dias)%></strong>
-								</p>
-								<p>
-									<strong><%=desc%></strong>
-								</p>
-							</td>
-						</tr>
-						<tr>
-							<td> </td>
-							<td> </td>
-							<td> </td>
+						<div class="card-body">
+							<h5 class="card-title text-muted text-uppercase text-center"><%=v.getMarca()%></h5>
+							<h6 class="card-price text-center"><%=v.getModelo()%></h6>
 
-							<td class="text-left"><h4>
-									<strong>Total: </strong>
-								</h4></td>
-							<td class="text-right text-danger"><h4>
-									<strong>$<%=Math.round((precioxdia * dias) * d)%></strong>
-								</h4></td>
+							<div class="anio" align="center">
+								Año:
+								<%=v.getAnio()%></div>
+							<hr>
+							<p class="text-left">
+								<span class="font-weight-bold">Días: </span><%=dias%></p>
+							<hr>
+							<div class="text-left">
+								<span class="font-weight-bold">Precio/día: </span>$<%=Math.round(precioxdia)%></div>
+							<hr>
+							<div class="text-left">
+								<span class="font-weight-bold">Descuento: </span><%=desc%></div>
+							<hr>
+							<div class="text-left">
+								<span class="font-weight-bold">Total: </span>$<%=Math.round((precioxdia * dias) * d)%></div>
+						</div>
+						<div class="card-footer">
+							<img class="imagen shadow responsive" src="<%=v.getFoto()%>">
+						</div>
+						<div class="card-footer">
+							<input name="fechadesde" type="hidden" value="<%=fechadesde%>">
+							<input name="fechahasta" type="hidden" value="<%=fechahasta%>">
 
 
-						</tr>
-					</tbody>
-				</table>
+							<div class="container-botones">
+								<button class="btn btn-success btn-block">Reservar
+									ahora</button>
+								<a href="home" class="btn btn-danger btn-block">Cancelar</a>
+							</div>
+						</div>
+					</div>
+
+				</form>
 			</div>
-			<input name="fechadesde" type="hidden" value="<%=fechadesde%>">
-			</td> <input name="fechahasta" type="hidden" value="<%=fechahasta%>">
-			</td>
-			<div class="container-botones">
-				<button class="btn btn-success btn-block">Reservar ahora</button>
-				<a href="home" class="btn btn-danger btn-block">Cancelar</a>
-			</div>
-		</form>
+		</div>
 	</div>
 
 </body>

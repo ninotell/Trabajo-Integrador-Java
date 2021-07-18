@@ -50,7 +50,7 @@ Usuario u = (Usuario) session.getAttribute("usuario");
 
 </head>
 
-<body>
+<body class="body">
 
 
 	<div class="container text-center">
@@ -64,42 +64,44 @@ Usuario u = (Usuario) session.getAttribute("usuario");
 		<%
 		} else {
 		%>
-
 		<div class="content">
-			<div class="table-responsive">
-				<table class="table order-table table-striped table-hover"
-					id="vehicles">
-					<thead>
-						<tr>
-							<th><a href="#">Marca</a></th>
-							<th><a href="#">Modelo</a></th>
-							<th><a href="#">Año</a></th>
-							<th><a href="#"></a></th>
-						</tr>
-					</thead>
-					<tbody>
-						<%
-						for (Vehiculo v : vDisponibles) {
-						%>
-						<tr>
-							<td><%=v.getMarca()%></td>
-							<td><%=v.getModelo()%></td>
-							<td><%=v.getAnio()%></td>
-							<td><img class="rounded" src="<%=v.getFoto()%>" width="150"></td>
+			<section class="pricing py-5">
+
+			<div class="card-columns">
+				<div class="col-12">
+					<%
+					for (Vehiculo v : vDisponibles) {
+					%>
+					<div class="card">
+
+						<div class="card-body">
+							<h5 class="card-title text-muted text-uppercase text-center"><%=v.getMarca()%></h5>
+							<h6 class="card-price text-center"><%=v.getModelo()%></h6>
+							<hr>
+							<div class="anio" align="center">
+								Año:
+								<%=v.getAnio()%></div>
+						</div>
+						<div class="card-footer">
+							<img class="imagen shadow" src="<%=v.getFoto()%>">
+						</div>
+						<div class="card-footer">
 							<form action="reservaVistaPrevia" method="post">
 								<input type="hidden" name="idvehiculo"
 									value="<%=v.getIdVehiculo()%>">
-								<td><button type="submit" class="btn btn-success">Reservar
-										ahora</button></td>
+								<td><button type="submit" class="btn btn-success">Reservar</button></td>
 							</form>
-						</tr>
-						<%
-						}
-						%>
-					</tbody>
-				</table>
+						</div>
 
+					</div>
+					<%
+					}
+					%>
+				</div>
 			</div>
+			</section>
+
+
 			<div class="container-botones">
 				<button onclick="window.history.back()"
 					class="btn btn-danger btn-block text-center">Volver a

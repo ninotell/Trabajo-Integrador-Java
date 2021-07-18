@@ -52,7 +52,7 @@ Usuario u = (Usuario) session.getAttribute("usuario");
 </head>
 
 
-<body>
+<body class="body">
 
 	<div class="container">
 		<div class="note">Elija sus preferencias</div>
