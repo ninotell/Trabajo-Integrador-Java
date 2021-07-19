@@ -105,7 +105,7 @@ Usuario u = (Usuario) session.getAttribute("usuario");
 					</div>
 					
 						<div class="card-footer">
-							<img class="imagen shadow" src="<%=v.getFoto()%>">
+							<img class="imagen" src="<%=v.getFoto()%>">
 						</div>
 					
 				</div>

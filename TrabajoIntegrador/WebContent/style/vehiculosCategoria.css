@@ -1,6 +1,5 @@
 .body {
 	background: #ffffff;
-	background: linear-gradient(to right, #00ffff, #ffffff);
 }
 
 .nav-side-menu {
@@ -176,11 +175,12 @@ body {
 	border-radius: 1rem;
 	transition: all 0.2s;
 	box-shadow: 0.5rem 0.5rem 0.5rem 0 rgba(0, 0, 0, 0.3);
+	background-color: #d7d7d7ad;
 }
 
 .pricing .card-columns {
 	column-count: 1;
-	padding: 2em;
+	padding: auto;
 }
 
 .pricing .card .card-footer {
@@ -190,7 +190,9 @@ body {
 
 .pricing .card .card-footer .imagen {
 	max-height: 100px;
-	border: none;
+	width: 100%;
+	height: auto;
+	object-fit: contain;
 	border-radius: 40px 10px;
 }
 

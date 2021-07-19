@@ -7,6 +7,7 @@
 }
 
 .body {
+	background-color: #ffffff;
 	margin: 0px;
 	padding: 0px;
 }
@@ -22,23 +23,24 @@
 	font-size: max(2.5vw, 25px);
 }
 
+.container-cancela {
+	width: 90%;
+	max-width: 1000px;
+	padding: auto;
+	margin: auto;
+	padding: auto;
+}
+
 .container-botones {
 	width: 70%;
 	max-width: 330px;
 	min-width: 150px;
 	margin: auto;
+	padding: auto;
 }
 
 .container-botones .btn {
 	font-size: max(1.2vw, 12px);
-}
-
-.content {
-	padding: 2%;
-	border: 1px solid #000000;
-	border-bottom-left-radius: 1rem;
-	border-bottom-right-radius: 1rem;
-	margin-bottom: 2%;
 }
 
 .pricing .card {
@@ -60,12 +62,10 @@
 }
 
 .pricing .card .card-footer .imagen {
-	max-height: 100px;
-	width: auto;
+	max-width: 350px;
+	width: 100%;
 	height: auto;
-	border: none;
 	border-radius: 40px 10px;
-	width: auto;
 }
 
 .pricing hr {
@@ -96,16 +96,27 @@
 	opacity: 0.7;
 }
 
+.footer {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background-color: red;
+	color: white;
+	text-align: center;
+}
+
 @media ( min-width : 1200px) {
-	.pricing .card:hover {
-		box-shadow: 0.5rem 0.5rem 0.5rem 0 rgba(0, 0, 0, 0.3);
-	}
 	.pricing .card-columns {
-		column-count: 3;
+		column-count: 1;
 		padding: auto;
 		margin: auto;
 	}
-	.pricing .card {
-		box-shadow: none;
+	.content {
+		padding: 2%;
+		border: 1px solid #000000;
+		border-bottom-left-radius: 1rem;
+		border-bottom-right-radius: 1rem;
+		margin-bottom: 5%;
 	}
 }

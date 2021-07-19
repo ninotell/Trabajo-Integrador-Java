@@ -1,5 +1,5 @@
 .body {
-	background: linear-gradient(to right, #00ffff, #ffffff);
+	background: #ffffff;
 }
 
 .nav-side-menu {
@@ -175,11 +175,12 @@ body {
 	border-radius: 1rem;
 	transition: all 0.2s;
 	box-shadow: 0.5rem 0.5rem 0.5rem 0 rgba(0, 0, 0, 0.3);
+	background-color: #d7d7d7ad;
 }
 
 .pricing .card-columns {
 	column-count: 1;
-	padding: 2em;
+	padding: .2em;
 }
 
 .pricing hr {

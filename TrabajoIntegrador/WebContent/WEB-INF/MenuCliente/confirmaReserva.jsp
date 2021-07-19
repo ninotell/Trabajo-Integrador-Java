@@ -106,7 +106,7 @@ LinkedList<Categoria> listaCategorias = (LinkedList<Categoria>) session.getAttri
 								<span class="font-weight-bold">Total: </span>$<%=Math.round((precioxdia * dias) * d)%></div>
 						</div>
 						<div class="card-footer">
-							<img class="imagen shadow responsive" src="<%=v.getFoto()%>">
+							<img class="imagen responsive" src="<%=v.getFoto()%>">
 						</div>
 						<div class="card-footer">
 							<input name="fechadesde" type="hidden" value="<%=fechadesde%>">
