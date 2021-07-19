@@ -49,7 +49,8 @@
 Usuario us = new Usuario();
 DataRol dr = new DataRol();
 Login ctrlLogin = new Login();
-DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");  
+DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+DateFormat dateFormat1 = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
 Integer rCount = 0;
 LinkedList<Reserva> reservasUsuario = (LinkedList<Reserva>) session.getAttribute("reservasUsuario");
 Usuario u = (Usuario) session.getAttribute("usuario");
@@ -118,7 +119,7 @@ Usuario u = (Usuario) session.getAttribute("usuario");
 						ID:
 						<%=r.getIdReserva()%></h6>
 					<div class="text-left">
-						<span class="font-weight-bold">Fecha de reserva: </span><%=dateFormat.format(r.getFechaReserva())%>
+						<span class="font-weight-bold">Fecha de reserva: </span><%=dateFormat1.format(r.getFechaReserva())%>
 					</div>
 					<hr>
 					<p class="text-left">
@@ -135,26 +136,30 @@ Usuario u = (Usuario) session.getAttribute("usuario");
 					<div class="container-botones">
 						<form name="f3" id="formCancela">
 							<button onclick="confirmaCancelacion(<%=r.getIdReserva()%>)"
-								type="button" class="btn btn-danger">Cancelar</button>
+								type="button" class="btn btn-block btn-danger">Cancelar</button>
 						</form>
-						<a href="home" class="btn btn-danger btn">Volver atr&aacute;s</a>
-
 					</div>
 				</div>
 			</div>
-			<%
-			}
-			}
-			%>
-
-			<%
-			if (rCount == 0) {
-			%>
-			<h5 class="text-center">No hay reservas iniciadas</h5>
-			<%
-			}
-			%>
 		</div>
+		<div class="container-botones">
+			<a href="home" class="btn btn-block btn-danger">Volver
+				atr&aacute;s</a>
+		</div>
+
+		<%
+		}
+		}
+		%>
+
+		<%
+		if (rCount == 0) {
+		%>
+		<h5 class="text-center">No hay reservas iniciadas</h5>
+		<%
+		}
+		%>
+
 	</div>
 
 

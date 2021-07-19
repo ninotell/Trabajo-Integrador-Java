@@ -97,9 +97,9 @@ Usuario u = (Usuario) session.getAttribute("usuario");
 					</div>
 					<div class="container-botones">
 						<a href="home" type="button" class="btn btn-block btn-danger">Volver
-							al men&uacute; principal</a>
+							al men&uacute;</a>
 						<button type="submit" class="btn btn-block btn-success"
-							id="botonMostrar">Mostrar vehiculos disponibles</button>
+							id="botonMostrar">Mostrar vehículos</button>
 
 					</div>
 				</div>

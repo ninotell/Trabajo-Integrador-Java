@@ -82,8 +82,8 @@ Usuario u = (Usuario) session.getAttribute("usuario");
 <body class="body">
 	<br>
 	<br>
-	<section class="pricing py-5">
-	<div class="container-cards">
+	<div class="pricing py-5">
+
 		<div class="card-columns">
 			<div class="col-12">
 				<%
@@ -103,21 +103,24 @@ Usuario u = (Usuario) session.getAttribute("usuario");
 						</ul>
 
 					</div>
-					
-						<div class="card-footer">
-							<img class="imagen" src="<%=v.getFoto()%>">
-						</div>
-					
+
+					<div class="card-footer">
+						<img class="imagen" src="<%=v.getFoto()%>">
+					</div>
+
 				</div>
 				<%
 				}
 				%>
 			</div>
 		</div>
+		<div class="container-botones">
+			<a href="home" type="button" class="btn btn-block btn-danger">Volver
+				al men&uacute;</a>
+		</div>
 	</div>
-	</section>
-	
-	
+
+
 </body>
 
 </html>

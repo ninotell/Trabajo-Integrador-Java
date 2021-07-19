@@ -1,5 +1,7 @@
-.body {
+body {
 	background: #ffffff;
+	margin: 0px;
+	padding: 0px;
 }
 
 .nav-side-menu {
@@ -152,20 +154,9 @@
 	}
 }
 
-body {
-	margin: 0px;
-	padding: 0px;
-}
-
 .container-botones {
 	width: 100%;
 	max-width: 330px;
-	padding: auto;
-	margin: auto;
-}
-
-.container-cards {
-	width: 90%;
 	padding: auto;
 	margin: auto;
 }
@@ -180,6 +171,9 @@ body {
 
 .pricing .card-columns {
 	column-count: 1;
+	width: 95%;
+	
+	margin: auto;
 	padding: auto;
 }
 
@@ -191,9 +185,7 @@ body {
 .pricing .card .card-footer .imagen {
 	max-height: 100px;
 	width: 100%;
-	height: auto;
 	object-fit: contain;
-	border-radius: 40px 10px;
 }
 
 .pricing hr {

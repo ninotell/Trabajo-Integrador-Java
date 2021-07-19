@@ -28,18 +28,15 @@
 	max-width: 1000px;
 	padding: auto;
 	margin: auto;
-	padding: auto;
 }
 
 .container-botones {
 	width: 70%;
 	max-width: 330px;
-	min-width: 150px;
 	margin: auto;
-	padding: auto;
 }
 
-.container-botones .btn {
+.btn {
 	font-size: max(1.2vw, 12px);
 }
 

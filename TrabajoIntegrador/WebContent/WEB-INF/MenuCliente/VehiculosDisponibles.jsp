@@ -65,47 +65,47 @@ Usuario u = (Usuario) session.getAttribute("usuario");
 		} else {
 		%>
 		<div class="content">
-			<section class="pricing py-5">
+			<div class="pricing py-5">
 
-			<div class="card-columns">
-				<div class="col-12">
-					<%
-					for (Vehiculo v : vDisponibles) {
-					%>
-					<div class="card">
+				<div class="card-columns">
+					<div class="col-12">
+						<%
+						for (Vehiculo v : vDisponibles) {
+						%>
+						<div class="card">
 
-						<div class="card-body">
-							<h5 class="card-title text-muted text-uppercase text-center"><%=v.getMarca()%></h5>
-							<h6 class="card-price text-center"><%=v.getModelo()%></h6>
-							<hr>
-							<div class="anio" align="center">
-								Año:
-								<%=v.getAnio()%></div>
-						</div>
-						<div class="card-footer">
-							<img class="imagen shadow" src="<%=v.getFoto()%>">
-						</div>
-						<div class="card-footer">
-							<form action="reservaVistaPrevia" method="post">
-								<input type="hidden" name="idvehiculo"
-									value="<%=v.getIdVehiculo()%>">
-								<td><button type="submit" class="btn btn-success">Reservar</button></td>
-							</form>
-						</div>
+							<div class="card-body">
+								<h5 class="card-title text-muted text-uppercase text-center"><%=v.getMarca()%></h5>
+								<h6 class="card-price text-center"><%=v.getModelo()%></h6>
+								<hr>
+								<div class="anio" align="center">
+									Año:
+									<%=v.getAnio()%></div>
+							</div>
+							<div class="card-footer">
+								<img class="imagen" src="<%=v.getFoto()%>">
+							</div>
+							<div class="card-footer">
+								<form action="reservaVistaPrevia" method="post">
+									<input type="hidden" name="idvehiculo"
+										value="<%=v.getIdVehiculo()%>">
+									<td><button type="submit" class="btn btn-success">Reservar</button></td>
+								</form>
+							</div>
 
+						</div>
+						<%
+						}
+						%>
 					</div>
-					<%
-					}
-					%>
 				</div>
 			</div>
-			</section>
-
-
 			<div class="container-botones">
 				<button onclick="window.history.back()"
-					class="btn btn-danger btn-block text-center">Volver a
-					selecci&oacute;n de fechas</button>
+					class="btn btn-outline-danger btn-block text-center">Volver
+					a selecci&oacute;n de fechas</button>
+				<a href="home" type="button" class="btn btn-block btn-danger">Volver
+					al men&uacute;</a>
 			</div>
 		</div>
 

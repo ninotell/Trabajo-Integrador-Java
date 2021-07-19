@@ -114,14 +114,21 @@ LinkedList<Categoria> listaCategorias = (LinkedList<Categoria>) session.getAttri
 
 
 							<div class="container-botones">
-								<button class="btn btn-success btn-block">Reservar
+								<button class="btn btn-outline-success btn-block">Reservar
 									ahora</button>
-								<a href="home" class="btn btn-danger btn-block">Cancelar</a>
+								<a onclick="window.history.back()"
+									class="btn btn-outline-danger btn-block text-center">Volver
+									a vehículos</a>
+
 							</div>
 						</div>
 					</div>
 
 				</form>
+			</div>
+			<div class="container-botones">
+
+				<a href="home" class="btn btn-danger btn-block">Cancelar</a>
 			</div>
 		</div>
 	</div>
