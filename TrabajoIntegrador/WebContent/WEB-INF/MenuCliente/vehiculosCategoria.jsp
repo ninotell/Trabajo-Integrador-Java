@@ -89,7 +89,7 @@ Usuario u = (Usuario) session.getAttribute("usuario");
 				<%
 				for (Vehiculo v : vehiculos) {
 				%>
-				<div class="card animated fadeInDown delay-1s">
+				<div class="card">
 
 					<div class="card-body">
 						<h5 class="card-title text-muted text-uppercase text-center"><%=v.getMarca()%></h5>

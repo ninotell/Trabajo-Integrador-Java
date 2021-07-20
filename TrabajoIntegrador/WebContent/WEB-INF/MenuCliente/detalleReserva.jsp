@@ -82,44 +82,45 @@ LinkedList<Categoria> listaCategorias = (LinkedList<Categoria>) session.getAttri
 		</div>
 		<div class="content">
 			<div class="pricing py-5">
-				
 
 
-					<div class="card">
 
-						<div class="card-body">
-							<h5 class="card-title text-muted text-uppercase text-center"><%=v.getMarca()%></h5>
-							<h6 class="card-price text-center"><%=v.getModelo()%></h6>
+				<div class="card">
 
-							<div class="anio" align="center">
-								Año:
-								<%=v.getAnio()%></div>
-							<hr>
-							<p class="text-left">
-								<span class="font-weight-bold">Días: </span><%=dias%></p>
-							<hr>
-							<div class="text-left">
-								<span class="font-weight-bold">Precio/día: </span>$<%=Math.round(precioxdia)%></div>
-							<hr>
-							<div class="text-left">
-								<span class="font-weight-bold">Descuento: </span><%=desc%></div>
-							<hr>
-							<div class="text-left">
-								<span class="font-weight-bold">Total: </span>$<%=Math.round((precioxdia * dias) * d)%></div>
-						</div>
-						<div class="card-footer">
-							<img class="imagen responsive" src="<%=v.getFoto()%>">
-						</div>
-						<div class="card-footer">
-							<div class="container-botones">
-								<a href="reservasCliente" class="btn btn-success btn-block">Volver
-									a mis reservas</a><a href="home" class="btn btn-danger btn-block">Volver
-									al men&uacute;</a>
-							</div>
-						</div>
+					<div class="card-body">
+						<h5 class="card-title text-muted text-uppercase text-center"><%=v.getMarca()%></h5>
+						<h6 class="card-price text-center"><%=v.getModelo()%></h6>
+
+						<div class="anio" align="center">
+							Año:
+							<%=v.getAnio()%></div>
+						<hr>
+						<p class="text-left">
+							<span class="font-weight-bold">Días: </span><%=dias%></p>
+						<hr>
+						<div class="text-left">
+							<span class="font-weight-bold">Precio/día: </span>$<%=Math.round(precioxdia)%></div>
+						<hr>
+						<div class="text-left">
+							<span class="font-weight-bold">Descuento: </span><%=desc%></div>
+						<hr>
+						<div class="text-left">
+							<span class="font-weight-bold">Total: </span>$<%=Math.round((precioxdia * dias) * d)%></div>
 					</div>
+					<div class="card-footer">
+						<img class="imagen responsive" src="<%=v.getFoto()%>">
+					</div>
+				</div>
+				<br>
+				<br>
+				<div class="container-botones">
+					<a href="reservasCliente" class="btn btn-success btn-block">Volver
+						a mis reservas</a><a href="home" class="btn btn-danger btn-block">Volver
+						al men&uacute;</a>
+				</div>
 
-				
+
+
 			</div>
 		</div>
 	</div>

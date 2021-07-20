@@ -11,7 +11,8 @@
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 <meta name="description" content="">
 <meta name="author" content="">
-<link rel="icon" href="https://ucarecdn.com/84d815d4-b4ae-4b0a-9a13-eebc2057380e/logo.png">
+<link rel="icon"
+	href="https://ucarecdn.com/84d815d4-b4ae-4b0a-9a13-eebc2057380e/logo.png">
 
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
@@ -43,7 +44,7 @@
 <link href="style/contacto.css" rel="stylesheet">
 
 <%
-	Usuario u = (Usuario) session.getAttribute("usuario");
+Usuario u = (Usuario) session.getAttribute("usuario");
 %>
 
 <title>Contacto</title>
@@ -54,76 +55,37 @@
 <body>
 
 	<div class="container">
-		<div class="note">
-			<h1>Contacto</h1>
-		</div>
-		<br>
+		<div class="note">Contacto</div>
 
-		<div align="center" class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<div class="well well-sm">
-						<form class="form-contacto" method="post">
-							<fieldset>
-								<div class="form-group">
-									<div class="col-md-8">
-										<div class="text-left">
-											<label for="nombre">Nombre</label>
-										</div>
-										<input id="nombre" name="nombre" type="text"
-											value="<%=u.getNombre()%>" class="form-control" readonly>
-									</div>
-								</div>
-								<div class="form-group">
-									<div class="col-md-8">
-										<div class="text-left">
-											<label for="apellido">Apellido</label>
-										</div>
-										<input id="apellido" name="apellido" type="text"
-											value="<%=u.getApellido()%>" class="form-control" readonly>
-									</div>
-								</div>
+		<div class="content">
 
-								<div class="form-group">
-									<div class="col-md-8">
-										<div class="text-left">
-											<label for="email">Direcci&oacute;n de correo
-												electr&oacute;nico</label>
-										</div>
-										<input id="email" name="email" type="text"
-											value="<%=u.getEmail()%>" class="form-control" readonly>
-									</div>
-								</div>
+			<div class="contacto">
 
-								<div class="form-group">
-									<div class="col-md-8">
-										<div class="text-left">
-											<label for="telefono">Tel&eacute;fono</label>
-										</div>
-										<input id="telefono" name="phone" type="text"
-											value="<%=u.getTel()%>" class="form-control">
-									</div>
-								</div>
+				<label for="nombre">Nombre</label> <input id="nombre" name="nombre"
+					type="text" value="<%=u.getNombre()%>" class="form-control"
+					readonly> <label for="apellido">Apellido</label> <input
+					id="apellido" name="apellido" type="text"
+					value="<%=u.getApellido()%>" class="form-control" readonly>
 
-								<div class="form-group">
-									<div class="col-md-8">
-										<textarea class="form-control" id="message" name="message"
-											placeholder="Escriba su mensaje aqu&iacute;. Responderemos lo antes posible a su direcci&oacute;n de correo electr&oacute;nico"
-											rows="7" maxlength="200"></textarea>
-									</div>
-								</div>
 
-								<div class="form-group">
-									<div class="col-md-12 text-center">
-										<a href="home" class="btn btn-danger btn-lg">Volver</a>
-										<a href="home" class="btn btn-primary btn-lg">Enviar</a>
-									</div>
-								</div>
-							</fieldset>
-						</form>
-					</div>
-				</div>
+
+				<label for="email">Direcci&oacute;n de correo
+					electr&oacute;nico</label> <input id="email" name="email" type="text"
+					value="<%=u.getEmail()%>" class="form-control" readonly> <label
+					for="telefono">Tel&eacute;fono</label> <input id="telefono"
+					name="telefono" type="text" value="<%=u.getTel()%>"
+					class="form-control"> <br>
+
+				<textarea class="form-control" id="message" name="message"
+					placeholder="Escriba su mensaje aqu&iacute;. Responderemos lo antes posible a su direcci&oacute;n de correo electr&oacute;nico"
+					rows="7" maxlength="200"></textarea>
+			</div>
+			<div class="container-botones">
+				<a href="home" class="btn btn-primary btn-block">Enviar</a><a
+					href="home" class="btn btn-danger btn-block">Volver</a>
 			</div>
 		</div>
+	</div>
+
 </body>
 </html>

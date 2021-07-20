@@ -15,8 +15,8 @@
 .note {
 	text-align: center;
 	height: 80px;
-	background: #0062cc;
-	color: #fff;
+	background: rgba(0, 199, 204, 0.73);
+	color: #000;
 	font-weight: bold;
 	font-size: 2.2rem;
 	line-height: 80px;
@@ -33,7 +33,9 @@
 
 .content {
 	padding: 2%;
-	border: 1px solid #000000;
+	border-left: 1px solid #000000;
+	border-right: 1px solid #000000;
+	border-bottom: 1px solid #000000;
 	border-bottom-left-radius: 1rem;
 	border-bottom-right-radius: 1rem;
 	margin-bottom: 20%;
@@ -55,7 +57,7 @@
 	border-radius: 1rem;
 	transition: all .5s;
 	box-shadow: 0.5rem 0.5rem 0.5rem 0 rgba(0, 0, 0, 0.3);
-	background-color: #d7d7d7ad;
+	background-color: #F2F5EB;
 }
 
 .pricing .card-columns {
@@ -118,12 +120,5 @@
 		column-count: 1;
 		padding: auto;
 		margin: auto;
-	}
-	.content {
-		padding: 2%;
-		border: 1px solid #000000;
-		border-bottom-left-radius: 1rem;
-		border-bottom-right-radius: 1rem;
-		margin-bottom: 5%;
 	}
 }
