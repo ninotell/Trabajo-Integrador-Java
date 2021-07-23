@@ -1,15 +1,8 @@
-html, body {
-	height: 100%;
-}
-
 body {
-	display: -ms-flexbox;
-	display: block;
-	-ms-flex-align: center;
+	height: 40em;
+	display: flex;
 	align-items: center;
-	padding-top: 40px;
-	padding-bottom: 40px;
-	background-color: white;
+	justify-content: center;
 }
 
 .form-signin {
@@ -24,30 +17,25 @@ body {
 
 .form-signin .form-control {
 	position: relative;
-	height: auto;
-	padding: auto;
 	font-size: 16px;
 }
 
 .form-signin input[type="email"] {
-	margin-bottom: -1px;
-	border-bottom-right-radius: 0;
-	border-bottom-left-radius: 0;
+	margin-bottom: 2px;
 }
 
 .form-signin input[type="password"] {
 	margin-bottom: 10px;
-	border-top-left-radius: 0;
-	border-top-right-radius: 0;
 }
 
 .card {
 	width: 95%;
 	max-width: 330px;
 	min-width: 200px;
-	padding: 1vh;
 	padding: auto;
 	margin: auto;
+	-webkit-box-shadow: 0px 17px 30px 9px rgba(0, 0, 0, 0.47);
+	box-shadow: 0px 17px 30px 9px rgba(0, 0, 0, 0.47);
 }
 
 .card .container-botones .btn {
@@ -57,5 +45,7 @@ body {
 .logo {
 	width: auto;
 	min-width: 50px;
-	max-width: 100px;
+	max-width: 120px;
+	-webkit-box-shadow: 0px 17px 30px 9px rgba(0, 0, 0, 0.47);
+	box-shadow: 0px 17px 30px 9px rgba(0, 0, 0, 0.47);
 }

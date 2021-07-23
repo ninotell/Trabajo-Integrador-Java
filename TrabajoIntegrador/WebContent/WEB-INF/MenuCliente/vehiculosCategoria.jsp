@@ -83,36 +83,33 @@ Usuario u = (Usuario) session.getAttribute("usuario");
 	<br>
 	<br>
 	<div class="pricing py-5">
-
 		<div class="card-columns">
-			<div class="col-12">
-				<%
-				for (Vehiculo v : vehiculos) {
-				%>
-				<div class="card">
+			<%
+			for (Vehiculo v : vehiculos) {
+			%>
+			<div class="card">
 
-					<div class="card-body">
-						<h5 class="card-title text-muted text-uppercase text-center"><%=v.getMarca()%></h5>
-						<h6 class="card-price text-center"><%=v.getModelo()%></h6>
-						<hr>
-						<ul class="fa-ul">
-							<li><span class="fa-li"><i class="fas fa-check"></i></span>Año:
-								<%=v.getAnio()%></li>
-							<li><span class="fa-li"><i class="fas fa-check"></i></span>Transmisión:
-								<%=v.getTransmision()%></li>
-						</ul>
-
-					</div>
-
-					<div class="card-footer">
-						<img class="imagen" src="<%=v.getFoto()%>">
-					</div>
+				<div class="card-body">
+					<h5 class="card-title text-muted text-uppercase text-center"><%=v.getMarca()%></h5>
+					<h6 class="card-price text-center"><%=v.getModelo()%></h6>
+					<hr>
+					<ul class="fa-ul">
+						<li><span class="fa-li"><i class="fas fa-check"></i></span>Año:
+							<%=v.getAnio()%></li>
+						<li><span class="fa-li"><i class="fas fa-check"></i></span>Transmisión:
+							<%=v.getTransmision()%></li>
+					</ul>
 
 				</div>
-				<%
-				}
-				%>
+
+				<div class="card-footer">
+					<img class="imagen" src="<%=v.getFoto()%>">
+				</div>
+
 			</div>
+			<%
+			}
+			%>
 		</div>
 		<div class="container-botones">
 			<a href="home" type="button" class="btn btn-block btn-danger">Volver

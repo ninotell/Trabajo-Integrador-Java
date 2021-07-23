@@ -1,7 +1,3 @@
-input {
-	border: 2px solid currentcolor;
-}
-
 .ocultar {
 	display: none;
 }
@@ -13,8 +9,8 @@ input {
 .note {
 	text-align: center;
 	height: 80px;
-	background: #0062cc;
-	color: #fff;
+	background: rgba(0, 199, 204, 0.73);
+	color: #000;
 	font-weight: bold;
 	font-size: 2.2rem;
 	line-height: 80px;

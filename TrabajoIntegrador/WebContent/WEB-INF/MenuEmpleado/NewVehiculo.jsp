@@ -39,8 +39,9 @@
 					<div class="row">
 						<div class="col">
 							<div class="form-group">
-								<label for="categoria">Cateor&iacute;a</label> <select
-									class="form-control" id="inputCategoria" name="categoria">
+								<select class="form-control" id="inputCategoria"
+									name="categoria" autofocus="">
+									<option value="" disabled selected hidden>Categoría</option>
 									<option value="1">Chico</option>
 									<option value="2">Mediano</option>
 									<option value="3">Grande</option>
@@ -49,12 +50,15 @@
 
 							<div class="form-group">
 								<input id="inputPatente" name="patente" type="text"
-									class="form-control" placeholder="Patente *" autofocus=""
-									required="" value="" />
+									class="form-control" placeholder="Patente *"
+									pattern="[A-Z]{2} [1-9]{3} [A-Z]{2}|[A-Z]{3} [1-9]{3}"
+									title='Formato de patente: "ABC 123" o "AB 123 CD"' required=""
+									value="" />
 							</div>
 							<div class="form-group">
 								<input id="inputMarca" name="marca" type="text"
-									class="form-control" placeholder="Marca *" required="" value="" />
+									list="listamarcas" class="form-control" placeholder="Marca *"
+									required="" value="" />
 							</div>
 							<div class="form-group">
 								<input id="inputModelo" name="modelo" type="text"
@@ -95,6 +99,14 @@
 				</div>
 			</div>
 	</form>
+	<datalist id="listamarcas">
+		<option value="Ford"></option>
+		<option value="Chevrolet"></option>
+		<option value="Citroen"></option>
+		<option value="Toyota"></option>
+		<option value="DS"></option>
+		<option value="Chrysler"></option>
+	</datalist>
 
 </body>
 <script>
