@@ -66,38 +66,35 @@ Usuario u = (Usuario) session.getAttribute("usuario");
 		%>
 		<div class="content">
 			<div class="pricing py-5">
+				<div class="container-cards">
+					<%
+					for (Vehiculo v : vDisponibles) {
+					%>
+					<div class="card">
 
-				<div class="card-columns">
-					<div class="col-12">
-						<%
-						for (Vehiculo v : vDisponibles) {
-						%>
-						<div class="card">
-
-							<div class="card-body">
-								<h5 class="card-title text-muted text-uppercase text-center"><%=v.getMarca()%></h5>
-								<h6 class="card-price text-center"><%=v.getModelo()%></h6>
-								<hr>
-								<div class="anio" align="center">
-									Año:
-									<%=v.getAnio()%></div>
-							</div>
-							<div class="card-footer">
-								<img class="imagen" src="<%=v.getFoto()%>">
-							</div>
-							<div class="card-footer">
-								<form action="reservaVistaPrevia" method="post">
-									<input type="hidden" name="idvehiculo"
-										value="<%=v.getIdVehiculo()%>">
-									<td><button type="submit" class="btn btn-success">Reservar</button></td>
-								</form>
-							</div>
-
+						<div class="card-body">
+							<h5 class="card-title text-muted text-uppercase text-center"><%=v.getMarca()%></h5>
+							<h6 class="card-price text-center"><%=v.getModelo()%></h6>
+							<hr>
+							<div class="anio" align="center">
+								Año:
+								<%=v.getAnio()%></div>
 						</div>
-						<%
-						}
-						%>
+						<div class="card-footer">
+							<img class="imagen" src="<%=v.getFoto()%>">
+						</div>
+						<div class="card-footer">
+							<form action="reservaVistaPrevia" method="post">
+								<input type="hidden" name="idvehiculo"
+									value="<%=v.getIdVehiculo()%>">
+								<td><button type="submit" class="btn btn-success">Reservar</button></td>
+							</form>
+						</div>
+
 					</div>
+					<%
+					}
+					%>
 				</div>
 			</div>
 			<div class="container-botones">

@@ -83,12 +83,11 @@ Usuario u = (Usuario) session.getAttribute("usuario");
 	<br>
 	<br>
 	<div class="pricing py-5">
-		<div class="card-columns">
+		<div class="container-cards">
 			<%
 			for (Vehiculo v : vehiculos) {
 			%>
 			<div class="card">
-
 				<div class="card-body">
 					<h5 class="card-title text-muted text-uppercase text-center"><%=v.getMarca()%></h5>
 					<h6 class="card-price text-center"><%=v.getModelo()%></h6>
@@ -107,9 +106,7 @@ Usuario u = (Usuario) session.getAttribute("usuario");
 				</div>
 
 			</div>
-			<%
-			}
-			%>
+			<% } %>
 		</div>
 		<div class="container-botones">
 			<a href="home" type="button" class="btn btn-block btn-danger">Volver

@@ -28,10 +28,10 @@
 
 <body class="body">
 	<div class="container">
-		<img class="logo rounded mx-auto d-block"
-			src="https://i.pinimg.com/originals/cd/ba/7a/cdba7ad02665c51892c4860f6fc201af.png">
+		<img class="logo mx-auto d-block"
+			src="https://ucarecdn.com/a51fa61b-8c28-4159-9f43-83de3c970a24/logo_index.png">
 		<div class="card rounded">
-			<h5 class="card-header">Inicie sesi&oacute;n</h5>
+			<h5 class="card-header text-center">Inicie sesi&oacute;n</h5>
 			<form class="form-signin mt-5" action="signin" method="post">
 				<input id="inputEmail" name="email" class="form-control"
 					placeholder="Correo electr&oacute;nico" required="" autofocus=""

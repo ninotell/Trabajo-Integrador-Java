@@ -89,105 +89,93 @@ LinkedList<Categoria> listaCategorias = (LinkedList<Categoria>) session.getAttri
 	</nav>
 </div>
 
-<body class="body" >
+<body class="body">
 
 	<br>
 	<br>
 
 	<div class="container-botones">
-		<div class="m-0 col justify-content-center">
-			<div class="col-auto p-5  text-center">
-				<a href="nuevaReserva" class="btn btn-success btn-block shadow ">Realizar
-					reserva</a> <br> <a href="cancelaReserva"
-					class="btn btn-danger btn-block shadow ">Cancelar reserva</a> <br>
-				<a href="changePassword"
-					class="btn btn-outline-primary btn-block shadow ">Cambiar
-					contraseña</a>
-			</div>
+		<div class="col-auto p-5  text-center">
+			<a href="nuevaReserva" class="btn btn-success btn-block shadow ">Realizar
+				reserva</a> <br> <a href="cancelaReserva"
+				class="btn btn-danger btn-block shadow ">Cancelar reserva</a> <br>
+			<a href="changePassword"
+				class="btn btn-outline-primary btn-block shadow ">Cambiar
+				contraseña</a>
 		</div>
 	</div>
 
-	<section class="pricing py-5">
-	<div class="container-cards">
-		<div class="card-columns">
-			<div class="col-12">
-				<div class="card" href="" onclick="vehiculosCategoria(1)">
-					<a href="#"></a>
-					<div class="card-body">
-						<h5 class="card-title text-muted text-uppercase text-center">Pequeño</h5>
-						<h6 class="card-price text-center">
-							$<%=Math.round(listaCategorias.get(0).getPrecioxDia())%><span
-								class="period">/d&iacute;a</span>
-						</h6>
-						<hr>
-						<ul class="fa-ul">
+	<div class="pricing py-5">
+		<div class="container-cards">
+			<div class="card" onclick="vehiculosCategoria(1)">
+				<div class="card-body">
+					<h5 class="card-title text-muted text-uppercase text-center">Pequeño</h5>
+					<h6 class="card-price text-center">
+						$<%=Math.round(listaCategorias.get(0).getPrecioxDia())%><span
+							class="period">/d&iacute;a</span>
+					</h6>
+					<hr>
+					<ul class="fa-ul">
 
-							<li><span class="fa-li"><i class="fas fa-check"></i></span>4
-								Asientos</li>
-							<li><span class="fa-li"><i class="fas fa-check"></i></span>5
-								Puertas</li>
-							<li><span class="fa-li"><i class="fas fa-check"></i></span>2
-								Bolsos Pequeños</li>
+						<li><span class="fa-li"><i class="fas fa-check"></i></span>4
+							Asientos</li>
+						<li><span class="fa-li"><i class="fas fa-check"></i></span>5
+							Puertas</li>
+						<li><span class="fa-li"><i class="fas fa-check"></i></span>2
+							Bolsos Pequeños</li>
 
-							<li class="text-muted"><span class="fa-li"><i
-									class="fas fa-times"></i></span>Recomendado para uso en la ciudad</li>
-						</ul>
-					</div>
+						<li class="text-muted"><span class="fa-li"><i
+								class="fas fa-times"></i></span>Recomendado para uso en la ciudad</li>
+					</ul>
 				</div>
 			</div>
-			<div class="col-12">
-				<div class="card" onclick="vehiculosCategoria(2)">
-					<a href="#"></a>
-					<div class="card-body">
-						<h5 class="card-title text-muted text-uppercase text-center">Mediano</h5>
-						<h6 class="card-price text-center">
-							$<%=Math.round(listaCategorias.get(1).getPrecioxDia())%><span
-								class="period">/d&iacute;a</span>
-						</h6>
-						<hr>
-						<ul class="fa-ul">
-							<li><span class="fa-li"><i class="fas fa-check"></i></span>5
-								Asientos</li>
-							<li><span class="fa-li"><i class="fas fa-check"></i></span>4/5
-								Puertas</li>
-							<li><span class="fa-li"><i class="fas fa-check"></i></span>2
-								Bolsos Grandes</li>
-							<li class="text-muted"><span class="fa-li"><i
-									class="fas fa-times"></i></span>Recomendado para uso empresarial</li>
-						</ul>
-					</div>
+
+
+			<div class="card" onclick="vehiculosCategoria(2)">
+				<div class="card-body">
+					<h5 class="card-title text-muted text-uppercase text-center">Mediano</h5>
+					<h6 class="card-price text-center">
+						$<%=Math.round(listaCategorias.get(1).getPrecioxDia())%><span
+							class="period">/d&iacute;a</span>
+					</h6>
+					<hr>
+					<ul class="fa-ul">
+						<li><span class="fa-li"><i class="fas fa-check"></i></span>5
+							Asientos</li>
+						<li><span class="fa-li"><i class="fas fa-check"></i></span>4/5
+							Puertas</li>
+						<li><span class="fa-li"><i class="fas fa-check"></i></span>2
+							Bolsos Grandes</li>
+						<li class="text-muted"><span class="fa-li"><i
+								class="fas fa-times"></i></span>Recomendado para uso empresarial</li>
+					</ul>
 				</div>
 			</div>
-			<div class="col-12">
-				<div class="card" onclick="vehiculosCategoria(3)">
-					<a href="#"></a>
-					<div class="card-body">
-						<h5 class="card-title text-muted text-uppercase text-center">Grande</h5>
-						<h6 class="card-price text-center">
-							$<%=Math.round(listaCategorias.get(2).getPrecioxDia())%><span
-								class="period">/d&iacute;a</span>
-						</h6>
-						<hr>
-						<ul class="fa-ul">
-							<li><span class="fa-li"><i class="fas fa-check"></i></span>5/7
-								Asientos | Camioneta</li>
-							<li><span class="fa-li"><i class="fas fa-check"></i></span>4
-								Puertas</li>
-							<li><span class="fa-li"><i class="fas fa-check"></i></span>2
-								Bolsos grandes y 1 bolso chico</li>
-							<li class="text-muted"><span class="fa-li"><i
-									class="fas fa-check"></i></span>Recomendado para viajes largos</li>
+			<div class="card" onclick="vehiculosCategoria(3)">
+				<div class="card-body">
+					<h5 class="card-title text-muted text-uppercase text-center">Grande</h5>
+					<h6 class="card-price text-center">
+						$<%=Math.round(listaCategorias.get(2).getPrecioxDia())%><span
+							class="period">/d&iacute;a</span>
+					</h6>
+					<hr>
+					<ul class="fa-ul">
+						<li><span class="fa-li"><i class="fas fa-check"></i></span>5/7
+							Asientos | Camioneta</li>
+						<li><span class="fa-li"><i class="fas fa-check"></i></span>4
+							Puertas</li>
+						<li><span class="fa-li"><i class="fas fa-check"></i></span>2
+							Bolsos grandes y 1 bolso chico</li>
+						<li class="text-muted"><span class="fa-li"><i
+								class="fas fa-check"></i></span>Recomendado para viajes largos</li>
 
-						</ul>
-					</div>
+					</ul>
 				</div>
 			</div>
 		</div>
 	</div>
-	</section>
 
 	<form id="formCategoria"></form>
-
 </body>
 
 <div class="footer">
