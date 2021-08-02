@@ -35,7 +35,7 @@
 <link href="style/bootstrap.css" rel="stylesheet">
 
 <!-- Custom styles for this template -->
-<link href="style/changePassword.css" rel="stylesheet">
+<link href="style/contacto.css" rel="stylesheet">
 
 </head>
 <%
@@ -50,21 +50,24 @@ Usuario u = (Usuario) session.getAttribute("usuario");
 			<%=u.getNombre()%>
 			<%=u.getApellido()%>
 		</div>
-		<br>
-		<div class="col-auto">
-			<form class="form-register" action="changePassword" method="post">
-				<input class="form-control" id="oldPassword" name="oldPassword"
-					type="password" placeholder="Contraseña anterior"><br>
-				<input class="form-control" id="newPassword" name="newPassword"
-					type="password" placeholder="Nueva contraseña" minlength="6"
-					maxlength="12"><br> <input class="form-control"
-					id="confirmPassword" name="confirmPassword" type="password"
-					placeholder="Confirmar contraseña"><br>
-				<button id="updateButton" class="btn btn-success btn-block">Actualizar
-					contraseña</button>
-				<br> <a href="home" class="btn btn-danger btn-block">Cancelar</a>
-				<br>
-			</form>
+		<div class="content">
+			<div class="container-pass">
+				<form class="form-register" action="changePassword" method="post">
+					<input class="form-control" id="oldPassword" name="oldPassword"
+						type="password" placeholder="Contraseña anterior"><br>
+					<input class="form-control" id="newPassword" name="newPassword"
+						type="password" placeholder="Nueva contraseña" minlength="6"
+						maxlength="12"><br> <input class="form-control"
+						id="confirmPassword" name="confirmPassword" type="password"
+						placeholder="Confirmar contraseña">
+					<div class="container-botones">
+						<button id="updateButton" class="btn btn-success btn-block">Actualizar
+							contraseña</button>
+						<a href="home" class="btn btn-danger btn-block">Cancelar</a>
+					</div>
+
+				</form>
+			</div>
 
 		</div>
 	</div>

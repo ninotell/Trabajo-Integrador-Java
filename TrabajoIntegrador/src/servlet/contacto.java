@@ -43,13 +43,9 @@ public class contacto extends HttpServlet {
 					rd.forward(request, response);
 				}
 			}
-		} catch (java.lang.NullPointerException e) {
-			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-			request.setAttribute("datosincorrectos", "true");
-			rd.forward(request, response);
 		} catch (Exception e) {
 			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-			request.setAttribute("errormsg", "true");
+			request.setAttribute("errormsg", "Error inesperado");
 			rd.forward(request, response);
 		}
 	}

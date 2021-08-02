@@ -109,14 +109,4 @@
 	</datalist>
 
 </body>
-<script>
-	window.onload = function() {
-		if (
-<%=request.getAttribute("errorpatente")%>
-	== true) {
-			alert("Patente duplicada!");
-		} else {
-		}
-	}
-</script>
 </html>

@@ -204,21 +204,6 @@ LinkedList<Categoria> listaCategorias = (LinkedList<Categoria>) session.getAttri
 </div>
 
 <script>
-	window.onload = function() {
-		if (
-<%=request.getAttribute("pswchange")%>
-	== true) {
-			alert("Contraseña actualizada con éxito");
-		} else {
-		}
-		if (
-<%=request.getAttribute("errorvehiculo")%>
-	== true) {
-			alert("No se encuentra vehículo");
-		} else {
-		}
-		
-	}
 	function vehiculosCategoria(idCat) {
 		var f = document.getElementById('formCategoria');
 		f.method = "post";

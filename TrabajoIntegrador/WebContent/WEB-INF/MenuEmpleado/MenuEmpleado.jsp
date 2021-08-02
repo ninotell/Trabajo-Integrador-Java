@@ -42,6 +42,8 @@
 
 <%
 Usuario u = (Usuario) session.getAttribute("usuario");
+String errormsg = (String) request.getAttribute("errormsg");
+String okmsg = (String) request.getAttribute("okmsg");
 %>
 <title><%=u.getNombre()%> <%=u.getApellido()%></title>
 
@@ -89,6 +91,28 @@ Usuario u = (Usuario) session.getAttribute("usuario");
 	<br>
 	<br>
 
+	<%
+	if (errormsg != null) {
+	%>
+	<br>
+	<div class="alert alert-danger" role="alert">
+		<%=errormsg%>
+	</div>
+	<%
+	}
+	%>
+
+	<%
+	if (okmsg != null) {
+	%>
+	<br>
+	<div class="alert alert-success" role="alert">
+		<%=okmsg%>
+	</div>
+	<%
+	}
+	%>
+
 	<div class="container-botones">
 		<div class="m-0 col justify-content-center">
 			<div class="col-auto p-5  text-center">
@@ -102,22 +126,5 @@ Usuario u = (Usuario) session.getAttribute("usuario");
 	</div>
 
 </body>
-
-<script>
-	window.onload = function() {
-		if (
-<%=request.getAttribute("pswchange")%>
-	== true) {
-			alert("Contraseña actualizada con éxito");
-		} else {
-		}
-		if (
-<%=request.getAttribute("errormsg")%>
-	== true) {
-			alert("No tienes acceso a esta página");
-		} else {
-		}
-	}
-</script>
 
 </html>

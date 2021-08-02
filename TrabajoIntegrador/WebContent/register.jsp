@@ -103,15 +103,6 @@
 </body>
 
 <script>
-	window.onload = function() {
-		if (
-<%=request.getAttribute("errorusuario")%>
-	== true) {
-			alert("Error! Usuario ya registrado.");
-		} else {
-		}
-	}
-
 	var password = document.getElementById("password"), confirm_password = document
 			.getElementById("confpassword");
 

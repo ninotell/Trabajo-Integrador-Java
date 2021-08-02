@@ -56,17 +56,13 @@ public class Agregavehiculo extends HttpServlet {
 				r.setIdRol(2);
 				if (us.hasRol(rr)) {
 					RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/MenuCliente/MenuCliente.jsp");
-					request.setAttribute("errormsg", "true");
+					request.setAttribute("errormsg", "No tienes acceso a esta página");
 					rd.forward(request, response);
 				}
 			}
-		} catch (java.lang.NullPointerException e) {
-			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-			request.setAttribute("datosincorrectos", "true");
-			rd.forward(request, response);
 		} catch (Exception e) {
 			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-			request.setAttribute("errormsg", "true");
+			request.setAttribute("errormsg", "Error inesperado");
 			rd.forward(request, response);
 		}
 
@@ -99,13 +95,13 @@ public class Agregavehiculo extends HttpServlet {
 			ctrlLogin.newVehiculo(v, c);
 			request.getRequestDispatcher("WEB-INF/MenuEmpleado/MenuEmpleado.jsp").forward(request, response);
 		} catch (SQLIntegrityConstraintViolationException e) {
-			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/MenuEmpleado/NewVehiculo.jsp");
-			request.setAttribute("errorpatente", "true");
+			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/MenuEmpleado/MenuEmpleado.jsp");
+			request.setAttribute("errormsg", "Vehículo ya existente");
 			rd.forward(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();
 			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-			request.setAttribute("errormsg", "true");
+			request.setAttribute("errormsg", "Error inesperado");
 			rd.forward(request, response);
 		}
 

@@ -50,13 +50,9 @@ public class home extends HttpServlet {
 				request.getRequestDispatcher("WEB-INF/MenuEmpleado/MenuEmpleado.jsp").forward(request, response);
 			}
 
-		} catch (java.lang.NullPointerException e) {
-			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-			request.setAttribute("datosincorrectos", "true");
-			rd.forward(request, response);
 		} catch (Exception e) {
 			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-			request.setAttribute("errormsg", "true");
+			request.setAttribute("errormsg", "Error inesperado");
 			rd.forward(request, response);
 		}
 	}

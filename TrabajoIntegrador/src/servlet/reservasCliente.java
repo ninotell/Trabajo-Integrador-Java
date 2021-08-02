@@ -49,18 +49,14 @@ public class reservasCliente extends HttpServlet {
 				r.setIdRol(1);
 				if (us.hasRol(r)) {
 					RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/MenuEmpleado/MenuEmpleado.jsp");
-					request.setAttribute("errormsg", "true");
+					request.setAttribute("errormsg", "No tienes acceso a esta página");
 					rd.forward(request, response);
 				}
 			}
 
-		} catch (java.lang.NullPointerException e) {
+		}  catch (Exception e) {
 			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-			request.setAttribute("datosincorrectos", "true");
-			rd.forward(request, response);
-		} catch (Exception e) {
-			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-			request.setAttribute("errormsg", "true");
+			request.setAttribute("errormsg", "Error inesperado");
 			rd.forward(request, response);
 		}
 

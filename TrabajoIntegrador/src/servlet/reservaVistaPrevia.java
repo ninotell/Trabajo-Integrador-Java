@@ -40,7 +40,7 @@ public class reservaVistaPrevia extends HttpServlet {
 			request.getRequestDispatcher("WEB-INF/MenuCliente/confirmaReserva.jsp").forward(request, response);
 		} catch (Exception e) {
 			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-			request.setAttribute("errormsg", "true");
+			request.setAttribute("errormsg", "Error inesperado");
 			rd.forward(request, response);
 		}
 	}

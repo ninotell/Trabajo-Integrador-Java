@@ -141,6 +141,13 @@
 		padding-left: 20px;
 		line-height: 50px !important;
 	}
+	.container .container-arriba {
+		display: block;
+	}
+	.container .container-arriba .componente-arriba {
+		width: 100%;
+		margin: 2%
+	}
 }
 
 @media ( min-width : 767px) {
@@ -149,6 +156,13 @@
 	}
 	.btn:hover {
 		transform: scale(1.05);
+	}
+	.container .container-arriba .componente-arriba {
+		width: 20%;
+	}
+	.container .container-arriba {
+		display: flex;
+		justify-content: space-between;
 	}
 }
 

@@ -85,16 +85,4 @@ String okmsg = (String) request.getAttribute("okmsg");
 
 </body>
 
-<script>
-	window.onload = function() {
-		if (
-<%=request.getAttribute("newuser")%>
-	== true) {
-			alert("Bienvenido al sistema, por favor inicie sesión");
-		} else {
-		}
-	}
-</script>
-
-
 </html>

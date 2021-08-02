@@ -3,6 +3,7 @@ package servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,7 +17,6 @@ import logic.Login;
 public class eliminavehiculo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-
 	public eliminavehiculo() {
 		super();
 	}
@@ -28,9 +28,17 @@ public class eliminavehiculo extends HttpServlet {
 		int idv = Integer.parseInt(request.getParameter("idvehiculo"));
 
 		ve.setIdVehiculo(idv);
-		ctrlLogin.deleteVehiculo(ve);
+		try {
+			ctrlLogin.deleteVehiculo(ve);
+			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/MenuEmpleado/MenuEmpleado.jsp");
+			request.setAttribute("okmsg", "Vehiculo id: " + idv + " eliminado con éxito");
+			rd.forward(request, response);
+		} catch (Exception e) {
+			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+			request.setAttribute("errormsg", "Error inesperado");
+			rd.forward(request, response);
+		}
 
-		request.getRequestDispatcher("WEB-INF/MenuEmpleado/ListaVehiculos.jsp").forward(request, response);
 
 	}
 

@@ -38,7 +38,7 @@
 <link href="style/bootstrap.css" rel="stylesheet">
 
 <!-- Custom styles for this template -->
-<link href="style/MenuEmpleado.css" rel="stylesheet">
+<link href="style/asignarol.css" rel="stylesheet">
 
 <%
 Vehiculo ve = new Vehiculo();
@@ -93,17 +93,12 @@ Usuario u = (Usuario) session.getAttribute("usuario");
 
 
 	<div class="container">
-		<div class="btn-toolbar justify-content-between"
-			aria-label="Toolbar with button groups">
-			<div class="btn-group" role="group" aria-label="First group">
-				<a href="agregavehiculo" class="btn btn-primary">Agregar
-					vehiculo</a>
-			</div>
-			<div class="input-group">
-				<input class="form-control light-table-filter"
-					data-table="order-table" type="text" placeholder="Buscar">
-			</div>
+		<div class="container-arriba">
+			<a href="agregavehiculo" class="componente-arriba btn btn-primary">Agregar vehiculo</a>
+			<input class="componente-arriba form-control light-table-filter text-center"
+				data-table="order-table" type="text" placeholder="Buscar">
 		</div>
+
 	</div>
 
 	<br>

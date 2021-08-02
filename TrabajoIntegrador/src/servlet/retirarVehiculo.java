@@ -52,22 +52,17 @@ public class retirarVehiculo extends HttpServlet {
 			} else {
 				if (us.hasRol(rr)) {
 					RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/MenuCliente/MenuCliente.jsp");
-					request.setAttribute("errormsg", "true");
+					request.setAttribute("errormsg", "No tienes acceso a esta página");
 					rd.forward(request, response);
 				}
 			}
-		} catch (java.lang.NullPointerException e) {
-			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-			request.setAttribute("datosincorrectos", "true");
-			rd.forward(request, response);
 		} catch (Exception e) {
 			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-			request.setAttribute("errormsg", "true");
+			request.setAttribute("errormsg", "Error inesperado");
 			rd.forward(request, response);
 		}
 
 	}
-
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

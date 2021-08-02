@@ -23,13 +23,14 @@ import logic.Login;
 @WebServlet("/nuevaReserva")
 public class nuevaReserva extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    
-    public nuevaReserva() {
-        super();
-      
-    }
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	public nuevaReserva() {
+		super();
+
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		Usuario us = (Usuario) request.getSession().getAttribute("usuario");
 		Rol r = new Rol();
 		r.setIdRol(2);
@@ -40,27 +41,23 @@ public class nuevaReserva extends HttpServlet {
 				r.setIdRol(1);
 				if (us.hasRol(r)) {
 					RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/MenuEmpleado/MenuEmpleado.jsp");
-					request.setAttribute("errormsg", "true");
+					request.setAttribute("errormsg", "No tienes acceso a esta página");
 					rd.forward(request, response);
 				}
 			}
-		} catch (java.lang.NullPointerException e) {
-			e.printStackTrace();
-			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-			request.setAttribute("datosincorrectos", "true");
-			rd.forward(request, response);
 		} catch (Exception e) {
 			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-			request.setAttribute("errormsg", "true");
+			request.setAttribute("errormsg", "Error inesperado");
 			rd.forward(request, response);
 		}
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		Vehiculo v = new Vehiculo();
 		Categoria c = new Categoria();
 		Reserva r = new Reserva();
-		Login ctrlLogin = new Login ();
+		Login ctrlLogin = new Login();
 		int idCat = Integer.parseInt(request.getParameter("categoria"));
 		request.getSession().setAttribute("fechadesde", request.getParameter("fechadesde"));
 		request.getSession().setAttribute("fechahasta", request.getParameter("fechahasta"));
@@ -77,12 +74,13 @@ public class nuevaReserva extends HttpServlet {
 			LinkedList<Vehiculo> vDisponibles = new LinkedList<>();
 			vDisponibles = ctrlLogin.VehiculosDisponibles(c, r, v);
 			request.getSession().setAttribute("vDisponibles", vDisponibles);
-			
+
 			request.getRequestDispatcher("WEB-INF/MenuCliente/VehiculosDisponibles.jsp").forward(request, response);
-		} catch (ParseException e) {
-			request.setAttribute("fechaincorrecta", "true");
-			request.getRequestDispatcher("WEB-INF/MenuCliente/nuevaReserva.jsp").forward(request, response);
-		} 
+		} catch (Exception e) {
+			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+			request.setAttribute("errormsg", "Error inesperado");
+			rd.forward(request, response);
+		}
 
 	}
 

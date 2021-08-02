@@ -91,28 +91,20 @@ Usuario u = (Usuario) session.getAttribute("usuario");
 		</nav>
 	</div>
 
-	<hr>
-	<hr>
-	<hr>
-	<hr>
-	<hr>
-
-	<div class="container">
-		<div class="btn-toolbar justify-content-between"
-			aria-label="Toolbar with button groups">
-			<div class="btn-group" role="group" aria-label="First group">
-				<a href="nuevaReserva" class="btn btn-success">Nueva reserva</a>
-			</div>
-			<div class="input-group">
-				<input class="form-control light-table-filter"
-					data-table="order-table" type="text" placeholder="Buscar">
-			</div>
-		</div>
-	</div>
-
+	<br>
+	<br>
+	<br>
 	<br>
 
+
 	<div class="container">
+		<div class="container-arriba">
+			<a href="nuevaReserva" class="componente-arriba btn btn-success">Nueva
+				reserva</a> <input
+				class="componente-arriba form-control light-table-filter text-center"
+				data-table="order-table" type="text" placeholder="Buscar">
+		</div>
+		<br>
 		<div class="row">
 			<h4 class="text-center">Reservas</h4>
 			<div class="col-12 col-sm-12 col-lg-12">

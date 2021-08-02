@@ -3,6 +3,7 @@ package servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,9 +33,13 @@ public class editavehiculo extends HttpServlet {
 		int idv = Integer.parseInt(request.getParameter("idvehiculo"));
 		ve.setIdVehiculo(idv);
 		ve.setKm(kms);
-
-		ctrlLogin.updateKm(ve);
-
+		try {
+			ctrlLogin.updateKm(ve);
+		} catch (Exception e) {
+			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+			request.setAttribute("errormsg", "Error inesperado");
+			rd.forward(request, response);
+		}
 		request.getRequestDispatcher("WEB-INF/MenuEmpleado/MenuEmpleado.jsp").forward(request, response);
 
 	}
