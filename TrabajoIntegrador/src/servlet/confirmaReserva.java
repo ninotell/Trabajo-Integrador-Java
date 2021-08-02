@@ -53,7 +53,6 @@ public class confirmaReserva extends HttpServlet {
 		LinkedList<Reserva> reservas = ctrlLogin.listaReservasUsuario(u);
 		for (Reserva r : reservas) {
 			if (r.getEstado().equals("Iniciada")) {
-				System.out.println(r.toString());
 				sumres = sumres + 1;
 			} else {}
 		}
@@ -66,7 +65,7 @@ public class confirmaReserva extends HttpServlet {
 				ctrlLogin.newReserva(res, v, u);
 		    	ctrlLogin.emailConfirmacion(res, u);
 				RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/MenuCliente/MenuCliente.jsp");
-				request.setAttribute("reservaOk", "true");
+				request.setAttribute("okmsg", "Reserva realizada con éxito");
 				rd.forward(request, response);
 			}catch (ParseException p) {
 				//No puede fallar porque la fecha ya viene validada del paso anterior
@@ -75,7 +74,8 @@ public class confirmaReserva extends HttpServlet {
 			
 		} else {
 			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/MenuCliente/MenuCliente.jsp");
-			request.setAttribute("errorReserva", "true");
+			request.setAttribute("errormsg", "Ya tienes una reserva iniciada");
+			// response.setStatus("http error code");
 			rd.forward(request, response);	
 		}
 	}

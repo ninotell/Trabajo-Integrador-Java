@@ -42,6 +42,8 @@
 
 
 <%
+String errormsg = (String) request.getAttribute("errormsg");
+String okmsg = (String) request.getAttribute("okmsg");
 Usuario u = (Usuario) session.getAttribute("usuario");
 LinkedList<Categoria> listaCategorias = (LinkedList<Categoria>) session.getAttribute("listaCategorias");
 %>
@@ -54,45 +56,63 @@ LinkedList<Categoria> listaCategorias = (LinkedList<Categoria>) session.getAttri
 
 
 
-
-<div class="container">
-	<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
-	<a class="navbar-brand" href="home"> <img
-		class="rounded mx-auto d-block"
-		src="https://i.pinimg.com/originals/cd/ba/7a/cdba7ad02665c51892c4860f6fc201af.png"
-		alt="" width="50" height="50"></a>
-	<button class="navbar-toggler" type="button" data-toggle="collapse"
-		data-target="#navbarSupportedContent"
-		aria-controls="navbarSupportedContent" aria-expanded="false"
-		aria-label="Toggle navigation">
-		<span class="navbar-toggler-icon"></span>
-	</button>
-
-	<div class="collapse navbar-collapse" id="navbarSupportedContent">
-		<ul class="navbar-nav mr-auto">
-			<li class="nav-item active "><a class="nav-link" href="home">Home</a>
-			</li>
-			<li class="nav-item"><a class="nav-link" href="reservasCliente">Mis
-					reservas</a></li>
-		</ul>
-		<span class="dropdown"> <a class="nav-link dropdown-toggle"
-			data-toggle="dropdown" href="#"> ID: <%=u.getIdUsuario()%> - <%=u.getNombre()%>
-				<%=u.getApellido()%>
-		</a>
-			<div class="dropdown-menu">
-				<a class="dropdown-item" href="contacto">Contacto</a>
-				<div class="dropdown-divider"></div>
-				<a class="dropdown-item" href="Logout">Cerrar sesi&oacute;n</a>
-			</div>
-		</span>
-	</div>
-	</nav>
-</div>
-
 <body class="body">
+	<div class="container">
+		<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" href="home"> <img
+			class="rounded mx-auto d-block"
+			src="https://i.pinimg.com/originals/cd/ba/7a/cdba7ad02665c51892c4860f6fc201af.png"
+			alt="" width="50" height="50"></a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
 
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active "><a class="nav-link" href="home">Home</a>
+				</li>
+				<li class="nav-item"><a class="nav-link" href="reservasCliente">Mis
+						reservas</a></li>
+			</ul>
+			<span class="dropdown"> <a class="nav-link dropdown-toggle"
+				data-toggle="dropdown" href="#"> ID: <%=u.getIdUsuario()%> - <%=u.getNombre()%>
+					<%=u.getApellido()%>
+			</a>
+				<div class="dropdown-menu">
+					<a class="dropdown-item" href="contacto">Contacto</a>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item" href="Logout">Cerrar sesi&oacute;n</a>
+				</div>
+			</span>
+		</div>
+		</nav>
+	</div>
 	<br>
 	<br>
+	<%
+	if (errormsg != null) {
+	%>
+	<br>
+	<div class="alert alert-danger" role="alert">
+		<%=errormsg%>
+	</div>
+	<%
+	}
+	%>
+
+	<%
+	if (okmsg != null) {
+	%>
+	<br>
+	<div class="alert alert-success" role="alert">
+		<%=okmsg%>
+	</div>
+	<%
+	}
+	%>
 
 	<div class="container-botones">
 		<div class="col-auto p-5  text-center">
@@ -191,37 +211,13 @@ LinkedList<Categoria> listaCategorias = (LinkedList<Categoria>) session.getAttri
 			alert("Contraseña actualizada con éxito");
 		} else {
 		}
-
-		if (
-<%=request.getAttribute("errormsg")%>
-	== true) {
-			alert("No tienes acceso a esta página");
-		} else {
-		}
-		if (
-<%=request.getAttribute("errorReserva")%>
-	== true) {
-			alert("Ya tienes una reserva iniciada");
-		} else {
-		}
-		if (
-<%=request.getAttribute("reservaOk")%>
-	== true) {
-			alert("Felicitaciones, se realizó tu reserva");
-		} else {
-		}
 		if (
 <%=request.getAttribute("errorvehiculo")%>
 	== true) {
 			alert("No se encuentra vehículo");
 		} else {
 		}
-		if (
-<%=request.getAttribute("errorvehiculocat")%>
-	== true) {
-			alert("No hay vehiculos disponibles para esa categoría");
-		} else {
-		}
+		
 	}
 	function vehiculosCategoria(idCat) {
 		var f = document.getElementById('formCategoria');

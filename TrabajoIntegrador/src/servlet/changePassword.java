@@ -34,7 +34,7 @@ public class changePassword extends HttpServlet {
 			request.getRequestDispatcher("WEB-INF/passwordChange.jsp").forward(request, response);
 		} else {
 			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-			request.setAttribute("datosincorrectos", "true");
+			request.setAttribute("errormsg", "Inicie sesión");
 			rd.forward(request, response);
 		}
 
@@ -60,11 +60,11 @@ public class changePassword extends HttpServlet {
 			ctrlLogin.updatePsw(us);
 			if (us.hasRol(r)) {
 				RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/MenuEmpleado/MenuEmpleado.jsp");
-				request.setAttribute("pswchange", "true");
+				request.setAttribute("okmsg", "Contraseña actualizada con éxito");
 				rd.forward(request, response);
 			} else {
 				RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/MenuCliente/MenuCliente.jsp");
-				request.setAttribute("pswchange", "true");
+				request.setAttribute("okmsg", "Contraseña actualizada con éxito");
 				rd.forward(request, response);
 			}
 		}

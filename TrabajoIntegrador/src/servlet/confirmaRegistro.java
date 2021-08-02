@@ -68,19 +68,19 @@ public class confirmaRegistro extends HttpServlet {
 			ctrlLogin.newUsuario(u);
 			dr.addRol(r, u);
 			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-			request.setAttribute("newuser", "true");
+			request.setAttribute("okmsg", "Bienvenido al sistema!");
 			rd.forward(request, response);
 
 		} catch (Exception e) {
 			if (e instanceof java.sql.SQLIntegrityConstraintViolationException) {
 
-			RequestDispatcher rd = request.getRequestDispatcher("register.jsp");
-			request.setAttribute("errorusuario", "true");
+			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+			request.setAttribute("errormsg", "Usuario ya registrado");
 			rd.include(request, response);
 			}
 			else {
 				RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-				request.setAttribute("errormsg", "true");
+				request.setAttribute("errormsg", "Error inesperado");
 				rd.include(request, response);
 			}
 		}

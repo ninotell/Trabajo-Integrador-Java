@@ -24,6 +24,10 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+<%
+String errormsg = (String) request.getAttribute("errormsg");
+String okmsg = (String) request.getAttribute("okmsg");
+%>
 
 
 <body class="body">
@@ -50,6 +54,32 @@
 				</div>
 			</form>
 			<br>
+			<%
+			if (errormsg != null) {
+			%>
+			<br>
+			<div class="card-footer">
+				<div class="alert alert-danger" role="alert">
+					<%=errormsg%>
+				</div>
+			</div>
+			<%
+			}
+			%>
+
+			<%
+			if (okmsg != null) {
+			%>
+			<br>
+			<div class="card-footer">
+				<div class="alert alert-success" role="alert">
+					<%=okmsg%>
+				</div>
+			</div>
+			<%
+			}
+			%>
+
 		</div>
 	</div>
 
@@ -58,21 +88,9 @@
 <script>
 	window.onload = function() {
 		if (
-<%=request.getAttribute("errormsg")%>
-	== true) {
-			alert("Error inesperado");
-		} else {
-		}
-		if (
 <%=request.getAttribute("newuser")%>
 	== true) {
 			alert("Bienvenido al sistema, por favor inicie sesión");
-		} else {
-		}
-		if (
-<%=request.getAttribute("datosincorrectos")%>
-	== true) {
-			alert("Usuario y/o contrase\u00F1a incorrecto/s");
 		} else {
 		}
 	}

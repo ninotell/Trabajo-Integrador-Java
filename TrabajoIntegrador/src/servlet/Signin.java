@@ -26,25 +26,24 @@ import logic.Login;
 @WebServlet({ "/signin", "/SIGNIN", "/Signin", "/SignIn", "/signIn" })
 public class Signin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public Signin() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public Signin() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		Usuario u = new Usuario();
-		LinkedList<Categoria> categorias= new LinkedList<>();
+		LinkedList<Categoria> categorias = new LinkedList<>();
 		Login ctrlLogin = new Login();
-		PrintWriter out = response.getWriter();		
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		categorias = ctrlLogin.listaCategorias();
-		
+
 		try {
 			DataRol dr = new DataRol();
 			Rol r = new Rol();
@@ -52,34 +51,26 @@ public class Signin extends HttpServlet {
 			u.setPassword(password);
 			r.setIdRol(2);
 			r = dr.getById(r);
-			u=ctrlLogin.validate(u);
-						
-			if (u==null) {
-				RequestDispatcher rd=request.getRequestDispatcher("index.jsp");
-				request.setAttribute("datosincorrectos", "true");
-	            rd.include(request,response);
-			}
-			else {
-				
+			u = ctrlLogin.validate(u);
+
 			if (u.hasRol(r)) {
 				request.getSession().setAttribute("usuario", u);
 				request.getSession().setAttribute("listaCategorias", categorias);
 				request.getRequestDispatcher("WEB-INF/MenuCliente/MenuCliente.jsp").forward(request, response);
-				
-				
-				
-			} else { 
-				request.getSession().setAttribute("usuario", u);	
+
+			} else {
+				request.getSession().setAttribute("usuario", u);
 				request.getRequestDispatcher("WEB-INF/MenuEmpleado/MenuEmpleado.jsp").forward(request, response);
-				}
 			}
-			}
-			catch (NullPointerException n2) {
-			n2.printStackTrace();	
-			}
-		
-			
+		} catch (NullPointerException e1) {
+			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+			request.setAttribute("errormsg", "Datos incorrectos");
+			rd.include(request, response);
+		} catch (Exception e2) {
+			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+			request.setAttribute("errormsg", "Error inesperado");
+			rd.include(request, response);
+		}
+
 	}
 }
-
-//}

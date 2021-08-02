@@ -42,11 +42,11 @@ public class VehiculosCategoria extends HttpServlet {
 			
 		}catch (java.lang.NullPointerException e) {
 			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/MenuCliente/MenuCliente.jsp");
-			request.setAttribute("errorvehiculocat", "true");
+			request.setAttribute("errormsg", "No hay vehiculos disponibles para esa categoría");
 			rd.forward(request, response);
 		}catch (Exception e) {
 			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-			request.setAttribute("errormsg", "true");
+			request.setAttribute("errormsg", "Error inesperado");
 			rd.forward(request, response);
 		}
 	}
