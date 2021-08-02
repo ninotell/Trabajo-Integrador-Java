@@ -131,12 +131,23 @@ Usuario u = (Usuario) session.getAttribute("usuario");
 					<hr>
 					<div class="text-left">
 						<span class="font-weight-bold">Estado: </span><%=r.getEstado()%></div>
+					<div class="text-left">
+						<span class="font-weight-bold">Motivo: </span> <select
+									class="form-control" id="motivoCancelacion" name="motivo">
+									<option>Seleccione un motivo</option>
+									<option>Conseguí un mejor precio</option>
+									<option>Ya no lo necesito</option>
+									<option>Me arrepentí</option>
+									<option>Seleccioné mal las fechas</option>
+									<option>Otro</option>
+								</select></div>
 				</div>
+				
 				<div class="card-footer">
 					<div class="container-botones">
 						<form name="f3" id="formCancela">
 							<button onclick="confirmaCancelacion(<%=r.getIdReserva()%>)"
-								type="button" class="btn btn-block btn-danger">Cancelar</button>
+								type="button" class="btn btn-block btn-danger" disabled>Cancelar</button>
 						</form>
 					</div>
 				</div>
