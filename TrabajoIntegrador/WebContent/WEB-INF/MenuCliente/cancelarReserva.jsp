@@ -136,7 +136,7 @@ Usuario u = (Usuario) session.getAttribute("usuario");
 						<span class="font-weight-bold">Motivo: </span> <select
 							class="form-control" id="motivoCancelacion" name="motivo">
 							<option value="0">Seleccione un motivo</option>
-							<option value="asd">Conseguí un mejor precio</option>
+							<option>Conseguí un mejor precio</option>
 							<option>Ya no lo necesito</option>
 							<option>Me arrepentí</option>
 							<option>Seleccioné mal las fechas</option>
@@ -183,18 +183,6 @@ Usuario u = (Usuario) session.getAttribute("usuario");
 </body>
 
 <script> 
-var	idr = document.getElementById('idr').value;
-function confirmaCancelacion(id){
-	r = confirm("Desea cancelar su reserva ID: " + id + "?");
-	if(r==true){
-		var f = document.getElementById('formCancela');
-		f.method="post";
-		f.action='cancelaReserva?idreserva='+id;
-		f.submit();
-	}else{
-		
-	}
-	}
 $(document).ready(function () {
 	  $('#motivoCancelacion').val("0");
 
@@ -210,6 +198,20 @@ $(document).ready(function () {
 	  })
 
 	});
+
+var	idr = document.getElementById('idr').value;
+function confirmaCancelacion(id){
+	r = confirm("Desea cancelar su reserva ID: " + id + "?");
+	if(r==true){
+		var f = document.getElementById('formCancela');
+		f.method="post";
+		f.action='cancelaReserva?idreserva='+id;
+		f.submit();
+	}else{
+		
+	}
+	}
+
 
 </script>
 
