@@ -254,9 +254,10 @@ public class DataReserva {
 		ResultSet keyResultSet = null;
 		try {
 			stmt = DbConnector.getInstancia().getConn().prepareStatement(
-					"update reserva r set r.estado=?,r.fechaCancelacion=current_timestamp() where r.idReserva=?");
+					"update reserva r set r.estado=?,r.fechaCancelacion=current_timestamp(), r.motivoCancelacion=? where r.idReserva=?");
 			stmt.setString(1, r.getEstado());
-			stmt.setInt(2, r.getIdReserva());
+			stmt.setString(2, r.getMotivoCancelacion());
+			stmt.setInt(3, r.getIdReserva());
 			stmt.executeUpdate();
 
 		} catch (SQLException e) {

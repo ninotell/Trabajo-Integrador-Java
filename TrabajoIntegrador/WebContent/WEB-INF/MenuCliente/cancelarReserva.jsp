@@ -200,20 +200,20 @@ $(document).ready(function () {
 	  })
 
 	});
-
+	
 var	idr = document.getElementById('idr').value;
 function confirmaCancelacion(id){
 	r = confirm("Desea cancelar su reserva ID: " + id + "?");
+	var motivo = document.getElementById('motivoCancelacion').value;
 	if(r==true){
 		var f = document.getElementById('formCancela');
 		f.method="post";
-		f.action='cancelaReserva?idreserva='+id;
+		f.action='cancelaReserva?idreserva='+id +'&motivoCancelacion='+ motivo;
 		f.submit();
 	}else{
 		
 	}
 	}
-
 
 </script>
 

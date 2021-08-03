@@ -12,7 +12,14 @@ public class Reserva {
 	private Date fechaDevolucion;
 	private Date fechaCancelacion;
 	private String estado;
+	private String motivoCancelacion;
 	
+	public String getMotivoCancelacion() {
+		return motivoCancelacion;
+	}
+	public void setMotivoCancelacion(String motivoCancelacion) {
+		this.motivoCancelacion = motivoCancelacion;
+	}
 	public int getIdReserva() {
 		return idReserva;
 	}
