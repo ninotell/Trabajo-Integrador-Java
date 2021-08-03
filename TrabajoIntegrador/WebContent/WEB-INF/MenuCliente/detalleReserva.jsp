@@ -110,13 +110,23 @@ LinkedList<Categoria> listaCategorias = (LinkedList<Categoria>) session.getAttri
 					<div class="card-footer">
 						<img class="imagen responsive" src="<%=v.getFoto()%>">
 					</div>
+					<%
+					if (r.getEstado().equals("Iniciada")) {
+					%>
+					<div class="card-footer" style="">
+						<a href="cancelaReserva" class="btn btn-outline-danger">Ir a
+							cancelar reserva</a>
+					</div>
+					<%
+					}
+					%>
 				</div>
-				<br>
-				<br>
+				<br> <br>
 				<div class="container-botones">
 					<a href="reservasCliente" class="btn btn-success btn-block">Volver
 						a mis reservas</a><a href="home" class="btn btn-danger btn-block">Volver
 						al men&uacute;</a>
+
 				</div>
 
 

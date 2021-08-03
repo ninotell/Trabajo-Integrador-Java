@@ -132,10 +132,11 @@ Usuario u = (Usuario) session.getAttribute("usuario");
 					<div class="text-left">
 						<span class="font-weight-bold">Estado: </span><%=r.getEstado()%></div>
 					<hr>
-					<div class="text-left">
+					<div class="text-left" style="display: flex; align-items: center;">
 						<span class="font-weight-bold">Motivo: </span> <select
+							style="background-color: #F2F5EB; border-radius: 10px; border-left: none; box-shadow: 0.2rem 0.2rem 0.2rem 0 rgba(0, 0, 0, 0.3);"
 							class="form-control" id="motivoCancelacion" name="motivo">
-							<option value="0">Seleccione un motivo</option>
+							<option value="0" hidden>Seleccione un motivo</option>
 							<option>Conseguí un mejor precio</option>
 							<option>Ya no lo necesito</option>
 							<option>Me arrepentí</option>
@@ -160,6 +161,7 @@ Usuario u = (Usuario) session.getAttribute("usuario");
 			<a href="home" class="btn btn-block btn-danger">Volver
 				atr&aacute;s</a>
 		</div>
+		<br>
 
 		<%
 		}
