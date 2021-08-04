@@ -33,9 +33,9 @@ public class verificaReserva extends HttpServlet {
 		r.setIdRol(2);
 		try {
 			if (us.hasRol(r)) {
-				LinkedList<Reserva> reservasUsuario = ctrlLogin.listaReservasUsuario(us);
-				request.getSession().setAttribute("reservasUsuario", reservasUsuario);
-				request.getRequestDispatcher("WEB-INF/MenuCliente/reservasCliente.jsp").forward(request, response);
+				LinkedList<Reserva> reservas = ctrlLogin.getReservas();
+				request.getSession().setAttribute("reservasUsuario", reservas);
+				request.getRequestDispatcher("WEB-INF/MenuCliente/VerificarReservas.jsp").forward(request, response);
 			} else {
 				r.setIdRol(1);
 				if (us.hasRol(r)) {
