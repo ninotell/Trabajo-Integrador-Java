@@ -87,7 +87,7 @@ public class Login {
 	}
 	
 	public LinkedList<Vehiculo> VehiculosDisponibles(Categoria c, Reserva r, Vehiculo v){
-		return dre.VehiculosDisponibles(c,r,v);
+		return dv.VehiculosDisponibles(c,r,v);
 	}
 	
 	public void newReserva(Reserva r, Vehiculo vr, Usuario ur) {
@@ -128,4 +128,8 @@ public class Login {
 	public LinkedList<Vehiculo> getByCategoria(Categoria c) {
 		return dv.getByCategoria(c);
 	}
+	public  LinkedList<Reserva> getReservas(){
+		return dre.getAll();
+	}
+	
 }

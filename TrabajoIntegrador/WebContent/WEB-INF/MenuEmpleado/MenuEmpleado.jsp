@@ -116,11 +116,15 @@ String okmsg = (String) request.getAttribute("okmsg");
 	<div class="container-botones">
 		<div class="m-0 col justify-content-center">
 			<div class="col-auto p-5  text-center">
-				<a href="agregavehiculo" class="btn btn-primary btn-block">Agregar
-					vehiculo</a> <br> <a href="retirarVehiculo"
+				<a href="agregavehiculo" 
+					class="btn btn-primary btn-block">Agregar vehiculo</a> <br> 
+				<a href="retirarVehiculo"
 					class="btn btn-primary btn-block">Retiro/Devoluci&oacute;n</a> <br>
-				<a href="changePassword" class="btn btn-warning btn-block">Cambiar
-					contraseña</a>
+				<a href="verificaReserva" 
+					class="btn btn-danger btn-block">Verificar reservas</a><br> 
+				<a href="changePassword"
+					class="btn btn-warning btn-block">Cambiar contraseña</a>
+
 			</div>
 		</div>
 	</div>

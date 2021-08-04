@@ -3,6 +3,7 @@ package data;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.LinkedList;
 
 import entities.Categoria;
@@ -280,6 +281,61 @@ public class DataVehiculo {
 					v.setKm(rs.getDouble("km"));
 					v.setFoto(rs.getString("foto"));
 
+					vehiculos.add(v);
+				}
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (stmt != null) {
+					stmt.close();
+				}
+				DbConnector.getInstancia().releaseConn();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return vehiculos;
+	}
+	
+	public LinkedList<Vehiculo> VehiculosDisponibles(Categoria c, Reserva r, Vehiculo v) {
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		LinkedList<Vehiculo> vehiculos = new LinkedList<>();
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
+
+		try {
+			stmt = DbConnector.getInstancia().getConn().prepareStatement(
+
+					"select v.idVehiculo, v.marca, v.modelo, v.año, v.foto from vehiculo v\r\n"
+							+ "inner join vehiculos_categorias vc on v.idVehiculo = vc.id_vehiculo\r\n"
+							+ "where vc.id_categoria = ? and v.transmision = ? \r\n"
+							+ "and v.idVehiculo not in (SELECT id_vehiculo\r\n"
+							+ "from reserva_usuario_vehiculo ruv\r\n"
+							+ "inner join reserva r on ruv.id_reserva = r.idReserva\r\n"
+							+ "where r.fechaDevolucion>? and r.fechaRetiro<? and r.estado != ?)"
+
+			);
+			stmt.setInt(1, c.getIdCategoria());
+			stmt.setString(2, v.getTransmision());
+			stmt.setString(3, formatter.format(r.getFechaRetiro()));
+			stmt.setString(4, formatter.format(r.getFechaDevolucion()));
+			stmt.setString(5, "cancelada");
+			rs = stmt.executeQuery();
+			if (rs != null) {
+				while (rs.next()) {
+					v = new Vehiculo();
+					v.setIdVehiculo(rs.getInt("v.idVehiculo"));
+					v.setMarca(rs.getString("v.marca"));
+					v.setModelo(rs.getString("v.modelo"));
+					v.setAnio(rs.getInt("v.año"));
+					v.setFoto(rs.getString("v.foto"));
 					vehiculos.add(v);
 				}
 			}
