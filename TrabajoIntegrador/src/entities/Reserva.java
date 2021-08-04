@@ -13,6 +13,25 @@ public class Reserva {
 	private Date fechaCancelacion;
 	private String estado;
 	private String motivoCancelacion;
+	private Usuario usuario;
+	private Vehiculo vehiculo;
+	
+	
+	public Vehiculo getVehiculo() {
+		return vehiculo;
+	}
+
+	public void setVehiculo(Vehiculo vehiculo) {
+		this.vehiculo = vehiculo;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+	
+	public Usuario getUsuario() {
+		return usuario;
+	}
 	
 	public String getMotivoCancelacion() {
 		return motivoCancelacion;

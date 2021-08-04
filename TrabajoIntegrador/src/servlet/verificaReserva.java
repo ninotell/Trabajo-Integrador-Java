@@ -30,22 +30,23 @@ public class verificaReserva extends HttpServlet {
 		Usuario us = (Usuario) request.getSession().getAttribute("usuario");
 		Login ctrlLogin = new Login();
 		Rol r = new Rol();
-		r.setIdRol(2);
+		r.setIdRol(1);
 		try {
 			if (us.hasRol(r)) {
 				LinkedList<Reserva> reservas = ctrlLogin.getReservas();
-				request.getSession().setAttribute("reservasUsuario", reservas);
-				request.getRequestDispatcher("WEB-INF/MenuCliente/VerificarReservas.jsp").forward(request, response);
+				request.getSession().setAttribute("reservas", reservas);
+				request.getRequestDispatcher("WEB-INF/MenuEmpleado/VerificarReservas.jsp").forward(request, response);
 			} else {
-				r.setIdRol(1);
+				r.setIdRol(2);
 				if (us.hasRol(r)) {
-					RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/MenuEmpleado/MenuEmpleado.jsp");
+					RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/MenuCliente/MenuCliente.jsp");
 					request.setAttribute("errormsg", "No tienes acceso a esta página");
 					rd.forward(request, response);
 				}
 			}
 
 		}  catch (Exception e) {
+			e.printStackTrace();
 			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
 			request.setAttribute("errormsg", "Error inesperado");
 			rd.forward(request, response);

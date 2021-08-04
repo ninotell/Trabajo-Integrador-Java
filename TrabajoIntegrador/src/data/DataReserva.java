@@ -36,6 +36,7 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
 import entities.Categoria;
+import entities.Documento;
 import entities.Reserva;
 import entities.Usuario;
 import entities.Vehiculo;
@@ -383,11 +384,17 @@ public class DataReserva {
 		LinkedList<Reserva> reservas = new LinkedList<>();
 		try {
 			stmt = DbConnector.getInstancia().getConn().prepareStatement(
-					"select * from reserva");
+					"SELECT * FROM reserva_usuario_vehiculo ruv\r\n"
+					+ "inner join reserva r on r.idReserva = ruv.id_reserva\r\n"
+					+ "inner join vehiculo v on v.idVehiculo = ruv.id_vehiculo\r\n"
+					+ "inner join usuario u on u.idUsuario = ruv.id_usuario");
 			rs = stmt.executeQuery();
 			if (rs != null) {
 				while (rs.next()) {
 					r = new Reserva();
+					r.setUsuario(new Usuario());
+					r.setVehiculo(new Vehiculo());
+					r.getUsuario().setDocumento(new Documento());
 					r.setIdReserva(rs.getInt("idReserva"));
 					r.setFechaReserva(rs.getTimestamp("fechaReserva"));
 					r.setFechaRetiro(rs.getDate("fechaRetiro"));
@@ -395,6 +402,24 @@ public class DataReserva {
 					r.setFechaCancelacion(rs.getDate("fechaCancelacion"));
 					r.setEstado(rs.getString("estado"));
 					r.setMotivoCancelacion(rs.getString("motivoCancelacion"));
+					r.getUsuario().setApellido(rs.getString("apellido"));
+					r.getUsuario().setNombre(rs.getString("nombre"));
+					r.getUsuario().setDireccion(rs.getString("direccion"));
+					r.getUsuario().getDocumento().setTipo(rs.getString("tipoDocumento"));
+					r.getUsuario().getDocumento().setNro(rs.getString("nroDocumento"));
+					r.getUsuario().setEmail(rs.getString("mail"));
+					r.getUsuario().setIdUsuario(rs.getInt("idUsuario"));
+					r.getUsuario().setPassword(rs.getString("contraseña"));
+					r.getUsuario().setTel(rs.getString("telefono"));
+					r.getVehiculo().setAnio(rs.getInt("año"));
+					r.getVehiculo().setFoto(rs.getString("foto"));
+					r.getVehiculo().setIdVehiculo(rs.getInt("idVehiculo"));
+					r.getVehiculo().setKm(rs.getDouble("km"));
+					r.getVehiculo().setMarca(rs.getString("marca"));
+					r.getVehiculo().setModelo(rs.getString("modelo"));
+					r.getVehiculo().setPatente(rs.getString("patente"));
+					r.getVehiculo().setTransmision(rs.getString("transmision"));
+					
 					reservas.add(r);
 
 				}
