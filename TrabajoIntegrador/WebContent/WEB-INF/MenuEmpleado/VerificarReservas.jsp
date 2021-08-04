@@ -95,12 +95,15 @@ Date today = new Date();
 	<br>
 	<div class="pricing py-5">
 		<div class="container-cards">
-			<% if (reservas.isEmpty()){ %>
-			<br> <br> No hay reservas para mostrar
-			<%} else {
-			for (Reserva r : reservas) {
-				if ((r.getEstado().equals("Iniciada")) && (dtf.format(r.getFechaRetiro())).equals(dtf.format(today)) ){
+			<%
+			if (reservas.isEmpty()) {
 			%>
+			<br> <br> No hay reservas para mostrar
+			<%
+ } else {
+ for (Reserva r : reservas) {
+ 	if ((r.getEstado().equals("Iniciada")) && (dtf.format(r.getFechaRetiro())).equals(dtf.format(today))) {
+ %>
 			<div class="card">
 				<div class="card-body">
 					<h5 class="card-title text-muted text-uppercase text-center"><%="ID reserva"%></h5>
@@ -109,26 +112,28 @@ Date today = new Date();
 					<ul class="fa-ul">
 						<li><span class="fa-li"><i class="fas fa-check"></i></span>Cliente:
 							<%=r.getUsuario().getNombre() + " " + r.getUsuario().getApellido()%></li>
-						<li><span class="fa-li"><i class="fas fa-check"></i></span>Contacto: 
-							 <%=r.getUsuario().getTel()%></li>
 						<li><span class="fa-li"><i class="fas fa-check"></i></span>Fecha
 							retiro: <%=(dtf.format(r.getFechaRetiro()))%></li>
-						<!-- 						<li><span class="fa-li"><i class="fas fa-check"></i></span>Transmisión: -->
-						<%-- 							<%=v.getTransmision()%></li> --%>
+						<li><span class="fa-li"><i class="fas fa-check"></i></span>Contacto:
+							<strong><%=r.getUsuario().getTel()%></strong></li>
 					</ul>
 
 				</div>
 
 				<div class="card-footer">
 					<form name="f3" id="formCancela">
-							<button onclick="confirmaCancelacion(<%=r.getIdReserva()%>)"
-								type="button" class="btn btn-block btn-danger"
-								id="botonCancelar">Cancelar</button>
-						</form>
+					<a href="tel:<%=r.getUsuario().getTel()%>" class="btn btn-success" id="botonLlamar">Llamar</a>
+						<button onclick="confirmaCancelacion(<%=r.getIdReserva()%>)"
+							type="button" class="btn btn-danger" id="botonCancelar">Cancelar</button>
+					</form>
 				</div>
 
 			</div>
-			<% } } }%>
+			<%
+			}
+			}
+			}
+			%>
 		</div>
 		<div class="container-botones">
 			<a href="home" type="button" class="btn btn-block btn-danger">Volver
@@ -139,18 +144,16 @@ Date today = new Date();
 
 </body>
 <script> 
-// var	idr = document.getElementById('idr').value;
 function confirmaCancelacion(id){
-	re = confirm("Desea cancelar su reserva ID: " + id + "?");
-	var motivo = "No asistió a retirar el vehiculo";
+	re = confirm("Desea cancelar la reserva ID: " + id + "?");
+	var motivo = "No asiste a retirar el vehiculo";
 	if(re==true){
 		var f = document.getElementById('formCancela');
 		f.method="post";
 		f.action='verificaReserva?idreserva='+id +'&motivoCancelacion='+ motivo;
 		f.submit();
 	}else{
-		
-	}
+	}}
 	</script>
 
 </html>
