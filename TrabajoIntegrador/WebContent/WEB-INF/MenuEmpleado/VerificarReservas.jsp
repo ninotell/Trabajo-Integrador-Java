@@ -3,8 +3,9 @@
 <%@page import="entities.Vehiculo"%>
 <%@page import="logic.Login"%>
 <%@page import="java.util.LinkedList"%>
-<%@page import= "java.time.format.DateTimeFormatter"%>
-<%@page import= "java.time.LocalDateTime"%>
+<%@page import="java.text.DateFormat"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -46,7 +47,8 @@
 <%
 LinkedList<Reserva> reservas = (LinkedList<Reserva>) session.getAttribute("reservas");
 Usuario u = (Usuario) session.getAttribute("usuario");
-DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+DateFormat dtf = new SimpleDateFormat("dd/MM/yyyy");
+Date today = new Date();
 %>
 <title><%=u.getNombre()%> <%=u.getApellido()%></title>
 
@@ -89,12 +91,14 @@ DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 	<br>
 	<div class="pricing py-5">
 		<div class="container-cards">
-			<%
-			if (reservas.isEmpty()){
-				//mensaje no hay reservas
-			}else{
+			<% if (reservas.isEmpty()){ %>
+			<br> <br>
+			No hay reservas para mostrar
+			<%} else {
+				
+				System.out.println(dtf.format(today)  );
 			for (Reserva r : reservas) {
-				if(dtf.format(r.getFechaRetiro())==dtf.format(LocalDateTime.now()) and r.getEstado().equals("Iniciada")){
+				if(r.getEstado().equals("Iniciada")){
 			%>
 			<div class="card">
 				<div class="card-body">
@@ -115,7 +119,7 @@ DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 				</div>
 
 			</div>
-			<% } }  }%>
+			<% } } }%>
 		</div>
 		<div class="container-botones">
 			<a href="home" type="button" class="btn btn-block btn-danger">Volver
