@@ -98,10 +98,14 @@ Date today = new Date();
 			%>
 			<div class="card">
 				<div class="card-body">
-					<h5 class="card-title text-muted text-uppercase text-center"><%=r.getIdReserva()%></h5>
-					<h6 class="card-price text-center"><%=r.getEstado()%></h6>
+					<h5 class="card-title text-muted text-uppercase text-center"><%="ID reserva"%></h5>
+					<h6 class="card-price text-center"><%=r.getIdReserva()%></h6>
 					<hr>
 					<ul class="fa-ul">
+						<li><span class="fa-li"><i class="fas fa-check"></i></span>Cliente:
+							<%=r.getUsuario().getNombre() + " " + r.getUsuario().getApellido()%></li>
+						<li><span class="fa-li"><i class="fas fa-check"></i></span>Contacto: 
+							 <%=r.getUsuario().getTel()%></li>
 						<li><span class="fa-li"><i class="fas fa-check"></i></span>Fecha
 							retiro: <%=(dtf.format(r.getFechaRetiro()))%></li>
 						<!-- 						<li><span class="fa-li"><i class="fas fa-check"></i></span>Transmisión: -->
@@ -111,8 +115,11 @@ Date today = new Date();
 				</div>
 
 				<div class="card-footer">
-					<span class="font-weight-bold"><%=r.getUsuario().getTel()%>
-					</span>
+					<form name="f3" id="formCancela">
+							<button onclick="confirmaCancelacion(<%=r.getIdReserva()%>)"
+								type="button" class="btn btn-block btn-danger"
+								id="botonCancelar">Cancelar</button>
+						</form>
 				</div>
 
 			</div>
@@ -126,5 +133,19 @@ Date today = new Date();
 
 
 </body>
+<script> 
+var	idr = document.getElementById('idr').value;
+function confirmaCancelacion(id){
+	r = confirm("Desea cancelar su reserva ID: " + id + "?");
+	var motivo = "No asistió a retirar el vehiculo";
+	if(r==true){
+		var f = document.getElementById('formCancela');
+		f.method="post";
+		f.action='cancelaReserva?idreserva='+id +'&motivoCancelacion='+ motivo;
+		f.submit();
+	}else{
+		
+	}
+	</script>
 
 </html>
