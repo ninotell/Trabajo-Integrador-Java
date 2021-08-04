@@ -1,6 +1,8 @@
 <%@page import="entities.Reserva"%>
 <%@page import="entities.Usuario"%>
 <%@page import="entities.Vehiculo"%>
+<%@page import="entities.Rol"%>
+<%@page import="data.DataRol"%>
 <%@page import="logic.Login"%>
 <%@page import="java.util.LinkedList"%>
 <%@page import="java.text.DateFormat"%>
@@ -45,6 +47,9 @@
 <link href="style/vehiculosCategoria.css" rel="stylesheet">
 
 <%
+Usuario us = new Usuario();
+DataRol dr = new DataRol();
+Login ctrlLogin = new Login();
 LinkedList<Reserva> reservas = (LinkedList<Reserva>) session.getAttribute("reservas");
 Usuario u = (Usuario) session.getAttribute("usuario");
 DateFormat dtf = new SimpleDateFormat("dd/MM/yyyy");
@@ -134,14 +139,14 @@ Date today = new Date();
 
 </body>
 <script> 
-var	idr = document.getElementById('idr').value;
+// var	idr = document.getElementById('idr').value;
 function confirmaCancelacion(id){
-	r = confirm("Desea cancelar su reserva ID: " + id + "?");
+	re = confirm("Desea cancelar su reserva ID: " + id + "?");
 	var motivo = "No asistió a retirar el vehiculo";
-	if(r==true){
+	if(re==true){
 		var f = document.getElementById('formCancela');
 		f.method="post";
-		f.action='cancelaReserva?idreserva='+id +'&motivoCancelacion='+ motivo;
+		f.action='verificaReserva?idreserva='+id +'&motivoCancelacion='+ motivo;
 		f.submit();
 	}else{
 		
