@@ -53,52 +53,48 @@ Date today = new Date();
 <title><%=u.getNombre()%> <%=u.getApellido()%></title>
 
 </head>
-	<div class="container">
-		<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
-		<a class="navbar-brand" href="#"> <img
-			class="rounded mx-auto d-block"
-			src="https://i.pinimg.com/originals/cd/ba/7a/cdba7ad02665c51892c4860f6fc201af.png"
-			alt="" width="50" height="50"></a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse"
-			data-target="#navbarSupportedContent"
-			aria-controls="navbarSupportedContent" aria-expanded="false"
-			aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active"><a class="nav-link" href="home">Home<span
-						class="sr-only"></span></a></li>
-				<li class="nav-item"><a class="nav-link" href="listavehiculos">Vehiculos</a>
-				</li>
-				<li class="nav-item"><a class="nav-link" href="editarolusuario"
-					method="get">Asignar rol</a></li>
-			</ul>
-			<span class="dropdown"> <a class="nav-link dropdown-toggle"
-				data-toggle="dropdown" href="#">ID: <%=u.getIdUsuario()%> - <%=u.getNombre()%>
-					<%=u.getApellido()%></a>
-				<div class="dropdown-menu">
-					<a class="dropdown-item" href="changePassword">Cambiar
-						contraseña</a> <a class="dropdown-item" href="Logout">Cerrar
-						sesión</a>
-				</div>
-			</span>
-		</div>
-		</nav>
+<div class="container">
+	<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+	<a class="navbar-brand" href="#"> <img
+		class="rounded mx-auto d-block"
+		src="https://i.pinimg.com/originals/cd/ba/7a/cdba7ad02665c51892c4860f6fc201af.png"
+		alt="" width="50" height="50"></a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse"
+		data-target="#navbarSupportedContent"
+		aria-controls="navbarSupportedContent" aria-expanded="false"
+		aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item active"><a class="nav-link" href="home">Home<span
+					class="sr-only"></span></a></li>
+			<li class="nav-item"><a class="nav-link" href="listavehiculos">Vehiculos</a>
+			</li>
+			<li class="nav-item"><a class="nav-link" href="editarolusuario"
+				method="get">Asignar rol</a></li>
+		</ul>
+		<span class="dropdown"> <a class="nav-link dropdown-toggle"
+			data-toggle="dropdown" href="#">ID: <%=u.getIdUsuario()%> - <%=u.getNombre()%>
+				<%=u.getApellido()%></a>
+			<div class="dropdown-menu">
+				<a class="dropdown-item" href="changePassword">Cambiar
+					contraseña</a> <a class="dropdown-item" href="Logout">Cerrar sesión</a>
+			</div>
+		</span>
 	</div>
+	</nav>
+</div>
 <body class="body">
 	<br>
 	<br>
 	<div class="pricing py-5">
 		<div class="container-cards">
 			<% if (reservas.isEmpty()){ %>
-			<br> <br>
-			No hay reservas para mostrar
+			<br> <br> No hay reservas para mostrar
 			<%} else {
-				
-				System.out.println(dtf.format(today)  );
 			for (Reserva r : reservas) {
-				if(r.getEstado().equals("Iniciada")){
+				if ((r.getEstado().equals("Iniciada")) && (dtf.format(r.getFechaRetiro())).equals(dtf.format(today)) ){
 			%>
 			<div class="card">
 				<div class="card-body">
@@ -106,16 +102,17 @@ Date today = new Date();
 					<h6 class="card-price text-center"><%=r.getEstado()%></h6>
 					<hr>
 					<ul class="fa-ul">
-						<li><span class="fa-li"><i class="fas fa-check"></i></span>Contacto:
-							<%=r.getUsuario().getTel()%></li>
-<!-- 						<li><span class="fa-li"><i class="fas fa-check"></i></span>Transmisión: -->
-<%-- 							<%=v.getTransmision()%></li> --%>
+						<li><span class="fa-li"><i class="fas fa-check"></i></span>Fecha
+							retiro: <%=(dtf.format(r.getFechaRetiro()))%></li>
+						<!-- 						<li><span class="fa-li"><i class="fas fa-check"></i></span>Transmisión: -->
+						<%-- 							<%=v.getTransmision()%></li> --%>
 					</ul>
 
 				</div>
 
 				<div class="card-footer">
-					<img class="text-bold" src="<%=r.getUsuario().getTel()%>">
+					<span class="font-weight-bold"><%=r.getUsuario().getTel()%>
+					</span>
 				</div>
 
 			</div>
