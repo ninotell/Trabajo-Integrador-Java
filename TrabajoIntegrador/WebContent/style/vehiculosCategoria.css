@@ -167,6 +167,7 @@ body {
 	transition: all 0.2s;
 	box-shadow: 0.5rem 0.5rem 0.5rem 0 rgba(0, 0, 0, 0.3);
 	background-color: #F2F5EB;
+	scroll-snap-align: start;
 }
 
 .pricing .container-cards {
@@ -232,5 +233,13 @@ body {
 	}
 	.pricing .card {
 		box-shadow: none;
+	}
+}
+
+@media ( max-width : 400px) {
+	.pricing .container-cards {
+		scroll-snap-type: y mandatory;
+		overflow-y: scroll;
+		height: 80vh;
 	}
 }
