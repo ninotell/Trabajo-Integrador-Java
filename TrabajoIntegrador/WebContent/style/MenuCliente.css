@@ -222,9 +222,11 @@ body {
 	left: 0px;
 }
 
-.btn{
+.btnRes{
 	transition: all .3s;
+	animation: breathing 3s ease-out infinite normal;
 }
+
 @media ( min-width : 1000px) {
 	.pricing .card:hover {
 		box-shadow: 0.5rem 0.5rem 0.5rem 0 rgba(0, 0, 0, 0.3);
@@ -242,4 +244,22 @@ body {
 	.btn:hover {
 		transform: scale(1.05);
 	}
+}
+
+@keyframes breathing {
+  0% {
+    transform: scale(1);
+  }
+
+  25% {
+    transform: scale(1.07);
+  }
+
+  60% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
