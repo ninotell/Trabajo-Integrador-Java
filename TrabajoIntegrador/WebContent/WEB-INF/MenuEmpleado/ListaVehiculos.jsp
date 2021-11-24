@@ -38,13 +38,10 @@
 <link href="style/bootstrap.css" rel="stylesheet">
 
 <!-- Custom styles for this template -->
-<link href="style/asignarol.css" rel="stylesheet">
+<link href="style/listaVehiculos.css" rel="stylesheet">
 
 <%
-Vehiculo ve = new Vehiculo();
-Login ctrlLogin = new Login();
-ve.setAnio(2000);
-LinkedList<Vehiculo> lv = ctrlLogin.getByAnio(ve);
+LinkedList<Vehiculo> lv = (LinkedList<Vehiculo>) session.getAttribute("vehiculosEncontrados");
 Usuario u = (Usuario) session.getAttribute("usuario");
 %>
 <title><%=u.getNombre()%> <%=u.getApellido()%></title>
@@ -91,24 +88,40 @@ Usuario u = (Usuario) session.getAttribute("usuario");
 	<br>
 	<br>
 
-
+	<%
+	if (lv == null || lv.size() == 0) {
+	%>
+	<div class="text-center">
+		<h3 class="text-center">No se encontraron vehículos</h3>
+		<button class="btn btn-danger text-center"
+			onclick="window.history.back()">Volver a la página anterior</button>
+	</div>
+	<%
+	} else {
+	%>
 	<div class="container">
 		<div class="container-arriba">
-			<a href="agregavehiculo" class="componente-arriba btn btn-primary">Agregar vehiculo</a>
-			<input class="componente-arriba form-control light-table-filter text-center"
-				data-table="order-table" type="text" placeholder="Buscar">
+			<a href="agregavehiculo" class="btn btn-primary" id="btn-agregar">Agregar
+				vehiculo</a>
+			<div class="container-busqueda">
+				<form action="listavehiculos" method="post">
+					<input name="patenteBusqueda" class="componente form-control"
+						
+						placeholder="Buscar por patente">
+					<button type="submit" class="componente btn btn-primary">Buscar</button>
+				</form>
+			</div>
 		</div>
 
 	</div>
 
 	<br>
 
-	<div class="container">
+	<div class="container-lista">
 		<div class="row">
 			<h4 class="text-center">Vehiculos</h4>
-			<div class="col-12 col-sm-12 col-lg-12">
 				<div class="table-responsive">
-					<table class="table order-table table-striped table-hover"
+					<table class="table table-striped table-hover"
 						id="vehicles">
 						<thead>
 							<tr>
@@ -139,7 +152,7 @@ Usuario u = (Usuario) session.getAttribute("usuario");
 								<form name="f2" class="form-register" action="editavehiculo"
 									method="post">
 									<td><input type="number" class="form-control"
-										placeholder="<%=v.getKm()%>" value="<%=v.getKm()%>" name="kms" /></td>
+										placeholder="<%=v.getKm()%> km" value="<%=v.getKm()%> km" name="kms" /></td>
 
 									<td><button type="submit" class="btn btn-primary">Actualizar
 											km</button></td> <input type="hidden" name="idvehiculo"
@@ -157,55 +170,18 @@ Usuario u = (Usuario) session.getAttribute("usuario");
 						</tbody>
 					</table>
 				</div>
-			</div>
 		</div>
 	</div>
+
+	<%
+	}
+	%>
 
 
 
 </body>
 
 <script>
-	(function(document) {
-      'use strict';
-
-      var LightTableFilter = (function(Arr) {
-
-        var _input;
-
-        function _onInputEvent(e) {
-          _input = e.target;
-          var tables = document.getElementsByClassName(_input.getAttribute('data-table'));
-          Arr.forEach.call(tables, function(table) {
-            Arr.forEach.call(table.tBodies, function(tbody) {
-              Arr.forEach.call(tbody.rows, _filter);
-            });
-          });
-        }
-
-        function _filter(row) {
-          var text = row.textContent.toLowerCase(), val = _input.value.toLowerCase();
-          row.style.display = text.indexOf(val) === -1 ? 'none' : 'table-row';
-        }
-
-        return {
-          init: function() {
-            var inputs = document.getElementsByClassName('light-table-filter');
-            Arr.forEach.call(inputs, function(input) {
-              input.oninput = _onInputEvent;
-            });
-          }
-        };
-      })(Array.prototype);
-
-      document.addEventListener('readystatechange', function() {
-        if (document.readyState === 'complete') {
-          LightTableFilter.init();
-        }
-      });
-
-    })(document);
-    
 	function confirmaEliminacion(id){
 		r = confirm("Desea eliminar vehiculo ID: " + id + "?");
 		if(r==true){
@@ -217,6 +193,7 @@ Usuario u = (Usuario) session.getAttribute("usuario");
 			
 		}
 		}
+	
 
  
 </script>

@@ -358,5 +358,52 @@ public class DataVehiculo {
 
 		return vehiculos;
 	}
+	
+	public LinkedList<Vehiculo> getByPatente(Vehiculo v) {
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		LinkedList<Vehiculo> vehiculos = new LinkedList<>();
+		try {
+			stmt = DbConnector.getInstancia().getConn().prepareStatement(
+
+					"SELECT v.idVehiculo, v.marca, v.patente, v.transmision, v.modelo, v.km, v.año, v.foto FROM vehiculo v\r\n"
+					+ "where patente like ?"
+
+			);
+			stmt.setString(1,"%"+ v.getPatente()+"%");
+			rs = stmt.executeQuery();
+			if (rs != null) {
+				while (rs.next()) {
+					v = new Vehiculo();
+					v.setIdVehiculo(rs.getInt("v.idVehiculo"));
+					v.setPatente(rs.getString("v.patente"));
+					v.setTransmision(rs.getString("v.transmision"));
+					v.setMarca(rs.getString("v.marca"));
+					v.setModelo(rs.getString("v.modelo"));
+					v.setKm(rs.getDouble("v.km"));
+					v.setAnio(rs.getInt("v.año"));
+					v.setFoto(rs.getString("v.foto"));
+					vehiculos.add(v);
+				}
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (stmt != null) {
+					stmt.close();
+				}
+				DbConnector.getInstancia().releaseConn();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return vehiculos;
+	}
 
 }

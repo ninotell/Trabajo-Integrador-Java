@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import entities.Rol;
 import entities.Usuario;
 import logic.Login;
 
@@ -23,22 +24,32 @@ public class eliminausuario extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		PrintWriter out = response.getWriter();
+		Usuario us = (Usuario) request.getSession().getAttribute("usuario");
 		Login ctrlLogin = new Login();
-		Usuario us = new Usuario();
+		Usuario u = new Usuario();
 		int idu = Integer.parseInt(request.getParameter("idusuario"));
-
-		us.setIdUsuario(idu);
+		Rol r = new Rol();
+		Rol rr = new Rol();
+		r.setIdRol(1);
+		rr.setIdRol(2);
 		try {
-			ctrlLogin.deleteUsuario(us);
+			if (us.hasRol(r)) {
+				u.setIdUsuario(idu);
+				ctrlLogin.deleteUsuario(u);
+				request.getRequestDispatcher("WEB-INF/MenuEmpleado/AsignarRol.jsp").forward(request, response);
+			} else {
+				if (us.hasRol(rr)) {
+					RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/MenuCliente/MenuCliente.jsp");
+					request.setAttribute("errormsg", "No tienes acceso a esta página");
+					rd.forward(request, response);
+				}
+			}
 		} catch (Exception e) {
 			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
 			request.setAttribute("errormsg", "Error inesperado");
 			rd.forward(request, response);
 		}
 
-		request.getRequestDispatcher("WEB-INF/MenuEmpleado/AsignarRol.jsp").forward(request, response);
 	}
 
 }

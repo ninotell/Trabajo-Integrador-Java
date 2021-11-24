@@ -131,5 +131,8 @@ public class Login {
 	public  LinkedList<Reserva> getReservas(){
 		return dre.getAll();
 	}
+	public  LinkedList<Vehiculo> getByPatente(Vehiculo v){
+		return dv.getByPatente(v);
+	}
 	
 }
