@@ -22,6 +22,11 @@
 
 
 </head>
+
+<%
+String errormsg = (String) request.getAttribute("errorReserva");
+%>
+
 <body>
 
 	<form name="f1" class="form-new" action="retirarVehiculo" method="post">
@@ -51,19 +56,26 @@
 						id="botonMostrar">Continuar</button>
 
 				</div>
-				</div>
 				
+				
+				<%
+			if (errormsg != null) {
+			%>
+			<br>
+				<div class="alert alert-danger" role="alert">
+					<%=errormsg%>
+				</div>
+			<%
+			}
+			%>
+
+						
+			</div>
 			</div>
 	</form>
 
 </body>
 <script>
-		window.onload = function() {
-			if (
-		<%=request.getAttribute("errorReserva")%>
-		== true) {
-				alert("No hay reserva con ese numero");
-			} else {}
-		}
+
 </script>
 </html>

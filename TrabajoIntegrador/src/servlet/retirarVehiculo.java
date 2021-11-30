@@ -74,7 +74,7 @@ public class retirarVehiculo extends HttpServlet {
 		r = ctrlLogin.getReservaById(r);
 		if (r == null) {
 			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/MenuEmpleado/EntregarVehiculo.jsp");
-			request.setAttribute("errorReserva", "true");
+			request.setAttribute("errorReserva", "Reserva no encontrada");
 			rd.forward(request, response);
 		} else {
 			request.getSession().setAttribute("reserva", r);
