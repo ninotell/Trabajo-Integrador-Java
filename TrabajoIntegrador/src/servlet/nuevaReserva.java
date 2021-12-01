@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -59,13 +60,16 @@ public class nuevaReserva extends HttpServlet {
 		Reserva r = new Reserva();
 		Login ctrlLogin = new Login();
 		int idCat = Integer.parseInt(request.getParameter("categoria"));
-		request.getSession().setAttribute("fechadesde", request.getParameter("fechadesde"));
-		request.getSession().setAttribute("fechahasta", request.getParameter("fechahasta"));
 		Date fechadesde = new Date();
 		Date fechahasta = new Date();
+		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+		String fd = request.getParameter("fechadesde");
+		String fh = request.getParameter("fechahasta");
+		request.getSession().setAttribute("fechadesde", fd); //Para la confirmación de la reserva
+		request.getSession().setAttribute("fechahasta", fh); //Para la confirmación de la reserva
 		try {
-			fechadesde = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("fechadesde"));
-			fechahasta = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("fechahasta"));
+			fechadesde = format.parse(fd);
+			fechahasta = format.parse(fh);
 			String transmision = request.getParameter("transmision");
 			r.setFechaRetiro(fechadesde);
 			r.setFechaDevolucion(fechahasta);
@@ -76,9 +80,10 @@ public class nuevaReserva extends HttpServlet {
 			request.getSession().setAttribute("vDisponibles", vDisponibles);
 
 			request.getRequestDispatcher("WEB-INF/MenuCliente/VehiculosDisponibles.jsp").forward(request, response);
-		} catch (Exception e) {
+		} 
+		catch (Exception e) {
 			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-			request.setAttribute("errormsg", "Error inesperado");
+			request.setAttribute("errormsg", "Error inesperado, intente en unos minutos.");
 			rd.forward(request, response);
 		}
 

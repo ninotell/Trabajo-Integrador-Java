@@ -42,6 +42,7 @@ public class changePassword extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		try {
 		Login ctrlLogin = new Login();
 		Rol r = new Rol();
 		r.setIdRol(1);
@@ -67,7 +68,12 @@ public class changePassword extends HttpServlet {
 				rd.forward(request, response);
 			}
 		}
-
+		}
+		catch (Exception e) {
+			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+			request.setAttribute("errormsg", "Error inesperado");
+			rd.include(request, response);
+		}
 	}
 
 }

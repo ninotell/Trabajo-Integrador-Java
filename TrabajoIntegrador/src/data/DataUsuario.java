@@ -7,7 +7,7 @@ import entities.*;
 
 public class DataUsuario {
 		
-	public Usuario getByUser(Usuario u) {
+	public Usuario getByUser(Usuario u) throws SQLException{
 		DataRol dr=new DataRol();
 		Usuario user = null;
 		PreparedStatement stmt = null;

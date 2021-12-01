@@ -95,7 +95,7 @@ public class DataCategoria {
 	
 	
 	}
-public LinkedList<Categoria> listaCategoria(){
+public LinkedList<Categoria> listaCategoria() throws SQLException{
 		
 		PreparedStatement stmt=null;
 		ResultSet rs=null;

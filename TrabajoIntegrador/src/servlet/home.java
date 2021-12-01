@@ -32,8 +32,8 @@ public class home extends HttpServlet {
 			throws ServletException, IOException {
 		Login ctrlLogin = new Login();
 		LinkedList<Categoria> categorias = new LinkedList<>();
-		categorias = ctrlLogin.listaCategorias();
 		try {
+			categorias = ctrlLogin.listaCategorias();
 			DataRol dr = new DataRol();
 			Rol r = new Rol();
 			r.setIdRol(2);

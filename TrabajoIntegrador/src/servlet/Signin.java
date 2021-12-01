@@ -3,6 +3,7 @@ package servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.lang.ProcessBuilder.Redirect;
+import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -42,8 +43,7 @@ public class Signin extends HttpServlet {
 		Login ctrlLogin = new Login();
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		categorias = ctrlLogin.listaCategorias();
-
+		
 		try {
 			DataRol dr = new DataRol();
 			Rol r = new Rol();
@@ -54,6 +54,7 @@ public class Signin extends HttpServlet {
 			u = ctrlLogin.validate(u);
 
 			if (u.hasRol(r)) {
+				categorias = ctrlLogin.listaCategorias();
 				request.getSession().setAttribute("usuario", u);
 				request.getSession().setAttribute("listaCategorias", categorias);
 				request.getRequestDispatcher("WEB-INF/MenuCliente/MenuCliente.jsp").forward(request, response);
@@ -62,13 +63,10 @@ public class Signin extends HttpServlet {
 				request.getSession().setAttribute("usuario", u);
 				request.getRequestDispatcher("WEB-INF/MenuEmpleado/MenuEmpleado.jsp").forward(request, response);
 			}
-		} catch (NullPointerException e1) {
+		} 
+		 catch (Exception e) {
 			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-			request.setAttribute("errormsg", "Datos incorrectos");
-			rd.include(request, response);
-		} catch (Exception e2) {
-			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-			request.setAttribute("errormsg", "Error inesperado");
+			request.setAttribute("errormsg", "Error inesperado, intente en unos minutos.");
 			rd.include(request, response);
 		}
 

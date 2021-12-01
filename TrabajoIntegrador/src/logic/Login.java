@@ -27,7 +27,7 @@ public class Login {
 		return du.listaUsuarios();
 	}
 	
-	public Usuario validate(Usuario u) {
+	public Usuario validate(Usuario u) throws SQLException {
 		
 		return du.getByUser(u);
 		
@@ -86,7 +86,7 @@ public class Login {
 		du.updatePsw(u);	
 	}
 	
-	public LinkedList<Vehiculo> VehiculosDisponibles(Categoria c, Reserva r, Vehiculo v){
+	public LinkedList<Vehiculo> VehiculosDisponibles(Categoria c, Reserva r, Vehiculo v) throws SQLException{
 		return dv.VehiculosDisponibles(c,r,v);
 	}
 	
@@ -95,7 +95,7 @@ public class Login {
 		dre.agregaDatosReserva(r, vr, ur);
 	}
 	
-	public LinkedList<Categoria> listaCategorias(){
+	public LinkedList<Categoria> listaCategorias() throws SQLException{
 		return dc.listaCategoria();
 	}
 	

@@ -304,11 +304,11 @@ public class DataVehiculo {
 		return vehiculos;
 	}
 	
-	public LinkedList<Vehiculo> VehiculosDisponibles(Categoria c, Reserva r, Vehiculo v) {
+	public LinkedList<Vehiculo> VehiculosDisponibles(Categoria c, Reserva r, Vehiculo v) throws SQLException {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		LinkedList<Vehiculo> vehiculos = new LinkedList<>();
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
+		SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
 
 		try {
 			stmt = DbConnector.getInstancia().getConn().prepareStatement(
@@ -324,8 +324,8 @@ public class DataVehiculo {
 			);
 			stmt.setInt(1, c.getIdCategoria());
 			stmt.setString(2, v.getTransmision());
-			stmt.setString(3, formatter.format(r.getFechaRetiro()));
-			stmt.setString(4, formatter.format(r.getFechaDevolucion()));
+			stmt.setString(3, format.format(r.getFechaRetiro()));
+			stmt.setString(4, format.format(r.getFechaDevolucion()));
 			stmt.setString(5, "cancelada");
 			rs = stmt.executeQuery();
 			if (rs != null) {
@@ -345,14 +345,14 @@ public class DataVehiculo {
 		} finally {
 			try {
 				if (rs != null) {
-					rs.close();
+					rs.close();					
 				}
 				if (stmt != null) {
-					stmt.close();
+					stmt.close();					
 				}
 				DbConnector.getInstancia().releaseConn();
 			} catch (SQLException e) {
-				e.printStackTrace();
+				e.printStackTrace();				
 			}
 		}
 

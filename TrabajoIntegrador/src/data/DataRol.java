@@ -38,7 +38,7 @@ public class DataRol {
 	}
 	
 	
-	public Rol getById(Rol rolToSearch) {
+	public Rol getById(Rol rolToSearch) throws SQLException {
 		Rol r=null;
 		PreparedStatement stmt=null;
 		ResultSet rs=null;

@@ -57,13 +57,12 @@ public class confirmaRegistro extends HttpServlet {
 		u.setEmail(email);
 		u.setPassword(password);
 
-		Rol r = new Rol();
-		r.setIdRol(2); // Se asigna por defecto rol de usuario
-		r = dr.getById(r);
-		u.addRol(r);
 
 		try {
 
+			Rol r = new Rol();
+			r.setIdRol(2); // Se asigna por defecto rol de usuario
+			r = dr.getById(r);
 			u.addRol(r);
 			ctrlLogin.newUsuario(u);
 			dr.addRol(r, u);
