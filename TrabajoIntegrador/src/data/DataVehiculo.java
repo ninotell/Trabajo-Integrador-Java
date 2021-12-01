@@ -342,6 +342,7 @@ public class DataVehiculo {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
+			throw e;
 		} finally {
 			try {
 				if (rs != null) {
@@ -352,7 +353,8 @@ public class DataVehiculo {
 				}
 				DbConnector.getInstancia().releaseConn();
 			} catch (SQLException e) {
-				e.printStackTrace();				
+				e.printStackTrace();	
+				throw e;
 			}
 		}
 
