@@ -83,7 +83,7 @@ public class Login {
 
 	}
 	public void updatePsw(Usuario u) {
-		du.updatePsw(u);	
+		du.updatePsw(u);	 
 	}
 	
 	public LinkedList<Vehiculo> VehiculosDisponibles(Categoria c, Reserva r, Vehiculo v) throws SQLException{
