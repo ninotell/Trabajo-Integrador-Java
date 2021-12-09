@@ -263,7 +263,7 @@ public class DataReserva {
 			Session session = Session.getDefaultInstance(props);
 
 			String correoRemitente = "rentsmart.alquileautos@gmail.com";
-			String passwordRemitente = "B0ZHbNkgvtzKdGw9";
+			String passwordRemitente = "2q7YVvH3XwcQAT9B";
 			String correoReceptor = u.getEmail();
 			String asunto = "CANCELACION RESERVA";
 			String mensaje = ("<div style=\"max-width: 400px;\">"
@@ -328,7 +328,7 @@ public class DataReserva {
 			
 
 			String correoRemitente = "rentsmart.alquileautos@gmail.com";
-			String passwordRemitente = "B0ZHbNkgvtzKdGw9";
+			String passwordRemitente = "2q7YVvH3XwcQAT9B";
 			String correoReceptor = u.getEmail();
 			String asunto = "CONFIRMACION RESERVA";
 			String mensaje = ("<h2>¡Felicitaciones ya tenes tu reserva hecha!</h2>"
