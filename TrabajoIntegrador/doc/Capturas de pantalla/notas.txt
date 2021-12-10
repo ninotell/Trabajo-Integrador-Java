@@ -1,0 +1,11 @@
+Notas importantes
+-->    Nombre de imagen = Nombre del Servlet correspondiente.
+-->    Para una mejor interpretación de las imagenes se recomienda la prueba del sistema.
+
+-------Credenciales para Empleado--------
+-->    mail: admin@gmail.com
+-->    contraseña: padmin
+
+-------Credenciales para Cliente--------
+-->    mail: cliente@gmail.com
+-->    contraseña: pcliente
