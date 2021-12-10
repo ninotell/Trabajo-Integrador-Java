@@ -71,7 +71,6 @@ public class cancelarReserva extends HttpServlet {
 			Reserva re = new Reserva();
 			String motivo = request.getParameter("motivoCancelacion");
 			int idr = Integer.parseInt(request.getParameter("idreserva"));
-			System.out.println(motivo);
 			re.setIdReserva(idr);
 			re.setEstado("Cancelada");
 			re.setMotivoCancelacion(motivo);

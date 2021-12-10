@@ -101,8 +101,9 @@ Date today = new Date();
 			<br> <br> No hay reservas para mostrar
 			<%
  } else {
+	 
  for (Reserva r : reservas) {
- 	if ((r.getEstado().equals("Iniciada")) && (dtf.format(r.getFechaRetiro())).equals(dtf.format(today))) {
+ 	if ((r.getEstado().equals("Iniciada")) && (!(dtf.parse(dtf.format(r.getFechaRetiro()))).after(today))) {
  %>
 			<div class="card">
 				<div class="card-body">
